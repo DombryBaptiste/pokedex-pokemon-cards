@@ -1,0 +1,54 @@
+# Build output
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio files
+.vscode/
+*.code-workspace
+*.vs/
+
+# Rider IDE files
+.idea/
+
+# Dotnet publish folder
+publish/
+
+# NuGet packages
+*.nupkg
+*.snupkg
+packages/
+
+# Azure Functions local settings
+local.settings.json
+
+# Logs
+*.log
+
+# Entity Framework Core migrations
+Migrations/
+
+# Dotnet secret manager
+secrets.json
+
+# Test result files
+TestResults/
+
+# Resharper files
+_ReSharper*/
+*.DotSettings.user
+
+# StyleCop cache
+.stylecop
+
+# Windows thumbnail cache
+Thumbs.db
+ehthumbs.db
+
+# MacOS files
+.DS_Store
