@@ -52,3 +52,5 @@ ehthumbs.db
 
 # MacOS files
 .DS_Store
+
+appsettings.Development.json
