@@ -30,9 +30,6 @@ local.settings.json
 # Logs
 *.log
 
-# Entity Framework Core migrations
-Migrations/
-
 # Dotnet secret manager
 secrets.json
 
