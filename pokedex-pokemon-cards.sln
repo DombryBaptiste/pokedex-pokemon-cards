@@ -4,6 +4,8 @@ VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API-pokedex-pokemon-card", "API-pokedex-pokemon-card\API-pokedex-pokemon-card.csproj", "{2066ED75-5B80-2013-68DB-D02AA906D547}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "scrapping", "scrapping\scrapping.csproj", "{D2D0A361-6ABF-B57F-9674-7D17131EE200}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,11 +16,15 @@ Global
 		{2066ED75-5B80-2013-68DB-D02AA906D547}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2066ED75-5B80-2013-68DB-D02AA906D547}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2066ED75-5B80-2013-68DB-D02AA906D547}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2D0A361-6ABF-B57F-9674-7D17131EE200}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2D0A361-6ABF-B57F-9674-7D17131EE200}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2D0A361-6ABF-B57F-9674-7D17131EE200}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2D0A361-6ABF-B57F-9674-7D17131EE200}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {C4A049DE-BBC7-4E0C-BF0B-9ADDB9407F3B}
+		SolutionGuid = {7C734E8B-0BF3-4F3E-94A7-D5BE218B2521}
 	EndGlobalSection
 EndGlobal
