@@ -1,4 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+@use "variables" as *;
+@use '@angular/material' as mat;
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: $app-bg-color;}
+
+
+
+.connect-button {
+    @include mat.button-overrides((
+      filled-container-color: $connexion-button-bg
+  ));
+}
+
+
+.icon-white {
+  @include mat.icon-overrides((
+    color: white,
+  ));
+}
+
+.submenu {
+  @include mat.menu-overrides((
+    container-color: $sidebar-bg-color,
+  ));
+}

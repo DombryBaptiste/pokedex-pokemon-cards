@@ -1,0 +1,22 @@
+@use "variables" as *;
+
+.sidebar {
+    background-color: $sidebar-bg-color;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 40%;
+    z-index: 1000;
+
+    .cancel-cross-wrapper
+    {
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+
+        .close {
+            margin: 5px;
+        }
+    }
+}
