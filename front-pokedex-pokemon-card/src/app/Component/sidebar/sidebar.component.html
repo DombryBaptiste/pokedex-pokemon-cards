@@ -3,5 +3,10 @@
     <div class="cancel-cross-wrapper">
         <mat-icon fontIcon="close" class="icon-white close" (click)="handleCloseSideBar()"></mat-icon>
     </div>
-    <p style="color: white">sidebar works!</p>
+    @if(!user) {
+        <button mat-flat-button class="connect-button" (click)="handleConnexion()">Connexion</button>
+    } @else {
+        <p style="color: white">{{ user.email }}</p>
+        <button mat-flat-button class="logout-button" (click)="handleLogOut()">Déconnexion</button>
+    }
 </div>

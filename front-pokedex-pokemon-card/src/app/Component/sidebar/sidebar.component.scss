@@ -9,8 +9,13 @@
     width: 40%;
     z-index: 1000;
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     .cancel-cross-wrapper
     {
+        width: 100%;
         display: flex;
         flex-direction: row;
         justify-content: end;
@@ -18,5 +23,10 @@
         .close {
             margin: 5px;
         }
+    }
+
+    .connect-button
+    {
+        width: 70%;
     }
 }
