@@ -30,7 +30,8 @@ public class AuthService : IAuthService
             user = new User
             {
                 Email = payload.Email,
-                LastLoggedIn = DateTime.UtcNow
+                LastLoggedIn = DateTime.UtcNow,
+                PictureProfilPath = "1.png"
             };
 
             var success = await _userService.CreateAsync(user);

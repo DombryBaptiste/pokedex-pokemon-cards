@@ -54,8 +54,7 @@ export class AuthService {
     window.onload = () => {
       google.accounts.id.initialize({
         client_id: environment.googleClientId,
-        callback: (response: any) => this.handleCredentialResponse(response),
-        federated: true
+        callback: (response: any) => this.handleCredentialResponse(response)
       });
     };
   }

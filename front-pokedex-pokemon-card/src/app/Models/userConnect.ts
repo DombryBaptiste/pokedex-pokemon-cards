@@ -4,4 +4,5 @@ export interface UserConnect {
     lastLoggedIn: Date;
     createdDate: Date;
     updatedDate: Date;
+    pictureProfilPath: string;
 }
