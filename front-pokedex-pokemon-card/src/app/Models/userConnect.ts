@@ -5,4 +5,5 @@ export interface UserConnect {
     createdDate: Date;
     updatedDate: Date;
     pictureProfilPath: string;
+    pseudo: string;
 }

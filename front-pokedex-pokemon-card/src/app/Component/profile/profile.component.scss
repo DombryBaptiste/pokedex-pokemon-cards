@@ -1,0 +1,38 @@
+@use "variables" as *;
+
+.profile-container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(71, 77, 92);
+    border-radius: 10px;
+    width: 85%;
+    margin: 0 auto;
+    margin-top: 50px;
+
+    .profile-image {
+        margin-top: 20px;
+        border-radius: 50%;
+    }
+
+    .profile-form-field{
+        width: 70%;
+        margin-top: 20px;
+
+        ::ng-deep .mdc-floating-label {
+            color: white;
+        }
+        ::ng-deep .mdc-text-field {
+            background-color: $app-bg-color
+        }
+        ::ng-deep .mdc-text-field input{
+            color: white;
+        }
+        ::ng-deep .mdc-text-field--disabled input{
+            color: rgb(116, 111, 111);
+            opacity: 1 !important;
+        }
+        
+    }
+}

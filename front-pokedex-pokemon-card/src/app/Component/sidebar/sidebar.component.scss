@@ -12,6 +12,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 10px;
 
     .cancel-cross-wrapper
     {
@@ -28,6 +29,14 @@
     .connect-button
     {
         width: 70%;
+    }
+
+    .profile-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        cursor: pointer;
     }
 
     .profileImages

@@ -4,6 +4,7 @@ import { slideInOutAnimation } from './sidebat.animations';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthService } from '../../Services/auth.service';
 import { UserConnect } from '../../Models/userConnect';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-sidebar',
@@ -22,7 +23,7 @@ export class SidebarComponent implements OnInit {
   token: string | null = null;
   user: UserConnect | null = null;
 
-  constructor(private authService: AuthService) { }
+  constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.token = this.authService.getToken();
@@ -44,5 +45,10 @@ export class SidebarComponent implements OnInit {
   handleLogOut()
   {
     this.authService.logout();
+  }
+
+  handleProfileClick(){
+    this.router.navigate(['/profile'])
+    this.closeSideBar.emit();
   }
 }

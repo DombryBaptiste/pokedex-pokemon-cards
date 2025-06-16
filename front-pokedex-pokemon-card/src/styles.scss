@@ -3,11 +3,16 @@
 @use '@angular/material' as mat;
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: $app-bg-color;}
+body { 
+  margin: 0; 
+  font-family: Roboto, "Helvetica Neue", sans-serif; 
+  background-color: $app-bg-color; 
+  color: white}
 
 
 
 .connect-button {
+  margin: 20px;
     @include mat.button-overrides((
       filled-container-color: $connexion-button-bg,
       filled-label-text-color: black

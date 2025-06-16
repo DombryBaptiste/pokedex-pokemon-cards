@@ -1,6 +1,4 @@
-namespace API_pokedex_pokemon_card.Models;
-
-public class User : AuditableEntity
+public class UserDto
 {
     public int Id { get; set; }
     public required string Email { get; set; }

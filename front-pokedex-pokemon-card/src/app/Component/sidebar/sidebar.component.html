@@ -6,8 +6,11 @@
     @if(!user) {
         <button mat-flat-button class="connect-button" (click)="handleConnexion()">Connexion</button>
     } @else {
-        <img [src]="'assets/' + user.pictureProfilPath" class="profileImages" />
-        <p style="color: white">{{ user.email }}</p>
+        <div class="profile-wrapper" (click)="handleProfileClick()">
+            <img [src]="'assets/' + user.pictureProfilPath" class="profileImages" />
+            <span>Mon Profil</span>
+        </div>
+
         <button mat-flat-button class="logout-button" (click)="handleLogOut()">Déconnexion</button>
     }
 </div>

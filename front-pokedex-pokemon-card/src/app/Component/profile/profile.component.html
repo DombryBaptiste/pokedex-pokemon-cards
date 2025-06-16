@@ -1,0 +1,19 @@
+@if(currentUser)
+{
+    <div class="profile-container">
+
+    <img [src]="'assets/' + this.currentUser.pictureProfilPath" class="profile-image" />
+
+    <mat-form-field class="profile-form-field">
+        <mat-label>Email</mat-label>
+        <input matInput disabled [value]="this.currentUser.email" />
+    </mat-form-field>
+
+    <mat-form-field class="profile-form-field">
+        <mat-label>Pseudo</mat-label>
+        <input matInput [(ngModel)]="this.currentUser.pseudo"/>
+    </mat-form-field>
+
+    <button mat-flat-button class="connect-button" (click)="handleSave()">Sauvgarder</button>
+</div>
+}

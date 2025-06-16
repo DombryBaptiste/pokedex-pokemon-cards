@@ -28,4 +28,24 @@ public class UserService : IUserService
             return false;
         }
     }
+
+    public async Task<User> UpdateUserAsync(User user)
+    {
+        var modifiedUser = await _context.Users.FirstOrDefaultAsync(u => u.Id == user.Id);
+        if (modifiedUser == null)
+        {
+            throw new KeyNotFoundException($"L'utilisateur d'id : {user.Id} est introuvable.");
+        }
+
+        var props = typeof(User).GetProperties();
+        foreach (var prop in props)
+        {
+            var newValue = prop.GetValue(user);
+            if (newValue != null)
+                prop.SetValue(modifiedUser, newValue);
+        }
+
+        await _context.SaveChangesAsync();
+        return modifiedUser;
+    }
 }
