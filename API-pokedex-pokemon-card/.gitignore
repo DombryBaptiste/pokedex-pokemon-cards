@@ -51,3 +51,4 @@ ehthumbs.db
 .DS_Store
 
 appsettings.Development.json
+appsettings.Docker.json

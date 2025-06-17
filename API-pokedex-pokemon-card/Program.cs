@@ -8,13 +8,16 @@ var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
 ConfigureServices(builder.Services, builder.Configuration);
+Console.WriteLine($"Environment: {builder.Environment.EnvironmentName}");
+Console.WriteLine(builder.Configuration.GetConnectionString("DefaultConnection"));
 
 // Configurer DbContext MySQL
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseMySql(
         builder.Configuration.GetConnectionString("DefaultConnection"),
-        new MySqlServerVersion(new Version(8, 0, 36))
+        new MySqlServerVersion(new Version(8, 0, 36)),
+        opt => opt.EnableRetryOnFailure()
     );
 });
 
@@ -44,7 +47,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowAngularLocalhost",
     policy =>
     {
-        policy.WithOrigins("http://localhost:4200")
+        policy.WithOrigins("http://localhost", "http://localhost:4200")
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials();
@@ -74,6 +77,13 @@ app.UseCors("AllowAngularLocalhost");
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
+
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    dbContext.Database.Migrate();
+}
+
 app.MapControllers();
 app.Run();
 
