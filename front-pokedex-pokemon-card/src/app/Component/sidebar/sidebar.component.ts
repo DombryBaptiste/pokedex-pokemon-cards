@@ -48,7 +48,13 @@ export class SidebarComponent implements OnInit {
   }
 
   handleProfileClick(){
-    this.router.navigate(['/profile'])
+    this.router.navigate(['/profile']);
+    this.closeSideBar.emit();
+  }
+
+  handlePokedexClick()
+  {
+    this.router.navigate(['pokedex']);
     this.closeSideBar.emit();
   }
 }

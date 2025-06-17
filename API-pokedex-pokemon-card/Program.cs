@@ -1,8 +1,6 @@
 using System.Text;
 using API_pokedex_pokemon_card.Infrastructure;
-using API_pokedex_pokemon_card.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
