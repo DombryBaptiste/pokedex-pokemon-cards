@@ -1,8 +1,5 @@
 .gen-buttons
 {
-    // display: flex;
-    // flex-direction: row;
-    // flex-wrap: wrap;
     display: grid;
     grid-template-columns: repeat(auto-fill, 80px);
     gap: 5px;
@@ -12,6 +9,7 @@
     margin: 0 auto;
     margin-top: 20px;
     margin-bottom: 20px;
+    cursor: pointer;
 
     .gen {
         width: 80px;
