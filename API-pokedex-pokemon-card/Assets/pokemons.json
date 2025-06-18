@@ -1,0 +1,292 @@
+[
+  { "PokedexId": 1, "Name": "Bulbizarre", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/1.png" },
+  { "PokedexId": 2, "Name": "Herbizarre", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/2.png" },
+  { "PokedexId": 3, "Name": "Florizarre", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/3.png" },
+  { "PokedexId": 3, "Name": "Méga-Florizarre", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/3-mega.png" },
+  { "PokedexId": 3, "Name": "Florizarre GMax", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/3-gmax.png" },
+
+  { "PokedexId": 4, "Name": "Salamèche", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/4.png" },
+  { "PokedexId": 5, "Name": "Reptincel", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/5.png" },
+  { "PokedexId": 6, "Name": "Dracaufeu", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/6.png" },
+  { "PokedexId": 6, "Name": "Méga-Dracaufeu X", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/6-mega-x.png" },
+  { "PokedexId": 6, "Name": "Méga-Dracaufeu Y", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/6-mega-y.png" },
+  { "PokedexId": 6, "Name": "Dracaufeu GMax", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/6-gmax.png" },
+
+  { "PokedexId": 7, "Name": "Carapuce", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/7.png" },
+  { "PokedexId": 8, "Name": "Carabaffe", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/8.png" },
+  { "PokedexId": 9, "Name": "Tortank", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/9.png" },
+  { "PokedexId": 9, "Name": "Méga-Tortank", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/9-mega.png" },
+  { "PokedexId": 9, "Name": "Tortank GMax", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/9-gmax.png" },
+
+  { "PokedexId": 10, "Name": "Chenipan", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/10.png" },
+  { "PokedexId": 11, "Name": "Chrysacier", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/11.png" },
+  { "PokedexId": 12, "Name": "Papilusion", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/12.png" },
+  { "PokedexId": 12, "Name": "Papilusion GMax", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/12-gmax.png" },
+
+  { "PokedexId": 13, "Name": "Aspicot", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/13.png" },
+  { "PokedexId": 14, "Name": "Coconfort", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/14.png" },
+  { "PokedexId": 15, "Name": "Dardargnan", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/15.png" },
+  { "PokedexId": 15, "Name": "Méga-Dardargnan", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/15-mega.png" },
+
+  { "PokedexId": 16, "Name": "Roucool", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/16.png" },
+  { "PokedexId": 17, "Name": "Roucoups", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/17.png" },
+  { "PokedexId": 18, "Name": "Roucarnage", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/18.png" },
+  { "PokedexId": 18, "Name": "Méga-Roucarnage", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/18-mega.png" },
+
+  { "PokedexId": 19, "Name": "Rattata", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/19.png" },
+  { "PokedexId": 19, "Name": "Rattata d'Alola", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/19-alola.png" },
+  { "PokedexId": 20, "Name": "Rattatac", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/20.png" },
+  { "PokedexId": 20, "Name": "Rattatac d'Alola", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/20-alola.png" },
+
+  { "PokedexId": 21, "Name": "Piafabec", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/21.png" },
+  { "PokedexId": 22, "Name": "Rapasdepic", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/22.png" },
+
+  { "PokedexId": 23, "Name": "Abo", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/23.png" },
+  { "PokedexId": 24, "Name": "Arbok", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/24.png" },
+
+  { "PokedexId": 25, "Name": "Pikachu", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/25.png" },
+  { "PokedexId": 25, "Name": "Pikachu GMax", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/25-gmax.png" },
+  { "PokedexId": 26, "Name": "Raichu", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/26.png" },
+  { "PokedexId": 26, "Name": "Raichu d'Alola", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/26-alola.png" },
+
+  { "PokedexId": 27, "Name": "Sabelette", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/27.png" },
+  { "PokedexId": 27, "Name": "Sabelette d'Alola", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/27-alola.png" },
+  { "PokedexId": 28, "Name": "Sablaireau", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/28.png" },
+  { "PokedexId": 28, "Name": "Sablaireau d'Alola", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/28-alola.png" },
+
+  { "PokedexId": 29, "Name": "Nidoran♀", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/29.png" },
+  { "PokedexId": 30, "Name": "Nidorina", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/30.png" },
+  { "PokedexId": 31, "Name": "Nidoqueen", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/31.png" },
+
+  { "PokedexId": 32, "Name": "Nidoran♂", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/32.png" },
+  { "PokedexId": 33, "Name": "Nidorino", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/33.png" },
+  { "PokedexId": 34, "Name": "Nidoking", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/34.png" },
+
+  { "PokedexId": 35, "Name": "Mélofée", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/35.png" },
+  { "PokedexId": 36, "Name": "Mélodelfe", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/36.png" },
+
+  { "PokedexId": 37, "Name": "Goupix", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/37.png" },
+  { "PokedexId": 37, "Name": "Goupix d'Alola", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/37-alola.png" },
+  { "PokedexId": 38, "Name": "Feunard", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/38.png" },
+  { "PokedexId": 38, "Name": "Feunard d'Alola", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/38-alola.png" },
+
+  { "PokedexId": 39, "Name": "Rondoudou", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/39.png" },
+  { "PokedexId": 40, "Name": "Grodoudou", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/40.png" },
+
+  { "PokedexId": 41, "Name": "Nosferapti", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/41.png" },
+  { "PokedexId": 42, "Name": "Nosferalto", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/42.png" },
+
+  { "PokedexId": 43, "Name": "Mystherbe", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/43.png" },
+  { "PokedexId": 44, "Name": "Ortide", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/44.png" },
+  { "PokedexId": 45, "Name": "Rafflesia", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/45.png" },
+
+  { "PokedexId": 46, "Name": "Paras", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/46.png" },
+  { "PokedexId": 47, "Name": "Parasect", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/47.png" },
+
+  { "PokedexId": 48, "Name": "Mimitoss", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/48.png" },
+  { "PokedexId": 49, "Name": "Aéromite", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/49.png" },
+
+  { "PokedexId": 50, "Name": "Taupiqueur", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/50.png" },
+  { "PokedexId": 50, "Name": "Taupiqueur d'Alola", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/50-alola.png" },
+  { "PokedexId": 51, "Name": "Triopikeur", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/51.png" },
+  { "PokedexId": 51, "Name": "Triopikeur d'Alola", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/51-alola.png" },
+
+  { "PokedexId": 52, "Name": "Miaouss", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/52.png" },
+  { "PokedexId": 52, "Name": "Miaouss GMax", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/52-gmax.png" },
+  { "PokedexId": 52, "Name": "Miaouss d'Alola", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/52-alola.png" },
+  { "PokedexId": 52, "Name": "Miaouss de Galar", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/52-galar.png" },
+  { "PokedexId": 53, "Name": "Persian", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/53.png" },
+  { "PokedexId": 53, "Name": "Persian d'Alola", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/53-alola.png" },
+
+  { "PokedexId": 54, "Name": "Psykokwak", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/54.png" },
+  { "PokedexId": 55, "Name": "Akwakwak", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/55.png" },
+
+  { "PokedexId": 56, "Name": "Férosinge", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/56.png" },
+  { "PokedexId": 57, "Name": "Colossinge", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/57.png" },
+
+  { "PokedexId": 58, "Name": "Caninos", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/58.png" },
+  { "PokedexId": 58, "Name": "Caninos d'Hisui", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/58-hisui.png" },
+  { "PokedexId": 59, "Name": "Arcanin", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/59.png" },
+  { "PokedexId": 59, "Name": "Arcanin d'Hisui", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/59-hisui.png" },
+
+  { "PokedexId": 60, "Name": "Ptitard", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/60.png" },
+  { "PokedexId": 61, "Name": "Têtarte", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/61.png" },
+  { "PokedexId": 62, "Name": "Tartard", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/62.png" },
+
+  { "PokedexId": 63, "Name": "Abra", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/63.png" },
+  { "PokedexId": 64, "Name": "Kadabra", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/64.png" },
+  { "PokedexId": 65, "Name": "Alakazam", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/65.png" },
+  { "PokedexId": 65, "Name": "Méga-Alakazam", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/65-mega.png" },
+
+  { "PokedexId": 66, "Name": "Machoc", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/66.png" },
+  { "PokedexId": 67, "Name": "Machopeur", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/67.png" },
+  { "PokedexId": 68, "Name": "Mackogneur", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/68.png" },
+  { "PokedexId": 68, "Name": "Mackogneur GMax", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/68-gmax.png" },
+
+  { "PokedexId": 69, "Name": "Chétiflor", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/69.png" },
+  { "PokedexId": 70, "Name": "Boustiflor", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/70.png" },
+  { "PokedexId": 71, "Name": "Empiflor", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/71.png" },
+
+  { "PokedexId": 72, "Name": "Tentacool", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/72.png" },
+  { "PokedexId": 73, "Name": "Tentacruel", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/73.png" },
+
+  { "PokedexId": 74, "Name": "Racaillou", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/74.png" },
+  { "PokedexId": 74, "Name": "Racaillou d'Alola", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/74-alola.png" },
+  { "PokedexId": 75, "Name": "Gravalanch", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/75.png" },
+  { "PokedexId": 75, "Name": "Gravalanch d'Alola", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/75-alola.png" },
+  { "PokedexId": 76, "Name": "Grolem", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/76.png" },
+  { "PokedexId": 76, "Name": "Grolem d'Alola", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/76-alola.png" },
+
+  { "PokedexId": 77, "Name": "Ponyta", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/77.png" },
+  { "PokedexId": 77, "Name": "Ponyta de Galar", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/77-galar.png" },
+  { "PokedexId": 78, "Name": "Galopa", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/78.png" },
+  { "PokedexId": 78, "Name": "Galopa de Galar", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/78-galar.png" },
+
+  { "PokedexId": 79, "Name": "Ramoloss", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/79.png" },
+  { "PokedexId": 79, "Name": "Ramoloss de Galar", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/79-galar.png" },
+  { "PokedexId": 80, "Name": "Flagadoss", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/80.png" },
+  { "PokedexId": 80, "Name": "Méga-Flagadoss", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/80-mega.png" },
+  { "PokedexId": 80, "Name": "Flagadoss de Galar", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/80-galar.png" },
+
+  { "PokedexId": 81, "Name": "Magneti", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/81.png" },
+  { "PokedexId": 82, "Name": "Magneton", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/82.png" },
+
+  { "PokedexId": 83, "Name": "Canarticho", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/83.png" },
+  { "PokedexId": 83, "Name": "Canarticho de Galar", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/83-galar.png" },
+
+  { "PokedexId": 84, "Name": "Doduo", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/84.png" },
+  { "PokedexId": 85, "Name": "Dodrio", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/85.png" },
+
+  { "PokedexId": 86, "Name": "Otaria", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/86.png" },
+  { "PokedexId": 87, "Name": "Lamantine", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/87.png" },
+
+  { "PokedexId": 88, "Name": "Tadmorv", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/88.png" },
+  { "PokedexId": 88, "Name": "Tadmorv d'Alola", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/88-alola.png" },
+  { "PokedexId": 89, "Name": "Grotadmorv", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/89.png" },
+  { "PokedexId": 89, "Name": "Grotadmorv d'Alola", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/89-alola.png" },
+
+  { "PokedexId": 90, "Name": "Kokiyas", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/90.png" },
+  { "PokedexId": 91, "Name": "Crustabri", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/91.png" },
+
+  { "PokedexId": 92, "Name": "Fantominus", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/92.png" },
+  { "PokedexId": 93, "Name": "Spectrum", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/93.png" },
+  { "PokedexId": 94, "Name": "Ectoplasma", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/94.png" },
+  { "PokedexId": 94, "Name": "Méga-Ectoplasma", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/94-mega.png" },
+  { "PokedexId": 94, "Name": "Ectoplasma GMax", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/94-gmax.png" },
+
+  { "PokedexId": 95, "Name": "Onix", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/95.png" },
+
+  { "PokedexId": 96, "Name": "Soporifik", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/96.png" },
+  { "PokedexId": 97, "Name": "Hypnomade", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/97.png" },
+
+  { "PokedexId": 98, "Name": "Krabby", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/98.png" },
+  { "PokedexId": 99, "Name": "Krabboss", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/99.png" },
+  { "PokedexId": 99, "Name": "Krabboss GMax", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/99-gmax.png" },
+
+  { "PokedexId": 100, "Name": "Voltorbe", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/100.png" },
+  { "PokedexId": 100, "Name": "Voltorbe d'Hisui", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/100-hisui.png" },
+  { "PokedexId": 101, "Name": "Électrode", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/101.png" },
+  { "PokedexId": 101, "Name": "Électrode d'Hisui", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/101-hisui.png" },
+
+  { "PokedexId": 102, "Name": "Nœunœuf", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/102.png" },
+  { "PokedexId": 103, "Name": "Noadkoko", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/103.png" },
+  { "PokedexId": 103, "Name": "Noadkoko d'Alola", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/103-alola.png" },
+
+  { "PokedexId": 104, "Name": "Osselait", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/104.png" },
+  { "PokedexId": 105, "Name": "Ossatueur", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/105.png" },
+  { "PokedexId": 105, "Name": "Ossatueur d'Alola", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/105-alola.png" },
+
+  { "PokedexId": 106, "Name": "Kicklee", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/106.png" },
+  { "PokedexId": 107, "Name": "Tygnon", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/107.png" },
+
+  { "PokedexId": 108, "Name": "Excelangue", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/108.png" },
+
+  { "PokedexId": 109, "Name": "Smogo", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/109.png" },
+  { "PokedexId": 110, "Name": "Smogogo", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/110.png" },
+  { "PokedexId": 110, "Name": "Smogogo de Galar", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/110-galar.png" },
+
+  { "PokedexId": 111, "Name": "Rhinocorne", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/111.png" },
+  { "PokedexId": 112, "Name": "Rhinoféros", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/112.png" },
+
+  { "PokedexId": 113, "Name": "Leveinard", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/113.png" },
+
+  { "PokedexId": 114, "Name": "Saquedeneu", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/114.png" },
+
+  { "PokedexId": 115, "Name": "Kangourex", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/115.png" },
+  { "PokedexId": 115, "Name": "Méga-Kangourex", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/115-mega.png" },
+
+  { "PokedexId": 116, "Name": "Hypotrempe", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/116.png" },
+  { "PokedexId": 117, "Name": "Hypocéan", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/117.png" },
+
+  { "PokedexId": 118, "Name": "Poissirène", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/118.png" },
+  { "PokedexId": 119, "Name": "Poissoroy", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/119.png" },
+
+  { "PokedexId": 120, "Name": "Stari", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/120.png" },
+  { "PokedexId": 121, "Name": "Staross", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/121.png" },
+
+  { "PokedexId": 122, "Name": "M. Mime", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/122.png" },
+  { "PokedexId": 122, "Name": "M. Mime de Galar", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/122-galar.png" },
+
+  { "PokedexId": 123, "Name": "Insecateur", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/123.png" },
+
+  { "PokedexId": 124, "Name": "Lippoutou", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/124.png" },
+
+  { "PokedexId": 125, "Name": "Élektek", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/125.png" },
+
+  { "PokedexId": 126, "Name": "Magmar", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/126.png" },
+
+  { "PokedexId": 127, "Name": "Scarabrute", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/127.png" },
+  { "PokedexId": 127, "Name": "Méga-Scarabrute", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/127-mega.png" },
+
+  { "PokedexId": 128, "Name": "Tauros", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/128.png" },
+  { "PokedexId": 128, "Name": "Tauros de Paldea Blanc", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/128-paldea-blanc.png" },
+  { "PokedexId": 128, "Name": "Tauros de Paldea Rouge", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/128-paldea-rouge.png" },
+  { "PokedexId": 128, "Name": "Tauros de Paldea Bleu", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/128-paldea-bleu.png" },
+
+  { "PokedexId": 129, "Name": "Magicarpe", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/129.png" },
+  { "PokedexId": 130, "Name": "Léviator", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/130.png" },
+  { "PokedexId": 130, "Name": "Méga-Léviator", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/130-mega.png" },
+
+  { "PokedexId": 131, "Name": "Lokhlass", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/131.png" },
+  { "PokedexId": 131, "Name": "Lokhlass GMax", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/131-gmax.png" },
+
+  { "PokedexId": 132, "Name": "Métamorph", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/132.png" },
+
+  { "PokedexId": 133, "Name": "Évoli", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/133.png" },
+  { "PokedexId": 133, "Name": "Évoli GMax", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/133-gmax.png" },
+  { "PokedexId": 134, "Name": "Aquali", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/134.png" },
+  { "PokedexId": 135, "Name": "Voltali", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/135.png" },
+  { "PokedexId": 136, "Name": "Pyroli", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/136.png" },
+
+  { "PokedexId": 137, "Name": "Porygon", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/137.png" },
+
+  { "PokedexId": 138, "Name": "Amonita", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/138.png" },
+  { "PokedexId": 139, "Name": "Amonistar", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/139.png" },
+
+  { "PokedexId": 140, "Name": "Kabuto", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/140.png" },
+  { "PokedexId": 141, "Name": "Kabutops", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/141.png" },
+
+  { "PokedexId": 142, "Name": "Ptéra", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/142.png" },
+  { "PokedexId": 142, "Name": "Méga-Ptéra", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/142-mega.png" },
+
+  { "PokedexId": 143, "Name": "Ronflex", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/143.png" },
+  { "PokedexId": 143, "Name": "Ronflex GMax", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/143-gmax.png" },
+
+  { "PokedexId": 144, "Name": "Artikodin", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/144.png" },
+  { "PokedexId": 144, "Name": "Artikodin de Galar", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/144-galar.png" },
+  { "PokedexId": 145, "Name": "Électhor", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/145.png" },
+  { "PokedexId": 145, "Name": "Électhor de Galar", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/145-galar.png" },
+  { "PokedexId": 146, "Name": "Sulfura", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/146.png" },
+  { "PokedexId": 146, "Name": "Sulfura de Galar", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/146-galar.png" },
+
+  { "PokedexId": 147, "Name": "Minidraco", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/147.png" },
+  { "PokedexId": 148, "Name": "Draco", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/148.png" },
+  { "PokedexId": 149, "Name": "Dracolosse", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/149.png" },
+
+  { "PokedexId": 150, "Name": "Mewtwo", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/150.png" },
+  { "PokedexId": 150, "Name": "Méga-Mewtwo X", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/150-mega-x.png" },
+  { "PokedexId": 150, "Name": "Méga-Mewtwo Y", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/150-mega-y.png" },
+
+  { "PokedexId": 151, "Name": "Mew", "Generation": 1, "ImagePath": "/assets/Sprites/Pokemon/Gen1/151.png" }
+
+]

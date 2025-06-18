@@ -1,11 +1,57 @@
 .gen-buttons
 {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    // display: flex;
+    // flex-direction: row;
+    // flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 80px);
     gap: 5px;
+    justify-content: center;
 
     width: 95%;
     margin: 0 auto;
     margin-top: 20px;
+    margin-bottom: 20px;
+
+    .gen {
+        width: 80px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10%;
+    }
+
+    .selected {
+        background-color: rgb(255, 225, 101);
+        color: black;
+    }
+
+    .unselected {
+        background-color: rgb(44, 48, 59);
+    }
+}
+
+.pokemon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
+    justify-content: center;
+    width: 90%;
+    margin: 0 auto;
+
+    .pokemon {
+        background-color: rgb(44, 48, 59);
+        border-radius: 10%;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .pokemon-number
+    {
+        color: gray
+    }
 }

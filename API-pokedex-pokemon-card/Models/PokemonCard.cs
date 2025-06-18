@@ -1,8 +1,9 @@
 public class PokemonCard
 {
-    public string Id { get; set; }
-    public string LocalId { get; set; }
-    public string Extension { get; set; }
-    public string Name { get; set; }
-    public string Image { get; set; }
+    public required string Id { get; set; }
+    public required string LocalId { get; set; }
+    public required string Extension { get; set; }
+    public required string Name { get; set; }
+    public required string Image { get; set; }
+    public int PokemonId { get; set; }
 }

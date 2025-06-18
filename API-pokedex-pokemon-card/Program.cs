@@ -2,6 +2,7 @@ using System.Text;
 using API_pokedex_pokemon_card.Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -82,7 +83,15 @@ using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     dbContext.Database.Migrate();
+    DbInitializer.Seed(dbContext);
 }
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), "Assets")),
+    RequestPath = "/assets"
+});
 
 app.MapControllers();
 app.Run();
@@ -91,5 +100,6 @@ void ConfigureServices(IServiceCollection services, IConfiguration configuration
 {
     services.AddScoped<IAuthService, AuthService>();
     services.AddScoped<IUserService, UserService>();
+    services.AddScoped<IPokemonService, PokemonService>();
 
 }

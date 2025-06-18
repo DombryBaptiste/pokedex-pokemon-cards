@@ -1,6 +1,17 @@
 <div class="gen-buttons">
     @for(gen of generations; track gen)
     {
-        <a *ngClass="">Gen {{ gen }}</a>
+        <a class="gen" [class]="getClassButton(gen)" (click)="selectGen(gen)">Gen {{ gen }}</a>
+    }
+</div>
+
+<div class="pokemon-grid">
+    @for(p of pokemons; track p.id)
+    {
+        <div class="pokemon">
+            <img [src]="p.imagePath">
+            <span>{{ p.name }}</span>
+            <span class="pokemon-number">{{ formatPokedexId(p.pokedexId) }}</span>
+        </div>
     }
 </div>

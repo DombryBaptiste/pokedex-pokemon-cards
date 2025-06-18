@@ -30,6 +30,13 @@ namespace API_pokedex_pokemon_card.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("Generation")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -96,9 +103,28 @@ namespace API_pokedex_pokemon_card.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int>("PokemonId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("PokemonId");
+
                     b.ToTable("PokemonCards");
+                });
+
+            modelBuilder.Entity("PokemonCard", b =>
+                {
+                    b.HasOne("API_pokedex_pokemon_card.Models.Pokemon", null)
+                        .WithMany("PokemonCards")
+                        .HasForeignKey("PokemonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("API_pokedex_pokemon_card.Models.Pokemon", b =>
+                {
+                    b.Navigation("PokemonCards");
                 });
 #pragma warning restore 612, 618
         }
