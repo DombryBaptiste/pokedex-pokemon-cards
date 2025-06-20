@@ -102,4 +102,7 @@ void ConfigureServices(IServiceCollection services, IConfiguration configuration
     services.AddScoped<IUserService, UserService>();
     services.AddScoped<IPokemonService, PokemonService>();
 
+    builder.Services.AddHttpContextAccessor();
+    builder.Services.AddScoped<IUserContext, UserContext>();
+
 }

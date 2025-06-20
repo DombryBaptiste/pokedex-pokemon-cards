@@ -7,4 +7,5 @@ public class User : AuditableEntity
     public required DateTime LastLoggedIn { get; set; }
     public required string PictureProfilPath { get; set; }
     public string? Pseudo { get; set; }
+    public List<int>? HiddenPokemonIds { get; set; }
 }

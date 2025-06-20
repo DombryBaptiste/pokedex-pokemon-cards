@@ -6,20 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 public class PokemonController : ControllerBase
 {
     IPokemonService _pokemonService;
+    IUserContext _userContext;
 
-    public PokemonController(IPokemonService pokemonService)
+    public PokemonController(IPokemonService pokemonService, IUserContext userContext)
     {
         _pokemonService = pokemonService;
-    }
-    [HttpGet("{pokemon}")]
-    public async Task<string> GetAllPokemonById(string pokemon)
-    {
-        var apiUrl = $"https://api.tcgdex.net/v2/en/cards?name={pokemon}";
-
-        using var httpClient = new HttpClient();
-        var response = await httpClient.GetStringAsync(apiUrl);
-
-        return response;
+        _userContext = userContext;
     }
 
     [HttpGet]
@@ -36,15 +28,34 @@ public class PokemonController : ControllerBase
     }
 
     [HttpGet("generation/{id}")]
-    public async Task<IActionResult> GetAllPokemonByGen(int id)
+    public async Task<IActionResult> GetAllPokemonByGen(int id, [FromQuery] PokemonFilterDto filters)
     {
         try
         {
-            return Ok(await _pokemonService.GetAllPokemonByGen(id));
+            return Ok(await _pokemonService.GetAllPokemonByGen(id, filters));
         }
         catch (Exception)
         {
             return BadRequest("Une erreur est surevenue lors de la récupération des pokémons");
+        }
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetPokemonById(int id)
+    {
+        try
+        {
+            var pokemon = await _pokemonService.GetPokemonById(id);
+            if (pokemon == null)
+            {
+                return NotFound($"Aucun Pokémon trouvé avec l'id : {id}.");
+            }
+
+            return Ok(pokemon);
+        }
+        catch (Exception)
+        {
+            return BadRequest($"Une erreur est surevenue lors de la récupération du pokémon d'id : {id}.");
         }
     }
 }
