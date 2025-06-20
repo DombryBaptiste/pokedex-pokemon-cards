@@ -16,4 +16,9 @@ export class UserService {
   {
     return this.http.put(this.baseUrl, user);
   }
+
+  setPokemonVisibility(pokemonId: number, hidden: boolean)
+  {
+    return this.http.post(this.baseUrl + '/visibility/' + pokemonId,  { hidden });
+  }
 }

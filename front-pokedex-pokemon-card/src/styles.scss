@@ -14,8 +14,16 @@ body {
 .connect-button {
   margin: 20px;
     @include mat.button-overrides((
-      filled-container-color: $connexion-button-bg,
+      filled-container-color: $yellow-button-bg,
       filled-label-text-color: black
+  ));
+}
+
+.classic-button {
+  cursor: pointer;
+  @include mat.button-overrides((
+      filled-container-color: $card-color,
+      filled-label-text-color: white
   ));
 }
 
@@ -29,5 +37,20 @@ body {
 .submenu {
   @include mat.menu-overrides((
     container-color: $sidebar-bg-color,
+  ));
+}
+
+.classic-checkbox {
+  @include mat.checkbox-overrides((
+    label-text-color: white
+  ));
+}
+
+.classic-slide-toggle {
+  @include mat.slide-toggle-overrides((
+    label-text-color: white,
+    selected-focus-track-color: $yellow-button-bg,
+    selected-hover-track-color: $yellow-button-bg,
+    selected-track-color: $yellow-button-bg
   ));
 }

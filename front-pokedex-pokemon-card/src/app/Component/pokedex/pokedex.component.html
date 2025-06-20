@@ -1,3 +1,10 @@
+<div class="filter-slides">
+    <mat-slide-toggle class="classic-slide-toggle" 
+        [(ngModel)]="filters.filterHiddenActivated"
+        (change)="handleToggleHideSlide($event.checked)"
+    >Cachés</mat-slide-toggle>
+</div>
+
 <div class="gen-buttons">
     @for(gen of generations; track gen)
     {
@@ -8,10 +15,15 @@
 <div class="pokemon-grid">
     @for(p of pokemons; track p.id)
     {
-        <div class="pokemon">
+        <div class="pokemon" (click)="handlePokemonClick(p.id)">
             <img [src]="p.imagePath">
             <span>{{ p.name }}</span>
-            <span class="pokemon-number">{{ formatPokedexId(p.pokedexId) }}</span>
+            <span class="pokemon-number">{{ pokemonUtilsService.formatPokedexId(p.pokedexId) }}</span>
+            @if(isPokemonHidden(p.id))
+            {
+                <mat-icon class="icon-white icon">visibility_off</mat-icon>
+
+            }
         </div>
     }
 </div>

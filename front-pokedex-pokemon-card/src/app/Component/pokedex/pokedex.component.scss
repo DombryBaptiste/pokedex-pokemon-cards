@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 .gen-buttons
 {
     display: grid;
@@ -21,7 +23,7 @@
     }
 
     .selected {
-        background-color: rgb(255, 225, 101);
+        background-color: $yellow-button-bg;
         color: black;
     }
 
@@ -46,10 +48,18 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        .pokemon-number
+        {
+            color: gray
+        }
+
+        .icon {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+        }
     }
 
-    .pokemon-number
-    {
-        color: gray
-    }
+    
 }

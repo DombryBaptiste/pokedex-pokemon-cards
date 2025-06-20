@@ -9,7 +9,6 @@ export const interceptorInterceptor: HttpInterceptorFn = (req, next) => {
   let headers = req.headers.set('Content-Type', 'application/json');
 
   if (token) {
-    console.log(token);
     headers = headers.set('Authorization', `Bearer ${token}`);
   }
 

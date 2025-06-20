@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Pokemon } from '../../Models/pokemon';
+import { PokemonFilter } from '../../Models/pokemonFilter';
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +14,21 @@ export class PokemonService {
 
   constructor(private http: HttpClient) { }
 
-  public getAll(): Observable<Pokemon[]>
+  public getByGen(gen: number, filters?: PokemonFilter): Observable<Pokemon[]>
   {
-    return this.http.get<Pokemon[]>(this.baseUrl);
+    let params = new HttpParams();
+    if(filters)
+    {
+      if(filters.filterHiddenActivated !== undefined)
+      {
+        params = params.set('filterHiddenActivated', filters.filterHiddenActivated.toString());
+      }
+    }
+    return this.http.get<Pokemon[]>(this.baseUrl + '/generation/' + gen, { params });
   }
 
-  public getByGen(gen: number): Observable<Pokemon[]>
+  public getById(id: number): Observable<Pokemon>
   {
-    return this.http.get<Pokemon[]>(this.baseUrl + '/generation/' + gen);
+    return this.http.get<Pokemon>(this.baseUrl + '/' + id);
   }
-
 }

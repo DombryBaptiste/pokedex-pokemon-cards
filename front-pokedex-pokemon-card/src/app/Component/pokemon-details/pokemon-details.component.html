@@ -1,0 +1,20 @@
+<div class="pokemon-details-container">
+    <div class="button-back">
+        <button mat-flat-button class="classic-button" (click)="handleBackPokedex()">
+            <mat-icon fontIcon="arrow_back" class="icon-white"></mat-icon>
+            <span>Retour au Pokédex</span>
+        </button>
+    </div>
+    @if(pokemon)
+    {
+        <div class="pokemon">
+            <div class="pokemon-title">
+                <span class="pokemon-name">{{ pokemon.name }}</span>
+                <span>{{ pokemonUtilsService.formatPokedexId(pokemon.pokedexId) }}</span>
+            </div>
+            <img class="pokemon-image"[src]="pokemon.imagePath">
+            <mat-checkbox [(ngModel)]="hide" (change)="onToggleVisibility($event.checked)" class="classic-checkbox">Caché</mat-checkbox>
+        </div>
+    }
+    
+</div>
