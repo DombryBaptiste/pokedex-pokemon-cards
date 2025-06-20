@@ -1,0 +1,17 @@
+.card-container
+{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+
+    .img-container{
+        margin: 0 auto;
+
+        .image-carte
+        {
+            width: 120px;
+            height: 160px;
+        }
+    }
+    
+}

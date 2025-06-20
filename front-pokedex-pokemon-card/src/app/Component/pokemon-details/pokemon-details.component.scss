@@ -42,4 +42,31 @@
             height: 50%;
         }
     }
+
+    .card-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+
+        .have-card {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: $card-color;
+            width: 30%;
+            height: 200px;
+        }
+
+        .chase-card {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: $card-color;
+            width: 30%;
+            height: 200px;
+        }
+    }
+    
 }

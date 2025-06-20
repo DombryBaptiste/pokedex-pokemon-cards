@@ -54,3 +54,10 @@ body {
     selected-track-color: $yellow-button-bg
   ));
 }
+
+.classic-dialog
+{
+  @include mat.dialog-overrides((
+    container-color: $app-bg-color
+  ));
+}

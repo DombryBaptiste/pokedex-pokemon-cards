@@ -1,3 +1,5 @@
+using API_pokedex_pokemon_card.Models;
+
 public class PokemonCard
 {
     public required string Id { get; set; }
@@ -6,4 +8,5 @@ public class PokemonCard
     public required string Name { get; set; }
     public required string Image { get; set; }
     public int PokemonId { get; set; }
+    public Pokemon? Pokemon { get; set; }
 }

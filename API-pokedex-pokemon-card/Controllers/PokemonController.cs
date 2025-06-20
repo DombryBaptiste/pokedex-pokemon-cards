@@ -6,12 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 public class PokemonController : ControllerBase
 {
     IPokemonService _pokemonService;
-    IUserContext _userContext;
 
-    public PokemonController(IPokemonService pokemonService, IUserContext userContext)
+    public PokemonController(IPokemonService pokemonService)
     {
         _pokemonService = pokemonService;
-        _userContext = userContext;
     }
 
     [HttpGet]

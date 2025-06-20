@@ -101,6 +101,7 @@ void ConfigureServices(IServiceCollection services, IConfiguration configuration
     services.AddScoped<IAuthService, AuthService>();
     services.AddScoped<IUserService, UserService>();
     services.AddScoped<IPokemonService, PokemonService>();
+    services.AddScoped<IPokemonCardService, PokemonCardService>();
 
     builder.Services.AddHttpContextAccessor();
     builder.Services.AddScoped<IUserContext, UserContext>();

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_pokedex_pokemon_card.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250620075056_LIST_HIDDEN")]
-    partial class LIST_HIDDEN
+    [Migration("20250620152729_INITIAL")]
+    partial class INITIAL
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -121,11 +121,13 @@ namespace API_pokedex_pokemon_card.Migrations
 
             modelBuilder.Entity("PokemonCard", b =>
                 {
-                    b.HasOne("API_pokedex_pokemon_card.Models.Pokemon", null)
+                    b.HasOne("API_pokedex_pokemon_card.Models.Pokemon", "Pokemon")
                         .WithMany("PokemonCards")
                         .HasForeignKey("PokemonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Pokemon");
                 });
 
             modelBuilder.Entity("API_pokedex_pokemon_card.Models.Pokemon", b =>

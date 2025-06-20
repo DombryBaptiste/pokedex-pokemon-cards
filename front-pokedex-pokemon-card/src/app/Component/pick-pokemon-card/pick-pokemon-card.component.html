@@ -1,0 +1,11 @@
+<mat-dialog-content class="classic-dialog">
+    <div class="card-container">
+        @for(card of data.cards; track card.id)
+        {
+            <div class="img-container">
+                <img [src]="card.image" class="image-carte" (click)="handleClickImage(card)">
+            </div>
+            
+        }
+    </div>
+</mat-dialog-content>

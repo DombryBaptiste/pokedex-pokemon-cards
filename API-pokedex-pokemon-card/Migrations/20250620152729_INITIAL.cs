@@ -47,6 +47,8 @@ namespace API_pokedex_pokemon_card.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Pseudo = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
+                    HiddenPokemonIds = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     CreatedDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
