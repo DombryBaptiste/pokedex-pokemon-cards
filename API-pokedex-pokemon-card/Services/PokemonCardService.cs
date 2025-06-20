@@ -7,7 +7,7 @@ public class PokemonCardService : IPokemonCardService
     AppDbContext _context;
     public PokemonCardService(AppDbContext context)
     {
-        _context = context;    
+        _context = context;
     }
     public async Task<List<PokemonCard>> GetAllByPokemonIdAsync(int pokemonId)
     {
