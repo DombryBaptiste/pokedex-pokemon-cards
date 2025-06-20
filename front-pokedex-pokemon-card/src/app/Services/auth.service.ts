@@ -1,6 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { environment } from '../../environment';
+import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { TokenConnect } from '../Models/tokenConnect';
 import { UserConnect } from '../Models/userConnect';
@@ -70,6 +70,7 @@ export class AuthService {
   }
 
   private handleCredentialResponse(response: any) {
+    alert("ci")
     this.ngZone.run(() => {
       const credential = response.credential;
       this.userToken$.next(credential);
@@ -77,9 +78,11 @@ export class AuthService {
       let tokenPayload: TokenConnect = {
         token: credential
       };
+      alert(this.baseUrl);
       this.http.post<TokenConnect>(this.baseUrl + '/google-login', tokenPayload).subscribe(r => {
         this.userToken$.next(r.token)
         console.log(environment.localStorageTokenString);
+        alert(r.token);
         localStorage.setItem(environment.localStorageTokenString, r.token);
         this.getCurrentUser().subscribe(user => { this.user$.next(user); console.log(user) });
       })

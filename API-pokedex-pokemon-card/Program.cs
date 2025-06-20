@@ -53,6 +53,14 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod()
             .AllowCredentials();
     });
+
+    options.AddPolicy("AllowAll",
+    policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
 });
 
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
@@ -73,8 +81,11 @@ if (app.Environment.IsDevelopment())
         c.RoutePrefix = string.Empty;
     });
 }
-
-app.UseCors("AllowAngularLocalhost");
+if (app.Environment.IsDevelopment())
+{
+    app.UseCors("AllowAll");
+}
+// app.UseCors("AllowAngularLocalhost");
 // app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
