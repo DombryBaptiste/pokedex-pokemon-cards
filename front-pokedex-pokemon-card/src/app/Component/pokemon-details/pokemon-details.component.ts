@@ -27,7 +27,6 @@ export class PokemonDetailsComponent implements OnInit {
 
   pokemonId: number = 0;
   pokemon: Pokemon | null = null;
-  cards: PokemonCard[] = [];
   hide: boolean = false;
 
   PokemonCardTypeSelected = PokemonCardTypeSelected;
@@ -60,7 +59,7 @@ export class PokemonDetailsComponent implements OnInit {
   {
     let data: InjectPokemonCardData =
     {
-      cards: this.cards,
+      cards: this.pokemon?.pokemonCards ?? [],
       type: type
     };
 
@@ -72,15 +71,11 @@ export class PokemonDetailsComponent implements OnInit {
   }
 
   private initPokemon() {
-  this.pokemonService.getById(this.pokemonId).subscribe(pk => {
-    this.pokemon = pk;
-    this.pokemon.imagePath = this.pokemonUtilsService.getFullImageUrl(pk.imagePath);
-
-    // Une fois pokemon chargé, on lance la suite
-    this.initHiddenPokemon();
-    this.initCards();
-  });
-}
+    this.pokemonService.getById(this.pokemonId).subscribe(pk => {
+      this.pokemon = pk;
+      this.initHiddenPokemon();
+    });
+  }
 
 private initHiddenPokemon() {
   this.authService.user$.subscribe(u => {
@@ -90,17 +85,5 @@ private initHiddenPokemon() {
       this.hide = false;
     }
   });
-}
-
-private initCards() {
-  if(this.pokemon != null)
-  {
-    this.pokemonCardService.getAllByPokemonId(this.pokemon.id).subscribe(cards => {
-      this.cards = cards.map(c => ({
-        ...c,
-        image: this.pokemonUtilsService.getFullImageUrl(c.image)
-      }))
-    });
-  }
 }
 }

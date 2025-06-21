@@ -1,4 +1,5 @@
 using System.Text;
+using System.Text.Json.Serialization;
 using API_pokedex_pokemon_card.Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -65,7 +66,12 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 builder.Services.AddAuthorization();
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    });
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

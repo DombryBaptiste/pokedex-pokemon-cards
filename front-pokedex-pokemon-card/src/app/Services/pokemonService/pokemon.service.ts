@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Pokemon } from '../../Models/pokemon';
 import { PokemonFilter } from '../../Models/pokemonFilter';
+import { PokemonUtilsService } from '../pokemonUtilsService/pokemon-utils.service';
+import { PokemonCard } from '../../Models/pokemonCard';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,7 @@ export class PokemonService {
 
   private baseUrl = environment.apiUrl + '/Pokemon'
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private pokemonUtilsService: PokemonUtilsService) { }
 
   public getByGen(gen: number, filters?: PokemonFilter): Observable<Pokemon[]>
   {
@@ -24,11 +26,29 @@ export class PokemonService {
         params = params.set('filterHiddenActivated', filters.filterHiddenActivated.toString());
       }
     }
-    return this.http.get<Pokemon[]>(this.baseUrl + '/generation/' + gen, { params });
+    
+    return this.http.get<Pokemon[]>(this.baseUrl + '/generation/' + gen, { params }).pipe(
+      map((pokemons: Pokemon[]) => 
+        pokemons.map((pk: Pokemon) => ({
+          ...pk,
+          imagePath: this.pokemonUtilsService.getFullImageUrl(pk.imagePath)
+        })))
+    );
   }
 
   public getById(id: number): Observable<Pokemon>
   {
-    return this.http.get<Pokemon>(this.baseUrl + '/' + id);
+    return this.http.get<Pokemon>(this.baseUrl + '/' + id).pipe(
+      map((pokemon: Pokemon) => {
+        pokemon.imagePath = this.pokemonUtilsService.getFullImageUrl(pokemon.imagePath);
+
+        pokemon.pokemonCards = pokemon.pokemonCards.map((c: PokemonCard) => ({
+          ...c,
+          image: this.pokemonUtilsService.getFullImageUrl(c.image)
+        }));
+
+        return pokemon;
+      })
+    );
   }
 }

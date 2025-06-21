@@ -71,10 +71,7 @@ export class PokedexComponent implements OnInit {
   private setPokemons(gen: number): void
   {
     this.pokemonService.getByGen(gen, this.filters).subscribe(pokemons => {
-      this.pokemons = pokemons.map(p => ({
-        ...p,
-        imagePath: this.pokemonUtilsService.getFullImageUrl(p.imagePath)
-      }));
+      this.pokemons = pokemons;
     })
   }
 

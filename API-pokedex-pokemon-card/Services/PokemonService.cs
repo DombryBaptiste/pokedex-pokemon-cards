@@ -37,6 +37,6 @@ public class PokemonService : IPokemonService
 
     public async Task<Pokemon?> GetPokemonById(int id)
     {
-        return await _context.Pokemons.Where(p => p.Id == id).FirstOrDefaultAsync();
+        return await _context.Pokemons.Include(p => p.PokemonCards).Where(p => p.Id == id).FirstOrDefaultAsync();
     }
 }
