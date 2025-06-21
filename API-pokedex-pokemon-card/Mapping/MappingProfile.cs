@@ -9,5 +9,6 @@ public class MappingProfile : Profile
     {
         CreateMap<UserUpdateDto, User>();
         CreateMap<User, UserDto>();
+        CreateMap<PokemonCardOwnedUpdate, PokedexOwnedPokemonCard>();
     }
 }

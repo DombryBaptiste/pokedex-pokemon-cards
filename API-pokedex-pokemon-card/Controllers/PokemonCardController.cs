@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,9 +8,11 @@ using Microsoft.AspNetCore.Mvc;
 public class PokemonCardController : ControllerBase
 {
     IPokemonCardService _pokemonCardService;
-    public PokemonCardController(IPokemonCardService pokemonCardService)
+    IMapper _mapper;
+    public PokemonCardController(IPokemonCardService pokemonCardService, IMapper mapper)
     {
         _pokemonCardService = pokemonCardService;
+        _mapper = mapper;
     }
 
     [HttpGet("{pokemonId}")]
@@ -52,7 +55,7 @@ public class PokemonCardController : ControllerBase
             return BadRequest($"Une erreur est surevenue lors de l'ajout de la carte {dto.CardId}");
         }
     }
-    
+
     [HttpGet("{pokedexId}/pokemon/{pokemonId}")]
     public async Task<IActionResult> GetCardByPokedexIdAndPokemonId(int pokedexId, int pokemonId)
     {
@@ -68,6 +71,38 @@ public class PokemonCardController : ControllerBase
         catch (Exception)
         {
             return BadRequest($"Une erreur est surevenue lors de la récupération des cartes du pokemon d'id : {pokemonId}.");
+        }
+    }
+
+    [HttpDelete("{pokedexId}/{pokemonId}")]
+    public async Task<IActionResult> DeletePokedexCard(int pokedexId, int pokemonId, [FromQuery] PokemonCardDeleteDto dto)
+    {
+        try
+        {
+            await _pokemonCardService.DeleteCard(pokedexId, pokemonId, dto.Type);
+            return Ok();
+        }
+        catch (Exception)
+        {
+            return BadRequest($"Une erreur est surevenue lors de la suppression de la cartes du pokemon d'id : {pokemonId}.");
+        }
+    }
+
+    [HttpPut("owned-card/{cardId}")]
+    public async Task<IActionResult> UpdatePokedexCard(int cardId, [FromBody] PokemonCardOwnedUpdate card)
+    {
+        try
+        {
+            var result = await _pokemonCardService.UpdateOwnedCard(cardId, _mapper.Map<PokedexOwnedPokemonCard>(card));
+            if (result == null)
+            {
+                return NotFound($"Carte d'id : {cardId} est introuvable.");
+            }
+            return Ok(result);
+        }
+        catch (Exception)
+        {
+            return BadRequest($"Une erreur est surevenue lors de la mise a jour de la cartes d'id : {cardId}.");
         }
     }
 }

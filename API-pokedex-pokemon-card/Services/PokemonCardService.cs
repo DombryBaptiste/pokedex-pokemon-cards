@@ -78,4 +78,39 @@ public class PokemonCardService : IPokemonCardService
         return result;
     }
 
+    public async Task DeleteCard(int pokedexId, int pokemonId, PokemonCardTypeSelected type)
+    {
+        if (type == PokemonCardTypeSelected.Owned)
+        {
+            var card = await _context.PokedexOwnedPokemonCards.FirstOrDefaultAsync(c => c.PokedexId == pokedexId && c.PokemonId == pokemonId);
+
+            if (card != null)
+            {
+                _context.PokedexOwnedPokemonCards.Remove(card);
+            }
+        }
+        else if (type == PokemonCardTypeSelected.Wanted)
+        {
+            var card = await _context.PokedexWantedPokemonCards.FirstOrDefaultAsync(c => c.PokedexId == pokedexId && c.PokemonId == pokemonId);
+
+            if (card != null)
+            {
+                _context.PokedexWantedPokemonCards.Remove(card);
+            }
+        }
+
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task<PokedexOwnedPokemonCard?> UpdateOwnedCard(int cardId, PokedexOwnedPokemonCard card)
+{
+    var existingCard = await _context.PokedexOwnedPokemonCards.FindAsync(cardId);
+    if (existingCard == null)
+        return null;
+
+    existingCard.Price = card.Price;
+
+    await _context.SaveChangesAsync();
+    return existingCard;
+}
 }

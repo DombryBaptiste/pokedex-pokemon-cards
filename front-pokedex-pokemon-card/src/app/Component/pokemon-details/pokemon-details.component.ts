@@ -15,10 +15,12 @@ import { MatDialog, MatDialogModule, MatDialogContent } from '@angular/material/
 import { PickPokemonCardComponent } from '../pick-pokemon-card/pick-pokemon-card.component';
 import { InjectPokemonCardData, PokemonCard, PokemonCardTypeSelected } from '../../Models/pokemonCard';
 import { OwnedWantedPokemonCard } from '../../Models/OwnedChasePokemonCard';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-pokemon-details',
-  imports: [CommonModule ,MatIconModule, MatButtonModule, MatCheckboxModule, FormsModule, MatDialogModule],
+  imports: [CommonModule ,MatIconModule, MatButtonModule, MatCheckboxModule, FormsModule, MatDialogModule, MatInputModule, FormsModule, MatFormFieldModule],
   templateUrl: './pokemon-details.component.html',
   styleUrl: './pokemon-details.component.scss'
 })
@@ -68,7 +70,8 @@ export class PokemonDetailsComponent implements OnInit {
     {
       cards: this.pokemon?.pokemonCards ?? [],
       type: type,
-      pokedexId: this.pokedexId
+      pokedexId: this.pokedexId,
+      pokemonId: this.pokemonId
     };
 
     const dialogRef =  this.dialog.open(PickPokemonCardComponent, { data: data, panelClass: 'classic-dialog' } );
@@ -76,6 +79,17 @@ export class PokemonDetailsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.initCard();
     })
+  }
+
+  handleSavePrice()
+  {
+    if(this.cardsSelected?.ownedPokemonCard)
+    { 
+      this.pokemonCardService.updateOwned(this.cardsSelected?.ownedPokemonCard.id, this.cardsSelected?.ownedPokemonCard).subscribe(() => {
+        console.log("hici")
+      })
+    }
+    
   }
 
   private initPokemon() {

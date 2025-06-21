@@ -7,6 +7,7 @@ export interface OwnedPokemonCard{
     pokemonCard: PokemonCard;
     pokemonId: number;
     addeddate: Date;
+    price: number;
 }
 
 export interface WantedPokemonCard{

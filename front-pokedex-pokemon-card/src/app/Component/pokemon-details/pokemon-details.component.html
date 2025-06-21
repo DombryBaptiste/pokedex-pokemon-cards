@@ -6,39 +6,58 @@
                 <span>Retour au Pokédex</span>
             </button>
         </div>
+
+        
     </div>
     
     @if(pokemon)
     {
         <div class="pokemon">
-            <div class="pokemon-title">
-                <span class="pokemon-name">{{ pokemon.name }}</span>
-                <span>{{ pokemonUtilsService.formatPokedexId(pokemon.pokedexId) }}</span>
+            <div class="pokemon-header">
+                <div class="pokemon-title">
+                    <span class="pokemon-name">{{ pokemon.name }}</span>
+                    <span>{{ pokemonUtilsService.formatPokedexId(pokemon.pokedexId) }}</span>
+                </div>
+                <img class="pokemon-image"[src]="pokemon.imagePath">
             </div>
-            <img class="pokemon-image"[src]="pokemon.imagePath">
-            <mat-checkbox [(ngModel)]="hide" (change)="onToggleVisibility($event.checked)" class="classic-checkbox">Caché</mat-checkbox>
+            
+            <mat-checkbox [(ngModel)]="hide" (change)="onToggleVisibility($event.checked)" class="classic-checkbox">Cacher</mat-checkbox>
         </div>
 
         <div class="card-container">
 
-            <div class="have-card" (click)="openListCard(PokemonCardTypeSelected.myCard)">
+            <div class="have-card" (click)="openListCard(PokemonCardTypeSelected.Owned)">
                 @if(cardsSelected?.ownedPokemonCard)
                 {
                     <img class="owned-image" [src]="cardsSelected?.ownedPokemonCard?.pokemonCard?.image">
                 } @else {
-                    <span>Selectionner une carte</span>
+                    <mat-icon fontIcon="add"></mat-icon>
                 }
+                <span>Carte possédée</span>
             </div>
 
-            <div class="chase-card" (click)="openListCard(PokemonCardTypeSelected.chaseCard)">
+            <div class="chase-card" (click)="openListCard(PokemonCardTypeSelected.Wanted)">
                 @if(cardsSelected?.wantedPokemonCard)
                 {
                     <img class="wanted-image" [src]="cardsSelected?.wantedPokemonCard?.pokemonCard?.image">
                 } @else {
-                    <span>Selectionner une carte</span>
+                    <mat-icon fontIcon="add"></mat-icon>
                 }
+                <span>Carte voulue</span>
             </div>
         </div>
+        @if(cardsSelected != null && cardsSelected.ownedPokemonCard != null)
+        {
+            <div class="form-price">
+                <mat-form-field class="price-form-field">
+                    <mat-label>Prix Carte Possédée</mat-label>
+                    <input matInput type="number" step="0.01" min="0" [(ngModel)]="cardsSelected.ownedPokemonCard.price">
+                </mat-form-field>
+                <mat-icon fontIcon="save" class="icon" (click)="handleSavePrice()"></mat-icon>
+            </div>
+        }
+        
+        
         
     }
     

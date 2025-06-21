@@ -1,3 +1,5 @@
+<h2 class="title">{{ title }}</h2>
+<button mat-flat-button class="suppress-button supr" (click)="handleSuppr()">Supprimer</button>
 <mat-dialog-content class="classic-dialog">
     <div class="card-container">
         @for(card of data.cards; track card.id)

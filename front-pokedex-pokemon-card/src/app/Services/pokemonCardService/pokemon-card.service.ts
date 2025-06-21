@@ -1,9 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { map, Observable } from 'rxjs';
-import { PokemonCard } from '../../Models/pokemonCard';
-import { OwnedWantedPokemonCard } from '../../Models/OwnedChasePokemonCard';
+import { PokemonCard, PokemonCardTypeSelected } from '../../Models/pokemonCard';
+import { OwnedPokemonCard, OwnedWantedPokemonCard } from '../../Models/OwnedChasePokemonCard';
 import { PokemonUtilsService } from '../pokemonUtilsService/pokemon-utils.service';
 
 @Injectable({
@@ -55,5 +55,16 @@ export class PokemonCardService {
         return cards;
       })
     );
+  }
+
+  delete(pokedexId: number, pokemonId: number, type: PokemonCardTypeSelected) {
+    return this.http.delete(this.baseUrl + '/' + pokedexId + '/' + pokemonId,
+      { params: new HttpParams().set('type', type)}
+    )
+  }
+
+  updateOwned(cardId: number, card: OwnedPokemonCard)
+  {
+    return this.http.put(this.baseUrl + '/owned-card/' + cardId, card);
   }
 }

@@ -9,5 +9,11 @@ public class PokemonCard
     public required string Image { get; set; }
     public Pokemon? Pokemon { get; set; }
     public int PokemonId { get; set; }
-    
+
+}
+
+public enum PokemonCardTypeSelected
+{
+    Owned,
+    Wanted
 }

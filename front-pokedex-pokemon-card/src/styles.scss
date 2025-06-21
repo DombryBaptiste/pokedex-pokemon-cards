@@ -2,19 +2,30 @@
 @use "variables" as *;
 @use '@angular/material' as mat;
 
-html, body { height: 100%; }
+html { 
+  min-height: 100%;
+  background: linear-gradient(135deg, #1a1c23, #0f1015);
+}
 body { 
-  margin: 0; 
+  margin: 0 auto; 
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: $app-bg-color; 
-  color: white}
+  color: white;
+  max-width: 800px;
+}
 
 
 
 .connect-button {
-  margin: 20px;
     @include mat.button-overrides((
       filled-container-color: $yellow-button-bg,
+      filled-label-text-color: black
+  ));
+}
+
+.suppress-button {
+  @include mat.button-overrides((
+      filled-container-color: $supr-button-color,
       filled-label-text-color: black
   ));
 }

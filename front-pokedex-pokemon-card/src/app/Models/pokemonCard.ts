@@ -9,12 +9,13 @@ export interface PokemonCard {
 
 
 export enum PokemonCardTypeSelected {
-    myCard,
-    chaseCard
+    Owned,
+    Wanted
 }
 
 export interface InjectPokemonCardData {
     cards: PokemonCard[];
     type: PokemonCardTypeSelected;
     pokedexId: number;
+    pokemonId: number;
 }
