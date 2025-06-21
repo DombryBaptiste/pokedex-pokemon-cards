@@ -33,4 +33,7 @@ public class AppDbContext : DbContext
     public DbSet<Pokemon> Pokemons { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<PokemonCard> PokemonCards { get; set; }
+    public DbSet<Pokedex> Pokedexs { get; set; }
+    public DbSet<PokedexOwnedPokemonCard> PokedexOwnedPokemonCards { get; set; }
+    public DbSet<PokedexWantedPokemonCard> PokedexWantedPokemonCards { get; set; }
 }

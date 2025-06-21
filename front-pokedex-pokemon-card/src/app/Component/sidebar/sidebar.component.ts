@@ -52,9 +52,15 @@ export class SidebarComponent implements OnInit {
     this.closeSideBar.emit();
   }
 
-  handlePokedexClick()
+  handlePokedexClick(pokedexId: number)
+  { 
+    this.router.navigate(['pokedex', pokedexId, 1]);
+    this.closeSideBar.emit();
+  }
+
+  handleAddPokedex()
   {
-    this.router.navigate(['pokedex', 1]);
+    this.router.navigate(['/pokedex/create']);
     this.closeSideBar.emit();
   }
 }

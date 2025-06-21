@@ -49,6 +49,20 @@ export class AuthService {
     }
   }
 
+  refreshCurrentUser() {
+    this.getCurrentUser().subscribe({
+        next: user => {
+          console.log(user);
+          this.user$.next(user);
+        },
+        error: err => {
+          localStorage.removeItem(environment.localStorageTokenString);
+          this.user$.next(null);
+        }
+      });
+  }
+
+
 
   private initializeGoogle() {
     window.onload = () => {

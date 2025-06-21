@@ -14,6 +14,7 @@ export enum PokemonCardTypeSelected {
 }
 
 export interface InjectPokemonCardData {
-    cards: PokemonCard[]
-    type: PokemonCardTypeSelected
+    cards: PokemonCard[];
+    type: PokemonCardTypeSelected;
+    pokedexId: number;
 }

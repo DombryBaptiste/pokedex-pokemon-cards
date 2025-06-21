@@ -1,0 +1,43 @@
+@use "variables" as *;
+
+.new-pokedex-container
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+
+    .title
+    {
+        text-align: center;
+    }
+    .body {
+        background-color: $card-color;
+        width: 95%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .form-field{
+            width: 70%;
+            margin-top: 20px;
+
+            ::ng-deep .mdc-floating-label {
+                color: white;
+            }
+            ::ng-deep .mdc-text-field {
+                background-color: $app-bg-color
+            }
+            ::ng-deep .mdc-text-field input{
+                color: white;
+            }
+            ::ng-deep .mdc-text-field--disabled input{
+                color: rgb(116, 111, 111);
+                opacity: 1 !important;
+            }  
+        }
+    }
+
+    
+}

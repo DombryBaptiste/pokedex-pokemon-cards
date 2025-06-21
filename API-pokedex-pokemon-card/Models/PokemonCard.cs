@@ -7,6 +7,7 @@ public class PokemonCard
     public required string Extension { get; set; }
     public required string Name { get; set; }
     public required string Image { get; set; }
-    public int PokemonId { get; set; }
     public Pokemon? Pokemon { get; set; }
+    public int PokemonId { get; set; }
+    
 }

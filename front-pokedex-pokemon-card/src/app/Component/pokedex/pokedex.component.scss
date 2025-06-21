@@ -1,5 +1,22 @@
 @use "variables" as *;
 
+
+.filter-slides{
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+
+    .share
+    {
+        color: black;
+        background-color: $yellow-button-bg;
+        padding: 5px;
+        border-radius: 5px;
+    }
+}
+
 .gen-buttons
 {
     display: grid;
@@ -7,7 +24,7 @@
     gap: 5px;
     justify-content: center;
 
-    width: 95%;
+    width: 90%;
     margin: 0 auto;
     margin-top: 20px;
     margin-bottom: 20px;

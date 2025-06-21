@@ -14,6 +14,7 @@ import { PokemonCardService } from '../../Services/pokemonCardService/pokemon-ca
 import { MatDialog, MatDialogModule, MatDialogContent } from '@angular/material/dialog';
 import { PickPokemonCardComponent } from '../pick-pokemon-card/pick-pokemon-card.component';
 import { InjectPokemonCardData, PokemonCard, PokemonCardTypeSelected } from '../../Models/pokemonCard';
+import { OwnedWantedPokemonCard } from '../../Models/OwnedChasePokemonCard';
 
 @Component({
   selector: 'app-pokemon-details',
@@ -26,7 +27,9 @@ export class PokemonDetailsComponent implements OnInit {
   readonly dialog = inject(MatDialog);
 
   pokemonId: number = 0;
+  pokedexId: number = 0;
   pokemon: Pokemon | null = null;
+  cardsSelected: OwnedWantedPokemonCard | null = null;
   hide: boolean = false;
 
   PokemonCardTypeSelected = PokemonCardTypeSelected;
@@ -34,18 +37,22 @@ export class PokemonDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private pokemonService: PokemonService, public pokemonUtilsService: PokemonUtilsService, private userService: UserService, private authService: AuthService, private pokemonCardService: PokemonCardService) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id')
-    if(id != null)
+    const id = this.route.snapshot.paramMap.get('id');
+    const pokedexId = this.route.snapshot.paramMap.get('pokedexId');
+
+    if(id != null && pokedexId != null)
     {
       this.pokemonId = parseInt(id);
+      this.pokedexId = parseInt(pokedexId);
       this.initPokemon();
+      this.initCard();
     }
     
   }
 
   handleBackPokedex()
   {
-    this.router.navigate(['/pokedex', this.pokemon?.generation]);
+    this.router.navigate(['/pokedex', this.pokedexId ,this.pokemon?.generation]);
   }
 
   onToggleVisibility(checked: boolean) {
@@ -60,13 +67,14 @@ export class PokemonDetailsComponent implements OnInit {
     let data: InjectPokemonCardData =
     {
       cards: this.pokemon?.pokemonCards ?? [],
-      type: type
+      type: type,
+      pokedexId: this.pokedexId
     };
 
     const dialogRef =  this.dialog.open(PickPokemonCardComponent, { data: data, panelClass: 'classic-dialog' } );
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log("FIN");
+      this.initCard();
     })
   }
 
@@ -86,4 +94,11 @@ private initHiddenPokemon() {
     }
   });
 }
+
+  private initCard()
+  {
+    this.pokemonCardService.getCardsByPokedexAndPokemonId(this.pokedexId, this.pokemonId).subscribe((result) =>{
+      this.cardsSelected = result;
+    })
+  }
 }

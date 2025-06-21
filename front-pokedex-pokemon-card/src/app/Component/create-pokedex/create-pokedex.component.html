@@ -1,0 +1,14 @@
+<div class="new-pokedex-container">
+  <h1 class="title">Nouveau Pokédex</h1>
+
+  <div class="body">
+    <mat-form-field class="form-field">
+      <mat-label>Nom du Pokédex</mat-label>
+      <input matInput [(ngModel)]="pokedex.name" required />
+    </mat-form-field>
+
+    <button mat-flat-button class="connect-button" (click)="handleCreate()">
+      Créer
+    </button>
+  </div>
+</div>

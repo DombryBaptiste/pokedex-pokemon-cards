@@ -11,11 +11,20 @@
             <span>Mon Profil</span>
         </div>
 
-        <div class="pokedex-wrapper" (click)="handlePokedexClick()">
-            <img src="assets/pokedex.svg" />
-            <span>Pokédex</span>
-        </div>
+        @for (dex of user.pokedex; track dex.id) {
+            <div class="pokedex-wrapper" (click)="handlePokedexClick(dex.id)">
+                <img src="assets/pokedex.svg" />
+                <span>{{ dex.name}}</span>
+            </div>
+        }
 
+        <div class="add-pokedex-wrapper"> 
+            <button mat-flat-button class="connect-button add-pokedex-button" (click)="handleAddPokedex()">
+            <mat-icon fontIcon="add"></mat-icon>
+            <span>Créer un pokédex</span>
+        </button>
+        </div>
+        
         <button mat-flat-button class="logout-button" (click)="handleLogOut()">Déconnexion</button>
     }
 </div>

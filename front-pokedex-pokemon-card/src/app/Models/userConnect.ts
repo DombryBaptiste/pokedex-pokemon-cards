@@ -1,3 +1,5 @@
+import { Pokedex } from "./pokedex";
+
 export interface UserConnect {
     id: number;
     email: string;
@@ -7,4 +9,5 @@ export interface UserConnect {
     pictureProfilPath: string;
     pseudo: string;
     hiddenPokemonIds: number[];
+    pokedex: Pokedex[];
 }
