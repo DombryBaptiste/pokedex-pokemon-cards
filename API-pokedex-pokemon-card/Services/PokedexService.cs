@@ -69,6 +69,10 @@ public class PokedexService : IPokedexService
         };
 
         _context.PokedexUsers.Add(pokedexUser);
+        
+        pokedex.ShareCode = GenerateShareCode();
+        _context.Update(pokedex);
+
         await _context.SaveChangesAsync();
 
         return pokedex;
