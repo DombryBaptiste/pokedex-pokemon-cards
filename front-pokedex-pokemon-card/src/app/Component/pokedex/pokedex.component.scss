@@ -1,24 +1,27 @@
 @use "variables" as *;
 
+.pokedex-container {
 
-.filter-slides{
+    .title {
+        text-align: center;
+    }
+
+  .filter-slides {
     width: 90%;
     margin: 0 auto;
     margin-top: 15px;
     display: flex;
     justify-content: space-between;
 
-    .share
-    {
-        color: black;
-        background-color: $yellow-button-bg;
-        padding: 5px;
-        border-radius: 5px;
+    .share {
+      color: black;
+      background-color: $yellow-button-bg;
+      padding: 5px;
+      border-radius: 5px;
     }
-}
+  }
 
-.gen-buttons
-{
+  .gen-buttons {
     display: grid;
     grid-template-columns: repeat(auto-fill, 80px);
     gap: 5px;
@@ -31,25 +34,25 @@
     cursor: pointer;
 
     .gen {
-        width: 80px;
-        height: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 10%;
+      width: 80px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10%;
     }
 
     .selected {
-        background-color: $yellow-button-bg;
-        color: black;
+      background-color: $yellow-button-bg;
+      color: black;
     }
 
     .unselected {
-        background-color: rgb(44, 48, 59);
+      background-color: rgb(44, 48, 59);
     }
-}
+  }
 
-.pokemon-grid {
+  .pokemon-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: 1rem;
@@ -58,25 +61,23 @@
     margin: 0 auto;
 
     .pokemon {
-        background-color: rgb(44, 48, 59);
-        border-radius: 10%;
-        padding: 1rem;
+      background-color: rgb(44, 48, 59);
+      border-radius: 10%;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .pokemon-number {
+        color: gray;
+      }
+
+      .icon {
+        width: 100%;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-        .pokemon-number
-        {
-            color: gray
-        }
-
-        .icon {
-            width: 100%;
-            display: flex;
-            justify-content: flex-end;
-        }
+        justify-content: flex-end;
+      }
     }
-
-    
+  }
 }
