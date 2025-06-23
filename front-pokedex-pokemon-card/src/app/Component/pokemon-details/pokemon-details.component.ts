@@ -59,7 +59,7 @@ export class PokemonDetailsComponent implements OnInit {
 
   onToggleVisibility(checked: boolean) {
     this.hide = checked;
-    this.userService.setPokemonVisibility(this.pokemon!.pokedexId, checked).subscribe(() => {
+    this.userService.setPokemonVisibility(this.pokemon!.id, checked).subscribe(() => {
       this.authService.getCurrentUser().subscribe((user) => this.authService.user$.next(user));
     });
   }
@@ -108,9 +108,10 @@ export class PokemonDetailsComponent implements OnInit {
 
   private loadUserContext() {
     this.authService.user$.subscribe(u => {
-      if (u && u.hiddenPokemonIds && this.pokemon) {
-        this.hide = u.hiddenPokemonIds.includes(this.pokemon.id);
+      if (u && u.hiddenPokemonIds && this.pokemonId) {
+        this.hide = u.hiddenPokemonIds.includes(this.pokemonId);
       } else {
+        console.log(this.pokemon);
         this.hide = false;
       }
 
