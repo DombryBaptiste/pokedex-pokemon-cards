@@ -1,5 +1,15 @@
 <div class="pokedex-container">
     <h1 class="title">{{ pokedex?.name }}</h1>
+
+    @if(completion)
+    {
+        <div class="pokedex-bar-container" [matTooltip]="getValueProgressBar() + '%'">
+            <mat-progress-bar class="progress-bar-pokedex" mode="determinate" [value]="getValueProgressBar()"></mat-progress-bar>
+            <span>{{ completion.ownedPokemonNb }} / {{ completion.maxPokemon }}</span>
+        </div>
+    }
+    
+    
   <div class="filter-slides">
     <mat-slide-toggle
       class="classic-slide-toggle"

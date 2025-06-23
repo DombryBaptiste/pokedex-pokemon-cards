@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { Pokedex, PokedexCreate } from '../../Models/pokedex';
+import { Pokedex, PokedexCompletion, PokedexCreate } from '../../Models/pokedex';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -30,5 +30,10 @@ export class PokedexService {
       userId: userId
     }
     return this.http.post<Pokedex>(this.baseUrl + "/add-with-share-code", dto);
+  }
+
+  getCompletion(pokedexId: number, userId: number): Observable<PokedexCompletion>
+  {
+    return this.http.get<PokedexCompletion>(this.baseUrl +'/' + pokedexId + "/completion/" + userId);
   }
 }

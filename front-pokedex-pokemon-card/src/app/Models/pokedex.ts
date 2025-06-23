@@ -16,3 +16,9 @@ export interface PokedexUser {
     isOwner: boolean;
     pokedex: Pokedex;
 }
+
+export interface PokedexCompletion {
+    pokedexId: number
+    maxPokemon: number
+    ownedPokemonNb: number
+}

@@ -9,13 +9,15 @@ import { FormsModule } from '@angular/forms';
 import { PokemonFilter } from '../../Models/pokemonFilter';
 import { AuthService } from '../../Services/auth.service';
 import { MatIconModule } from '@angular/material/icon';
-import { Pokedex } from '../../Models/pokedex';
+import { Pokedex, PokedexCompletion } from '../../Models/pokedex';
 import { PokedexService } from '../../Services/pokedexService/pokedex.service';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 @Component({
   selector: 'app-pokedex',
-  imports: [MatButtonModule, MatSlideToggleModule, FormsModule, MatIconModule],
+  imports: [MatButtonModule, MatSlideToggleModule, FormsModule, MatIconModule, MatProgressBarModule, MatTooltipModule],
   templateUrl: './pokedex.component.html',
   styleUrl: './pokedex.component.scss'
 })
@@ -29,6 +31,7 @@ export class PokedexComponent implements OnInit {
   pokemons: Pokemon[] = [];
   hiddenPokemonIds: number[] = []
   isPokedexOwner: boolean = false;
+  completion: PokedexCompletion | null = null;
   
   filters: PokemonFilter = { filterHiddenActivated: false };
 
@@ -38,10 +41,12 @@ export class PokedexComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.genSelected = Number(params.get('gen'))
       this.pokedexId = Number(params.get('pokedexId'));
+
+      this.setPokemons(this.genSelected);
+      this.initHidden();
+      this.initPokedex();
     });
-    this.setPokemons(this.genSelected);
-    this.initHidden();
-    this.initPokedex();
+    
   }
 
   getClassButton(gen: number) : string{
@@ -85,6 +90,15 @@ export class PokedexComponent implements OnInit {
     }
   }
 
+  getValueProgressBar()
+  {
+    if(this.completion?.maxPokemon == 0 || this.completion == null)
+    {
+      return 0;
+    }
+    return Math.round((this.completion.ownedPokemonNb / this.completion.maxPokemon) * 100) + 78
+  }
+
   private setPokemons(gen: number): void
   {
     this.pokemonService.getByGen(gen, this.filters).subscribe(pokemons => {
@@ -98,6 +112,9 @@ export class PokedexComponent implements OnInit {
       this.hiddenPokemonIds = user?.hiddenPokemonIds ?? [];
       console.log(user);
       this.isPokedexOwner = user?.pokedexUsers.find(pokedex => pokedex.userId == user.id)?.isOwner ?? false;
+      this.pokedexService.getCompletion(this.pokedexId, user?.id ?? 0).subscribe(c => {
+        this.completion = c;
+      })  
     })
   }
 

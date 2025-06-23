@@ -5,6 +5,22 @@
     .title {
         text-align: center;
     }
+    
+    .pokedex-bar-container
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap:15px;
+        text-align: center;
+
+        .progress-bar-pokedex
+        {
+            margin: 0 auto;
+            width: 90%;
+        }
+    }
+    
 
   .filter-slides {
     width: 90%;

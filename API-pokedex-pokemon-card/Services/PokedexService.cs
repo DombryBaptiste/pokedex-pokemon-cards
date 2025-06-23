@@ -78,6 +78,23 @@ public class PokedexService : IPokedexService
         return pokedex;
     }
 
+    public async Task<PokedexCompletion> GetCompletionPokedex(int pokedexId, int userId)
+    {
+        var pokemonIdHidden = _context.Users.FirstOrDefault(u => u.Id == userId)?.HiddenPokemonIds ?? [];
+
+        var countPokemon = await _context.Pokemons.Where(p => !pokemonIdHidden.Contains(p.Id)).CountAsync();
+
+        var countPokedex = await _context.Pokedexs.Include(p => p.OwnedPokemonCards).FirstOrDefaultAsync(p => p.Id == pokedexId);
+
+
+        var pokedexCompletion = new PokedexCompletion
+        {
+            MaxPokemon = countPokemon,
+            OwnedPokemonNb = countPokedex?.OwnedPokemonCards.Count() ?? 0
+        };
+
+        return pokedexCompletion;
+    }
 
     private static string GenerateShareCode(int length = 10)
     {

@@ -61,4 +61,17 @@ public class PokedexController : ControllerBase
             return BadRequest($"Une erreur est surevenue lors de l'ajout du pokédex de code de partage : {dto.ShareCode}.");
         }
     }
+
+    [HttpGet("{pokedexId}/completion/{userId}")]
+    public async Task<IActionResult> GetCompletion(int pokedexId, int userId)
+    {
+        try
+        {
+            return Ok(await _pokedexService.GetCompletionPokedex(pokedexId, userId));
+        }
+        catch (Exception)
+        {
+            return BadRequest();
+        }
+    }
 }
