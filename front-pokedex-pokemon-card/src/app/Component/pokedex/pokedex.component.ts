@@ -89,6 +89,7 @@ export class PokedexComponent implements OnInit {
 
   getValueProgressBar()
   {
+    console.log("HERE")
     if(this.completion?.maxPokemon == 0 || this.completion == null)
     {
       return 0;

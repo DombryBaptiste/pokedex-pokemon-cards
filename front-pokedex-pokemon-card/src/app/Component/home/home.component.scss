@@ -1,0 +1,89 @@
+@use "variables" as *;
+
+.home {
+  width: 90%;
+  margin: 0 auto;
+
+  .connect-button {
+    margin-left: 20px;
+  }
+
+  .welcome {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+
+    .pseudo {
+      padding: 6px 12px;
+      background-color: $yellow-button-bg;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+      color: black;
+      white-space: nowrap;
+
+      &:hover {
+        background-color: #facc15;
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  .not-pokedex {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    button {
+      width: 50%;
+      max-width: 200px;
+    }
+  }
+  .pokedex-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 16px;
+    background-color: #2c2f3a; // légèrement plus clair que ton fond
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+
+    .pokedex-item {
+      display: flex;
+      gap: 10px;
+      margin: 8px 0;
+      padding: 8px 12px;
+      background-color: #3a3f4b; // contraste doux
+      border-radius: 8px;
+      font-weight: 500;
+      transition: background-color 0.2s ease;
+      cursor: pointer;
+      align-items: center;
+      font-size: 2rem;
+
+      &:hover {
+        background-color: #4b5160;
+      }
+
+      .pokedex-icon {
+        width: 40px;
+        height: 30px;
+      }
+    }
+
+    .footer-button {
+        
+      display: flex;
+      justify-content: center;
+
+      .another {
+        width: 50%;
+      }
+    }
+  }
+}

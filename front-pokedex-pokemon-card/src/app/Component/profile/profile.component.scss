@@ -10,6 +10,7 @@
     width: 85%;
     margin: 0 auto;
     margin-top: 50px;
+    padding-bottom: 15px;
 
     .profile-image {
         margin-top: 20px;
@@ -36,3 +37,11 @@
         
     }
 }
+
+.del-button
+    {
+        width: 90%;
+        margin: 20px;
+        display: flex;
+        justify-content: end;
+    }

@@ -1,0 +1,41 @@
+<div class="home">
+     @if(!currentUser) {
+        <h1>Bienvenue dans tes Pokédex de Cartes</h1>
+        <p>Répertorie ta collection Pokémon sous forme d'un pokédex</p>
+        <p>Tu n'es pas encore connecté ?</p>
+        <p>Connecte toi : <button mat-flat-button class="connect-button" (click)="handleConnexion()" >Connexion</button></p>
+    } @else {
+        <h1 class="welcome">Bienvenue 
+            <span matTooltip="Modifier le profil" (click)="handleProfileClick()" class="pseudo">{{ titlePseudo }}</span>
+        </h1>
+
+        @if(currentUser.pokedexUsers.length == 0)
+        {
+            <div class="not-pokedex">
+                Tu n'a pas encore de pokédex, ajoute en un ici :
+                <button mat-flat-button class="connect-button" (click)="handleAddPokedex()">Créer un pokédex</button>
+            </div>
+        } @else {
+            <div class="pokedex-list">
+                Liste de tes pokédexs :
+
+                @for(pokedex of currentUser.pokedexUsers; track pokedex.pokedexId)
+                {
+                    <p class="pokedex-item" (click)="handlePokedexClick(pokedex.pokedexId)">
+                            <mat-icon>
+                                {{ isPokedexOwner(pokedex.pokedexId) ? 'star' : 'group' }}
+                            </mat-icon>
+                        {{ pokedex.pokedex.name }}
+                    </p>
+                }
+
+                <div class="footer-button">
+                    <button mat-flat-button class="connect-button another" (click)="handleAddPokedex()">Créer un autre pokédex</button>
+                </div>
+                 
+            </div>
+
+        }
+        
+    }
+</div>

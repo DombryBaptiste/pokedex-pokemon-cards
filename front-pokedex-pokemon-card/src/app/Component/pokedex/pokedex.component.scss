@@ -28,12 +28,20 @@
     margin-top: 15px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
+    .left-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
 
     .share {
       color: black;
       background-color: $yellow-button-bg;
       padding: 5px;
       border-radius: 5px;
+      cursor: pointer;
     }
   }
 

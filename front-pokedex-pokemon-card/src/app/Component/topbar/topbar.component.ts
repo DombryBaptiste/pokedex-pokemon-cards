@@ -13,14 +13,7 @@ import { Router } from '@angular/router';
 export class TopbarComponent {
   
 
-  isSideMenuVisible = output<boolean>();
-
   constructor(private router: Router) { }
-
-  handleMenuClick()
-  {
-    this.isSideMenuVisible.emit(true);
-  }
 
   handleHomeClick()
   {

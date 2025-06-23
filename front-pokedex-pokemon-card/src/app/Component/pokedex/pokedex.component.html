@@ -11,18 +11,29 @@
     
     
   <div class="filter-slides">
-    <mat-slide-toggle
-      class="classic-slide-toggle"
-      [(ngModel)]="filters.filterHiddenActivated"
-      (change)="handleToggleHideSlide($event.checked)"
-      >Cachés</mat-slide-toggle
-    >
+    <div class="left-controls">
+      <div class="item-list">
+        <button mat-button>
+            <mat-icon fontIcon="search" class="icon-white"></mat-icon>
+        </button>
+      </div>
+
+      <mat-slide-toggle
+        class="classic-slide-toggle"
+        [(ngModel)]="filters.filterHiddenActivated"
+        (change)="handleToggleHideSlide($event.checked)"
+        >Cachés</mat-slide-toggle
+      >
+    </div>
+    
 
     @if(isPokedexOwner) {
     <mat-icon
       fontIcon="ios_share"
       (click)="handleShareCode()"
       class="share"
+      matTooltip="Copier le code de partage"
+      tabindex="0"
     ></mat-icon>
     }
   </div>

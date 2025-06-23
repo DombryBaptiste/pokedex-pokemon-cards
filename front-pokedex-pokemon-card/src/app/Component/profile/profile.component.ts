@@ -6,6 +6,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { UserService } from '../../Services/userService/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -17,7 +18,7 @@ export class ProfileComponent implements OnInit {
 
   currentUser: UserConnect | null = null;
 
-  constructor(private authService: AuthService, private userService: UserService) { }
+  constructor(private authService: AuthService, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.authService.user$.subscribe(u => this.currentUser = u);
@@ -29,5 +30,11 @@ export class ProfileComponent implements OnInit {
     {
       this.userService.updateUser(this.currentUser).subscribe();
     }
+  }
+
+  handleLogout()
+  {
+    this.authService.logout();
+    this.router.navigate(['/'])
   }
 }
