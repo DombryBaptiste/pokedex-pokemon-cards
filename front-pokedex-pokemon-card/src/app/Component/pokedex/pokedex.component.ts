@@ -96,7 +96,7 @@ export class PokedexComponent implements OnInit {
     {
       return 0;
     }
-    return Math.round((this.completion.ownedPokemonNb / this.completion.maxPokemon) * 100) + 78
+    return Math.round((this.completion.ownedPokemonNb / this.completion.maxPokemon) * 100);
   }
 
   private setPokemons(gen: number): void
