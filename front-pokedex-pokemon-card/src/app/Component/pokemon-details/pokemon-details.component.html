@@ -20,8 +20,10 @@
                 </div>
                 <img class="pokemon-image"[src]="pokemon.imagePath">
             </div>
+            @if (!isReadOnly) {
+                <mat-checkbox [(ngModel)]="hide" (change)="onToggleVisibility($event.checked)" class="classic-checkbox">Cacher</mat-checkbox>
+            }
             
-            <mat-checkbox [(ngModel)]="hide" (change)="onToggleVisibility($event.checked)" class="classic-checkbox">Cacher</mat-checkbox>
         </div>
 
         <div class="card-container">
@@ -51,9 +53,13 @@
             <div class="form-price">
                 <mat-form-field class="price-form-field">
                     <mat-label>Prix Carte Possédée</mat-label>
-                    <input matInput type="number" step="0.01" min="0" [(ngModel)]="cardsSelected.ownedPokemonCard.price">
+                    <input matInput type="number" step="0.01" min="0" [(ngModel)]="cardsSelected.ownedPokemonCard.price" [disabled]="isReadOnly">
                 </mat-form-field>
-                <mat-icon fontIcon="save" class="icon" (click)="handleSavePrice()"></mat-icon>
+
+                @if(!isReadOnly){
+                    <mat-icon fontIcon="save" class="icon" (click)="handleSavePrice()"></mat-icon>
+                }
+                
             </div>
         }
         

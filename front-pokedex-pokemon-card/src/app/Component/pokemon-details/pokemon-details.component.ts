@@ -33,6 +33,7 @@ export class PokemonDetailsComponent implements OnInit {
   pokemon: Pokemon | null = null;
   cardsSelected: OwnedWantedPokemonCard | null = null;
   hide: boolean = false;
+  isReadOnly: boolean = true;
 
   PokemonCardTypeSelected = PokemonCardTypeSelected;
 
@@ -66,6 +67,8 @@ export class PokemonDetailsComponent implements OnInit {
 
   openListCard(type: PokemonCardTypeSelected)
   {
+    if(this.isReadOnly) { return; }
+    
     let data: InjectPokemonCardData =
     {
       cards: this.pokemon?.pokemonCards ?? [],
@@ -86,7 +89,7 @@ export class PokemonDetailsComponent implements OnInit {
     if(this.cardsSelected?.ownedPokemonCard)
     { 
       this.pokemonCardService.updateOwned(this.cardsSelected?.ownedPokemonCard.id, this.cardsSelected?.ownedPokemonCard).subscribe(() => {
-        console.log("hici")
+        
       })
     }
     
@@ -106,6 +109,8 @@ private initHiddenPokemon() {
     } else {
       this.hide = false;
     }
+
+    this.isReadOnly = u?.pokedexUsers.find(p => p.pokedex.id == this.pokedexId) == null
   });
 }
 
