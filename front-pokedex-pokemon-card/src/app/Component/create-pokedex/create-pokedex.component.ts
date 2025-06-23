@@ -6,6 +6,7 @@ import { PokedexCreate } from '../../Models/pokedex';
 import { PokedexService } from '../../Services/pokedexService/pokedex.service';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthService } from '../../Services/auth.service';
+import { UserConnect } from '../../Models/userConnect';
 
 @Component({
   selector: 'app-create-pokedex',
@@ -21,6 +22,8 @@ export class CreatePokedexComponent implements OnInit {
 
   shareCode: string = "";
 
+  private user: UserConnect | null = null;
+
   constructor(
     private pokedexService: PokedexService,
     private authService: AuthService
@@ -28,13 +31,13 @@ export class CreatePokedexComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.user$.subscribe((u) => {
-      if (u) {
-        this.pokedex.userId = u.id;
-      }
+      this.user = u;
     });
   }
 
   handleCreate() {
+    this.pokedex.userId = this.user?.id ?? 0;
+
     if (this.pokedex.name != '' && this.pokedex.name.trim() !== '') {
       this.pokedexService.create(this.pokedex).subscribe(() => {
         this.authService.refreshCurrentUser();
@@ -44,12 +47,7 @@ export class CreatePokedexComponent implements OnInit {
 
   handleAdd()
   {
-    this.authService.user$.subscribe(user => {
-      if(user == null) { return; }
-      this.pokedexService.createByShareCode(this.shareCode, user?.id).subscribe(pokedex => {
-        console.log("Pokedex");
-      })
-    })
-    
+    if(this.user == null) { return; }
+      this.pokedexService.createByShareCode(this.shareCode, this.user.id).subscribe(pokedex => { });
   }
 }

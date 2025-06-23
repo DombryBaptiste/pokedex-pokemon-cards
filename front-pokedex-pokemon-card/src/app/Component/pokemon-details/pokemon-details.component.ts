@@ -47,8 +47,7 @@ export class PokemonDetailsComponent implements OnInit {
     {
       this.pokemonId = parseInt(id);
       this.pokedexId = parseInt(pokedexId);
-      this.initPokemon();
-      this.initCard();
+      this.initData();
     }
     
   }
@@ -95,24 +94,29 @@ export class PokemonDetailsComponent implements OnInit {
     
   }
 
+  private initData()
+  {
+    this.initPokemon();
+    this.loadUserContext();
+  }
+
   private initPokemon() {
     this.pokemonService.getById(this.pokemonId).subscribe(pk => {
       this.pokemon = pk;
-      this.initHiddenPokemon();
     });
   }
 
-private initHiddenPokemon() {
-  this.authService.user$.subscribe(u => {
-    if (u && u.hiddenPokemonIds && this.pokemon) {
-      this.hide = u.hiddenPokemonIds.includes(this.pokemon.id);
-    } else {
-      this.hide = false;
-    }
+  private loadUserContext() {
+    this.authService.user$.subscribe(u => {
+      if (u && u.hiddenPokemonIds && this.pokemon) {
+        this.hide = u.hiddenPokemonIds.includes(this.pokemon.id);
+      } else {
+        this.hide = false;
+      }
 
-    this.isReadOnly = u?.pokedexUsers.find(p => p.pokedex.id == this.pokedexId) == null
-  });
-}
+      this.isReadOnly = u?.pokedexUsers.find(p => p.pokedex.id == this.pokedexId) == null
+    });
+  }
 
   private initCard()
   {

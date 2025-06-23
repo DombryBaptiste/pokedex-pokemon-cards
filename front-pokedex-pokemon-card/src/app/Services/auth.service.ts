@@ -16,6 +16,7 @@ export class AuthService {
 
   public userToken$ = new BehaviorSubject<string | null>(null);
   public user$ = new BehaviorSubject<UserConnect | null>(null);
+  public user: UserConnect | null = null;
 
   constructor(private ngZone: NgZone, private http: HttpClient) {
     this.initializeGoogle();
@@ -40,10 +41,13 @@ export class AuthService {
       this.getCurrentUser().subscribe({
         next: user => {
           this.user$.next(user);
+          this.user = user;
+          console.log(this.user)
         },
         error: err => {
           localStorage.removeItem(environment.localStorageTokenString);
           this.user$.next(null);
+          this.user = null;
         }
       });
     }
@@ -54,10 +58,12 @@ export class AuthService {
         next: user => {
           console.log(user);
           this.user$.next(user);
+          this.user = user;
         },
         error: err => {
           localStorage.removeItem(environment.localStorageTokenString);
           this.user$.next(null);
+          this.user = null;
         }
       });
   }
@@ -95,7 +101,10 @@ export class AuthService {
         this.userToken$.next(r.token)
         console.log(environment.localStorageTokenString);
         localStorage.setItem(environment.localStorageTokenString, r.token);
-        this.getCurrentUser().subscribe(user => { this.user$.next(user); console.log(user) });
+        this.getCurrentUser().subscribe(user => { 
+          this.user$.next(user);
+          this.user = user;
+        });
       })
     });
   }
@@ -103,6 +112,7 @@ export class AuthService {
   logout() {
     this.userToken$.next(null);
     this.user$.next(null);
+    this.user = null;
     localStorage.removeItem(environment.localStorageTokenString);
   }
 }

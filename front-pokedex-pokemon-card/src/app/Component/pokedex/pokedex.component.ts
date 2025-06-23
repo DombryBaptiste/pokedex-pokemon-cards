@@ -41,10 +41,7 @@ export class PokedexComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.genSelected = Number(params.get('gen'))
       this.pokedexId = Number(params.get('pokedexId'));
-
-      this.setPokemons(this.genSelected);
-      this.initHidden();
-      this.initPokedex();
+      this.initData();
     });
     
   }
@@ -99,6 +96,13 @@ export class PokedexComponent implements OnInit {
     return Math.round((this.completion.ownedPokemonNb / this.completion.maxPokemon) * 100);
   }
 
+  private initData()
+  {
+    this.setPokemons(this.genSelected);
+    this.loadUserContext();
+    this.initPokedex();
+  }
+
   private setPokemons(gen: number): void
   {
     this.pokemonService.getByGen(gen, this.filters).subscribe(pokemons => {
@@ -106,15 +110,17 @@ export class PokedexComponent implements OnInit {
     })
   }
 
-  private initHidden(): void
+  private loadUserContext(): void
   {
     this.authService.user$.subscribe(user => {
-      this.hiddenPokemonIds = user?.hiddenPokemonIds ?? [];
-      console.log(user);
-      this.isPokedexOwner = user?.pokedexUsers.find(pokedex => pokedex.userId == user.id)?.isOwner ?? false;
-      this.pokedexService.getCompletion(this.pokedexId, user?.id ?? 0).subscribe(c => {
-        this.completion = c;
-      })  
+      if(user)
+      {
+        this.hiddenPokemonIds = user?.hiddenPokemonIds ?? [];
+        this.isPokedexOwner = user?.pokedexUsers.find(pokedex => pokedex.userId == user.id)?.isOwner ?? false;
+        this.pokedexService.getCompletion(this.pokedexId, user?.id ?? 0).subscribe(c => {
+          this.completion = c;
+        });
+      }
     })
   }
 
@@ -122,6 +128,6 @@ export class PokedexComponent implements OnInit {
   {
     this.pokedexService.getById(this.pokedexId).subscribe((p) => {
       this.pokedex = p;
-    })
+    });
   }
 }
