@@ -8,5 +8,5 @@ public class User : AuditableEntity
     public required string PictureProfilPath { get; set; }
     public string? Pseudo { get; set; }
     public List<int>? HiddenPokemonIds { get; set; }
-    public List<Pokedex>? Pokedex { get; set; }
+     public List<PokedexUser> PokedexUsers { get; set; } = new();
 }

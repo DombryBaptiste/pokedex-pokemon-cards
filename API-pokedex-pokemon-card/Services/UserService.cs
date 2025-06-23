@@ -14,8 +14,12 @@ public class UserService : IUserService
 
     public async Task<User?> GetUserByEmailAsync(string email)
     {
-        return await _context.Users.Include(u => u.Pokedex).FirstOrDefaultAsync(u => u.Email == email);
+        return await _context.Users
+            .Include(u => u.PokedexUsers)
+                .ThenInclude(pu => pu.Pokedex)
+            .FirstOrDefaultAsync(u => u.Email == email);
     }
+
 
     public async Task<bool> CreateAsync(User user)
     {

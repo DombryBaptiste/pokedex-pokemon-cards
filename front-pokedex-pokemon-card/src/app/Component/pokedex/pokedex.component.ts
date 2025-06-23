@@ -28,6 +28,7 @@ export class PokedexComponent implements OnInit {
   pokedex: Pokedex | null = null;
   pokemons: Pokemon[] = [];
   hiddenPokemonIds: number[] = []
+  isPokedexOwner: boolean = false;
   
   filters: PokemonFilter = { filterHiddenActivated: false };
 
@@ -82,7 +83,6 @@ export class PokedexComponent implements OnInit {
         
       })
     }
-
   }
 
   private setPokemons(gen: number): void
@@ -96,6 +96,8 @@ export class PokedexComponent implements OnInit {
   {
     this.authService.user$.subscribe(user => {
       this.hiddenPokemonIds = user?.hiddenPokemonIds ?? [];
+      console.log(user);
+      this.isPokedexOwner = user?.pokedexUsers.find(pokedex => pokedex.userId == user.id)?.isOwner ?? false;
     })
   }
 

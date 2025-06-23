@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_pokedex_pokemon_card.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250621105350_INITIAL")]
+    [Migration("20250622215028_INITIAL")]
     partial class INITIAL
     {
         /// <inheritdoc />
@@ -104,12 +104,7 @@ namespace API_pokedex_pokemon_card.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Pokedexs");
                 });
@@ -147,6 +142,24 @@ namespace API_pokedex_pokemon_card.Migrations
                     b.HasIndex("PokemonId");
 
                     b.ToTable("PokedexOwnedPokemonCards");
+                });
+
+            modelBuilder.Entity("PokedexUser", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PokedexId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsOwner")
+                        .HasColumnType("tinyint(1)");
+
+                    b.HasKey("UserId", "PokedexId");
+
+                    b.HasIndex("PokedexId");
+
+                    b.ToTable("PokedexUsers");
                 });
 
             modelBuilder.Entity("PokedexWantedPokemonCard", b =>
@@ -215,17 +228,6 @@ namespace API_pokedex_pokemon_card.Migrations
                     b.ToTable("PokemonCards");
                 });
 
-            modelBuilder.Entity("Pokedex", b =>
-                {
-                    b.HasOne("API_pokedex_pokemon_card.Models.User", "User")
-                        .WithMany("Pokedex")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("PokedexOwnedPokemonCard", b =>
                 {
                     b.HasOne("Pokedex", "Pokedex")
@@ -251,6 +253,25 @@ namespace API_pokedex_pokemon_card.Migrations
                     b.Navigation("Pokemon");
 
                     b.Navigation("PokemonCard");
+                });
+
+            modelBuilder.Entity("PokedexUser", b =>
+                {
+                    b.HasOne("Pokedex", "Pokedex")
+                        .WithMany("PokedexUsers")
+                        .HasForeignKey("PokedexId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("API_pokedex_pokemon_card.Models.User", "User")
+                        .WithMany("PokedexUsers")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Pokedex");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("PokedexWantedPokemonCard", b =>
@@ -298,12 +319,14 @@ namespace API_pokedex_pokemon_card.Migrations
 
             modelBuilder.Entity("API_pokedex_pokemon_card.Models.User", b =>
                 {
-                    b.Navigation("Pokedex");
+                    b.Navigation("PokedexUsers");
                 });
 
             modelBuilder.Entity("Pokedex", b =>
                 {
                     b.Navigation("OwnedPokemonCards");
+
+                    b.Navigation("PokedexUsers");
 
                     b.Navigation("WantedPokemonCards");
                 });

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { Pokedex, PokedexCreate } from '../../Models/pokedex';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +21,14 @@ export class PokedexService {
   getById(pokedexId: number)
   {
     return this.http.get<Pokedex>(this.baseUrl + '/' + pokedexId);
+  }
+
+  createByShareCode(shareCode: string, userId: number): Observable<Pokedex>
+  {
+    const dto = {
+      shareCode: shareCode,
+      userId: userId
+    }
+    return this.http.post<Pokedex>(this.baseUrl + "/add-with-share-code", dto);
   }
 }

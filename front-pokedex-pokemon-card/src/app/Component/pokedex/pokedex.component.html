@@ -4,7 +4,11 @@
         (change)="handleToggleHideSlide($event.checked)"
     >Cachés</mat-slide-toggle>
 
-    <mat-icon fontIcon="ios_share" (click)="handleShareCode()" class="share"></mat-icon>
+    @if(isPokedexOwner)
+    {
+        <mat-icon fontIcon="ios_share" (click)="handleShareCode()" class="share"></mat-icon>
+    }
+    
 </div>
 
 <div class="gen-buttons">

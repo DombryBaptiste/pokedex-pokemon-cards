@@ -11,10 +11,10 @@
             <span>Mon Profil</span>
         </div>
 
-        @for (dex of user.pokedex; track dex.id) {
-            <div class="pokedex-wrapper" (click)="handlePokedexClick(dex.id)">
+        @for (pu of user.pokedexUsers; track pu.pokedexId) {
+            <div class="pokedex-wrapper" (click)="handlePokedexClick(pu.pokedexId)">
                 <img src="assets/pokedex.svg" />
-                <span>{{ dex.name}}</span>
+                <span>{{ pu.pokedex.name}}</span>
             </div>
         }
 

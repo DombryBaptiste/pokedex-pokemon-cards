@@ -16,6 +16,23 @@ namespace API_pokedex_pokemon_card.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "Pokedexs",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    ShareCode = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pokedexs", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "Pokemons",
                 columns: table => new
                 {
@@ -87,22 +104,24 @@ namespace API_pokedex_pokemon_card.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Pokedexs",
+                name: "PokedexUsers",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    ShareCode = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    UserId = table.Column<int>(type: "int", nullable: false)
+                    PokedexId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    IsOwner = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Pokedexs", x => x.Id);
+                    table.PrimaryKey("PK_PokedexUsers", x => new { x.UserId, x.PokedexId });
                     table.ForeignKey(
-                        name: "FK_Pokedexs_Users_UserId",
+                        name: "FK_PokedexUsers_Pokedexs_PokedexId",
+                        column: x => x.PokedexId,
+                        principalTable: "Pokedexs",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_PokedexUsers_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -201,9 +220,9 @@ namespace API_pokedex_pokemon_card.Migrations
                 column: "PokemonId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pokedexs_UserId",
-                table: "Pokedexs",
-                column: "UserId");
+                name: "IX_PokedexUsers_PokedexId",
+                table: "PokedexUsers",
+                column: "PokedexId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PokedexWantedPokemonCards_PokedexId",
@@ -233,16 +252,19 @@ namespace API_pokedex_pokemon_card.Migrations
                 name: "PokedexOwnedPokemonCards");
 
             migrationBuilder.DropTable(
+                name: "PokedexUsers");
+
+            migrationBuilder.DropTable(
                 name: "PokedexWantedPokemonCards");
+
+            migrationBuilder.DropTable(
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Pokedexs");
 
             migrationBuilder.DropTable(
                 name: "PokemonCards");
-
-            migrationBuilder.DropTable(
-                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Pokemons");

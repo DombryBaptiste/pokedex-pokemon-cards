@@ -19,6 +19,8 @@ export class CreatePokedexComponent implements OnInit {
     userId: 0,
   };
 
+  shareCode: string = "";
+
   constructor(
     private pokedexService: PokedexService,
     private authService: AuthService
@@ -38,5 +40,16 @@ export class CreatePokedexComponent implements OnInit {
         this.authService.refreshCurrentUser();
       });
     }
+  }
+
+  handleAdd()
+  {
+    this.authService.user$.subscribe(user => {
+      if(user == null) { return; }
+      this.pokedexService.createByShareCode(this.shareCode, user?.id).subscribe(pokedex => {
+        console.log("Pokedex");
+      })
+    })
+    
   }
 }

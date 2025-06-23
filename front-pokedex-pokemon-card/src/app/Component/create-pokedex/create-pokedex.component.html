@@ -1,14 +1,34 @@
-<div class="new-pokedex-container">
-  <h1 class="title">Nouveau Pokédex</h1>
+<div class="body-add-prokedex">
+  <div class="new-pokedex-container create">
+    <h1 class="title">Nouveau Pokédex</h1>
 
-  <div class="body">
-    <mat-form-field class="form-field">
-      <mat-label>Nom du Pokédex</mat-label>
-      <input matInput [(ngModel)]="pokedex.name" required />
-    </mat-form-field>
+    <div class="body">
+      <mat-form-field class="form-field">
+        <mat-label>Nom du Pokédex</mat-label>
+        <input matInput [(ngModel)]="pokedex.name" required />
+      </mat-form-field>
 
-    <button mat-flat-button class="connect-button" (click)="handleCreate()">
-      Créer
-    </button>
+      <button mat-flat-button class="connect-button button-create" (click)="handleCreate()">
+        Créer
+      </button>
+    </div>
   </div>
+
+  <hr />
+
+  <div class="new-pokedex-container">
+    <h1 class="title">Ajouter un Pokédex</h1>
+
+    <div class="body">
+      <mat-form-field class="form-field">
+        <mat-label>Code de Partage</mat-label>
+        <input matInput [(ngModel)]="shareCode" />
+      </mat-form-field>
+
+      <button mat-flat-button class="connect-button button-create" (click)="handleAdd()">
+        Ajouter
+      </button>
+    </div>
+  </div>
+
 </div>
