@@ -12,10 +12,22 @@
     
   <div class="filter-slides">
     <div class="left-controls">
-      <div class="item-list">
+      <div class="item-list search-wrapper">
         <button mat-button>
-            <mat-icon fontIcon="search" class="icon-white"></mat-icon>
+            <mat-icon fontIcon="search" class="icon-white" (click)="toggleSearch()"></mat-icon>
         </button>
+
+          <input
+            type="text"
+            [(ngModel)]="searchText"
+            (input)="onSearchInputChange($event)"
+            placeholder="Rechercher un Pokémon..."
+            class="search-input"
+            [class.show]="showSearchInput"
+            [attr.autofocus]="showSearchInput ? true : null"
+          />
+         
+
       </div>
 
       <mat-slide-toggle
@@ -38,13 +50,17 @@
     }
   </div>
 
-  <div class="gen-buttons">
-    @for(gen of generations; track gen) {
-    <a class="gen" [class]="getClassButton(gen)" (click)="selectGen(gen)"
-      >Gen {{ gen }}</a
-    >
-    }
-  </div>
+  @if(this.searchText == "")
+  {
+    <div class="gen-buttons">
+      @for(gen of generations; track gen) {
+        <a class="gen" [class]="getClassButton(gen)" (click)="selectGen(gen)"
+          >Gen {{ gen }}</a
+        >
+        }
+    </div>
+  }
+  
 
   <div class="pokemon-grid">
     @for(p of pokemons; track p.id) {

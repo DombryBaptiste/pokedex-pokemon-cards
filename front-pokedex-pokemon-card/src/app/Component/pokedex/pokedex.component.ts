@@ -13,6 +13,7 @@ import { Pokedex, PokedexCompletion } from '../../Models/pokedex';
 import { PokedexService } from '../../Services/pokedexService/pokedex.service';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { debounceTime, Subject } from 'rxjs';
 
 
 @Component({
@@ -32,15 +33,26 @@ export class PokedexComponent implements OnInit {
   hiddenPokemonIds: number[] = []
   isPokedexOwner: boolean = false;
   completion: PokedexCompletion | null = null;
+  showSearchInput: boolean = false;
+  searchText: string = "";
+  private searchSubject = new Subject<string>();
   
   filters: PokemonFilter = { filterHiddenActivated: false };
 
-  constructor(private pokemonService: PokemonService, private router: Router, private route: ActivatedRoute, public pokemonUtilsService: PokemonUtilsService, public authService: AuthService, public pokedexService: PokedexService) { }
+  constructor(private pokemonService: PokemonService, private router: Router, private route: ActivatedRoute, public pokemonUtilsService: PokemonUtilsService, public authService: AuthService, public pokedexService: PokedexService) {
+
+    this.searchSubject.pipe(
+      debounceTime(1000)
+    ).subscribe(searchText => {
+      this.doSearch(searchText);
+    });
+   }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.genSelected = Number(params.get('gen'))
       this.pokedexId = Number(params.get('pokedexId'));
+      this.filters.filterGeneration = this.genSelected;
       this.initData();
     });
     
@@ -58,7 +70,7 @@ export class PokedexComponent implements OnInit {
   selectGen(gen: number): void
   {
     this.router.navigate(['pokedex', this.pokedexId, gen]);
-    this.setPokemons(gen)
+    this.setPokemons()
   }
 
   handlePokemonClick(pokemonId: number): void
@@ -69,7 +81,7 @@ export class PokedexComponent implements OnInit {
   handleToggleHideSlide(checked: boolean) : void
   {
     this.filters.filterHiddenActivated = checked;
-    this.setPokemons(this.genSelected);
+    this.setPokemons();
   }
 
   isPokemonHidden(id: number)
@@ -89,7 +101,6 @@ export class PokedexComponent implements OnInit {
 
   getValueProgressBar()
   {
-    console.log("HERE")
     if(this.completion?.maxPokemon == 0 || this.completion == null)
     {
       return 0;
@@ -97,16 +108,35 @@ export class PokedexComponent implements OnInit {
     return Math.round((this.completion.ownedPokemonNb / this.completion.maxPokemon) * 100);
   }
 
+  toggleSearch() {
+    this.showSearchInput = !this.showSearchInput;
+    if(this.searchText != "" && this.showSearchInput == false)
+    {
+      this.searchText = "";
+      this.filters.filterName = undefined;
+      this.setPokemons();
+    }
+  }
+
+  onSearchInputChange(event: Event) {
+    const input = event.target as HTMLInputElement | null;
+    if (input) {
+      this.searchSubject.next(input.value);
+    }
+  }
+
+
   private initData()
   {
-    this.setPokemons(this.genSelected);
+    this.filters.filterGeneration = this.genSelected;
+    this.setPokemons();
     this.loadUserContext();
     this.initPokedex();
   }
 
-  private setPokemons(gen: number): void
+  private setPokemons(): void
   {
-    this.pokemonService.getByGen(gen, this.filters).subscribe(pokemons => {
+    this.pokemonService.getFiltered(this.filters).subscribe(pokemons => {
       this.pokemons = pokemons;
     })
   }
@@ -130,5 +160,11 @@ export class PokedexComponent implements OnInit {
     this.pokedexService.getById(this.pokedexId).subscribe((p) => {
       this.pokedex = p;
     });
+  }
+
+  private doSearch(value: string) {
+    console.log('Recherche lancée pour:', value);
+    this.filters.filterName = value;
+    this.setPokemons();
   }
 }
