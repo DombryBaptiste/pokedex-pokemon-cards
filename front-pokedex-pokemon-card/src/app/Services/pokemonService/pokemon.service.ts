@@ -19,7 +19,6 @@ export class PokemonService {
   public getFiltered(filters?: PokemonFilter): Observable<Pokemon[]>
   {
     let params = new HttpParams();
-    console.log(filters);
     if(filters)
     {
       if(filters.filterGeneration !== undefined && filters.filterName === undefined)
