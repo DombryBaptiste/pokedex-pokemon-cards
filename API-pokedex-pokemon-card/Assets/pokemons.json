@@ -493,7 +493,7 @@
   },
   {
     "PokedexId": 58,
-    "Name": "Caninos d'Hisui",
+    "Name": "Caninos de Hisui",
     "Generation": 1,
     "ImagePath": "/assets/Sprites/Pokemon/Gen1/58-hisui.png"
   },
@@ -505,7 +505,7 @@
   },
   {
     "PokedexId": 59,
-    "Name": "Arcanin d'Hisui",
+    "Name": "Arcanin de Hisui",
     "Generation": 1,
     "ImagePath": "/assets/Sprites/Pokemon/Gen1/59-hisui.png"
   },
@@ -853,7 +853,7 @@
   },
   {
     "PokedexId": 100,
-    "Name": "Voltorbe d'Hisui",
+    "Name": "Voltorbe de Hisui",
     "Generation": 1,
     "ImagePath": "/assets/Sprites/Pokemon/Gen1/100-hisui.png"
   },
@@ -865,7 +865,7 @@
   },
   {
     "PokedexId": 101,
-    "Name": "Électrode d'Hisui",
+    "Name": "Électrode de Hisui",
     "Generation": 1,
     "ImagePath": "/assets/Sprites/Pokemon/Gen1/101-hisui.png"
   },

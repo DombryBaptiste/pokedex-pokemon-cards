@@ -52,3 +52,5 @@ ehthumbs.db
 
 appsettings.Development.json
 appsettings.Docker.json
+
+Assets/images
