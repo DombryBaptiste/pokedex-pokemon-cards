@@ -31,7 +31,7 @@ services:
       context: ./front-pokedex-pokemon-card
       dockerfile: Dockerfile
     ports:
-      - "4200:80"
+      - "80:80"
     depends_on:
       - backend
     networks:
