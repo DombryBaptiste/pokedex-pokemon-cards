@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { TopbarComponent } from "./Component/topbar/topbar.component";
-import { SidebarComponent } from "./Component/sidebar/sidebar.component";
 import { CommonModule } from '@angular/common';
 import { AuthService } from './Services/auth.service';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet ,TopbarComponent, SidebarComponent, CommonModule],
+  imports: [RouterOutlet ,TopbarComponent, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

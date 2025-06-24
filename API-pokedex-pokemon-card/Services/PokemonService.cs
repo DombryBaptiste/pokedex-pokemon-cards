@@ -17,19 +17,28 @@ public class PokemonService : IPokemonService
         return await _context.Pokemons.ToListAsync();
     }
 
-    public async Task<List<Pokemon>> GetAllPokemonByGen(int gen, PokemonFilterDto? filters)
+    public async Task<List<Pokemon>> GetAllPokemonFiltered(PokemonFilterDto? filters)
     {
         IQueryable<Pokemon> query = _context.Pokemons.AsQueryable();
 
-        query = query.Where(p => p.Generation == gen);
-
-        if (filters?.FilterHiddenActivated == false)
+        if (filters?.FilterGeneration != null)
         {
-            var hiddenIds = await _context.Users.Where(u => u.Id == _userContext.UserId).Select(u => u.HiddenPokemonIds).FirstOrDefaultAsync();
-            if (hiddenIds != null && hiddenIds.Any())
+            var generation = (int)filters.FilterGeneration;
+            query = query.Where(p => p.Generation == generation);
+        }
+        if (filters?.FilterHiddenActivated == false)
             {
-                query = query.Where(p => !hiddenIds.Contains(p.Id));
+                var hiddenIds = await _context.Users.Where(u => u.Id == _userContext.UserId).Select(u => u.HiddenPokemonIds).FirstOrDefaultAsync();
+                if (hiddenIds != null && hiddenIds.Any())
+                {
+                    query = query.Where(p => !hiddenIds.Contains(p.Id));
+                }
             }
+
+        if (filters?.FilterName != null)
+        {
+            var filter = $"%{filters.FilterName}%";
+            query = query.Where(p => EF.Functions.Like(p.Name, filter));
         }
 
         return await query.ToListAsync();

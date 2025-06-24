@@ -27,12 +27,12 @@ public class PokemonController : ControllerBase
         }
     }
 
-    [HttpGet("generation/{id}")]
-    public async Task<IActionResult> GetAllPokemonByGen(int id, [FromQuery] PokemonFilterDto filters)
+    [HttpGet("filtered")]
+    public async Task<IActionResult> GetAllPokemonFiltered([FromQuery] PokemonFilterDto filters)
     {
         try
         {
-            return Ok(await _pokemonService.GetAllPokemonByGen(id, filters));
+            return Ok(await _pokemonService.GetAllPokemonFiltered(filters));
         }
         catch (Exception)
         {

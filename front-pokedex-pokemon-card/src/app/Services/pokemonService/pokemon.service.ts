@@ -16,18 +16,27 @@ export class PokemonService {
 
   constructor(private http: HttpClient, private pokemonUtilsService: PokemonUtilsService) { }
 
-  public getByGen(gen: number, filters?: PokemonFilter): Observable<Pokemon[]>
+  public getFiltered(filters?: PokemonFilter): Observable<Pokemon[]>
   {
     let params = new HttpParams();
+    console.log(filters);
     if(filters)
     {
+      if(filters.filterGeneration !== undefined && filters.filterName === undefined)
+      {
+        params = params.set('filterGeneration', filters.filterGeneration);
+      }
       if(filters.filterHiddenActivated !== undefined)
       {
         params = params.set('filterHiddenActivated', filters.filterHiddenActivated.toString());
       }
+      if(filters.filterName !== undefined)
+      {
+        params = params.set('filterName', filters.filterName);
+      }
     }
     
-    return this.http.get<Pokemon[]>(this.baseUrl + '/generation/' + gen, { params }).pipe(
+    return this.http.get<Pokemon[]>(this.baseUrl + '/filtered', { params }).pipe(
       map((pokemons: Pokemon[]) => 
         pokemons.map((pk: Pokemon) => ({
           ...pk,
