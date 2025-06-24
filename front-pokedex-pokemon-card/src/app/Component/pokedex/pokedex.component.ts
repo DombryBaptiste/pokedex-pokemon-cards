@@ -163,7 +163,6 @@ export class PokedexComponent implements OnInit {
   }
 
   private doSearch(value: string) {
-    console.log('Recherche lancée pour:', value);
     this.filters.filterName = value;
     this.setPokemons();
   }

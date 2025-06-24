@@ -42,7 +42,6 @@ export class AuthService {
         next: user => {
           this.user$.next(user);
           this.user = user;
-          console.log(this.user)
         },
         error: err => {
           localStorage.removeItem(environment.localStorageTokenString);
@@ -56,7 +55,6 @@ export class AuthService {
   refreshCurrentUser() {
     this.getCurrentUser().subscribe({
         next: user => {
-          console.log(user);
           this.user$.next(user);
           this.user = user;
         },
@@ -81,7 +79,6 @@ export class AuthService {
 
   loginWithGoogle() {
     google.accounts.id.prompt((notification: any) => {
-      console.log('Prompt Google : ', notification);
     });
   }
 
@@ -99,7 +96,6 @@ export class AuthService {
       };
       this.http.post<TokenConnect>(this.baseUrl + '/google-login', tokenPayload).subscribe(r => {
         this.userToken$.next(r.token)
-        console.log(environment.localStorageTokenString);
         localStorage.setItem(environment.localStorageTokenString, r.token);
         this.getCurrentUser().subscribe(user => { 
           this.user$.next(user);
