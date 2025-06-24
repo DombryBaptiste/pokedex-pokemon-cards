@@ -25,12 +25,12 @@ services:
     networks:
       - app-network
 
-  frontend:
-    build:
-      context: ./front-pokedex-pokemon-card
-      dockerfile: Dockerfile
-    networks:
-      - app-network
+  # frontend:
+  #   build:
+  #     context: ./front-pokedex-pokemon-card
+  #     dockerfile: Dockerfile
+  #   networks:
+  #     - app-network
 
   nginx:
     image: nginx:alpine
@@ -40,6 +40,7 @@ services:
     volumes:
       - ./front-pokedex-pokemon-card/nginx.conf:/etc/nginx/conf.d/default.conf:ro
       - /etc/letsencrypt:/etc/letsencrypt:ro
+      - ./front-pokedex-pokemon-card/dist/front-pokedex-pokemon-card:/usr/share/nginx/html:ro
     depends_on:
       - frontend
     networks:
