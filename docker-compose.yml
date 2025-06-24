@@ -16,11 +16,10 @@ services:
     ports:
       - "5001:5001"
     environment:
-      - ASPNETCORE_ENVIRONMENT=Docker
-      - Jwt__Key=une-cle-secrete-très-longue-pour-le-token-jwt
-      - Jwt__Issuer=https://localhost:5001
-      - Jwt__Audience=https://localhost:5001
-      # - ASPNETCORE_URLS=http://+:5001
+      - ConnectionStrings__DefaultConnection=${ConnectionStrings__DefaultConnection}
+      - Jwt__Key=${Jwt__Key}
+      - Jwt__Issuer=${Jwt__Issuer}
+      - Jwt__Audience=${Jwt__Audience}
     depends_on:
       - mysql
     networks:
