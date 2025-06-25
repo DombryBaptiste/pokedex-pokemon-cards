@@ -8,7 +8,7 @@ class Program
 {
     static async Task Main(string[] args)
     {
-        
+
         var options = ScrapOptions.ParseArgs(args);
         if (options == null)
         {
@@ -112,7 +112,7 @@ class Program
                                 Console.WriteLine("Download");
                                 await DownloadImageAsync(card.Image, imageFilePath, client);
                             }
-                            
+
                             card.Image = $"/pokemon-card-pictures/{pokemon.Name}/{card.Id}.jpg";
                         }
 
@@ -152,7 +152,9 @@ class Program
         {
             PropertyNameCaseInsensitive = true
         };
-        return JsonSerializer.Deserialize<List<PokemonCard>>(json, options);
+        var cards = JsonSerializer.Deserialize<List<PokemonCard>>(json, options);
+        return cards?.Where(c => IsCardMatchingPokemon(c.Name, pokemonName)).ToList();
+
     }
 
     private static async Task DownloadImageAsync(string url, string filePath, HttpClient client)
@@ -191,6 +193,26 @@ class Program
         {
             return true;
         }
+        return false;
+    }
+    
+    private static bool IsCardMatchingPokemon(string cardName, string pokemonName)
+    {
+        cardName = cardName.ToLower();
+        pokemonName = pokemonName.ToLower();
+
+        // Évite les faux positifs comme Dracolosse
+        if (cardName.StartsWith(pokemonName + " ") || cardName == pokemonName)
+        {
+            return true;
+        }
+
+        // Accepte "Draco Obscur", "Draco V", etc.
+        if (cardName.Contains(pokemonName + " "))
+        {
+            return true;
+        }
+
         return false;
     }
 

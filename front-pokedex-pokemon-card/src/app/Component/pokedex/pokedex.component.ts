@@ -14,6 +14,7 @@ import { PokedexService } from '../../Services/pokedexService/pokedex.service';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { debounceTime, Subject } from 'rxjs';
+import { PokedexScrollService } from '../../Services/PokedexScrollService/pokedex-scroll.service';
 
 
 @Component({
@@ -39,7 +40,7 @@ export class PokedexComponent implements OnInit {
   
   filters: PokemonFilter = { filterHiddenActivated: false };
 
-  constructor(private pokemonService: PokemonService, private router: Router, private route: ActivatedRoute, public pokemonUtilsService: PokemonUtilsService, public authService: AuthService, public pokedexService: PokedexService) {
+  constructor(private pokemonService: PokemonService, private router: Router, private route: ActivatedRoute, public pokemonUtilsService: PokemonUtilsService, public authService: AuthService, public pokedexService: PokedexService, private scrollService: PokedexScrollService) {
 
     this.searchSubject.pipe(
       debounceTime(1000)
@@ -55,7 +56,12 @@ export class PokedexComponent implements OnInit {
       this.filters.filterGeneration = this.genSelected;
       this.initData();
     });
-    
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      window.scrollTo({ top: this.scrollService.scrollPosition, behavior: 'auto' });
+    }, 150);
   }
 
   getClassButton(gen: number) : string{
@@ -75,6 +81,7 @@ export class PokedexComponent implements OnInit {
 
   handlePokemonClick(pokemonId: number): void
   {
+    this.scrollService.scrollPosition = window.scrollY;
     this.router.navigate(['/pokedex', this.pokedexId, 'pokemon', pokemonId]);
   }
 
