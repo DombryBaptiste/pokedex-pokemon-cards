@@ -24,6 +24,20 @@ services:
       - mysql
     networks:
       - app-network
+    
+  nginx:
+    image: nginx:alpine
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - frontend
+    networks:
+      - app-network
 
   frontend:
     build:
@@ -33,6 +47,15 @@ services:
       - "4200:80"
     depends_on:
       - backend
+    networks:
+      - app-network
+    
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    entrypoint: /bin/sh -c "trap exit TERM; while :; do sleep 12h & wait $${!}; certbot renew; done"
     networks:
       - app-network
     
