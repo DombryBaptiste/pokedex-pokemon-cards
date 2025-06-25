@@ -3,4 +3,5 @@ export const environment = {
     googleClientId: '770704774312-vgs0qqkpm6vk2oedraqg2n1dvn4ed4le.apps.googleusercontent.com',
     apiUrl: "https://pokedexapp.fr/api",
     localStorageTokenString: 'APIToken',
+    storageCardImage: 'https://pokedexapp.fr/public-images',
 }
