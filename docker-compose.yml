@@ -15,7 +15,7 @@ services:
 
   backend:
     build:
-      context: ./backend
+      context: ./API-pokedex-pokemon-card
       dockerfile: Dockerfile
     environment:
       ConnectionStrings__DefaultConnection: "server=mysql;database=pokedexdb;user=pokedexuser;password=pokedexpass"
@@ -27,7 +27,7 @@ services:
 
   frontend:
     build:
-      context: ./frontend
+      context: ./front-pokedex-pokemon-card
       dockerfile: Dockerfile
     ports:
       - "4200:80"
