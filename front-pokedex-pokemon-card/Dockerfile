@@ -1,13 +1,12 @@
-# Étape 1 : build Angular
-FROM node:18 AS build
+# Build stage
+FROM node:20-alpine AS build
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN npm run build -- --configuration=production
+RUN npm run build --prod
 
-# Étape 2 : serveur NGINX
-FROM nginx:alpine
-COPY --from=build /app/dist/front-pokedex-pokemon-card /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+# Production stage - NGINX pour servir l'app Angular
+FROM nginx:stable-alpine
+COPY --from=build /app/dist/nom-du-projet-angular/browser /usr/share/nginx/html
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
