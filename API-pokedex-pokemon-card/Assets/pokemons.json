@@ -3775,7 +3775,7 @@
   },
   {
     "PokedexId": 503,
-    "Name": "Clamiral Forme de Hisui",
+    "Name": "Clamiral de Hisui",
     "Generation": 5,
     "ImagePath": "/assets/Sprites/Pokemon/Gen5/503-hisui.png"
   },
@@ -4063,7 +4063,7 @@
   },
   {
     "PokedexId": 549,
-    "Name": "Fragilady Forme de Hisui",
+    "Name": "Fragilady de Hisui",
     "Generation": 5,
     "ImagePath": "/assets/Sprites/Pokemon/Gen5/549-hisui.png"
   },
@@ -4111,7 +4111,7 @@
   },
   {
     "PokedexId": 554,
-    "Name": "Darumarond Forme de Galar",
+    "Name": "Darumarond de Galar",
     "Generation": 5,
     "ImagePath": "/assets/Sprites/Pokemon/Gen5/554-galar.png"
   },
@@ -4129,13 +4129,13 @@
   },
   {
     "PokedexId": 555,
-    "Name": "Darumacho Forme de Galar Mode Normal",
+    "Name": "Darumacho de Galar Mode Normal",
     "Generation": 5,
     "ImagePath": "/assets/Sprites/Pokemon/Gen5/555-galar.png"
   },
   {
     "PokedexId": 555,
-    "Name": "Darumacho Forme de Galar Mode Transe",
+    "Name": "Darumacho de Galar Mode Transe",
     "Generation": 5,
     "ImagePath": "/assets/Sprites/Pokemon/Gen5/555-galar-transe.png"
   },
@@ -4183,7 +4183,7 @@
   },
   {
     "PokedexId": 562,
-    "Name": "Tutafeh Forme de Galar",
+    "Name": "Tutafeh de Galar",
     "Generation": 5,
     "ImagePath": "/assets/Sprites/Pokemon/Gen5/562-galar.png"
   },
@@ -4243,7 +4243,7 @@
   },
   {
     "PokedexId": 570,
-    "Name": "Zorua Forme de Hisui",
+    "Name": "Zorua de Hisui",
     "Generation": 5,
     "ImagePath": "/assets/Sprites/Pokemon/Gen5/570-hisui.png"
   },
@@ -4255,7 +4255,7 @@
   },
   {
     "PokedexId": 571,
-    "Name": "Zoroark Forme de Hisui",
+    "Name": "Zoroark de Hisui",
     "Generation": 5,
     "ImagePath": "/assets/Sprites/Pokemon/Gen5/571-hisui.png"
   },
@@ -4543,7 +4543,7 @@
   },
   {
     "PokedexId": 618,
-    "Name": "Limonde Forme de Galar",
+    "Name": "Limonde de Galar",
     "Generation": 5,
     "ImagePath": "/assets/Sprites/Pokemon/Gen5/618-galar.png"
   },
@@ -4609,7 +4609,7 @@
   },
   {
     "PokedexId": 628,
-    "Name": "Gueriaigle Forme de Hisui",
+    "Name": "Gueriaigle de Hisui",
     "Generation": 5,
     "ImagePath": "/assets/Sprites/Pokemon/Gen5/628-hisui.png"
   },
@@ -5125,7 +5125,7 @@
   },
   {
     "PokedexId": 705,
-    "Name": "Colimucus Forme de Hisui",
+    "Name": "Colimucus de Hisui",
     "Generation": 6,
     "ImagePath": "/assets/Sprites/Pokemon/Gen6/705-hisui.png"
   },
@@ -5137,7 +5137,7 @@
   },
   {
     "PokedexId": 706,
-    "Name": "Muplodocus Forme de Hisui",
+    "Name": "Muplodocus de Hisui",
     "Generation": 6,
     "ImagePath": "/assets/Sprites/Pokemon/Gen6/706-hisui.png"
   },
@@ -5185,7 +5185,7 @@
   },
   {
     "PokedexId": 713,
-    "Name": "Séracrawl Forme de Hisui",
+    "Name": "Séracrawl de Hisui",
     "Generation": 6,
     "ImagePath": "/assets/Sprites/Pokemon/Gen6/713-hisui.png"
   },
@@ -5281,7 +5281,7 @@
   },
   {
     "PokedexId": 724,
-    "Name": "Archéduc Forme de Hisui",
+    "Name": "Archéduc de Hisui",
     "Generation": 7,
     "ImagePath": "/assets/Sprites/Pokemon/Gen7/724-hisui.png"
   },
