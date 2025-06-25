@@ -8,6 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
+var env = builder.Environment;
 
 ConfigureServices(builder.Services, builder.Configuration);
 Console.WriteLine($"Environment: {builder.Environment.EnvironmentName}");
@@ -75,7 +76,11 @@ builder.Services.AddControllers()
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.WebHost.UseUrls("http://0.0.0.0:5000");
+if (!env.IsDevelopment())
+{
+    builder.WebHost.UseUrls("http://0.0.0.0:5000");
+}
+
 
 var app = builder.Build();
 
@@ -91,7 +96,7 @@ if (app.Environment.IsDevelopment())
 }
 if (app.Environment.IsDevelopment())
 {
-    app.UseCors("AllowAll");
+    app.UseCors("AllowAngularLocalhost");
 }
 // app.UseCors("AllowAngularLocalhost");
 // app.UseHttpsRedirection();
