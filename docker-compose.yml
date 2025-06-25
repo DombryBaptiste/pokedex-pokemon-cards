@@ -18,7 +18,7 @@ services:
       context: ./API-pokedex-pokemon-card
       dockerfile: Dockerfile
     environment:
-      ConnectionStrings__DefaultConnection: "server=mysql;database=pokedexdb;user=pokedexuser;password=pokedexpass"
+      ConnectionStrings__DefaultConnection: "server=mysql;database=${MYSQL_DATABASE};user=${MYSQL_USER};password=${MYSQL_PASSWORD}"
     depends_on:
       - mysql
     ports:
