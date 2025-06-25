@@ -98,6 +98,7 @@ export class PokemonDetailsComponent implements OnInit {
   {
     this.initPokemon();
     this.loadUserContext();
+    this.initCard();
   }
 
   private initPokemon() {
