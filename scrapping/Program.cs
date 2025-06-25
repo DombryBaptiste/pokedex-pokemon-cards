@@ -7,15 +7,15 @@ class Program
 {
     static async Task Main(string[] args)
     {
-        if (args.Length == 0)
+        if (args.Length < 2)
         {
-            Console.WriteLine("Usage : dotnet run -- <generation_id>");
+            Console.WriteLine("Usage : dotnet run -- <generation_id> <path>");
             return;
         }
 
         int genId = int.Parse(args[0]);
-        // string url = $"https://api.tcgdex.net/v2/fr/cards?name={Uri.EscapeDataString(pokemonName)}";
-
+        var path = Path.Combine(args[1]);
+        
         using var client = new HttpClient();
 
         try
@@ -26,7 +26,7 @@ class Program
             var pokemonList = await db.Pokemons.Where(p => p.Generation == genId).ToListAsync();
             // var pokemonList = await db.Pokemons.Where(p => EF.Functions.Like(p.Name, "%Arcanin%")).ToListAsync();
 
-            var imageDirectory = Path.Combine(@"C:\Users\pc\Desktop\Repos\pokedex-pokemon-cards\API-pokedex-pokemon-card\Assets", "images");
+            var imageDirectory = Path.Combine(path, "pokemon-card-pictures");
             Directory.CreateDirectory(imageDirectory);
 
             foreach (var pokemon in pokemonList)
@@ -73,7 +73,7 @@ class Program
                             string imageFilePath = Path.Combine(subFolder, $"{card.Id}.jpg");
                             card.Image = card.Image + "/low.jpg";
                             await DownloadImageAsync(card.Image, imageFilePath, client);
-                            card.Image = $"/assets/images/{pokemon.Name}/{card.Id}.jpg";
+                            card.Image = $"/pokemon-card-pictures/{pokemon.Name}/{card.Id}.jpg";
                         }
 
 
