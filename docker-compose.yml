@@ -1,65 +1,39 @@
+version: "3.8"
+
 services:
   mysql:
     image: mysql:8
     environment:
-      MYSQL_ROOT_PASSWORD: secret
-      MYSQL_DATABASE: pokedex-pokemon-db
+      MYSQL_ROOT_PASSWORD: tonRootPass
+      MYSQL_DATABASE: pokedexdb
+      MYSQL_USER: pokedexuser
+      MYSQL_PASSWORD: pokedexpass
+    volumes:
+      - mysql_data:/var/lib/mysql
     ports:
-      - "3307:3306"
-    networks:
-      - app-network
+      - "3306:3306"
 
   backend:
     build:
-      context: ./API-pokedex-pokemon-card
+      context: ./backend
       dockerfile: Dockerfile
-    ports:
-      - "5001:5001"
     environment:
-      - ConnectionStrings__DefaultConnection=${ConnectionStrings__DefaultConnection}
-      - Jwt__Key=${Jwt__Key}
-      - Jwt__Issuer=${Jwt__Issuer}
-      - Jwt__Audience=${Jwt__Audience}
+      ConnectionStrings__DefaultConnection: "server=mysql;database=pokedexdb;user=pokedexuser;password=pokedexpass"
     depends_on:
       - mysql
-    networks:
-      - app-network
-    
-  nginx:
-    image: nginx:alpine
-    volumes:
-      - ./nginx/conf.d:/etc/nginx/conf.d
-      - ./certbot/conf:/etc/letsencrypt
-      - ./certbot/www:/var/www/certbot
-      - ./front-pokedex-pokemon-card/dist:/usr/share/nginx/html:ro
     ports:
-      - "80:80"
-      - "443:443"
-    depends_on:
-      - frontend
-    networks:
-      - app-network
+      - "5000:5000"
+    restart: always
 
   frontend:
     build:
-      context: ./front-pokedex-pokemon-card
+      context: ./frontend
       dockerfile: Dockerfile
     ports:
       - "4200:80"
     depends_on:
       - backend
-    networks:
-      - app-network
-    
-  certbot:
-    image: certbot/certbot
-    volumes:
-      - ./certbot/conf:/etc/letsencrypt
-      - ./certbot/www:/var/www/certbot
-    entrypoint: /bin/sh -c "trap exit TERM; while :; do sleep 12h & wait $${!}; certbot renew; done"
-    networks:
-      - app-network
-    
-networks:
-  app-network:
-    driver: bridge
+    restart: always
+
+volumes:
+  mysql_data:
