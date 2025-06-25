@@ -23,7 +23,7 @@ public class PokemonCardService : IPokemonCardService
             existing.AddedDate = DateTime.UtcNow;
             existing.PokedexId = pokedexId;
             existing.PokemonCardId = cardId;
-            existing.PokemonId = pokedexId;
+            existing.PokemonId = pokemonId;
             _context.Update(existing);
         }
         else
@@ -33,7 +33,7 @@ public class PokemonCardService : IPokemonCardService
                 PokedexId = pokedexId,
                 PokemonCardId = cardId,
                 AddedDate = DateTime.UtcNow,
-                PokemonId = pokedexId
+                PokemonId = pokemonId
             };
             _context.PokedexWantedPokemonCards.Add(newCard);
         }
@@ -50,7 +50,7 @@ public class PokemonCardService : IPokemonCardService
             existing.AcquiredDate = DateTime.UtcNow;
             existing.PokedexId = pokedexId;
             existing.PokemonCardId = cardId;
-            existing.PokemonId = pokedexId;
+            existing.PokemonId = pokemonId;
             _context.Update(existing);
         }
         else
@@ -60,7 +60,7 @@ public class PokemonCardService : IPokemonCardService
                 PokedexId = pokedexId,
                 PokemonCardId = cardId,
                 AcquiredDate = DateTime.UtcNow,
-                PokemonId = pokedexId
+                PokemonId = pokemonId
             };
             _context.PokedexOwnedPokemonCards.Add(newCard);
         }

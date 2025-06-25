@@ -38,18 +38,15 @@ export class PickPokemonCardComponent implements OnInit {
   }
 
   handleClickImage(card: PokemonCard) {
-    if (this.data.type == PokemonCardTypeSelected.Wanted) {
-      this.pokemonCardService
-        .setWantedCard(card, this.data.pokedexId)
-        .subscribe();
-    } else {
-      this.pokemonCardService
-        .setOwnedCard(card, this.data.pokedexId)
-        .subscribe();
-    }
+    const request$ = this.data.type === PokemonCardTypeSelected.Wanted
+      ? this.pokemonCardService.setWantedCard(card, this.data.pokedexId)
+      : this.pokemonCardService.setOwnedCard(card, this.data.pokedexId);
 
-    this.dialogRef.close();
+    request$.subscribe(() => {
+      this.dialogRef.close();
+    });
   }
+
 
   handleSuppr() {
     this.pokemonCardService.delete(this.data.pokedexId, this.data.pokemonId, this.data.type).subscribe(() => {
