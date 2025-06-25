@@ -31,6 +31,7 @@ services:
       - ./nginx/conf.d:/etc/nginx/conf.d
       - ./certbot/conf:/etc/letsencrypt
       - ./certbot/www:/var/www/certbot
+      - ./front-pokedex-pokemon-card/dist:/usr/share/nginx/html:ro
     ports:
       - "80:80"
       - "443:443"
