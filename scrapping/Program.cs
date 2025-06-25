@@ -1,29 +1,64 @@
 ﻿using System;
 using System.Net.Http;
 using System.Text.Json;
+using API_pokedex_pokemon_card.Models;
 using Microsoft.EntityFrameworkCore;
 
 class Program
 {
     static async Task Main(string[] args)
     {
-        if (args.Length < 2)
+        
+        var options = ScrapOptions.ParseArgs(args);
+        if (options == null)
         {
-            Console.WriteLine("Usage : dotnet run -- <generation_id> <path>");
+            Console.WriteLine("Usage : dotnet run -- -g <generation_id> --path <chemin> [--download]");
             return;
         }
 
-        int genId = int.Parse(args[0]);
-        var path = Path.Combine(args[1]);
-        
+        var path = Path.Combine(options.Path);
+        bool downloadImages = options.DownloadImages;
+        int? genId = options.GenerationId;
+        // if (args.Length < 2)
+        // {
+        //     Console.WriteLine("Usage : dotnet run -- <generation_id> <path>");
+        //     return;
+        // }
+
+        // int genId = int.Parse(args[0]);
+        // var path = Path.Combine(args[1]);
+
         using var client = new HttpClient();
 
         try
         {
+            List<Pokemon> pokemonList;
+
             using var db = new AppDbContext();
             db.Database.EnsureCreated();
 
-            var pokemonList = await db.Pokemons.Where(p => p.Generation == genId).ToListAsync();
+            if (options.GenerationId != null)
+            {
+                pokemonList = await db.Pokemons
+                    .Where(p => p.Generation == options.GenerationId)
+                    .ToListAsync();
+            }
+            else
+            {
+                pokemonList = await db.Pokemons
+                    .Where(p => p.Name == options.PokemonName)
+                    .ToListAsync();
+            }
+
+            if (!pokemonList.Any())
+            {
+                Console.WriteLine("Aucun Pokémon trouvé.");
+                return;
+            }
+            // using var db = new AppDbContext();
+            // db.Database.EnsureCreated();
+
+            // var pokemonList = await db.Pokemons.Where(p => p.Generation == genId).ToListAsync();
             // var pokemonList = await db.Pokemons.Where(p => EF.Functions.Like(p.Name, "%Arcanin%")).ToListAsync();
 
             var imageDirectory = Path.Combine(path, "pokemon-card-pictures");
@@ -72,7 +107,12 @@ class Program
                         {
                             string imageFilePath = Path.Combine(subFolder, $"{card.Id}.jpg");
                             card.Image = card.Image + "/low.jpg";
-                            await DownloadImageAsync(card.Image, imageFilePath, client);
+                            if (options.DownloadImages)
+                            {
+                                Console.WriteLine("Download");
+                                await DownloadImageAsync(card.Image, imageFilePath, client);
+                            }
+                            
                             card.Image = $"/pokemon-card-pictures/{pokemon.Name}/{card.Id}.jpg";
                         }
 
@@ -104,6 +144,7 @@ class Program
 
         Console.WriteLine($"pokemonName apres changement {pokemonName}");
         string url = $"https://api.tcgdex.net/v2/fr/cards?name=like:{Uri.EscapeDataString(pokemonName)}*";
+        Console.WriteLine(url);
 
         var json = await client.GetStringAsync(url);
 
