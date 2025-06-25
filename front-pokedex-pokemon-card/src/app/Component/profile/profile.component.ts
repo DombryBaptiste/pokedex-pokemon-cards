@@ -28,7 +28,7 @@ export class ProfileComponent implements OnInit {
   {
     if(this.currentUser != null)
     {
-      this.userService.updateUser(this.currentUser).subscribe();
+      this.userService.updateUser(this.currentUser).subscribe(() => this.router.navigate(['/']) );
     }
   }
 
