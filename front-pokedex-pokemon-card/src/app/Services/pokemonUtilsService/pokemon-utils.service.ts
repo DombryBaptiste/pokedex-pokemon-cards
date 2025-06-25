@@ -9,7 +9,7 @@ export class PokemonUtilsService {
   constructor() { }
 
   public getFullImageUrl(relativePath: string): string {
-    return environment.apiUrl + relativePath;
+    return environment.storageCardImage + relativePath;
   }
 
   public formatPokedexId(id: number): string {
