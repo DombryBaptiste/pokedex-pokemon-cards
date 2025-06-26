@@ -71,3 +71,9 @@ python3 insert_pokemon.py
 
 📦 Les cartes seront insérées dans la table PokemonCards, à partir du dossier pokemon-card-pictures/.
 📁 Un dossier logs/ est généré automatiquement avec les détails du traitement.
+Il suffit de mettre a jour le *environment.ts* pour modifier et pointer vers le chemin du nouveau projet
+```ts
+...
+storageCardImage: 'C:/.../pokemon-cards-pictures',
+...
+```
