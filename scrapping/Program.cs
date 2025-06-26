@@ -97,7 +97,7 @@ class Program
                     }
                     // Ici tu peux gérer l'ajout/upsert, par exemple éviter doublons
                     var exists = await db.PokemonCards.AnyAsync(c => c.Id == card.Id);
-                    if (!exists)
+                    if (!exists || options.DownloadImages)
                     {
 
                         card.Extension = card.Id.Split('-')[0];
@@ -117,8 +117,10 @@ class Program
                         }
 
 
-
-                        db.PokemonCards.Add(card);
+                        if (!exists)
+                        {
+                            db.PokemonCards.Add(card);
+                        }
                     }
                 }
                 await db.SaveChangesAsync();

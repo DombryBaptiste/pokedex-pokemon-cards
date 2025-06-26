@@ -53,4 +53,8 @@ export class PickPokemonCardComponent implements OnInit {
       this.dialogRef.close();
     })
   }
+
+  encodeImageUrl(url: string): string {
+    return encodeURI(url);
+  }
 }
