@@ -1,44 +1,73 @@
-# README - Déploiement de l’application Pokedex Pokemon Cards avec Docker
+# PokecardApp
+
+Application web de gestion de cartes Pokémon, avec authentification Google, base de données de Pokémon et cartes illustrées.
+
+---
 
 ## Prérequis
 
-- Docker installé sur ta machine  
-- Docker Compose installé  
+- [Node.js](https://nodejs.org/) >= 18.x
+- [Angular](https://angular.io/) 19.x
+- [.NET](https://dotnet.microsoft.com/en-us/download) 8.x
+- [MySQL](https://www.mysql.com/) >= 8.0
 
-## Étapes pour lancer l’application
+---
 
-### 1. Configuration Spécifique Docker 
+## Structure du projet
 
-Pour gérer la configuration de l’application dans l’environnement Docker, crée un fichier appsettings.Docker.json à la racine du projet backend avec le contenu suivant (exemple) :
+- **Frontend Angular** : `front-pokedex-pokemon-card`
+- **Backend .NET** : `API-pokedex-pokemon-card`
+- **Peuplement d’images et données cartes** : [PokemonCardPictures](https://github.com/DombryBaptiste/PokemonCardPictures)
 
-```json
-{
-  "ConnectionStrings": {
-    "DefaultConnection": "server=mysql;port=3306;database=pokedex-pokemon-db;user=root;password=secret"
-  },
-  "Jwt": {
-    "Key": "une-cle-secrete-tres-longue-pour-le-token-jwt",
-    "Issuer": "http://localhost:5001",
-    "Audience": "http://localhost:5001"
-  }
-}
-```
+---
 
-### 2. Démarrer MySQL
+## 1. Lancer le frontend (Angular)
 
 ```bash
-docker-compose up -d mysql
+cd front-pokedex-pokemon-card
+# Modifier `src/environments/environment.ts` avec le bon ClientId Google
+npm install
+ng serve
 ```
 
-### 3. Démarrer Le backend et le frontend
-
+### 2. Lancer le backend (.NET Core)
 ```bash
-docker-compose up -d backend
-docker-compose up -d frontend
+cd API-pokedex-pokemon-card
+# Copier le fichier de configuration
+cp appsettings.json appsettings.Development.json
+
+# Modifier dans ce fichier :
+# - La chaîne de connexion MySQL
+# - Le ClientId Google
+
+dotnet run
 ```
 
-## Accès aux app
 
-Backend accessible sur : http://localhost:5001
+### 3. Base de donnée
 
-Frontend accessible sur : http://localhost:4200
+- La base *pokedexdb* est créée automatiquement au démarrage si la configuration est correcte.
+- Les tables et données de base (Pokémons) sont insérées par le backend.
+
+### 4. Peuplement BDD
+
+Pour ajouter les cartes (images + données) :
+```bash
+git clone https://github.com/DombryBaptiste/PokemonCardPictures.git
+cd PokemonCardPictures
+```
+
+Créer un fichier .env a la racine du nouveau projet:
+```env
+MYSQL_HOST=localhost
+MYSQL_DATABASE=pokedexdb
+MYSQL_USER=user
+MYSQL_PASSWORD=password
+```
+Puis exécuter le script
+```bash
+python3 insert_pokemon.py
+```
+
+📦 Les cartes seront insérées dans la table PokemonCards, à partir du dossier pokemon-card-pictures/.
+📁 Un dossier logs/ est généré automatiquement avec les détails du traitement.
