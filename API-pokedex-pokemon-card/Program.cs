@@ -110,12 +110,12 @@ using (var scope = app.Services.CreateScope())
     DbInitializer.Seed(dbContext);
 }
 
-app.UseStaticFiles(new StaticFileOptions
-{
-    FileProvider = new PhysicalFileProvider(
-        Path.Combine(Directory.GetCurrentDirectory(), "Assets")),
-    RequestPath = "/assets"
-});
+// app.UseStaticFiles(new StaticFileOptions
+// {
+//     FileProvider = new PhysicalFileProvider(
+//         Path.Combine(Directory.GetCurrentDirectory(), "Assets")),
+//     RequestPath = "/assets"
+// });
 
 app.MapControllers();
 app.Run();
