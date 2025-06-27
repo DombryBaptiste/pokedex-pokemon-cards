@@ -82,15 +82,26 @@ public class PokedexService : IPokedexService
     {
         var pokemonIdHidden = _context.Users.FirstOrDefault(u => u.Id == userId)?.HiddenPokemonIds ?? [];
 
+        var pokedex = await _context.Pokedexs
+            .Include(p => p.OwnedPokemonCards)
+            .Include(p => p.WantedPokemonCards)
+            .FirstOrDefaultAsync(p => p.Id == pokedexId);
+
+        if (pokedex == null)
+        {
+            return new PokedexCompletion { MaxPokemon = 0, OwnedPokemonNb = 0 };
+        }
+
+        var wantedPokemonCardIds = pokedex.WantedPokemonCards.Select(w => w.PokemonCardId).ToList();
+
         var countPokemon = await _context.Pokemons.Where(p => !pokemonIdHidden.Contains(p.Id)).CountAsync();
 
-        var countPokedex = await _context.Pokedexs.Include(p => p.OwnedPokemonCards).FirstOrDefaultAsync(p => p.Id == pokedexId);
-
+        var ownedWantedCount = pokedex.OwnedPokemonCards.Count(card => wantedPokemonCardIds.Contains(card.PokemonCardId));
 
         var pokedexCompletion = new PokedexCompletion
         {
             MaxPokemon = countPokemon,
-            OwnedPokemonNb = countPokedex?.OwnedPokemonCards.Count() ?? 0
+            OwnedPokemonNb = ownedWantedCount
         };
 
         return pokedexCompletion;
