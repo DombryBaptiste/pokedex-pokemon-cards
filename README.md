@@ -53,6 +53,7 @@ dotnet run
 
 Pour ajouter les cartes (images + données) :
 ```bash
+cd front-pokedex-pokemon-card/public/assets
 git clone https://github.com/DombryBaptiste/PokemonCardPictures.git
 cd PokemonCardPictures
 ```
@@ -74,6 +75,6 @@ python3 insert_pokemon.py
 Il suffit de mettre a jour le *environment.ts* pour modifier et pointer vers le chemin du nouveau projet
 ```ts
 ...
-storageCardImage: 'C:/.../pokemon-cards-pictures',
+storageCardImage: 'assets/PokemonCardPictures',
 ...
 ```
