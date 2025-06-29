@@ -26,6 +26,8 @@ import { PokedexScrollService } from '../../Services/PokedexScrollService/pokede
 
 export class PokedexComponent implements OnInit {
 
+  private destroy$ = new Subject<void>();
+
   generations = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   genSelected: number = 1;
   pokedexId: number = 0;
@@ -62,7 +64,12 @@ export class PokedexComponent implements OnInit {
   ngAfterViewInit() {
     setTimeout(() => {
       window.scrollTo({ top: this.scrollService.scrollPosition, behavior: 'auto' });
-    }, 150);
+    }, 250);
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   getClassButton(gen: number) : string{
@@ -77,7 +84,6 @@ export class PokedexComponent implements OnInit {
   selectGen(gen: number): void
   {
     this.router.navigate(['pokedex', this.pokedexId, gen]);
-    this.setPokemons()
   }
 
   handlePokemonClick(pokemonId: number): void

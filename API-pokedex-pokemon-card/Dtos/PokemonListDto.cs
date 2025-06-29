@@ -1,0 +1,9 @@
+public class PokemonListDto
+{
+        public int Id { get; set; }
+        public required int PokedexId { get; set; }
+        public required string Name { get; set; }
+        public required int Generation { get; set; }
+        public required string ImagePath { get; set; }
+        public bool IsWantedAndOwned { get; set; }
+}
