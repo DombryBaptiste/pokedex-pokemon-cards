@@ -7,4 +7,5 @@ export interface Pokemon {
     generation: number;
     imagePath: string;
     pokemonCards: PokemonCard[];
+    isWantedAndOwned: boolean;
 }

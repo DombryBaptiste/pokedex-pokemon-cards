@@ -33,6 +33,14 @@ export class PokemonService {
       {
         params = params.set('filterName', filters.filterName);
       }
+      if(filters.pokedexId !== undefined)
+      {
+        params = params.set('pokedexId', filters.pokedexId);
+      }
+      if(filters.filterExceptWantedAndOwned !== undefined)
+      {
+        params = params.set('filterExceptWantedAndOwned', filters.filterExceptWantedAndOwned);
+      }
     }
     
     return this.http.get<Pokemon[]>(this.baseUrl + '/filtered', { params }).pipe(
