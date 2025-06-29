@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { PokemonService } from '../../Services/pokemonService/pokemon.service';
 import { Pokemon } from '../../Models/pokemon';
@@ -13,7 +13,7 @@ import { Pokedex, PokedexCompletion } from '../../Models/pokedex';
 import { PokedexService } from '../../Services/pokedexService/pokedex.service';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { debounceTime, Subject } from 'rxjs';
+import { debounceTime, Subject, take } from 'rxjs';
 import { PokedexScrollService } from '../../Services/PokedexScrollService/pokedex-scroll.service';
 
 
@@ -42,7 +42,7 @@ export class PokedexComponent implements OnInit {
   
   filters: PokemonFilter = { filterHiddenActivated: false, filterExceptWantedAndOwned: false };
 
-  constructor(private pokemonService: PokemonService, private router: Router, private route: ActivatedRoute, public pokemonUtilsService: PokemonUtilsService, public authService: AuthService, public pokedexService: PokedexService, private scrollService: PokedexScrollService) {
+  constructor(private pokemonService: PokemonService, private router: Router, private route: ActivatedRoute, public pokemonUtilsService: PokemonUtilsService, public authService: AuthService, public pokedexService: PokedexService, private scrollService: PokedexScrollService, private ngZone: NgZone) {
 
     this.searchSubject.pipe(
       debounceTime(1000)
@@ -61,11 +61,6 @@ export class PokedexComponent implements OnInit {
     });
   }
 
-  ngAfterViewInit() {
-    setTimeout(() => {
-      window.scrollTo({ top: this.scrollService.scrollPosition, behavior: 'auto' });
-    }, 250);
-  }
 
   ngOnDestroy(): void {
     this.destroy$.next();
@@ -83,6 +78,7 @@ export class PokedexComponent implements OnInit {
 
   selectGen(gen: number): void
   {
+    this.scrollService.scrollPosition = 0;
     this.router.navigate(['pokedex', this.pokedexId, gen]);
   }
 
@@ -101,7 +97,6 @@ export class PokedexComponent implements OnInit {
   handleToggleWantedOwned(checked: boolean) : void
   {
     this.filters.filterExceptWantedAndOwned = checked;
-    console.log(this.filters);
     this.setPokemons();
   }
 
@@ -159,6 +154,12 @@ export class PokedexComponent implements OnInit {
   {
     this.pokemonService.getFiltered(this.filters).subscribe(pokemons => {
       this.pokemons = pokemons;
+
+      this.ngZone.onStable.pipe(take(1)).subscribe(() => {
+        setTimeout(() => {
+          window.scrollTo({ top: this.scrollService.scrollPosition, behavior: 'auto' });
+        }, 0);
+      });
     })
   }
 

@@ -112,7 +112,6 @@ export class PokemonDetailsComponent implements OnInit {
       if (u && u.hiddenPokemonIds && this.pokemonId) {
         this.hide = u.hiddenPokemonIds.includes(this.pokemonId);
       } else {
-        console.log(this.pokemon);
         this.hide = false;
       }
 
