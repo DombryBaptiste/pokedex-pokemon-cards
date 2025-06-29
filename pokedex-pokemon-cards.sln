@@ -4,8 +4,6 @@ VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API-pokedex-pokemon-card", "API-pokedex-pokemon-card\API-pokedex-pokemon-card.csproj", "{2066ED75-5B80-2013-68DB-D02AA906D547}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "scrapping", "scrapping\scrapping.csproj", "{D2D0A361-6ABF-B57F-9674-7D17131EE200}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

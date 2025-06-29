@@ -17,9 +17,9 @@ public class PokemonService : IPokemonService
         return await _context.Pokemons.ToListAsync();
     }
 
-    public async Task<List<Pokemon>> GetAllPokemonFiltered(PokemonFilterDto? filters)
+    public async Task<List<PokemonListDto>> GetAllPokemonFiltered(PokemonFilterDto filters)
     {
-        IQueryable<Pokemon> query = _context.Pokemons.AsQueryable();
+        IQueryable<Pokemon> query = _context.Pokemons.AsNoTracking();
 
         List<int> bothWantedAndOwnedIds = new();
 
@@ -27,14 +27,16 @@ public class PokemonService : IPokemonService
         {
             var pokedex = await _context.Pokedexs
             .Include(p => p.OwnedPokemonCards)
+                .ThenInclude(oPC => oPC.PokemonCard)
             .Include(p => p.WantedPokemonCards)
+                .ThenInclude(oPC => oPC.PokemonCard)
             .FirstOrDefaultAsync(p => p.Id == filters.PokedexId);
 
             if (pokedex != null)
             {
-                var oIds = pokedex.OwnedPokemonCards.Select(c => c.PokemonId);
-                var wIds = pokedex.WantedPokemonCards.Select(c => c.PokemonId);
-                bothWantedAndOwnedIds = oIds.Intersect(wIds).ToList();
+                var oIds = pokedex.OwnedPokemonCards.Select(p => p.PokemonCard).ToList();
+                var wIds = pokedex.WantedPokemonCards.Select(p => p.PokemonCard).ToList();
+                bothWantedAndOwnedIds = oIds.Intersect(wIds).Select(p => p.PokemonId).ToList();
 
                 if (filters.FilterExceptWantedAndOwned == true)
                 {
@@ -63,14 +65,18 @@ public class PokemonService : IPokemonService
             query = query.Where(p => EF.Functions.Like(p.Name, filter));
         }
 
-        var pokemons = await query.ToListAsync();
+        return await query
+            .Select(p => new PokemonListDto
+            {
+                Id = p.Id,
+                Name = p.Name,
+                Generation = p.Generation,
+                ImagePath = p.ImagePath,
+                PokedexId = p.PokedexId,
+                IsWantedAndOwned = bothWantedAndOwnedIds.Contains(p.Id)
+            })
+            .ToListAsync();
 
-        foreach (var pokemon in pokemons)
-        {
-            pokemon.IsWantedAndOwned = bothWantedAndOwnedIds.Contains(pokemon.Id);
-        }
-
-        return pokemons;
     }
 
     public async Task<Pokemon?> GetPokemonById(int id)
