@@ -19,7 +19,7 @@ import { PokedexScrollService } from '../../Services/PokedexScrollService/pokede
 
 @Component({
   selector: 'app-pokedex',
-  imports: [MatButtonModule, MatSlideToggleModule, FormsModule, MatIconModule, MatProgressBarModule, MatTooltipModule],
+  imports: [MatButtonModule, MatSlideToggleModule, FormsModule, MatIconModule, MatProgressBarModule, MatTooltipModule, MatTooltipModule],
   templateUrl: './pokedex.component.html',
   styleUrl: './pokedex.component.scss'
 })
@@ -38,7 +38,7 @@ export class PokedexComponent implements OnInit {
   searchText: string = "";
   private searchSubject = new Subject<string>();
   
-  filters: PokemonFilter = { filterHiddenActivated: false };
+  filters: PokemonFilter = { filterHiddenActivated: false, filterExceptWantedAndOwned: false };
 
   constructor(private pokemonService: PokemonService, private router: Router, private route: ActivatedRoute, public pokemonUtilsService: PokemonUtilsService, public authService: AuthService, public pokedexService: PokedexService, private scrollService: PokedexScrollService) {
 
@@ -53,6 +53,7 @@ export class PokedexComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.genSelected = Number(params.get('gen'))
       this.pokedexId = Number(params.get('pokedexId'));
+      this.filters.pokedexId = this.pokedexId;
       this.filters.filterGeneration = this.genSelected;
       this.initData();
     });
@@ -88,6 +89,13 @@ export class PokedexComponent implements OnInit {
   handleToggleHideSlide(checked: boolean) : void
   {
     this.filters.filterHiddenActivated = checked;
+    this.setPokemons();
+  }
+
+  handleToggleWantedOwned(checked: boolean) : void
+  {
+    this.filters.filterExceptWantedAndOwned = checked;
+    console.log(this.filters);
     this.setPokemons();
   }
 

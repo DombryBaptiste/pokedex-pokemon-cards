@@ -31,10 +31,19 @@
       </div>
 
       <mat-slide-toggle
+        matTooltip="Masque/Affiche les Pokémon cachés dans le Pokédex"
         class="classic-slide-toggle"
         [(ngModel)]="filters.filterHiddenActivated"
         (change)="handleToggleHideSlide($event.checked)"
-        >Cachés</mat-slide-toggle
+        >Pokémons Cachés</mat-slide-toggle
+      >
+
+      <mat-slide-toggle
+        matTooltip="Masque/Affiche les Pokémon dont les cartes sont à la fois possédées et voulues"
+        class="classic-slide-toggle"
+        [(ngModel)]="filters.filterExceptWantedAndOwned"
+        (change)="handleToggleWantedOwned($event.checked)"
+        >Cacher déjà obtenues</mat-slide-toggle
       >
     </div>
     
@@ -70,10 +79,15 @@
       <span class="pokemon-number">{{
         pokemonUtilsService.formatPokedexId(p.pokedexId)
       }}</span>
-      @if(isPokemonHidden(p.id)) {
-      <mat-icon class="icon-white icon">visibility_off</mat-icon>
-
-      }
+      <div class="icon-pokemon">
+        @if(isPokemonHidden(p.id)) {
+        <mat-icon class="icon-white icon">visibility_off</mat-icon>
+        }
+        @if(p.isWantedAndOwned)
+        { 
+          <mat-icon class="icon-white icon">check</mat-icon>
+        }
+      </div>
     </div>
     }
   </div>

@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace API_pokedex_pokemon_card.Models;
 
 public class Pokemon
@@ -10,4 +12,8 @@ public class Pokemon
     public List<PokemonCard> PokemonCards { get; set; } = new List<PokemonCard>();
     List<PokedexWantedPokemonCard> PokedexWantedPokemonCards { get; set; } = new List<PokedexWantedPokemonCard>();
     List<PokedexOwnedPokemonCard> PokedexOwnedPokemonCard { get; set; } = new List<PokedexOwnedPokemonCard>();
+
+    // NON MAPPE
+    [NotMapped]
+    public bool IsWantedAndOwned { get; set; }
 }

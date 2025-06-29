@@ -21,6 +21,28 @@ public class PokemonService : IPokemonService
     {
         IQueryable<Pokemon> query = _context.Pokemons.AsQueryable();
 
+        List<int> bothWantedAndOwnedIds = new();
+
+        if (filters?.PokedexId != null)
+        {
+            var pokedex = await _context.Pokedexs
+            .Include(p => p.OwnedPokemonCards)
+            .Include(p => p.WantedPokemonCards)
+            .FirstOrDefaultAsync(p => p.Id == filters.PokedexId);
+
+            if (pokedex != null)
+            {
+                var oIds = pokedex.OwnedPokemonCards.Select(c => c.PokemonId);
+                var wIds = pokedex.WantedPokemonCards.Select(c => c.PokemonId);
+                bothWantedAndOwnedIds = oIds.Intersect(wIds).ToList();
+
+                if (filters.FilterExceptWantedAndOwned == true)
+                {
+                    query = query.Where(p => !bothWantedAndOwnedIds.Contains(p.Id));
+                }
+            }
+        }
+
         if (filters?.FilterGeneration != null)
         {
             var generation = (int)filters.FilterGeneration;
@@ -41,7 +63,14 @@ public class PokemonService : IPokemonService
             query = query.Where(p => EF.Functions.Like(p.Name, filter));
         }
 
-        return await query.ToListAsync();
+        var pokemons = await query.ToListAsync();
+
+        foreach (var pokemon in pokemons)
+        {
+            pokemon.IsWantedAndOwned = bothWantedAndOwnedIds.Contains(pokemon.Id);
+        }
+
+        return pokemons;
     }
 
     public async Task<Pokemon?> GetPokemonById(int id)
