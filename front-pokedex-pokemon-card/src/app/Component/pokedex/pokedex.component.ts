@@ -156,9 +156,9 @@ export class PokedexComponent implements OnInit {
       this.pokemons = pokemons;
 
       this.ngZone.onStable.pipe(take(1)).subscribe(() => {
-        setTimeout(() => {
+        requestAnimationFrame(() => {
           window.scrollTo({ top: this.scrollService.scrollPosition, behavior: 'auto' });
-        }, 0);
+        });
       });
     })
   }
