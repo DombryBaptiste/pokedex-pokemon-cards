@@ -14,6 +14,7 @@ public class PokedexOwnedPokemonCard
     public Pokemon Pokemon { get; set; }
 
     public float Price { get; set; }
+    public float AcquiredPrice { get; set; }
 
     public DateTime AcquiredDate { get; set; }
 }

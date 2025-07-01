@@ -5,9 +5,11 @@ using Microsoft.EntityFrameworkCore;
 public class PokemonCardService : IPokemonCardService
 {
     AppDbContext _context;
-    public PokemonCardService(AppDbContext context)
+    IPokedexValuationHistoryService _valuationService;
+    public PokemonCardService(AppDbContext context, IPokedexValuationHistoryService valuationService)
     {
         _context = context;
+        _valuationService = valuationService;
     }
     public async Task<List<PokemonCard>> GetAllByPokemonIdAsync(int pokemonId)
     {
@@ -103,14 +105,19 @@ public class PokemonCardService : IPokemonCardService
     }
 
     public async Task<PokedexOwnedPokemonCard?> UpdateOwnedCard(int cardId, PokedexOwnedPokemonCard card)
-{
-    var existingCard = await _context.PokedexOwnedPokemonCards.FindAsync(cardId);
-    if (existingCard == null)
-        return null;
+    {
+        var existingCard = await _context.PokedexOwnedPokemonCards.FindAsync(cardId);
+        if (existingCard == null)
+            return null;
 
-    existingCard.Price = card.Price;
+        existingCard.Price = card.Price;
+        existingCard.AcquiredPrice = card.AcquiredPrice;
 
-    await _context.SaveChangesAsync();
-    return existingCard;
-}
+        await _context.SaveChangesAsync();
+
+        await _valuationService.UpdateTodaySum(existingCard.PokedexId);
+        return existingCard;
+        
+
+    }
 }

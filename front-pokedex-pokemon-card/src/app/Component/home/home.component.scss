@@ -73,15 +73,34 @@
       margin: 8px 0;
       padding: 8px 12px;
       background-color: #3a3f4b; // contraste doux
-      border-radius: 8px;
       font-weight: 500;
       transition: background-color 0.2s ease;
       cursor: pointer;
       align-items: center;
       font-size: 2rem;
+      justify-content: space-between;
 
-      &:hover {
-        background-color: #4b5160;
+      .pokedex-details
+      {
+        flex: 1;
+        border-radius: 8px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #4b5160;
+        }
+      }
+
+      .stats-button
+      {
+        cursor: pointer;
+        margin: 8px 0;
+        padding: 8px 12px;
+        border-radius: 8px;
+        
+        &:hover {
+          background-color: #4b5160;
+        }
       }
 
       .pokedex-icon {

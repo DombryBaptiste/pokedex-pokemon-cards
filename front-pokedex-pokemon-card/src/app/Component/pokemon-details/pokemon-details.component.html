@@ -52,7 +52,12 @@
         {
             <div class="form-price">
                 <mat-form-field class="price-form-field">
-                    <mat-label>Prix Carte Possédée</mat-label>
+                    <mat-label>Prix D'achat</mat-label>
+                    <input matInput type="number" step="0.01" min="0" [(ngModel)]="cardsSelected.ownedPokemonCard.acquiredPrice" [disabled]="isReadOnly">
+                </mat-form-field>
+
+                <mat-form-field class="price-form-field">
+                    <mat-label>Prix Actuel</mat-label>
                     <input matInput type="number" step="0.01" min="0" [(ngModel)]="cardsSelected.ownedPokemonCard.price" [disabled]="isReadOnly">
                 </mat-form-field>
 
