@@ -21,12 +21,16 @@
 
                 @for(pokedex of currentUser.pokedexUsers; track pokedex.pokedexId)
                 {
-                    <p class="pokedex-item" (click)="handlePokedexClick(pokedex.pokedexId)">
+                    <div class="pokedex-item">
+                        <div class="pokedex-details" (click)="handlePokedexClick(pokedex.pokedexId)">
                             <mat-icon>
-                                {{ isPokedexOwner(pokedex.pokedexId) ? 'star' : 'group' }}
+                            {{ isPokedexOwner(pokedex.pokedexId) ? 'star' : 'group' }}
                             </mat-icon>
-                        {{ pokedex.pokedex.name }}
-                    </p>
+                            {{ pokedex.pokedex.name }}
+                        </div>
+                        <mat-icon fontIcon="query_stats" class="stats-button" (click)="handleStatsClick(pokedex.pokedexId)"></mat-icon>  
+                    </div>
+
                 }
 
                 <div class="footer-button">

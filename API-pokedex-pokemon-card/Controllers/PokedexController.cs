@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 public class PokedexController : ControllerBase
 {
     private readonly IPokedexService _pokedexService;
-    public PokedexController(IPokedexService pokedexService)
+    private readonly IPokedexValuationHistoryService _historyService;
+    public PokedexController(IPokedexService pokedexService, IPokedexValuationHistoryService historyService)
     {
         _pokedexService = pokedexService;
+        _historyService = historyService;
     }
 
     [HttpPost]
@@ -72,6 +74,19 @@ public class PokedexController : ControllerBase
         catch (Exception)
         {
             return BadRequest();
+        }
+    }
+
+    [HttpGet("{pokedexId}/stats")]
+    public async Task<IActionResult> GetStats(int pokedexId)
+    {
+        try
+        {
+            return Ok(await _historyService.GetStatsByPokedexId(pokedexId));
+        }
+        catch (Exception)
+        {
+            return BadRequest($"Une erreur est surevenue lors de la récupération des statistiques pour le pokedex : {pokedexId}.");
         }
     }
 }

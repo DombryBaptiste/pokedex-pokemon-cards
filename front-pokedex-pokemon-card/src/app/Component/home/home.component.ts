@@ -51,4 +51,8 @@ export class HomeComponent implements OnInit {
   {
     return this.currentUser?.pokedexUsers.find(p => p.pokedexId == pokedexId)?.isOwner
   }
+
+  handleStatsClick(pokedexId: number){
+    this.router.navigate(['pokedex/stats', pokedexId]);
+  }
 }
