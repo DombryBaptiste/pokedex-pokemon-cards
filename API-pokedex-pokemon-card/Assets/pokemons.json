@@ -1069,21 +1069,9 @@
   },
   {
     "PokedexId": 128,
-    "Name": "Tauros de Paldea Blanc",
+    "Name": "Tauros de Paldea",
     "Generation": 1,
-    "ImagePath": "/Pokemon/Gen1/128-paldea-blanc.png"
-  },
-  {
-    "PokedexId": 128,
-    "Name": "Tauros de Paldea Rouge",
-    "Generation": 1,
-    "ImagePath": "/Pokemon/Gen1/128-paldea-rouge.png"
-  },
-  {
-    "PokedexId": 128,
-    "Name": "Tauros de Paldea Bleu",
-    "Generation": 1,
-    "ImagePath": "/Pokemon/Gen1/128-paldea-bleu.png"
+    "ImagePath": "/Pokemon/Gen1/128-paldea.png"
   },
   {
     "PokedexId": 129,
@@ -3102,34 +3090,10 @@
     "ImagePath": "/Pokemon/Gen4/412.png"
   },
   {
-    "PokedexId": 412,
-    "Name": "Cheniti (Sable)",
-    "Generation": 4,
-    "ImagePath": "/Pokemon/Gen4/412-sable.png"
-  },
-  {
-    "PokedexId": 412,
-    "Name": "Cheniti (Déchet)",
-    "Generation": 4,
-    "ImagePath": "/Pokemon/Gen4/412-dechet.png"
-  },
-  {
     "PokedexId": 413,
     "Name": "Cheniselle",
     "Generation": 4,
     "ImagePath": "/Pokemon/Gen4/413.png"
-  },
-  {
-    "PokedexId": 413,
-    "Name": "Cheniselle (Sable)",
-    "Generation": 4,
-    "ImagePath": "/Pokemon/Gen4/413-sable.png"
-  },
-  {
-    "PokedexId": 413,
-    "Name": "Cheniselle (Déchet)",
-    "Generation": 4,
-    "ImagePath": "/Pokemon/Gen4/413-dechet.png"
   },
   {
     "PokedexId": 414,
@@ -3177,12 +3141,6 @@
     "PokedexId": 421,
     "Name": "Ceriflor",
     "Generation": 4,
-    "ImagePath": "/Pokemon/Gen4/421.png"
-  },
-  {
-    "PokedexId": 421,
-    "Name": "Ceriflor (Soleil)",
-    "Generation": 4,
     "ImagePath": "/Pokemon/Gen4/421-soleil.png"
   },
   {
@@ -3192,22 +3150,10 @@
     "ImagePath": "/Pokemon/Gen4/422.png"
   },
   {
-    "PokedexId": 422,
-    "Name": "Sancoki (Ouest)",
-    "Generation": 4,
-    "ImagePath": "/Pokemon/Gen4/422-ouest.png"
-  },
-  {
     "PokedexId": 423,
     "Name": "Tritosor",
     "Generation": 4,
     "ImagePath": "/Pokemon/Gen4/423.png"
-  },
-  {
-    "PokedexId": 423,
-    "Name": "Tritosor (Ouest)",
-    "Generation": 4,
-    "ImagePath": "/Pokemon/Gen4/423-ouest.png"
   },
   {
     "PokedexId": 424,
@@ -4069,21 +4015,9 @@
   },
   {
     "PokedexId": 550,
-    "Name": "Bargantua Motif Rouge",
+    "Name": "Bargantua",
     "Generation": 5,
-    "ImagePath": "/Pokemon/Gen5/550-rouge.png"
-  },
-  {
-    "PokedexId": 550,
-    "Name": "Bargantua Motif Bleu",
-    "Generation": 5,
-    "ImagePath": "/Pokemon/Gen5/550-bleu.png"
-  },
-  {
-    "PokedexId": 550,
-    "Name": "Bargantua Motif Blanc",
-    "Generation": 5,
-    "ImagePath": "/Pokemon/Gen5/550-blanc.png"
+    "ImagePath": "/Pokemon/Gen5/550.png"
   },
   {
     "PokedexId": 551,
@@ -4117,27 +4051,15 @@
   },
   {
     "PokedexId": 555,
-    "Name": "Darumacho Mode Normal",
+    "Name": "Darumacho",
     "Generation": 5,
     "ImagePath": "/Pokemon/Gen5/555.png"
   },
   {
     "PokedexId": 555,
-    "Name": "Darumacho Mode Transe",
-    "Generation": 5,
-    "ImagePath": "/Pokemon/Gen5/555-transe.png"
-  },
-  {
-    "PokedexId": 555,
-    "Name": "Darumacho de Galar Mode Normal",
+    "Name": "Darumacho de Galar",
     "Generation": 5,
     "ImagePath": "/Pokemon/Gen5/555-galar.png"
-  },
-  {
-    "PokedexId": 555,
-    "Name": "Darumacho de Galar Mode Transe",
-    "Generation": 5,
-    "ImagePath": "/Pokemon/Gen5/555-galar-transe.png"
   },
   {
     "PokedexId": 556,
@@ -4951,15 +4873,9 @@
   },
   {
     "PokedexId": 678,
-    "Name": "Mistigrix Mâle",
+    "Name": "Mistigrix",
     "Generation": 6,
-    "ImagePath": "/Pokemon/Gen6/678-male.png"
-  },
-  {
-    "PokedexId": 678,
-    "Name": "Mistigrix Femelle",
-    "Generation": 6,
-    "ImagePath": "/Pokemon/Gen6/678-femelle.png"
+    "ImagePath": "/Pokemon/Gen6/678.png"
   },
   {
     "PokedexId": 679,
@@ -5161,7 +5077,7 @@
   },
   {
     "PokedexId": 710,
-    "Name": "Pitrouille Taille",
+    "Name": "Pitrouille",
     "Generation": 6,
     "ImagePath": "/Pokemon/Gen6/710.png"
   },
@@ -6565,15 +6481,9 @@
   },
   {
     "PokedexId": 902,
-    "Name": "Paragruel Mâle",
+    "Name": "Paragruel",
     "Generation": 8,
-    "ImagePath": "/Pokemon/Gen8/902-male.png"
-  },
-  {
-    "PokedexId": 902,
-    "Name": "Paragruel Femelle",
-    "Generation": 8,
-    "ImagePath": "/Pokemon/Gen8/902-femelle.png"
+    "ImagePath": "/Pokemon/Gen8/902.png"
   },
   {
     "PokedexId": 903,
@@ -6661,15 +6571,9 @@
   },
   {
     "PokedexId": 916,
-    "Name": "Fragroin Mâle",
+    "Name": "Fragroin",
     "Generation": 9,
-    "ImagePath": "/Pokemon/Gen9/916-male.png"
-  },
-  {
-    "PokedexId": 916,
-    "Name": "Fragroin Femelle",
-    "Generation": 9,
-    "ImagePath": "/Pokemon/Gen9/916-femelle.png"
+    "ImagePath": "/Pokemon/Gen9/916.png"
   },
   {
     "PokedexId": 917,
