@@ -6859,15 +6859,9 @@
   },
   {
     "PokedexId": 964,
-    "Name": "Superdofin Forme Ordinaire",
+    "Name": "Superdofin",
     "Generation": 9,
     "ImagePath": "/Pokemon/Gen9/964-ordinary.png"
-  },
-  {
-    "PokedexId": 964,
-    "Name": "Superdofin Forme Super",
-    "Generation": 9,
-    "ImagePath": "/Pokemon/Gen9/964-super.png"
   },
   {
     "PokedexId": 965,
@@ -7051,7 +7045,7 @@
   },
   {
     "PokedexId": 995,
-    "Name": "Epine-de-Fer",
+    "Name": "Épine-de-Fer",
     "Generation": 9,
     "ImagePath": "/Pokemon/Gen9/995.png"
   },
