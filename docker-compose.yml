@@ -7,8 +7,6 @@ services:
       dockerfile: Dockerfile
     environment:
       ConnectionStrings__DefaultConnection: "server=mysql;database=${MYSQL_DATABASE};user=${MYSQL_USER};password=${MYSQL_PASSWORD}"
-    depends_on:
-      - mysql
     ports:
       - "5000:5000"
     restart: always
