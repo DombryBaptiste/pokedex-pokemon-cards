@@ -6,7 +6,7 @@ services:
       context: ./API-pokedex-pokemon-card
       dockerfile: Dockerfile
     environment:
-      ConnectionStrings__DefaultConnection: "server=localhost;database=${MYSQL_DATABASE};user=${MYSQL_USER};password=${MYSQL_PASSWORD}"
+      ConnectionStrings__DefaultConnection: "server=${MYSQL_SERVER};port=3306;database=${MYSQL_DATABASE};user=${MYSQL_USER};password=${MYSQL_PASSWORD}"
     ports:
       - "5000:5000"
     restart: always
