@@ -17,10 +17,12 @@ import { InjectPokemonCardData, PokemonCard, PokemonCardTypeSelected } from '../
 import { OwnedWantedPokemonCard } from '../../Models/OwnedChasePokemonCard';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SnackbarService } from '../../Services/snackbarService/snackbar.service';
 
 @Component({
   selector: 'app-pokemon-details',
-  imports: [CommonModule ,MatIconModule, MatButtonModule, MatCheckboxModule, FormsModule, MatDialogModule, MatInputModule, FormsModule, MatFormFieldModule],
+  imports: [CommonModule ,MatIconModule, MatButtonModule, MatCheckboxModule, FormsModule, MatDialogModule, MatInputModule, FormsModule, MatFormFieldModule, MatSnackBarModule],
   templateUrl: './pokemon-details.component.html',
   styleUrl: './pokemon-details.component.scss'
 })
@@ -37,7 +39,7 @@ export class PokemonDetailsComponent implements OnInit {
 
   PokemonCardTypeSelected = PokemonCardTypeSelected;
 
-  constructor(private route: ActivatedRoute, private router: Router, private pokemonService: PokemonService, public pokemonUtilsService: PokemonUtilsService, private userService: UserService, private authService: AuthService, private pokemonCardService: PokemonCardService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private pokemonService: PokemonService, public pokemonUtilsService: PokemonUtilsService, private userService: UserService, private authService: AuthService, private pokemonCardService: PokemonCardService, private snackbar: SnackbarService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -88,7 +90,7 @@ export class PokemonDetailsComponent implements OnInit {
     if(this.cardsSelected?.ownedPokemonCard)
     { 
       this.pokemonCardService.updateOwned(this.cardsSelected?.ownedPokemonCard.id, this.cardsSelected?.ownedPokemonCard).subscribe(() => {
-        
+        this.snackbar.showSuccess('Le prix a été sauvgardé.');
       })
     }
     
