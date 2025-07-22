@@ -7,6 +7,7 @@
     justify-content: center;
     gap: 15px;
     padding: 20px;
+    height: 100%;
 
     .button-back {
         width: 80%;
@@ -15,40 +16,69 @@
         justify-content: flex-start;
     }
 
-    .pokemon {
-        width: 80%;
-        margin: 0 auto;
-        background-color: $card-color;
+    .pokemon-wrapper {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        width: 100%;
+        height: 100%;
         justify-content: center;
-        border-radius: 10px;
+        gap: 10px;
 
-        .pokemon-header 
-        {
+        .side-left, .side-right {
+            height: 50%;
+            width: 5%;
             display: flex;
-            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            align-self: center;
+            cursor: pointer;
         }
 
-        .pokemon-title {
+        .arrow {
+            font-size: 3rem;
+            background-color: $card-color;
+            padding: 7px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        
+        .pokemon {
+            width: 80%;
+            background-color: $card-color;
             display: flex;
             flex-direction: column;
-            margin-left: 5%;
-            margin-top: 2%;
-            gap: 10px;
+            justify-content: center;
+            border-radius: 10px;
 
-            .pokemon-name {
-                font-size: 2rem;
+            .pokemon-header 
+            {
+                display: flex;
+                flex-direction: row;
+            }
+
+            .pokemon-title {
+                display: flex;
+                flex-direction: column;
+                margin-left: 5%;
+                margin-top: 2%;
+                gap: 10px;
+
+                .pokemon-name {
+                    font-size: 2rem;
+                }
+            }
+
+            .pokemon-image
+            {
+                margin: 0 auto;
+                width: 35%;
             }
         }
-
-        .pokemon-image
-        {
-            margin: 0 auto;
-            width: 35%;
-            height: 35%;
-        }
     }
+    
 
     .card-container {
         display: flex;

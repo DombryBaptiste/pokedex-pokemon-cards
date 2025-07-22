@@ -9,9 +9,6 @@ export class PokemonUtilsService {
   constructor() { }
 
   public getFullImageUrl(relativePath: string): string {
-    console.log(environment.storageCardImage);
-    console.log(relativePath);
-    console.log("---")
     return environment.storageCardImage + relativePath;
   }
 

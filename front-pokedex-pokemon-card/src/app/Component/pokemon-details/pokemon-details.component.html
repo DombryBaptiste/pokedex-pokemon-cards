@@ -12,19 +12,36 @@
     
     @if(pokemon)
     {
-        <div class="pokemon">
-            <div class="pokemon-header">
-                <div class="pokemon-title">
-                    <span class="pokemon-name">{{ pokemon.name }}</span>
-                    <span>{{ pokemonUtilsService.formatPokedexId(pokemon.pokedexId) }}</span>
+        <div class="pokemon-wrapper">
+            @if(hasPokemonBefore())
+            {
+                <div class="side-left" (click)="handlePreviousPokemon()">
+                    <mat-icon class="arrow" fontIcon="chevron_left"></mat-icon>
                 </div>
-                <img class="pokemon-image"[src]="pokemon.imagePath">
-            </div>
-            @if (!isReadOnly) {
-                <mat-checkbox [(ngModel)]="hide" (change)="onToggleVisibility($event.checked)" class="classic-checkbox">Cacher</mat-checkbox>
             }
             
-        </div>
+            <div class="pokemon">
+                <div class="pokemon-header">
+                    <div class="pokemon-title">
+                        <span class="pokemon-name">{{ pokemon.name }}</span>
+                        <span>{{ pokemonUtilsService.formatPokedexId(pokemon.pokedexId) }}</span>
+                    </div>
+                    <img class="pokemon-image" [src]="pokemon.imagePath">
+                </div>
+                @if (!isReadOnly) {
+                <mat-checkbox [(ngModel)]="hide" (change)="onToggleVisibility($event.checked)"
+                    class="classic-checkbox">Cacher</mat-checkbox>
+                }
+            </div>
+
+            @if(hasPokemonAfter())
+            {
+                <div class="side-right" (click)="handleNextPokemon()">
+                    <mat-icon class="arrow" fontIcon="chevron_right"></mat-icon>
+                </div>
+            }
+            
+        </div>      
 
         <div class="card-container">
 

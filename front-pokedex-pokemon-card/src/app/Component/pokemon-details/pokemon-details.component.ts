@@ -40,16 +40,16 @@ export class PokemonDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private pokemonService: PokemonService, public pokemonUtilsService: PokemonUtilsService, private userService: UserService, private authService: AuthService, private pokemonCardService: PokemonCardService) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    const pokedexId = this.route.snapshot.paramMap.get('pokedexId');
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
+      const pokedexId = params.get('pokedexId');
 
-    if(id != null && pokedexId != null)
-    {
-      this.pokemonId = parseInt(id);
-      this.pokedexId = parseInt(pokedexId);
-      this.initData();
-    }
-    
+      if (id && pokedexId) {
+        this.pokemonId = parseInt(id, 10);
+        this.pokedexId = parseInt(pokedexId, 10);
+        this.initData();
+      }
+    });
   }
 
   handleBackPokedex()
@@ -92,6 +92,26 @@ export class PokemonDetailsComponent implements OnInit {
       })
     }
     
+  }
+
+  hasPokemonBefore()
+  {
+    return this.pokemonId != 1;
+  }
+
+  hasPokemonAfter()
+  {
+    return this.pokemonId != 1208;
+  }
+
+  handleNextPokemon()
+  {
+    this.router.navigate(['/pokedex', this.pokedexId, 'pokemon', this.pokemonId + 1]);
+  }
+
+  handlePreviousPokemon()
+  {
+    this.router.navigate(['/pokedex', this.pokedexId, 'pokemon', this.pokemonId - 1]);
   }
 
   private initData()
