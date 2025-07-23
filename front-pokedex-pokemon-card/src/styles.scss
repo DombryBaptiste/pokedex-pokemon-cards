@@ -73,3 +73,28 @@ body {
     container-color: $app-bg-color
   ));
 }
+
+.snackbar-success {
+  @include mat.snack-bar-overrides((
+    container-color: #4caf50,
+    button-color: black,
+    supporting-text-color: #fff
+  ));
+}
+
+.snackbar-error {
+  @include mat.snack-bar-overrides((
+    container-color: #f44336,
+    button-color: black,
+    supporting-text-color: #fff
+  ));
+}
+
+.snackbar-info {
+  @include mat.snack-bar-overrides((
+    container-color: #2196f3,
+    button-color: black,
+    supporting-text-color: #fff
+  ));
+}
+
