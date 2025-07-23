@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 .title {
     padding: 10px;
     text-align: center;
@@ -8,6 +10,7 @@
 {
     margin: 0 auto;
     width: 70%;
+    margin-bottom: 8px;
 }
 
 .card-container
@@ -26,4 +29,22 @@
         }
     }
     
+}
+
+.sort-wrapper
+{
+    margin: 0 auto;
+    width: 90%;
+    display: flex;
+    justify-content: flex-end;
+
+    .sort-icon
+    {
+        padding: 5px;
+        border-radius: 10%;
+        cursor: pointer;
+    }
+    .sort-icon:hover{
+        background-color: $card-color;
+    }
 }

@@ -1,3 +1,5 @@
+import { Sets } from "./sets";
+
 export interface PokemonCard {
     id: number;
     idLocal: number;
@@ -5,6 +7,7 @@ export interface PokemonCard {
     name: string;
     image: string;
     pokemonId: number;
+    set: Sets;
 }
 
 
