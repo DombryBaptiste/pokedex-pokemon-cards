@@ -52,9 +52,9 @@ public static class DbInitializer
             return;
         }
 
-        var existingSetId = context.Sets.Select(s => s.Id).ToList();
+        var existingSetId = context.Sets.Select(s => s.SetId).ToList();
         var newSet = setsFromFile
-            .Where(p => !existingSetId.Contains(p.Id))
+            .Where(p => !existingSetId.Contains(p.SetId))
             .ToList();
 
         if (newSet.Any())
