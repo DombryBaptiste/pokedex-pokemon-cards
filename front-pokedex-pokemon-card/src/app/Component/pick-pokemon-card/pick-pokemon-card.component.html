@@ -1,11 +1,14 @@
 <h2 class="title">{{ title }}</h2>
 <button mat-flat-button class="suppress-button supr" (click)="handleSuppr()">Supprimer</button>
+<div class="sort-wrapper">
+    <mat-icon fontIcon="sort" class="sort-icon" (click)="handleSortImage()"></mat-icon>
+</div>
 <mat-dialog-content class="classic-dialog">
     <div class="card-container">
         @for(card of data.cards; track card.id)
         {
             <div class="img-container">
-                <img [src]="encodeImageUrl(card.image)" class="image-carte" (click)="handleClickImage(card)">
+                <img [src]="encodeImageUrl(card.image)" class="image-carte" (click)="handleClickImage(card)" [matTooltip]="card.set.name">
             </div>
             
         }

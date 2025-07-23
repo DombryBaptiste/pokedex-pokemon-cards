@@ -1,0 +1,597 @@
+[
+    {
+        "SetId": "base1",
+        "Name": "Set de Base",
+        "ReleaseDate": "1999-11-18"
+    },
+    {
+        "SetId": "base2",
+        "Name": "Jungle",
+        "ReleaseDate": "2000-07-01"
+    },
+    {
+        "SetId": "base3",
+        "Name": "Fossile",
+        "ReleaseDate": "2000-11-01"
+    },
+    {
+        "SetId": "base5",
+        "Name": "Team Rocket",
+        "ReleaseDate": "2001-03-01"
+    },
+    {
+        "SetId": "neo1",
+        "Name": "Neo Genesis",
+        "ReleaseDate": "2001-05-20"
+    },
+    {
+        "SetId": "neo2",
+        "Name": "Neo Discovery",
+        "ReleaseDate": "2001-10-15"
+    },
+    {
+        "SetId": "neo3",
+        "Name": "Neo Revelation",
+        "ReleaseDate": "2002-01-01"
+    },
+    {
+        "SetId": "neo4",
+        "Name": "Neo Destiny",
+        "ReleaseDate": "2002-06-01"
+    },
+    {
+        "SetId": "ecard1",
+        "Name": "Expedition",
+        "ReleaseDate": "2003-03-09"
+    },
+    {
+        "SetId": "ecard2",
+        "Name": "Aquapolis",
+        "ReleaseDate": "2003-07-01"
+    },
+    {
+        "SetId": "ex1",
+        "Name": "EX Rubis & Saphir",
+        "ReleaseDate": "2003-12-12"
+    },
+    {
+        "SetId": "ex2",
+        "Name": "EX Tempête de sable",
+        "ReleaseDate": "2004-03-12"
+    },
+    {
+        "SetId": "ex3",
+        "Name": "EX Dragon",
+        "ReleaseDate": "2004-08-28"
+    },
+    {
+        "SetId": "ex4",
+        "Name": "EX Team Magma vs Team Aqua",
+        "ReleaseDate": "2005-02-15"
+    },
+    {
+        "SetId": "ex5",
+        "Name": "EX Légendes Oubliées",
+        "ReleaseDate": "2005-12-09"
+    },
+    {
+        "SetId": "ex6",
+        "Name": "EX Rouge Feu & Vert Feuille",
+        "ReleaseDate": "2004-11-10"
+    },
+    {
+        "SetId": "ex8",
+        "Name": "EX Deoxys",
+        "ReleaseDate": "2005-05-27"
+    },
+    {
+        "SetId": "ex9",
+        "Name": "EX Émeraude",
+        "ReleaseDate": "2005-08-26"
+    },
+    {
+        "SetId": "ex10",
+        "Name": "EX Forces Cachées",
+        "ReleaseDate": "2006-03-24"
+    },
+    {
+        "SetId": "ex11",
+        "Name": "EX Espèces Delta",
+        "ReleaseDate": "2006-06-09"
+    },
+    {
+        "SetId": "ex12",
+        "Name": "EX Créateurs de légendes",
+        "ReleaseDate": "2006-09-01"
+    },
+    {
+        "SetId": "ex13",
+        "Name": "EX Fantômes Holon",
+        "ReleaseDate": "2006-11-19"
+    },
+    {
+        "SetId": "ex14",
+        "Name": "EX Gardiens de Cristal",
+        "ReleaseDate": "2007-02-09"
+    },
+    {
+        "SetId": "ex15",
+        "Name": "EX Île des Dragons",
+        "ReleaseDate": "2007-05-18"
+    },
+    {
+        "SetId": "ex16",
+        "Name": "EX Gardiens du Pouvoir",
+        "ReleaseDate": "2007-08-24"
+    },
+    {
+        "SetId": "dp1",
+        "Name": "Diamant & Perle",
+        "ReleaseDate": "2007-11-09"
+    },
+    {
+        "SetId": "dp2",
+        "Name": "Trésors Mystérieux",
+        "ReleaseDate": "2008-02-12"
+    },
+    {
+        "SetId": "dp3",
+        "Name": "Merveilles Secrètes",
+        "ReleaseDate": "2008-05-16"
+    },
+    {
+        "SetId": "dp4",
+        "Name": "Duels au Sommets",
+        "ReleaseDate": "2008-05-29"
+    },
+    {
+        "SetId": "dp5",
+        "Name": "Aube Majestueuse",
+        "ReleaseDate": "2008-11-07"
+    },
+    {
+        "SetId": "dp6",
+        "Name": "Éveil des Légendes",
+        "ReleaseDate": "2009-02-10"
+    },
+    {
+        "SetId": "dp7",
+        "Name": "Tempête",
+        "ReleaseDate": "2009-05-15"
+    },
+    {
+        "SetId": "pl1",
+        "Name": "Platine",
+        "ReleaseDate": "2009-08-18"
+    },
+    {
+        "SetId": "pl2",
+        "Name": "Rivaux Émergeants",
+        "ReleaseDate": "2009-11-06"
+    },
+    {
+        "SetId": "pl3",
+        "Name": "Vainqueurs Suprêmes",
+        "ReleaseDate": "2010-02-11"
+    },
+    {
+        "SetId": "hgss1",
+        "Name": "HeartGold SoulSilver",
+        "ReleaseDate": "2010-05-05"
+    },
+    {
+        "SetId": "hgss2",
+        "Name": "Déchaînement",
+        "ReleaseDate": "2010-08-20"
+    },
+    {
+        "SetId": "hgss3",
+        "Name": "Indomptable",
+        "ReleaseDate": "2010-11-06"
+    },
+    {
+        "SetId": "hgss4",
+        "Name": "Triomphant",
+        "ReleaseDate": "2011-01-29"
+    },
+    {
+        "SetId": "col1",
+        "Name": "L'appel des Légendes",
+        "ReleaseDate": "2011-03-26"
+    },
+    {
+        "SetId": "bwp",
+        "Name": "Promo BW",
+        "ReleaseDate": "2011-05-01"
+    },
+    {
+        "SetId": "bw1",
+        "Name": "Noir & Blanc",
+        "ReleaseDate": "2011-05-25"
+    },
+    {
+        "SetId": "bw2",
+        "Name": "Pouvoirs Émergents",
+        "ReleaseDate": "2011-09-28"
+    },
+    {
+        "SetId": "bw3",
+        "Name": "Nobles Victoires",
+        "ReleaseDate": "2012-01-14"
+    },
+    {
+        "SetId": "bw4",
+        "Name": "Destinées Futures",
+        "ReleaseDate": "2012-03-24"
+    },
+    {
+        "SetId": "bw5",
+        "Name": "Explorateurs Obscurs",
+        "ReleaseDate": "2012-08-25"
+    },
+    {
+        "SetId": "bw6",
+        "Name": "Dragons Éxaltés",
+        "ReleaseDate": "2012-11-10"
+    },
+    {
+        "SetId": "dv1",
+        "Name": "Coffre des Dragons",
+        "ReleaseDate": "2012-09-29"
+    },
+    {
+        "SetId": "bw7",
+        "Name": "Frontières Franchies",
+        "ReleaseDate": "2013-02-16"
+    },
+    {
+        "SetId": "bw8",
+        "Name": "Tempète Plasma",
+        "ReleaseDate": "2013-05-08"
+    },
+    {
+        "SetId": "bw9",
+        "Name": "Glaciation Plasma",
+        "ReleaseDate": "2013-05-14"
+    },
+    {
+        "SetId": "bw10",
+        "Name": "Explosion Plasma",
+        "ReleaseDate": "2013-11-06"
+    },
+    {
+        "SetId": "xyp",
+        "Name": "Promo XY",
+        "ReleaseDate": "2014-02-01"
+    },
+    {
+        "SetId": "xy0",
+        "Name": "Bienvenue à Kalos",
+        "ReleaseDate": "2013-11-06"
+    },
+    {
+        "SetId": "xy1",
+        "Name": "XY",
+        "ReleaseDate": "2014-02-22"
+    },
+    {
+        "SetId": "xy2",
+        "Name": "Étincelles",
+        "ReleaseDate": "2014-05-27"
+    },
+    {
+        "SetId": "xy3",
+        "Name": "Poings Furieux",
+        "ReleaseDate": "2014-08-23"
+    },
+    {
+        "SetId": "xy4",
+        "Name": "Vigueur Spectrale",
+        "ReleaseDate": "2014-11-08"
+    },
+    {
+        "SetId": "xy5",
+        "Name": "Primo-Choc",
+        "ReleaseDate": "2015-02-21"
+    },
+    {
+        "SetId": "dc1",
+        "Name": "Double Danger",
+        "ReleaseDate": "2015-08-22"
+    },
+    {
+        "SetId": "xy6",
+        "Name": "Ciel Rugissant",
+        "ReleaseDate": "2015-05-23"
+    },
+    {
+        "SetId": "xy7",
+        "Name": "Origines Antiques",
+        "ReleaseDate": "2015-08-22"
+    },
+    {
+        "SetId": "xy8",
+        "Name": "Impulsion Turbo",
+        "ReleaseDate": "2015-11-07"
+    },
+    {
+        "SetId": "xy9",
+        "Name": "Rupture Turbo",
+        "ReleaseDate": "2016-02-06"
+    },
+    {
+        "SetId": "g1",
+        "Name": "Générations",
+        "ReleaseDate": "2016-03-19"
+    },
+    {
+        "SetId": "xy10",
+        "Name": "Impact des Destins",
+        "ReleaseDate": "2016-05-07"
+    },
+    {
+        "SetId": "xy11",
+        "Name": "Offensive Vapeur",
+        "ReleaseDate": "2016-08-16"
+    },
+    {
+        "SetId": "xy12",
+        "Name": "Évolutions",
+        "ReleaseDate": "2016-11-19"
+    },
+    {
+        "SetId": "smp",
+        "Name": "Promo SM",
+        "ReleaseDate": "2017-02-03"
+    },
+    {
+        "SetId": "sm1",
+        "Name": "Soleil et Lune",
+        "ReleaseDate": "2017-02-03"
+    },
+    {
+        "SetId": "sm2",
+        "Name": "Gardiens Ascendants",
+        "ReleaseDate": "2017-05-13"
+    },
+    {
+        "SetId": "sm3",
+        "Name": "Ombres Ardentes",
+        "ReleaseDate": "2017-08-19"
+    },
+    {
+        "SetId": "sm3.5",
+        "Name": "Légendes Brillantes",
+        "ReleaseDate": "2017-10-20"
+    },
+    {
+        "SetId": "sm4",
+        "Name": "Invasion Carmin",
+        "ReleaseDate": "2017-11-04"
+    },
+    {
+        "SetId": "sm5",
+        "Name": "Ultra-Prisme",
+        "ReleaseDate": "2018-02-02"
+    },
+    {
+        "SetId": "sm6",
+        "Name": "Lumière Interdite",
+        "ReleaseDate": "2018-05-04"
+    },
+    {
+        "SetId": "sm7",
+        "Name": "Tempête Céleste",
+        "ReleaseDate": "2018-08-03"
+    },
+    {
+        "SetId": "sm7.5",
+        "Name": "Majesté Des Dragons",
+        "ReleaseDate": "2018-09-07"
+    },
+    {
+        "SetId": "sm8",
+        "Name": "Tonnerre Perdu",
+        "ReleaseDate": "2018-11-02"
+    },
+    {
+        "SetId": "sm9",
+        "Name": "Duo de Choc",
+        "ReleaseDate": "2019-02-01"
+    },
+    {
+        "SetId": "sm10",
+        "Name": "Alliance Infaillible",
+        "ReleaseDate": "2019-05-03"
+    },
+    {
+        "SetId": "sm11",
+        "Name": "Harmonie des Esprits",
+        "ReleaseDate": "2019-08-02"
+    },
+    {
+        "SetId": "sm115",
+        "Name": "Destinées Occultes",
+        "ReleaseDate": "2019-08-23"
+    },
+    {
+        "SetId": "sm12",
+        "Name": "Éclipse Cosmique",
+        "ReleaseDate": "2019-11-01"
+    },
+    {
+        "SetId": "swshp",
+        "Name": "Promo SWSH",
+        "ReleaseDate": "2019-11-01"
+    },
+    {
+        "SetId": "swsh1",
+        "Name": "Épée et Bouclier",
+        "ReleaseDate": "2020-02-07"
+    },
+    {
+        "SetId": "swsh2",
+        "Name": "Clash des Rebelles",
+        "ReleaseDate": "2020-05-01"
+    },
+    {
+        "SetId": "swsh3",
+        "Name": "Ténèbres Embrasées",
+        "ReleaseDate": "2020-08-14"
+    },
+    {
+        "SetId": "swsh3.5",
+        "Name": "La Voie du Maître",
+        "ReleaseDate": "2020-09-25"
+    },
+    {
+        "SetId": "swsh4",
+        "Name": "Voltage Éclatant",
+        "ReleaseDate": "2020-11-13"
+    },
+    {
+        "SetId": "swsh4.5",
+        "Name": "Déstinées Radieuses",
+        "ReleaseDate": "2021-02-21"
+    },
+    {
+        "SetId": "swsh5",
+        "Name": "Styles de combat",
+        "ReleaseDate": "2021-03-19"
+    },
+    {
+        "SetId": "swsh6",
+        "Name": "Règne de Glace",
+        "ReleaseDate": "2021-06-18"
+    },
+    {
+        "SetId": "swsh7",
+        "Name": "Évolution Céleste",
+        "ReleaseDate": "2021-08-27"
+    },
+    {
+        "SetId": "cel25",
+        "Name": "Célébrations",
+        "ReleaseDate": "2021-10-08"
+    },
+    {
+        "SetId": "swsh8",
+        "Name": "Poing de Fusion",
+        "ReleaseDate": "2021-11-12"
+    },
+    {
+        "SetId": "swsh9",
+        "Name": "Stars Étincelantes",
+        "ReleaseDate": "2022-02-25"
+    },
+    {
+        "SetId": "swsh10",
+        "Name": "Astres Radieux",
+        "ReleaseDate": "2022-05-27"
+    },
+    {
+        "SetId": "swsh10.5",
+        "Name": "Pokémon GO",
+        "ReleaseDate": "2022-07-01"
+    },
+    {
+        "SetId": "swsh11",
+        "Name": "Origine Perdue",
+        "ReleaseDate": "2022-09-09"
+    },
+    {
+        "SetId": "swsh12",
+        "Name": "Tempête Argentée",
+        "ReleaseDate": "2022-11-11"
+    },
+    {
+        "SetId": "swsh12.5",
+        "Name": "Zénith Suprême",
+        "ReleaseDate": "2023-01-20"
+    },
+    {
+        "SetId": "svp",
+        "Name": "SVP Black Star Promos",
+        "ReleaseDate": "2023-03-30"
+    },
+    {
+        "SetId": "sv01",
+        "Name": "Écarlate et Violet",
+        "ReleaseDate": "2023-03-31"
+    },
+    {
+        "SetId": "sv02",
+        "Name": "Évolutions à Paldea",
+        "ReleaseDate": "2023-06-09"
+    },
+    {
+        "SetId": "sv03",
+        "Name": "Flammes Obsidiennes",
+        "ReleaseDate": "2023-08-11"
+    },
+    {
+        "SetId": "sv03.5",
+        "Name": "151",
+        "ReleaseDate": "2023-09-21"
+    },
+    {
+        "SetId": "sv04",
+        "Name": "Faille Paradoxe",
+        "ReleaseDate": "2023-11-03"
+    },
+    {
+        "SetId": "sv04.5",
+        "Name": "Destinées de Paldea",
+        "ReleaseDate": "2024-01-26"
+    },
+    {
+        "SetId": "sv05",
+        "Name": "Forces Temporelles",
+        "ReleaseDate": "2024-03-22"
+    },
+    {
+        "SetId": "sv06",
+        "Name": "Mascarade Crépusculaire",
+        "ReleaseDate": "2024-05-24"
+    },
+    {
+        "SetId": "sv06.5",
+        "Name": "Fable Nébuleuse",
+        "ReleaseDate": "2024-08-02"
+    },
+    {
+        "SetId": "sv07",
+        "Name": "Couronne Stellaire",
+        "ReleaseDate": "2024-09-13"
+    },
+    {
+        "SetId": "sv08",
+        "Name": "Étincelles Déferlantes",
+        "ReleaseDate": "2024-11-28"
+    },
+    {
+        "SetId": "sv08.5",
+        "Name": "Évolutions Prismatiques",
+        "ReleaseDate": "2025-01-17"
+    },
+    {
+        "SetId": "sv09",
+        "Name": "Aventures Ensemble",
+        "ReleaseDate": "2025-03-28"
+    },
+    {
+        "SetId": "sv10",
+        "Name": "Rivalités Destinées",
+        "ReleaseDate": "2025-05-30"
+    },
+    {
+        "SetId": "sv10.5b",
+        "Name": "Foudre Noire",
+        "ReleaseDate": "2025-07-18"
+    },
+    {
+        "SetId": "sv10.5w",
+        "Name": "Flamme Blanche",
+        "ReleaseDate": "2025-07-18"
+    }
+]

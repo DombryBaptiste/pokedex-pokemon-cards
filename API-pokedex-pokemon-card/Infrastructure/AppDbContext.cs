@@ -38,6 +38,7 @@ public class AppDbContext : DbContext
     public DbSet<PokedexWantedPokemonCard> PokedexWantedPokemonCards { get; set; }
     public DbSet<PokedexUser> PokedexUsers { get; set; }
     public DbSet<PokedexValuationHistory> PokedexValuationHistory { get; set; }
+    public DbSet<Sets> Sets { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

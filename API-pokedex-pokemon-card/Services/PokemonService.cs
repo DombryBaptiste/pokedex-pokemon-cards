@@ -86,6 +86,15 @@ public class PokemonService : IPokemonService
 
     public async Task<Pokemon?> GetPokemonById(int id)
     {
-        return await _context.Pokemons.Include(p => p.PokemonCards).Where(p => p.Id == id).FirstOrDefaultAsync();
+        var pokemon = await _context.Pokemons
+            .Include(p => p.PokemonCards)
+                .ThenInclude(pc => pc.Set)
+            .FirstOrDefaultAsync(p => p.Id == id);
+
+        if (pokemon != null)
+        {
+            pokemon.PokemonCards = pokemon.PokemonCards.OrderBy(c => c.Set.ReleaseDate).ToList();
+        }
+        return pokemon;
     }
 }
