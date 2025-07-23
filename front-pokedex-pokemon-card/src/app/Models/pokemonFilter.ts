@@ -5,4 +5,5 @@ export interface PokemonFilter
     filterName?: string;
     pokedexId?: number;
     filterExceptWantedAndOwned?: boolean;
+    filterExceptHasNoWantedCard?: boolean;
 }

@@ -41,6 +41,10 @@ export class PokemonService {
       {
         params = params.set('filterExceptWantedAndOwned', filters.filterExceptWantedAndOwned);
       }
+      if(filters.filterExceptHasNoWantedCard !== undefined)
+      {
+        params = params.set('filterExceptHasNoWantedCard', filters.filterExceptHasNoWantedCard)
+      }
     }
     
     return this.http.get<Pokemon[]>(this.baseUrl + '/filtered', { params }).pipe(
