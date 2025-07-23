@@ -6,4 +6,6 @@ public class PokemonListDto
         public required int Generation { get; set; }
         public required string ImagePath { get; set; }
         public bool IsWantedAndOwned { get; set; }
+        public int? PreviousPokemonId { get; set; }
+        public int? NextPokemonId { get; set; }
 }

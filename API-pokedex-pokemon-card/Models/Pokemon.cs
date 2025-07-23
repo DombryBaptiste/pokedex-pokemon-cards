@@ -12,6 +12,8 @@ public class Pokemon
     public List<PokemonCard> PokemonCards { get; set; } = new List<PokemonCard>();
     List<PokedexWantedPokemonCard> PokedexWantedPokemonCards { get; set; } = new List<PokedexWantedPokemonCard>();
     List<PokedexOwnedPokemonCard> PokedexOwnedPokemonCard { get; set; } = new List<PokedexOwnedPokemonCard>();
+    public int? PreviousPokemonId { get; set; }
+    public int? NextPokemonId { get; set; }
 
     // NON MAPPE
     [NotMapped]

@@ -98,22 +98,22 @@ export class PokemonDetailsComponent implements OnInit {
 
   hasPokemonBefore()
   {
-    return this.pokemonId != 1;
+    return this.pokemon?.previousPokemonId != null;
   }
 
   hasPokemonAfter()
   {
-    return this.pokemonId != 1208;
+    return this.pokemon?.nextPokemonId != null;
   }
 
   handleNextPokemon()
   {
-    this.router.navigate(['/pokedex', this.pokedexId, 'pokemon', this.pokemonId + 1]);
+    this.router.navigate(['/pokedex', this.pokedexId, 'pokemon', this.pokemon?.nextPokemonId]);
   }
 
   handlePreviousPokemon()
   {
-    this.router.navigate(['/pokedex', this.pokedexId, 'pokemon', this.pokemonId - 1]);
+    this.router.navigate(['/pokedex', this.pokedexId, 'pokemon', this.pokemon?.previousPokemonId]);
   }
 
   private initData()
