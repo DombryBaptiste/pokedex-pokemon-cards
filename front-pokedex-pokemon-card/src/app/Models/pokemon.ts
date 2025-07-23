@@ -8,4 +8,6 @@ export interface Pokemon {
     imagePath: string;
     pokemonCards: PokemonCard[];
     isWantedAndOwned: boolean;
+    previousPokemonId: number;
+    nextPokemonId: number;
 }
