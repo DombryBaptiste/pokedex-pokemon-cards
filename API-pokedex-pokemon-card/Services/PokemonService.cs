@@ -34,13 +34,18 @@ public class PokemonService : IPokemonService
 
             if (pokedex != null)
             {
-                var oIds = pokedex.OwnedPokemonCards.Select(p => p.PokemonCard).ToList();
-                var wIds = pokedex.WantedPokemonCards.Select(p => p.PokemonCard).ToList();
-                bothWantedAndOwnedIds = oIds.Intersect(wIds).Select(p => p.PokemonId).ToList();
+                var ownedCards = pokedex.OwnedPokemonCards.Select(p => p.PokemonCard).ToList();
+                var wantedCards = pokedex.WantedPokemonCards.Select(p => p.PokemonCard).ToList();
+
+                bothWantedAndOwnedIds = ownedCards.Intersect(wantedCards).Select(p => p.PokemonId).ToList();
 
                 if (filters.FilterExceptWantedAndOwned == true)
                 {
                     query = query.Where(p => !bothWantedAndOwnedIds.Contains(p.Id));
+                }
+                if (filters?.FilterExceptHasNoWantedCard == true)
+                {
+                    query = query.Where(p => wantedCards.Select(c => c.PokemonId).ToList().Contains(p.Id));
                 }
             }
         }

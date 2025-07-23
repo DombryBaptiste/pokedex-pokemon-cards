@@ -40,7 +40,7 @@ export class PokedexComponent implements OnInit {
   searchText: string = "";
   private searchSubject = new Subject<string>();
   
-  filters: PokemonFilter = { filterHiddenActivated: false, filterExceptWantedAndOwned: false };
+  filters: PokemonFilter = { filterHiddenActivated: false, filterExceptWantedAndOwned: false, filterExceptHasNoWantedCard: false };
 
   constructor(private pokemonService: PokemonService, private router: Router, private route: ActivatedRoute, public pokemonUtilsService: PokemonUtilsService, public authService: AuthService, public pokedexService: PokedexService, private scrollService: PokedexScrollService, private ngZone: NgZone) {
 
@@ -97,6 +97,12 @@ export class PokedexComponent implements OnInit {
   handleToggleWantedOwned(checked: boolean) : void
   {
     this.filters.filterExceptWantedAndOwned = checked;
+    this.setPokemons();
+  }
+
+  handleToggleHasNoWanted(checked: boolean) : void
+  {
+    this.filters.filterExceptHasNoWantedCard = checked;
     this.setPokemons();
   }
 

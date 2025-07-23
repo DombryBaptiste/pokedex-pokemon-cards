@@ -33,6 +33,9 @@
     .left-controls {
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      width: 100%;
       gap: 10px;
 
       .search-wrapper {
