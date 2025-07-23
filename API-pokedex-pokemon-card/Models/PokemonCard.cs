@@ -9,6 +9,8 @@ public class PokemonCard
     public required string Image { get; set; }
     public Pokemon? Pokemon { get; set; }
     public int PokemonId { get; set; }
+    public Sets Set { get; set; }
+    public int SetId { get; set; }
 
 }
 
