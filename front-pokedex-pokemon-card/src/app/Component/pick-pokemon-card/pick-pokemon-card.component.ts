@@ -25,6 +25,7 @@ export class PickPokemonCardComponent implements OnInit {
   title: string = '';
   PokemonCardTypeSelected = PokemonCardTypeSelected;
   sortedAsc = true;
+  isMobile = false;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: InjectPokemonCardData,
@@ -38,6 +39,7 @@ export class PickPokemonCardComponent implements OnInit {
     } else {
       this.title = 'Carte Possédée';
     }
+    this.isMobile = window.innerWidth <= 768;
   }
 
   handleClickImage(card: PokemonCard) {
