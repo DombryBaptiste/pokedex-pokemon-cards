@@ -8,9 +8,13 @@
         @for(card of data.cards; track card.id)
         {
             <div class="img-container">
-                <img [src]="encodeImageUrl(card.image)" class="image-carte" (click)="handleClickImage(card)" [matTooltip]="card.set.name"
-                    matTooltipPosition="above"
-                    touchGestures="off">
+                <img 
+                    [src]="encodeImageUrl(card.image)" 
+                    class="image-carte" 
+                    (click)="handleClickImage(card)" 
+                    [matTooltip]="card.set.name"
+                    [matTooltipDisabled]="isMobile">
+
             </div>
             
         }
