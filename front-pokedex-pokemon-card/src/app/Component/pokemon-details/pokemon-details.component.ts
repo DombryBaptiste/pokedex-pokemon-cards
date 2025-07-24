@@ -14,7 +14,7 @@ import { PokemonCardService } from '../../Services/pokemonCardService/pokemon-ca
 import { MatDialog, MatDialogModule, MatDialogContent } from '@angular/material/dialog';
 import { PickPokemonCardComponent } from '../pick-pokemon-card/pick-pokemon-card.component';
 import { InjectPokemonCardData, PokemonCard, PokemonCardTypeSelected } from '../../Models/pokemonCard';
-import { OwnedWantedPokemonCard } from '../../Models/OwnedChasePokemonCard';
+import { OwnedPokemonCard, OwnedWantedPokemonCard, WantedPokemonCard } from '../../Models/OwnedChasePokemonCard';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -114,6 +114,16 @@ export class PokemonDetailsComponent implements OnInit {
   handlePreviousPokemon()
   {
     this.router.navigate(['/pokedex', this.pokedexId, 'pokemon', this.pokemon?.previousPokemonId]);
+  }
+
+  getIdExtensionCard(card: WantedPokemonCard | OwnedPokemonCard | undefined)
+  {
+    console.log(card)
+    if(card == undefined)
+    {
+      return "";
+    }
+    return  card.pokemonCard.set.name + " " + card.pokemonCard.localId
   }
 
   private initData()
