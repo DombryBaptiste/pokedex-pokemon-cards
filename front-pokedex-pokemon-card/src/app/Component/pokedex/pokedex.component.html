@@ -79,7 +79,7 @@
   <div class="pokemon-grid">
     @for(p of pokemons; track p.id) {
     <div class="pokemon" (click)="handlePokemonClick(p.id)">
-      <img [src]="p.imagePath" />
+      <img [src]="p.imagePath" loading="lazy"/>
       <span>{{ p.name }}</span>
       <span class="pokemon-number">{{
         pokemonUtilsService.formatPokedexId(p.pokedexId)

@@ -11,7 +11,7 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: $app-bg-color; 
   color: white;
-  max-width: 800px;
+  max-width: $body-max-width;
   padding-bottom: 30px;
 }
 
@@ -67,12 +67,17 @@ body {
   ));
 }
 
-.classic-dialog
-{
+.classic-dialog {
+  width: 80vw;
+  height: auto;
+  max-width: $dialog-max-width;
+  margin: 0 auto !important;
+
   @include mat.dialog-overrides((
     container-color: $app-bg-color
   ));
 }
+
 
 .snackbar-success {
   @include mat.snack-bar-overrides((

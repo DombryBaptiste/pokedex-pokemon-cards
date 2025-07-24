@@ -74,8 +74,8 @@ public class PokemonCardService : IPokemonCardService
     {
         PokemonOwnedWantedCard result = new();
 
-        result.OwnedPokemonCard = await _context.PokedexOwnedPokemonCards.Include(c => c.PokemonCard).FirstOrDefaultAsync(p => p.PokedexId == pokedexId && p.PokemonId == pokemonId);
-        result.WantedPokemonCard = await _context.PokedexWantedPokemonCards.Include(c => c.PokemonCard).FirstOrDefaultAsync(p => p.PokedexId == pokedexId && p.PokemonId == pokemonId);
+        result.OwnedPokemonCard = await _context.PokedexOwnedPokemonCards.Include(c => c.PokemonCard).ThenInclude(p => p.Set).FirstOrDefaultAsync(p => p.PokedexId == pokedexId && p.PokemonId == pokemonId);
+        result.WantedPokemonCard = await _context.PokedexWantedPokemonCards.Include(c => c.PokemonCard).ThenInclude(p => p.Set).FirstOrDefaultAsync(p => p.PokedexId == pokedexId && p.PokemonId == pokemonId);
 
         return result;
     }

@@ -2,7 +2,7 @@ import { Sets } from "./sets";
 
 export interface PokemonCard {
     id: number;
-    idLocal: number;
+    localId: number;
     extension: string;
     name: string;
     image: string;

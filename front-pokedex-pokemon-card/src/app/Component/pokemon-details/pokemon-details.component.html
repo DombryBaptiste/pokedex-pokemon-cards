@@ -48,21 +48,23 @@
             <div class="have-card" (click)="openListCard(PokemonCardTypeSelected.Owned)">
                 @if(cardsSelected?.ownedPokemonCard)
                 {
+                    <span>{{getIdExtensionCard(cardsSelected?.ownedPokemonCard)}}</span>
                     <img class="owned-image" [src]="cardsSelected?.ownedPokemonCard?.pokemonCard?.image">
                 } @else {
                     <mat-icon fontIcon="add"></mat-icon>
                 }
-                <span>Carte possédée</span>
+                <span class="legend">Carte possédée</span>
             </div>
 
             <div class="chase-card" (click)="openListCard(PokemonCardTypeSelected.Wanted)">
                 @if(cardsSelected?.wantedPokemonCard)
                 {
+                    <span>{{getIdExtensionCard(cardsSelected?.wantedPokemonCard)}}</span>
                     <img class="wanted-image" [src]="cardsSelected?.wantedPokemonCard?.pokemonCard?.image">
                 } @else {
                     <mat-icon fontIcon="add"></mat-icon>
                 }
-                <span>Carte voulue</span>
+                <span class="legend">Carte voulue</span>
             </div>
         </div>
         @if(cardsSelected != null && cardsSelected.ownedPokemonCard != null)
