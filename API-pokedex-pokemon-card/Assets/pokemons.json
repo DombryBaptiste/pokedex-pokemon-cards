@@ -1046,7 +1046,7 @@
   {
     "Id": 117,
     "PokedexId": 81,
-    "Name": "Magneti",
+    "Name": "Magnéti",
     "Generation": 1,
     "ImagePath": "/Pokemon/Gen1/81.png",
     "PreviousPokemonId": 116,
@@ -1055,7 +1055,7 @@
   {
     "Id": 118,
     "PokedexId": 82,
-    "Name": "Magneton",
+    "Name": "Magnéton",
     "Generation": 1,
     "ImagePath": "/Pokemon/Gen1/82.png",
     "PreviousPokemonId": 117,
@@ -1307,7 +1307,7 @@
   {
     "Id": 146,
     "PokedexId": 102,
-    "Name": "Nœunœuf",
+    "Name": "Noeunoeuf",
     "Generation": 1,
     "ImagePath": "/Pokemon/Gen1/102.png",
     "PreviousPokemonId": 145,
@@ -1964,7 +1964,7 @@
   {
     "Id": 219,
     "PokedexId": 157,
-    "Name": "Typhlosion",
+    "Name": "Typhlosion de Hisui",
     "Generation": 2,
     "ImagePath": "/Pokemon/Gen2/157-hisui.png",
     "PreviousPokemonId": 218,
@@ -5177,7 +5177,7 @@
   {
     "Id": 576,
     "PokedexId": 469,
-    "Name": "Yanméga",
+    "Name": "Yanmega",
     "Generation": 4,
     "ImagePath": "/Pokemon/Gen4/469.png",
     "PreviousPokemonId": 575,
@@ -7868,7 +7868,7 @@
   {
     "Id": 875,
     "PokedexId": 732,
-    "Name": "Picclairon",
+    "Name": "Piclairon",
     "Generation": 7,
     "ImagePath": "/Pokemon/Gen7/732.png",
     "PreviousPokemonId": 874,
@@ -9020,7 +9020,7 @@
   {
     "Id": 1003,
     "PokedexId": 842,
-    "Name": "Pomdrapi/Dratatin GMax",
+    "Name": "Pomdrapi Dratatin GMax",
     "Generation": 8,
     "ImagePath": "/Pokemon/Gen8/842-gmax.png",
     "PreviousPokemonId": 1002,
