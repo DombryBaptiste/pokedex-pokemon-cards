@@ -24,7 +24,7 @@ export class PickPokemonCardComponent implements OnInit {
 
   title: string = '';
   PokemonCardTypeSelected = PokemonCardTypeSelected;
-  sortedAsc = true;
+  sortedDesc = true;
   isMobile = false;
 
   constructor(
@@ -65,13 +65,13 @@ export class PickPokemonCardComponent implements OnInit {
   }
 
   handleSortImage() {
-  if (this.sortedAsc) {
+  if (this.sortedDesc) {
     this.data.cards.sort((a, b) => new Date(b.set.releaseDate).getTime() - new Date(a.set.releaseDate).getTime());
   } else {
     this.data.cards.sort((a, b) => new Date(a.set.releaseDate).getTime() - new Date(b.set.releaseDate).getTime());
   }
 
-  this.sortedAsc = !this.sortedAsc;
+  this.sortedDesc = !this.sortedDesc;
 }
 
 }
