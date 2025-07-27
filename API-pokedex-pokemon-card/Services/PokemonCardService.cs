@@ -13,7 +13,10 @@ public class PokemonCardService : IPokemonCardService
     }
     public async Task<List<PokemonCard>> GetAllByPokemonIdAsync(int pokemonId)
     {
-        return await _context.PokemonCards.Where(c => c.PokemonId == pokemonId).ToListAsync();
+        return await _context.PokemonCardPokemons
+            .Where(pcp => pcp.PokemonId == pokemonId)
+            .Select(pcp => pcp.PokemonCard)
+            .ToListAsync();
     }
 
     public async Task SetChaseCardAsync(int pokedexId, string cardId, int pokemonId)

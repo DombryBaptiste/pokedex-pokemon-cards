@@ -39,6 +39,7 @@ public class AppDbContext : DbContext
     public DbSet<PokedexUser> PokedexUsers { get; set; }
     public DbSet<PokedexValuationHistory> PokedexValuationHistory { get; set; }
     public DbSet<Sets> Sets { get; set; }
+    public DbSet<PokemonCardPokemon> PokemonCardPokemons { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -56,6 +57,19 @@ public class AppDbContext : DbContext
             .HasOne(pu => pu.Pokedex)
             .WithMany(p => p.PokedexUsers)
             .HasForeignKey(pu => pu.PokedexId);
+
+        modelBuilder.Entity<PokemonCardPokemon>()
+        .HasKey(pcp => new { pcp.PokemonId, pcp.PokemonCardId });
+
+        modelBuilder.Entity<PokemonCardPokemon>()
+            .HasOne(pcp => pcp.Pokemon)
+            .WithMany(p => p.PokemonCardPokemons)
+            .HasForeignKey(pcp => pcp.PokemonId);
+
+        modelBuilder.Entity<PokemonCardPokemon>()
+            .HasOne(pcp => pcp.PokemonCard)
+            .WithMany(pc => pc.PokemonCardPokemons)
+            .HasForeignKey(pcp => pcp.PokemonCardId);
     }
 
 }
