@@ -40,6 +40,7 @@ export class PickPokemonCardComponent implements OnInit {
       this.title = 'Carte Possédée';
     }
     this.isMobile = window.innerWidth <= 768;
+    this.handleSortImage();
   }
 
   handleClickImage(card: PokemonCard) {
