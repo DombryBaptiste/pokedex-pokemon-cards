@@ -34,16 +34,13 @@ public class PokemonService : IPokemonService
 
             if (pokedex != null)
             {
-                var ownedCards = pokedex.OwnedPokemonCards.Select(p => p.PokemonCard).ToList();
-                var wantedCards = pokedex.WantedPokemonCards.Select(p => p.PokemonCard).ToList();
+                var ownedCardPokemonIds = pokedex.OwnedPokemonCards
+                    .Select(o => o.PokemonId)
+                    .Distinct().ToList();
 
-                var ownedCardPokemonIds = ownedCards
-                    .SelectMany(c => c.PokemonCardPokemons.Select(pcp => pcp.PokemonId))
-                    .Distinct();
-
-                var wantedCardPokemonIds = wantedCards
-                    .SelectMany(c => c.PokemonCardPokemons.Select(pcp => pcp.PokemonId))
-                    .Distinct();
+                var wantedCardPokemonIds = pokedex.WantedPokemonCards
+                    .Select(w => w.PokemonId)
+                    .Distinct().ToList();
 
                 bothWantedAndOwnedIds = ownedCardPokemonIds
                     .Intersect(wantedCardPokemonIds)
