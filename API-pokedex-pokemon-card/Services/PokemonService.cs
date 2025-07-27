@@ -37,7 +37,17 @@ public class PokemonService : IPokemonService
                 var ownedCards = pokedex.OwnedPokemonCards.Select(p => p.PokemonCard).ToList();
                 var wantedCards = pokedex.WantedPokemonCards.Select(p => p.PokemonCard).ToList();
 
-                bothWantedAndOwnedIds = ownedCards.Intersect(wantedCards).Select(p => p.PokemonId).ToList();
+                var ownedCardPokemonIds = ownedCards
+                    .SelectMany(c => c.PokemonCardPokemons.Select(pcp => pcp.PokemonId))
+                    .Distinct();
+
+                var wantedCardPokemonIds = wantedCards
+                    .SelectMany(c => c.PokemonCardPokemons.Select(pcp => pcp.PokemonId))
+                    .Distinct();
+
+                bothWantedAndOwnedIds = ownedCardPokemonIds
+                    .Intersect(wantedCardPokemonIds)
+                    .ToList();
 
                 if (filters.FilterExceptWantedAndOwned == true)
                 {
@@ -45,7 +55,7 @@ public class PokemonService : IPokemonService
                 }
                 if (filters?.FilterExceptHasNoWantedCard == true)
                 {
-                    query = query.Where(p => wantedCards.Select(c => c.PokemonId).ToList().Contains(p.Id));
+                    query = query.Where(p => wantedCardPokemonIds.Contains(p.Id));
                 }
             }
         }
@@ -87,14 +97,26 @@ public class PokemonService : IPokemonService
     public async Task<Pokemon?> GetPokemonById(int id)
     {
         var pokemon = await _context.Pokemons
-            .Include(p => p.PokemonCards)
-                .ThenInclude(pc => pc.Set)
+            .Include(p => p.PokemonCardPokemons)
+                .ThenInclude(pcp => pcp.PokemonCard)
+                    .ThenInclude(pc => pc.Set)
             .FirstOrDefaultAsync(p => p.Id == id);
 
         if (pokemon != null)
         {
-            pokemon.PokemonCards = pokemon.PokemonCards.OrderBy(c => c.Set.ReleaseDate).ToList();
+            pokemon.PokemonCards = pokemon.PokemonCardPokemons
+                .Select(pcp =>
+                {
+                    var card = pcp.PokemonCard;
+                    card.PokemonId = pokemon.Id;
+                    return card;
+                })
+                .OrderBy(card => card.Set.ReleaseDate)
+                .ToList();
         }
+
+
         return pokemon;
     }
+
 }

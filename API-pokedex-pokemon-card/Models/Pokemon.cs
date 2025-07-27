@@ -9,7 +9,7 @@ public class Pokemon
     public required string Name { get; set; }
     public required int Generation { get; set; }
     public required string ImagePath { get; set; }
-    public List<PokemonCard> PokemonCards { get; set; } = new List<PokemonCard>();
+    public List<PokemonCardPokemon> PokemonCardPokemons { get; set; } = new();
     List<PokedexWantedPokemonCard> PokedexWantedPokemonCards { get; set; } = new List<PokedexWantedPokemonCard>();
     List<PokedexOwnedPokemonCard> PokedexOwnedPokemonCard { get; set; } = new List<PokedexOwnedPokemonCard>();
     public int? PreviousPokemonId { get; set; }
@@ -18,4 +18,6 @@ public class Pokemon
     // NON MAPPE
     [NotMapped]
     public bool IsWantedAndOwned { get; set; }
+    [NotMapped]
+    public List<PokemonCard> PokemonCards { get; set; } = new();
 }
