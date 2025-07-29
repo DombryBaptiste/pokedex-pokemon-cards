@@ -21,45 +21,51 @@ public class PokemonService : IPokemonService
     {
         IQueryable<Pokemon> query = _context.Pokemons.AsNoTracking();
 
-        List<int> bothWantedAndOwnedIds = new();
+        HashSet<int> bothWantedAndOwnedIds = new();
+        HashSet<int> wantedPokemonIds = new();
 
-        if (filters?.PokedexId != null)
+        if (filters?.PokedexId is int pokedexId)
         {
             var pokedex = await _context.Pokedexs
-            .Include(p => p.OwnedPokemonCards)
-                .ThenInclude(oPC => oPC.PokemonCard)
-            .Include(p => p.WantedPokemonCards)
-                .ThenInclude(oPC => oPC.PokemonCard)
-            .FirstOrDefaultAsync(p => p.Id == filters.PokedexId);
+                .Include(p => p.OwnedPokemonCards)
+                .Include(p => p.WantedPokemonCards)
+                .FirstOrDefaultAsync(p => p.Id == pokedexId);
 
             if (pokedex != null)
             {
-                var ownedCardPokemonIds = pokedex.OwnedPokemonCards
-                    .Select(o => o.PokemonId)
-                    .Distinct().ToList();
+                // Création des paires pour Owned et Wanted
+                var ownedCardPairs = pokedex.OwnedPokemonCards
+                .Select(o => new { o.PokemonId, o.PokemonCardId });
 
-                var wantedCardPokemonIds = pokedex.WantedPokemonCards
+                var wantedCardPairs = pokedex.WantedPokemonCards
+                    .Select(w => new { w.PokemonId, w.PokemonCardId });
+
+                // Intersection des paires
+                 bothWantedAndOwnedIds = ownedCardPairs
+                    .Intersect(wantedCardPairs)
+                    .Select(p => p.PokemonId)
+                    .ToHashSet();
+
+                // Liste des PokemonId recherchés
+                wantedPokemonIds = pokedex.WantedPokemonCards
                     .Select(w => w.PokemonId)
-                    .Distinct().ToList();
+                    .ToHashSet();
 
-                bothWantedAndOwnedIds = ownedCardPokemonIds
-                    .Intersect(wantedCardPokemonIds)
-                    .ToList();
-
+                // Appliquer les filtres
                 if (filters.FilterExceptWantedAndOwned == true)
                 {
                     query = query.Where(p => !bothWantedAndOwnedIds.Contains(p.Id));
                 }
-                if (filters?.FilterExceptHasNoWantedCard == true)
+
+                if (filters.FilterExceptHasNoWantedCard == true)
                 {
-                    query = query.Where(p => wantedCardPokemonIds.Contains(p.Id));
+                    query = query.Where(p => wantedPokemonIds.Contains(p.Id));
                 }
             }
         }
 
-        if (filters?.FilterGeneration != null)
+        if (filters?.FilterGeneration is int generation)
         {
-            var generation = (int)filters.FilterGeneration;
             query = query.Where(p => p.Generation == generation);
         }
         if (filters?.FilterHiddenActivated == false)
@@ -71,7 +77,8 @@ public class PokemonService : IPokemonService
                 }
             }
 
-        if (filters?.FilterName != null)
+        // Filtre par nom
+        if (!string.IsNullOrWhiteSpace(filters?.FilterName))
         {
             var filter = $"%{filters.FilterName}%";
             query = query.Where(p => EF.Functions.Like(p.Name, filter));
@@ -88,7 +95,6 @@ public class PokemonService : IPokemonService
                 IsWantedAndOwned = bothWantedAndOwnedIds.Contains(p.Id)
             })
             .ToListAsync();
-
     }
 
     public async Task<Pokemon?> GetPokemonById(int id)
