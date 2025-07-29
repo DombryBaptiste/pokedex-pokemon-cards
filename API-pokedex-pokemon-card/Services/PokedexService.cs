@@ -80,32 +80,48 @@ public class PokedexService : IPokedexService
 
     public async Task<PokedexCompletion> GetCompletionPokedex(int pokedexId, int userId)
     {
-        var pokemonIdHidden = _context.Users.FirstOrDefault(u => u.Id == userId)?.HiddenPokemonIds ?? [];
+        // Récupère les Pokémon masqués de l'utilisateur
+        var hiddenPokemonIds = await _context.Users
+            .Where(u => u.Id == userId)
+            .Select(u => u.HiddenPokemonIds)
+            .FirstOrDefaultAsync() ?? [];
 
-        var pokedex = await _context.Pokedexs
-            .Include(p => p.OwnedPokemonCards)
-            .Include(p => p.WantedPokemonCards)
-            .FirstOrDefaultAsync(p => p.Id == pokedexId);
+        // Récupère uniquement les données nécessaires du pokédex
+        var pokedexData = await _context.Pokedexs
+            .Where(p => p.Id == pokedexId)
+            .Select(p => new
+            {
+                WantedPairs = p.WantedPokemonCards
+                    .Select(w => new { w.PokemonId, w.PokemonCardId })
+                    .Distinct(),
+                OwnedPairs = p.OwnedPokemonCards
+                    .Select(o => new { o.PokemonId, o.PokemonCardId })
+                    .Distinct()
+            })
+            .FirstOrDefaultAsync();
 
-        if (pokedex == null)
+        if (pokedexData == null)
         {
             return new PokedexCompletion { MaxPokemon = 0, OwnedPokemonNb = 0 };
         }
 
-        var wantedPokemonCardIds = pokedex.WantedPokemonCards.Select(w => w.PokemonCardId).ToList();
+        // Nombre total de Pokémon visibles
+        var maxPokemon = await _context.Pokemons
+            .Where(p => !hiddenPokemonIds.Contains(p.Id))
+            .CountAsync();
 
-        var countPokemon = await _context.Pokemons.Where(p => !pokemonIdHidden.Contains(p.Id)).CountAsync();
+        // Intersection des paires (PokemonId + PokemonCardId)
+        var ownedWantedCount = pokedexData.OwnedPairs
+            .Intersect(pokedexData.WantedPairs)
+            .Count();
 
-        var ownedWantedCount = pokedex.OwnedPokemonCards.Count(card => wantedPokemonCardIds.Contains(card.PokemonCardId));
-
-        var pokedexCompletion = new PokedexCompletion
+        return new PokedexCompletion
         {
-            MaxPokemon = countPokemon,
+            MaxPokemon = maxPokemon,
             OwnedPokemonNb = ownedWantedCount
         };
-
-        return pokedexCompletion;
     }
+
 
     private static string GenerateShareCode(int length = 10)
     {
