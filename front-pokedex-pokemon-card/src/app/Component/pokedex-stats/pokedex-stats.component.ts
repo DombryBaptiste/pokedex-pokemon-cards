@@ -71,7 +71,7 @@ export class PokedexStatsComponent implements OnInit {
             tension: 0.1,
           },
           {
-            label: 'Prix d’achat',
+            label: 'Prix d’achat total',
             data: labels.map(() => stats.acquiredPriceTotal),
             fill: false,
             borderColor: 'rgba(255, 99, 132, 0.8)',
