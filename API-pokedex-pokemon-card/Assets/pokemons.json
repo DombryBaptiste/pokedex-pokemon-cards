@@ -6230,9 +6230,9 @@
   {
     "Id": 693,
     "PokedexId": 569,
-    "Name": "Miasmax Gigamax",
+    "Name": "Miasmax GMax",
     "Generation": 5,
-    "ImagePath": "/Pokemon/Gen5/569-gigamax.png",
+    "ImagePath": "/Pokemon/Gen5/569-gmax.png",
     "PreviousPokemonId": 692,
     "NextPokemonId": 694
   },
