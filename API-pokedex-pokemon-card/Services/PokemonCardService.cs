@@ -120,7 +120,34 @@ public class PokemonCardService : IPokemonCardService
 
         await _valuationService.UpdateTodaySum(existingCard.PokedexId);
         return existingCard;
-        
-
     }
+
+    public async Task<List<PokemonCard>> GetAllWantedButNotOwnedCardByPokedexId(int pokedexId)
+{
+    var allWanted = await _context.PokedexWantedPokemonCards
+        .AsNoTracking()
+        .Where(p => p.PokedexId == pokedexId)
+        .ToListAsync();
+
+    var allOwned = await _context.PokedexOwnedPokemonCards
+        .AsNoTracking()
+        .Where(p => p.PokedexId == pokedexId)
+        .ToListAsync();
+
+    var ownedCardIds = allOwned.Select(o => o.PokemonCardId).ToHashSet();
+
+    var notOwnedCardIds = allWanted
+        .Where(w => !ownedCardIds.Contains(w.PokemonCardId))
+        .Select(w => w.PokemonCardId)
+        .Distinct()
+        .ToList();
+
+    var notOwnedCards = await _context.PokemonCards
+        .AsNoTracking()
+        .Where(c => notOwnedCardIds.Contains(c.Id))
+        .ToListAsync();
+
+    return notOwnedCards;
+}
+
 }

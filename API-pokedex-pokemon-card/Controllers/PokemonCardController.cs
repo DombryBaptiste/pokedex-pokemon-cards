@@ -105,4 +105,18 @@ public class PokemonCardController : ControllerBase
             return BadRequest($"Une erreur est surevenue lors de la mise a jour de la cartes d'id : {cardId}.");
         }
     }
+
+    [HttpGet("wanted-but-no-owned-cards/{pokedexId}")]
+    public async Task<IActionResult> GetAllCardWantedAndNotOwned(int pokedexId)
+    {
+        try
+        {
+            var result = await _pokemonCardService.GetAllWantedButNotOwnedCardByPokedexId(pokedexId);
+            return Ok(result);
+        }
+        catch (Exception)
+        {
+            return BadRequest($"Une erreur est surevenue lors de la récupération des cartes du pokedex d'id : {pokedexId}.");
+        }
+    }
 }

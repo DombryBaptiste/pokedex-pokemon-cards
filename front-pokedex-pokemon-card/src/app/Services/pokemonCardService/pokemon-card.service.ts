@@ -57,6 +57,18 @@ export class PokemonCardService {
     );
   }
 
+  getCardsWantedButNotOwned(pokedexId: number): Observable<PokemonCard[]> {
+    return this.http.get<PokemonCard[]>(this.baseUrl + '/wanted-but-no-owned-cards/' + pokedexId).pipe(
+      map((cards: PokemonCard[]) => {
+        return cards.map(card => ({
+          ...card,
+          image: this.pokemonUtilsService.getFullImageUrl(card.image)
+        }));
+      })
+    );
+  }
+
+
   delete(pokedexId: number, pokemonId: number, type: PokemonCardTypeSelected) {
     return this.http.delete(this.baseUrl + '/' + pokedexId + '/' + pokemonId,
       { params: new HttpParams().set('type', type)}

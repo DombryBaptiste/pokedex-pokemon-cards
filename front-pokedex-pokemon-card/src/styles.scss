@@ -103,3 +103,14 @@ body {
   ));
 }
 
+@include mat.tabs-overrides((
+  active-focus-indicator-color: white,
+  active-focus-label-text-color: white,
+  active-hover-indicator-color: white,
+  active-hover-label-text-color: white,
+  inactive-focus-label-text-color: white,
+  inactive-hover-label-text-color: white,
+  inactive-label-text-color: white,
+  active-label-text-color: white,
+));
+
