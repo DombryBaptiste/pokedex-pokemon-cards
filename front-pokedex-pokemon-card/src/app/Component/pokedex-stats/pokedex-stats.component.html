@@ -1,8 +1,24 @@
-<div class="stats-container">
-   <h1 class="title">{{ pokedex?.name }}</h1>
-  <div>
-    <canvas #chartCanvas></canvas>
-  </div>
-</div>
+<mat-tab-group>
+  <mat-tab label="Prix">
+    <div class="stats-container">
+      <h1 class="title">{{ pokedex?.name }}</h1>
+      <div>
+        <canvas #chartCanvas></canvas>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="Liste Cartes">
+    <div class="cards">
+      @for(card of pokemoncards; track card.id)
+      {
+        <img 
+                    [src]="card.image" 
+                    class="image-carte" 
+                    loading="lazy">
+      }
+    </div>
+  </mat-tab>
+</mat-tab-group>
+
 
 

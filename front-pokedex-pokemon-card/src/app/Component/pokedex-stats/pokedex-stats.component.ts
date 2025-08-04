@@ -4,13 +4,16 @@ import { PokedexService } from '../../Services/pokedexService/pokedex.service';
 import { Pokedex, PokedexStats } from '../../Models/pokedex';
 import { Chart, registerables } from 'chart.js';
 import { CommonModule } from '@angular/common';
+import { MatTabsModule } from '@angular/material/tabs';
+import { PokemonCardService } from '../../Services/pokemonCardService/pokemon-card.service';
+import { PokemonCard } from '../../Models/pokemonCard';
 
 Chart.register(...registerables);
 
 @Component({
   selector: 'app-pokedex-stats',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatTabsModule],
   templateUrl: './pokedex-stats.component.html',
   styleUrls: ['./pokedex-stats.component.scss'],
 })
@@ -22,10 +25,12 @@ export class PokedexStatsComponent implements OnInit {
 
   pokedex: Pokedex | null = null;
   stats: PokedexStats | null = null;
+  pokemoncards: PokemonCard[] | null = null;
 
   constructor(
     private pokedexService: PokedexService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private pokemonCardService: PokemonCardService
   ) {}
 
   ngOnInit(): void {
@@ -39,7 +44,12 @@ export class PokedexStatsComponent implements OnInit {
       this.pokedexService.getById(this.pokedexId).subscribe((r) => {
         this.pokedex = r;
       });
+      this.pokemonCardService.getCardsWantedButNotOwned(this.pokedexId).subscribe((r) => {
+        this.pokemoncards = r;
+      })
     });
+    
+    
   }
 
   initChartData(stats: PokedexStats | null): void {
