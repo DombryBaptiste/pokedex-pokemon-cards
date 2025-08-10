@@ -8,13 +8,13 @@
     </div>
   </mat-tab>
   <mat-tab label="Liste Cartes">
-    <div class="cards">
-      @for(card of pokemoncards; track card.id; let i = $index) {
-      <div *ngIf="i === 0 || pokemoncards[i - 1].extension !== card.extension" class="extension-header">
-        {{ card.set.name }}
-      </div>
-      <img [src]="card.image" class="image-carte" loading="lazy">
-      }
-    </div>
+    <mat-icon
+        fontIcon="ios_share"
+        (click)="handleShareCode()"
+        class="share"
+        matTooltip="Copier le lien de partage"
+        tabindex="0"
+      ></mat-icon>
+    <app-shared-wanted-card></app-shared-wanted-card>
   </mat-tab>
 </mat-tab-group>
