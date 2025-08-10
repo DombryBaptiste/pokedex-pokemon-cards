@@ -144,7 +144,9 @@ public class PokemonCardService : IPokemonCardService
 
     var notOwnedCards = await _context.PokemonCards
         .AsNoTracking()
+        .Include(c => c.Set)
         .Where(c => notOwnedCardIds.Contains(c.Id))
+        .OrderBy(c => c.Set.ReleaseDate)
         .ToListAsync();
 
     return notOwnedCards;

@@ -25,7 +25,7 @@ export class PokedexStatsComponent implements OnInit {
 
   pokedex: Pokedex | null = null;
   stats: PokedexStats | null = null;
-  pokemoncards: PokemonCard[] | null = null;
+  pokemoncards: PokemonCard[] = [];
 
   constructor(
     private pokedexService: PokedexService,
