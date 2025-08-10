@@ -106,6 +106,7 @@ public class PokemonCardController : ControllerBase
         }
     }
 
+    [AllowAnonymous]
     [HttpGet("wanted-but-no-owned-cards/{pokedexId}")]
     public async Task<IActionResult> GetAllCardWantedAndNotOwned(int pokedexId)
     {

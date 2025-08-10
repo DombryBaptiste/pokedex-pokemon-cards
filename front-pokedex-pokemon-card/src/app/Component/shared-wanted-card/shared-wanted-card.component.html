@@ -1,0 +1,8 @@
+<div class="cards">
+      @for(card of pokemoncards; track card.id; let i = $index) {
+      <div *ngIf="i === 0 || pokemoncards[i - 1].extension !== card.extension" class="extension-header">
+        {{ card.set.name }}
+      </div>
+      <img [src]="card.image" class="image-carte" loading="lazy">
+      }
+</div>

@@ -1,20 +1,18 @@
+@use "variables" as *;
+
 .stats-container {
 
     .title {
         text-align: center;
     }
+
 }
 
-.cards
-{
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    img{
-        width: 150px;
-        height: 200px;
+.share {
+    margin: 10px;
+      color: black;
+      background-color: $yellow-button-bg;
+      padding: 5px;
+      border-radius: 5px;
+      cursor: pointer;
     }
-}

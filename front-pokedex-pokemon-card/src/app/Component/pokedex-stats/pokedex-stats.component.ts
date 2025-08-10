@@ -5,15 +5,17 @@ import { Pokedex, PokedexStats } from '../../Models/pokedex';
 import { Chart, registerables } from 'chart.js';
 import { CommonModule } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
-import { PokemonCardService } from '../../Services/pokemonCardService/pokemon-card.service';
-import { PokemonCard } from '../../Models/pokemonCard';
+import { SharedWantedCardComponent } from "../shared-wanted-card/shared-wanted-card.component";
+import { MatIconModule } from '@angular/material/icon';
+import { environment } from '../../../environments/environment';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 Chart.register(...registerables);
 
 @Component({
   selector: 'app-pokedex-stats',
   standalone: true,
-  imports: [CommonModule, MatTabsModule],
+  imports: [CommonModule, MatTabsModule, SharedWantedCardComponent, MatIconModule, MatTooltipModule],
   templateUrl: './pokedex-stats.component.html',
   styleUrls: ['./pokedex-stats.component.scss'],
 })
@@ -25,12 +27,10 @@ export class PokedexStatsComponent implements OnInit {
 
   pokedex: Pokedex | null = null;
   stats: PokedexStats | null = null;
-  pokemoncards: PokemonCard[] | null = null;
 
   constructor(
     private pokedexService: PokedexService,
     private route: ActivatedRoute,
-    private pokemonCardService: PokemonCardService
   ) {}
 
   ngOnInit(): void {
@@ -44,12 +44,14 @@ export class PokedexStatsComponent implements OnInit {
       this.pokedexService.getById(this.pokedexId).subscribe((r) => {
         this.pokedex = r;
       });
-      this.pokemonCardService.getCardsWantedButNotOwned(this.pokedexId).subscribe((r) => {
-        this.pokemoncards = r;
-      })
     });
-    
-    
+  }
+
+  handleShareCode()
+  {
+    navigator.clipboard.writeText(environment.appUrl + "pokedex/" + this.pokedexId + "/shared-wanted-cards").then(() => {
+        
+      })
   }
 
   initChartData(stats: PokedexStats | null): void {
