@@ -118,7 +118,6 @@ export class PokemonDetailsComponent implements OnInit {
 
   getIdExtensionCard(card: WantedPokemonCard | OwnedPokemonCard | undefined)
   {
-    console.log(card)
     if(card == undefined)
     {
       return "";

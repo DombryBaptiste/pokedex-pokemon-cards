@@ -79,4 +79,9 @@ export class PokemonCardService {
   {
     return this.http.put(this.baseUrl + '/owned-card/' + cardId, card);
   }
+
+  getAllOwned(pokedexId: number): Observable<OwnedPokemonCard[]>
+  {
+    return this.http.get<OwnedPokemonCard[]>(this.baseUrl + '/owned/' + pokedexId);
+  }
 }

@@ -7,5 +7,6 @@ public interface IPokemonCardService
     Task DeleteCard(int pokedexId, int pokemonId, PokemonCardTypeSelected type);
     Task<PokedexOwnedPokemonCard?> UpdateOwnedCard(int cardId, PokedexOwnedPokemonCard card);
     Task<List<PokemonCard>> GetAllWantedButNotOwnedCardByPokedexId(int pokedexId);
+    Task<List<PokedexOwnedPokemonCard>> GetAllOwnedCards(int pokedexId);
     
 }

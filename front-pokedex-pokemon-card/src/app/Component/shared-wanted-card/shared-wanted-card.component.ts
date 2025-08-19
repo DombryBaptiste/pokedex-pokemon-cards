@@ -3,10 +3,11 @@ import { PokemonCard } from '../../Models/pokemonCard';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { PokemonCardService } from '../../Services/pokemonCardService/pokemon-card.service';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-shared-wanted-card',
-  imports: [CommonModule],
+  imports: [CommonModule, MatTooltipModule],
   templateUrl: './shared-wanted-card.component.html',
   styleUrl: './shared-wanted-card.component.scss'
 })

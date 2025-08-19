@@ -43,7 +43,7 @@ public class PokemonCardController : ControllerBase
     }
 
     [HttpPost("{pokedexId}/set-owned-card")]
-    public async Task<IActionResult> SetOwnedCard(int pokedexId, [FromBody] PokemonCardDto dto)
+    public async Task<IActionResult> SetOwnedCard(int pokedexId, [FromBody] SetOwnedCardRequest dto)
     {
         try
         {
@@ -114,6 +114,20 @@ public class PokemonCardController : ControllerBase
         {
             var result = await _pokemonCardService.GetAllWantedButNotOwnedCardByPokedexId(pokedexId);
             return Ok(result);
+        }
+        catch (Exception)
+        {
+            return BadRequest($"Une erreur est surevenue lors de la récupération des cartes du pokedex d'id : {pokedexId}.");
+        }
+    }
+
+    [HttpGet("owned/{pokedexId}")]
+    public async Task<IActionResult> GetAllOwnedCards(int pokedexId)
+    {
+        try
+        {
+            var result = await _pokemonCardService.GetAllOwnedCards(pokedexId);
+            return Ok(_mapper.Map<List<OwnedPokemonCardDto>>(result));
         }
         catch (Exception)
         {
