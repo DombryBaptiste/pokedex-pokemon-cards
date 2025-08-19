@@ -9,13 +9,14 @@ import { SharedWantedCardComponent } from "../shared-wanted-card/shared-wanted-c
 import { MatIconModule } from '@angular/material/icon';
 import { environment } from '../../../environments/environment';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { HistoryComponent } from '../history/history.component';
 
 Chart.register(...registerables);
 
 @Component({
   selector: 'app-pokedex-stats',
   standalone: true,
-  imports: [CommonModule, MatTabsModule, SharedWantedCardComponent, MatIconModule, MatTooltipModule],
+  imports: [CommonModule, MatTabsModule, SharedWantedCardComponent, MatIconModule, MatTooltipModule, HistoryComponent],
   templateUrl: './pokedex-stats.component.html',
   styleUrls: ['./pokedex-stats.component.scss'],
 })

@@ -123,33 +123,44 @@ public class PokemonCardService : IPokemonCardService
     }
 
     public async Task<List<PokemonCard>> GetAllWantedButNotOwnedCardByPokedexId(int pokedexId)
-{
-    var allWanted = await _context.PokedexWantedPokemonCards
-        .AsNoTracking()
-        .Where(p => p.PokedexId == pokedexId)
-        .ToListAsync();
+    {
+        var allWanted = await _context.PokedexWantedPokemonCards
+            .AsNoTracking()
+            .Where(p => p.PokedexId == pokedexId)
+            .ToListAsync();
 
-    var allOwned = await _context.PokedexOwnedPokemonCards
-        .AsNoTracking()
-        .Where(p => p.PokedexId == pokedexId)
-        .ToListAsync();
+        var allOwned = await _context.PokedexOwnedPokemonCards
+            .AsNoTracking()
+            .Where(p => p.PokedexId == pokedexId)
+            .ToListAsync();
 
-    var ownedCardIds = allOwned.Select(o => o.PokemonCardId).ToHashSet();
+        var ownedCardIds = allOwned.Select(o => o.PokemonCardId).ToHashSet();
 
-    var notOwnedCardIds = allWanted
-        .Where(w => !ownedCardIds.Contains(w.PokemonCardId))
-        .Select(w => w.PokemonCardId)
-        .Distinct()
-        .ToList();
+        var notOwnedCardIds = allWanted
+            .Where(w => !ownedCardIds.Contains(w.PokemonCardId))
+            .Select(w => w.PokemonCardId)
+            .Distinct()
+            .ToList();
 
-    var notOwnedCards = await _context.PokemonCards
-        .AsNoTracking()
-        .Include(c => c.Set)
-        .Where(c => notOwnedCardIds.Contains(c.Id))
-        .OrderBy(c => c.Set.ReleaseDate)
-        .ToListAsync();
+        var notOwnedCards = await _context.PokemonCards
+            .AsNoTracking()
+            .Include(c => c.Set)
+            .Where(c => notOwnedCardIds.Contains(c.Id))
+            .OrderBy(c => c.Set.ReleaseDate)
+            .ToListAsync();
 
-    return notOwnedCards;
-}
+        return notOwnedCards;
+    }
 
+    public async Task<List<PokedexOwnedPokemonCard>> GetAllOwnedCards(int pokedexId)
+    {
+        var allOwned = await _context.PokedexOwnedPokemonCards
+            .Include(o => o.PokemonCard)
+            .AsNoTracking()
+            .Where(p => p.PokedexId == pokedexId)
+            .OrderByDescending(p => p.AcquiredDate)
+            .ToListAsync();
+
+        return allOwned;
+    }
 }

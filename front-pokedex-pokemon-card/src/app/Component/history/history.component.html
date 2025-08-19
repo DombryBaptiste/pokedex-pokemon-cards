@@ -1,0 +1,8 @@
+<div class="cards">
+    @for(ownedCard of ownedCards; track ownedCard.id; let i = $index) {
+        <div *ngIf="i === 0 || !isSameDate(ownedCards[i - 1].acquiredDate, ownedCard.acquiredDate)" class="extension-header">
+            {{ ownedCard.acquiredDate | date:'dd/MM/yyyy' }}
+        </div>
+        <img [src]="ownedCard.pokemonCard.image" class="image-carte" loading="lazy">
+    }
+</div>

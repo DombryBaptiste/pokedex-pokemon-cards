@@ -6,7 +6,7 @@ export interface OwnedPokemonCard{
     pokemonCardId: string;
     pokemonCard: PokemonCard;
     pokemonId: number;
-    addeddate: Date;
+    acquiredDate: Date;
     price: number;
     acquiredPrice: number
 }

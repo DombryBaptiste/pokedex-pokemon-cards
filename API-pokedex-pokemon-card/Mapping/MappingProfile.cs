@@ -10,5 +10,8 @@ public class MappingProfile : Profile
         CreateMap<UserUpdateDto, User>();
         CreateMap<User, UserDto>();
         CreateMap<PokemonCardOwnedUpdate, PokedexOwnedPokemonCard>();
+        CreateMap<PokemonCard, PokemonCardDto>()
+            .ForMember(dest => dest.Image, opt => opt.MapFrom<CardImageUrlResolver>());
+        CreateMap<PokedexOwnedPokemonCard, OwnedPokemonCardDto>();
     }
 }
