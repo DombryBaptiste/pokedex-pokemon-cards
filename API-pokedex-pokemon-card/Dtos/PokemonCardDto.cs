@@ -19,7 +19,7 @@ public class OwnedPokemonCardDto
     public PokemonCardDto PokemonCard { get; set; }
 }
 
-public class SetOwnedCardRequest
+public class SetCardRequest
 {
     public string CardId { get; set; }
     public int PokemonId { get; set; }

@@ -12,6 +12,7 @@ import { AuthService } from '../../Services/auth.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
+import { Device } from '../../Utils/device';
 
 @Component({
   selector: 'app-pick-pokemon-card',
@@ -25,7 +26,7 @@ export class PickPokemonCardComponent implements OnInit {
   title: string = '';
   PokemonCardTypeSelected = PokemonCardTypeSelected;
   sortedDesc = true;
-  isMobile = false;
+  isMobile = Device.isMobile();
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: InjectPokemonCardData,
@@ -39,7 +40,6 @@ export class PickPokemonCardComponent implements OnInit {
     } else {
       this.title = 'Carte Possédée';
     }
-    this.isMobile = window.innerWidth <= 768;
     this.handleSortImage();
   }
 
