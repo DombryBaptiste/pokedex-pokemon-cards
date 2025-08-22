@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { TopbarComponent } from "./Component/topbar/topbar.component";
 import { CommonModule } from '@angular/common';
 import { AuthService } from './Services/auth.service';

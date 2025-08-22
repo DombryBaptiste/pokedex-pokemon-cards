@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { PokemonCardService } from '../../Services/pokemonCardService/pokemon-card.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { Device } from '../../Utils/device';
 
 @Component({
   selector: 'app-shared-wanted-card',
@@ -14,7 +15,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 export class SharedWantedCardComponent implements OnInit {
   pokedexId: number = 0;
   pokemoncards: PokemonCard[] = [];
-
+  isMobile = Device.isMobile();
+  
   constructor(
     private route: ActivatedRoute,
     private pokemonCardService: PokemonCardService

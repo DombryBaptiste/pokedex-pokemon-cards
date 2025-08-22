@@ -29,7 +29,7 @@ public class PokemonCardController : ControllerBase
     }
 
     [HttpPost("{pokedexId}/set-wanted-card")]
-    public async Task<IActionResult> SetChaseCard(int pokedexId, [FromBody] PokemonCardDto dto)
+    public async Task<IActionResult> SetChaseCard(int pokedexId, [FromBody] SetCardRequest dto)
     {
         try
         {
@@ -43,7 +43,7 @@ public class PokemonCardController : ControllerBase
     }
 
     [HttpPost("{pokedexId}/set-owned-card")]
-    public async Task<IActionResult> SetOwnedCard(int pokedexId, [FromBody] SetOwnedCardRequest dto)
+    public async Task<IActionResult> SetOwnedCard(int pokedexId, [FromBody] SetCardRequest dto)
     {
         try
         {
