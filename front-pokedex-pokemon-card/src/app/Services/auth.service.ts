@@ -68,14 +68,29 @@ export class AuthService {
 
 
 
-  private initializeGoogle() {
-    window.onload = () => {
-      google.accounts.id.initialize({
-        client_id: environment.googleClientId,
-        callback: (response: any) => this.handleCredentialResponse(response)
-      });
-    };
+ private initializeGoogle() {
+  const init = () => {
+    // IMPORTANT: options Safari/ITP + FedCM
+    google.accounts.id.initialize({
+      client_id: environment.googleClientId,
+      callback: (response: any) => this.handleCredentialResponse(response),
+      itp_support: true,          
+      use_fedcm_for_prompt: true,
+      auto_select: false,
+      cancel_on_tap_outside: false,
+      context: 'signin'
+    });
+  };
+
+  if (typeof google !== 'undefined' && google?.accounts?.id) {
+    init();
+    return;
   }
+
+  (window as any).onGoogleLibraryLoad = () => {
+    init();
+  };
+}
 
   loginWithGoogle() {
     google.accounts.id.prompt((notification: any) => {
