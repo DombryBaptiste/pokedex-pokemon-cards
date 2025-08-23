@@ -3,7 +3,7 @@
         <h1>Bienvenue dans tes Pokédex de Cartes</h1>
         <p>Répertorie ta collection Pokémon sous forme d'un pokédex</p>
         <p>Tu n'es pas encore connecté ?</p>
-        <p>Connecte toi : <button mat-flat-button class="connect-button" (click)="handleConnexion()" >Connexion</button></p>
+        <div id="gsi-btn" #gsiBtn></div>
     } @else {
         <h1 class="welcome">Bienvenue 
             <span matTooltip="Modifier le profil" (click)="handleProfileClick()" class="pseudo">{{ titlePseudo }}</span>

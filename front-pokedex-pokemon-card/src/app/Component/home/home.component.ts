@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import { UserConnect } from '../../Models/userConnect';
 import { AuthService } from '../../Services/auth.service';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit {
+  @ViewChild('gsiBtn', { static: false }) gsiBtn!: ElementRef<HTMLDivElement>;
 
   currentUser: UserConnect | null = null;
 
@@ -24,12 +25,22 @@ export class HomeComponent implements OnInit {
     this.authService.user$.subscribe((u) => {
       this.currentUser = u
       this.titlePseudo = u?.pseudo ? u.pseudo : u?.email ?? ""
-  })
+    });
   }
 
-  handleConnexion()
-  {
-    this.authService.loginWithGoogle();
+  ngAfterViewInit(): void {
+    const tryRender = () => {
+      if (this.gsiBtn?.nativeElement) {
+        this.authService.renderGoogleButton(this.gsiBtn.nativeElement);
+      }
+    };
+
+    const g = (window as any).google;
+    if (g?.accounts?.id) {
+      tryRender();
+    } else {
+      (window as any).onGoogleLibraryLoad = tryRender;
+    }
   }
 
   handleProfileClick()
