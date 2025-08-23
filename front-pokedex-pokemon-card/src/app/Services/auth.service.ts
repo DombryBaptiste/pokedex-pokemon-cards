@@ -93,8 +93,7 @@ export class AuthService {
 }
 
   loginWithGoogle() {
-    google.accounts.id.prompt((notification: any) => {
-    });
+    google.accounts.id.prompt();
   }
 
   getCurrentUser() : Observable<UserConnect> {
