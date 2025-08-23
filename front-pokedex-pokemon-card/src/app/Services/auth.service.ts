@@ -5,14 +5,11 @@ import { HttpClient } from '@angular/common/http';
 import { TokenConnect } from '../Models/tokenConnect';
 import { UserConnect } from '../Models/userConnect';
 
-declare const google: any;
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-  
-  baseUrl = environment.apiUrl + '/Auth'
+  baseUrl = environment.apiUrl + '/Auth';
 
   public userToken$ = new BehaviorSubject<string | null>(null);
   public user$ = new BehaviorSubject<UserConnect | null>(null);
@@ -22,10 +19,25 @@ export class AuthService {
     this.initializeGoogle();
   }
 
+  renderGoogleButton(container: HTMLElement) {
+    const g = (window as any).google;
+    if (!g?.accounts?.id || !container) return;
+
+    g.accounts.id.renderButton(container, {
+      type: 'standard',
+      theme: 'filled_blue',
+      size: 'large',
+      text: 'signin_with',
+      shape: 'rectangular',
+    });
+  }
+
   getToken(): string | null {
     const currentToken = this.userToken$.getValue();
     if (currentToken) return currentToken;
-    const storedToken = localStorage.getItem(environment.localStorageTokenString);
+    const storedToken = localStorage.getItem(
+      environment.localStorageTokenString
+    );
     if (storedToken) {
       this.userToken$.next(storedToken);
       return storedToken;
@@ -34,89 +46,41 @@ export class AuthService {
   }
 
   autoLogin() {
-    const storedToken = localStorage.getItem(environment.localStorageTokenString);
-    if(storedToken)
-    {
+    const storedToken = localStorage.getItem(
+      environment.localStorageTokenString
+    );
+    if (storedToken) {
       this.userToken$.next(storedToken);
       this.getCurrentUser().subscribe({
-        next: user => {
+        next: (user) => {
           this.user$.next(user);
           this.user = user;
         },
-        error: err => {
+        error: (err) => {
           localStorage.removeItem(environment.localStorageTokenString);
           this.user$.next(null);
           this.user = null;
-        }
+        },
       });
     }
   }
 
   refreshCurrentUser() {
     this.getCurrentUser().subscribe({
-        next: user => {
-          this.user$.next(user);
-          this.user = user;
-        },
-        error: err => {
-          localStorage.removeItem(environment.localStorageTokenString);
-          this.user$.next(null);
-          this.user = null;
-        }
-      });
-  }
-
-
-
- private initializeGoogle() {
-  const init = () => {
-    // IMPORTANT: options Safari/ITP + FedCM
-    google.accounts.id.initialize({
-      client_id: environment.googleClientId,
-      callback: (response: any) => this.handleCredentialResponse(response),
-      itp_support: true,          
-      use_fedcm_for_prompt: true,
-      auto_select: false,
-      cancel_on_tap_outside: false,
-      context: 'signin'
+      next: (user) => {
+        this.user$.next(user);
+        this.user = user;
+      },
+      error: (err) => {
+        localStorage.removeItem(environment.localStorageTokenString);
+        this.user$.next(null);
+        this.user = null;
+      },
     });
-  };
-
-  if (typeof google !== 'undefined' && google?.accounts?.id) {
-    init();
-    return;
   }
 
-  (window as any).onGoogleLibraryLoad = () => {
-    init();
-  };
-}
-
-  loginWithGoogle() {
-    google.accounts.id.prompt();
-  }
-
-  getCurrentUser() : Observable<UserConnect> {
+  getCurrentUser(): Observable<UserConnect> {
     return this.http.get<UserConnect>(this.baseUrl + '/current-user');
-  }
-
-  private handleCredentialResponse(response: any) {
-    this.ngZone.run(() => {
-      const credential = response.credential;
-      this.userToken$.next(credential);
-
-      let tokenPayload: TokenConnect = {
-        token: credential
-      };
-      this.http.post<TokenConnect>(this.baseUrl + '/google-login', tokenPayload).subscribe(r => {
-        this.userToken$.next(r.token)
-        localStorage.setItem(environment.localStorageTokenString, r.token);
-        this.getCurrentUser().subscribe(user => { 
-          this.user$.next(user);
-          this.user = user;
-        });
-      })
-    });
   }
 
   logout() {
@@ -124,5 +88,36 @@ export class AuthService {
     this.user$.next(null);
     this.user = null;
     localStorage.removeItem(environment.localStorageTokenString);
+  }
+
+  private initializeGoogle() {
+    const g = (window as any).google;
+    if (!g?.accounts?.id) return;
+
+    g.accounts.id.initialize({
+      client_id: environment.googleClientId,
+      callback: (response: any) => this.handleCredentialResponse(response),
+      itp_support: true,
+      use_fedcm_for_prompt: true,
+    });
+  }
+
+  private handleCredentialResponse(response: any) {
+    this.ngZone.run(() => {
+      const credential = response.credential;
+      this.userToken$.next(credential);
+
+      const tokenPayload: TokenConnect = { token: credential };
+      this.http
+        .post<TokenConnect>(this.baseUrl + '/google-login', tokenPayload)
+        .subscribe((r) => {
+          this.userToken$.next(r.token);
+          localStorage.setItem(environment.localStorageTokenString, r.token);
+          this.getCurrentUser().subscribe((user) => {
+            this.user$.next(user);
+            this.user = user;
+          });
+        });
+    });
   }
 }
