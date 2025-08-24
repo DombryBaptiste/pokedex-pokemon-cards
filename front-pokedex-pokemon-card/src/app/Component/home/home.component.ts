@@ -29,7 +29,9 @@ export class HomeComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    const tryRender = () => {
+    const onLoaded = () => {
+      this.authService.ensureGoogleInitialized();
+
       if (this.gsiBtn?.nativeElement) {
         this.authService.renderGoogleButton(this.gsiBtn.nativeElement);
       }
@@ -37,11 +39,12 @@ export class HomeComponent implements OnInit {
 
     const g = (window as any).google;
     if (g?.accounts?.id) {
-      tryRender();
+      onLoaded();
     } else {
-      (window as any).onGoogleLibraryLoad = tryRender;
+      (window as any).onGoogleLibraryLoad = onLoaded;
     }
   }
+
 
   handleProfileClick()
   {
