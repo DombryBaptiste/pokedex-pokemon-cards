@@ -11,17 +11,36 @@ import { UserConnect } from '../Models/userConnect';
 export class AuthService {
   baseUrl = environment.apiUrl + '/Auth';
 
+  private _gisInitialized = false;
+
   public userToken$ = new BehaviorSubject<string | null>(null);
   public user$ = new BehaviorSubject<UserConnect | null>(null);
   public user: UserConnect | null = null;
 
-  constructor(private ngZone: NgZone, private http: HttpClient) {
-    this.initializeGoogle();
+  constructor(private ngZone: NgZone, private http: HttpClient) { }
+
+  ensureGoogleInitialized(): boolean {
+    const g = (window as any).google;
+    if (!g?.accounts?.id) return false; // script pas encore chargé
+
+    if (this._gisInitialized) return true;
+
+    g.accounts.id.initialize({
+      client_id: environment.googleClientId,
+      callback: (response: any) => this.handleCredentialResponse(response),
+      itp_support: true,
+      use_fedcm_for_prompt: true,
+    });
+
+    this._gisInitialized = true;
+    return true;
   }
 
   renderGoogleButton(container: HTMLElement) {
     const g = (window as any).google;
     if (!g?.accounts?.id || !container) return;
+
+    if (!this._gisInitialized) this.ensureGoogleInitialized();
 
     g.accounts.id.renderButton(container, {
       type: 'standard',
@@ -88,18 +107,6 @@ export class AuthService {
     this.user$.next(null);
     this.user = null;
     localStorage.removeItem(environment.localStorageTokenString);
-  }
-
-  private initializeGoogle() {
-    const g = (window as any).google;
-    if (!g?.accounts?.id) return;
-
-    g.accounts.id.initialize({
-      client_id: environment.googleClientId,
-      callback: (response: any) => this.handleCredentialResponse(response),
-      itp_support: true,
-      use_fedcm_for_prompt: true,
-    });
   }
 
   private handleCredentialResponse(response: any) {
