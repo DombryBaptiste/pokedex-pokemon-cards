@@ -21,7 +21,7 @@ export class AuthService {
 
   ensureGoogleInitialized(): boolean {
     const g = (window as any).google;
-    if (!g?.accounts?.id) return false; // script pas encore chargé
+    if (!g?.accounts?.id) return false;
 
     if (this._gisInitialized) return true;
 
@@ -36,19 +36,13 @@ export class AuthService {
     return true;
   }
 
-  renderGoogleButton(container: HTMLElement) {
+  loginWithGoogle() {
     const g = (window as any).google;
-    if (!g?.accounts?.id || !container) return;
+    if (!g?.accounts?.id) return;
 
     if (!this._gisInitialized) this.ensureGoogleInitialized();
 
-    g.accounts.id.renderButton(container, {
-      type: 'standard',
-      theme: 'filled_blue',
-      size: 'large',
-      text: 'signin_with',
-      shape: 'rectangular',
-    });
+    g.accounts.id.prompt();
   }
 
   getToken(): string | null {
