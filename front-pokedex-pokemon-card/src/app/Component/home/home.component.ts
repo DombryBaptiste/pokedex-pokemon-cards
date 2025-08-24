@@ -28,21 +28,8 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  ngAfterViewInit(): void {
-    const onLoaded = () => {
-      this.authService.ensureGoogleInitialized();
-
-      if (this.gsiBtn?.nativeElement) {
-        this.authService.renderGoogleButton(this.gsiBtn.nativeElement);
-      }
-    };
-
-    const g = (window as any).google;
-    if (g?.accounts?.id) {
-      onLoaded();
-    } else {
-      (window as any).onGoogleLibraryLoad = onLoaded;
-    }
+  handleConnexion() {
+    this.authService.loginWithGoogle();
   }
 
 
