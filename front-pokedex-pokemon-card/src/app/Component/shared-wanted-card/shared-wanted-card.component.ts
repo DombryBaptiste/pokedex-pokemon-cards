@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { PokemonCardService } from '../../Services/pokemonCardService/pokemon-card.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Device } from '../../Utils/device';
+import { PokemonUtilsService } from '../../Services/pokemonUtilsService/pokemon-utils.service';
 
 @Component({
   selector: 'app-shared-wanted-card',
@@ -19,7 +20,8 @@ export class SharedWantedCardComponent implements OnInit {
   
   constructor(
     private route: ActivatedRoute,
-    private pokemonCardService: PokemonCardService
+    private pokemonCardService: PokemonCardService,
+    private pokemonUtilsService: PokemonUtilsService
   ) { }
 
   ngOnInit(): void {
@@ -30,7 +32,11 @@ export class SharedWantedCardComponent implements OnInit {
         this.pokemoncards = r;
       })
     });
-    
-    
   }
+
+  handleClick(card: PokemonCard): void {
+    const url = this.pokemonUtilsService.getCardMarketUrl(card.name, card.set.cardMarketPrefix, card.localId);
+    
+    window.open(url, '_blank', 'noopener,noreferrer');
+  } 
 }
