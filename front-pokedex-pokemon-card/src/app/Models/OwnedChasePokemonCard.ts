@@ -8,7 +8,8 @@ export interface OwnedPokemonCard{
     pokemonId: number;
     acquiredDate: Date;
     price: number;
-    acquiredPrice: number
+    acquiredPrice: number;
+    state: CardState;
 }
 
 export interface WantedPokemonCard{
@@ -23,4 +24,13 @@ export interface WantedPokemonCard{
 export interface OwnedWantedPokemonCard {
     ownedPokemonCard: OwnedPokemonCard;
     wantedPokemonCard: WantedPokemonCard;
+}
+
+export enum CardState {
+    NM,
+    EX,
+    GD,
+    LP,
+    PL,
+    PO
 }

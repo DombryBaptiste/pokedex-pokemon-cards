@@ -65,7 +65,8 @@ public class PokemonCardService : IPokemonCardService
                 PokedexId = pokedexId,
                 PokemonCardId = cardId,
                 AcquiredDate = DateTime.UtcNow,
-                PokemonId = pokemonId
+                PokemonId = pokemonId,
+                State = CardState.NM,
             };
             _context.PokedexOwnedPokemonCards.Add(newCard);
         }
@@ -115,6 +116,8 @@ public class PokemonCardService : IPokemonCardService
 
         existingCard.Price = card.Price;
         existingCard.AcquiredPrice = card.AcquiredPrice;
+        existingCard.State = card.State;
+        existingCard.AcquiredDate = card.AcquiredDate;
 
         await _context.SaveChangesAsync();
 
