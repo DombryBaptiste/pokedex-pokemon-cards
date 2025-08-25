@@ -105,8 +105,34 @@
                 object-fit: contain;
             }
 
-            .legend {
-                font-weight: bold;
+            .legend-container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                width: 100%;
+
+                .legend {
+                    font-weight: bold;
+                    text-align: center;
+                    flex: 1
+                }
+
+                .logo-btn {
+                    all: unset;
+                    cursor: pointer;
+                    position: absolute;
+                    right: 0;
+                    display: flex;
+                    align-items: center;
+                }
+
+                .logo
+                {
+                    position: absolute;
+                    right: 0;
+                    height: 20px;
+                }
             }
         }
 
@@ -129,8 +155,34 @@
                 height: 100%;
             }
 
-            .legend {
-                font-weight: bold;
+            .legend-container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                width: 100%;
+
+                .legend {
+                    font-weight: bold;
+                    text-align: center;
+                    flex: 1
+                }
+
+                .logo-btn {
+                    all: unset;
+                    cursor: pointer;
+                    position: absolute;
+                    right: 0;
+                    display: flex;
+                    align-items: center;
+                }
+
+                .logo
+                {
+                    position: absolute;
+                    right: 0;
+                    height: 20px;
+                }
             }
 
         }

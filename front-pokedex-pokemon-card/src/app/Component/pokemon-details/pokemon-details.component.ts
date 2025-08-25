@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { UserService } from '../../Services/userService/user.service';
 import { AuthService } from '../../Services/auth.service';
 import { PokemonCardService } from '../../Services/pokemonCardService/pokemon-card.service';
-import { MatDialog, MatDialogModule, MatDialogContent } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { PickPokemonCardComponent } from '../pick-pokemon-card/pick-pokemon-card.component';
 import { InjectPokemonCardData, PokemonCard, PokemonCardTypeSelected } from '../../Models/pokemonCard';
 import { OwnedPokemonCard, OwnedWantedPokemonCard, WantedPokemonCard } from '../../Models/OwnedChasePokemonCard';
@@ -19,10 +19,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SnackbarService } from '../../Services/snackbarService/snackbar.service';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-pokemon-details',
-  imports: [CommonModule ,MatIconModule, MatButtonModule, MatCheckboxModule, FormsModule, MatDialogModule, MatInputModule, FormsModule, MatFormFieldModule, MatSnackBarModule],
+  imports: [CommonModule ,MatIconModule, MatButtonModule, MatCheckboxModule, FormsModule, MatDialogModule, MatInputModule, FormsModule, MatFormFieldModule, MatSnackBarModule, MatTooltipModule],
   templateUrl: './pokemon-details.component.html',
   styleUrl: './pokemon-details.component.scss'
 })
@@ -123,6 +124,14 @@ export class PokemonDetailsComponent implements OnInit {
       return "";
     }
     return  card.pokemonCard.set.name + " " + card.pokemonCard.localId
+  }
+
+  handleClickCM(card: PokemonCard)
+  {
+    if (!card) return;
+
+    const url = this.pokemonUtilsService.getCardMarketUrl(card.name, card.set.cardMarketPrefix, card.localId);
+    window.open(url, '_blank', 'noopener,noreferrer');
   }
 
   private initData()

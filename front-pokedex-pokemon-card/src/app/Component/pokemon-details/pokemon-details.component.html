@@ -53,7 +53,16 @@
                 } @else {
                     <mat-icon fontIcon="add"></mat-icon>
                 }
-                <span class="legend">Carte possédée</span>
+                
+                <div class="legend-container">
+                    <span class="legend">Carte possédée</span>
+                    @if(cardsSelected?.ownedPokemonCard)
+                    {
+                        <button type="button" class="logo-btn" matTooltip="Aller vers Cardmarket" (click)="$event.stopPropagation(); handleClickCM(cardsSelected!.ownedPokemonCard!.pokemonCard)">
+                            <img src="assets/CMLogo.png" class="logo" >
+                        </button>
+                    }
+                </div>
             </div>
 
             <div class="chase-card" (click)="openListCard(PokemonCardTypeSelected.Wanted)">
@@ -64,7 +73,16 @@
                 } @else {
                     <mat-icon fontIcon="add"></mat-icon>
                 }
-                <span class="legend">Carte voulue</span>
+                <div class="legend-container">
+                    <span class="legend">Carte voulue</span>
+                    @if(cardsSelected?.wantedPokemonCard)
+                    {
+                        <button type="button" class="logo-btn" matTooltip="Aller vers Cardmarket" (click)="$event.stopPropagation(); handleClickCM(cardsSelected!.wantedPokemonCard!.pokemonCard)">
+                            <img src="assets/CMLogo.png" class="logo">
+                        </button>
+                    }
+                </div>
+                
             </div>
         </div>
         @if(cardsSelected != null && cardsSelected.ownedPokemonCard != null)
