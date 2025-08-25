@@ -17,4 +17,14 @@ public class PokedexOwnedPokemonCard
     public float AcquiredPrice { get; set; }
 
     public DateTime AcquiredDate { get; set; }
+    public CardState State { get; set; }
+}
+
+public enum CardState {
+    NM,
+    EX,
+    GD,
+    LP,
+    PL,
+    PO
 }

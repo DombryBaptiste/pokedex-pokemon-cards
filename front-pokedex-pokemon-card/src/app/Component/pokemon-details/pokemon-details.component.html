@@ -88,6 +88,28 @@
         @if(cardsSelected != null && cardsSelected.ownedPokemonCard != null)
         {
             <div class="form-price">
+
+                <mat-form-field class="price-form-field">
+                    <mat-label>Etat de la carte</mat-label>
+                    <mat-select [(value)]="cardsSelected.ownedPokemonCard.state">
+                        @for (state of states; track state)
+                        {
+                            <mat-option [value]="state" >
+                                <div [ngClass]="['badge', stateToLabel(state)]">
+                                    {{ stateToLabel(state) }}
+                                </div>
+                            </mat-option>
+                        }
+
+                        <mat-select-trigger>
+                            
+                            <div [ngClass]="['badge-selected', stateToLabel(cardsSelected!.ownedPokemonCard!.state)]">
+                                {{ stateToLabel(cardsSelected!.ownedPokemonCard!.state) || '—' }}
+                            </div>
+                        </mat-select-trigger>
+                    </mat-select>
+                </mat-form-field>
+
                 <mat-form-field class="price-form-field">
                     <mat-label>Prix D'achat</mat-label>
                     <input matInput type="number" step="0.01" min="0" [(ngModel)]="cardsSelected.ownedPokemonCard.acquiredPrice" [disabled]="isReadOnly">
@@ -98,8 +120,15 @@
                     <input matInput type="number" step="0.01" min="0" [(ngModel)]="cardsSelected.ownedPokemonCard.price" [disabled]="isReadOnly">
                 </mat-form-field>
 
+                <mat-form-field class="price-form-field">
+                    <mat-label>Date d'achat</mat-label>
+                    <input matInput [matDatepicker]="picker" [(ngModel)]="cardsSelected.ownedPokemonCard.acquiredDate" [disabled]="isReadOnly">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+
                 @if(!isReadOnly){
-                    <mat-icon fontIcon="save" class="icon" (click)="handleSavePrice()"></mat-icon>
+                    <mat-icon fontIcon="save" class="icon" (click)="handleSave()"></mat-icon>
                 }
                 
             </div>

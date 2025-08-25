@@ -2,14 +2,15 @@
 @use "variables" as *;
 @use '@angular/material' as mat;
 
-html { 
+html {
   min-height: 100%;
   background: linear-gradient(135deg, #1a1c23, #0f1015);
 }
-body { 
-  margin: 0 auto; 
+
+body {
+  margin: 0 auto;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: $app-bg-color; 
+  background-color: $app-bg-color;
   color: white;
   max-width: $body-max-width;
   padding-bottom: 30px;
@@ -18,53 +19,41 @@ body {
 
 
 .connect-button {
-    @include mat.button-overrides((
-      filled-container-color: $yellow-button-bg,
-      filled-label-text-color: black
-  ));
+  @include mat.button-overrides((filled-container-color: $yellow-button-bg,
+      filled-label-text-color: black));
 }
 
 .suppress-button {
-  @include mat.button-overrides((
-      filled-container-color: $supr-button-color,
-      filled-label-text-color: black
-  ));
+  @include mat.button-overrides((filled-container-color: $supr-button-color,
+      filled-label-text-color: black));
 }
 
 .classic-button {
   cursor: pointer;
-  @include mat.button-overrides((
-      filled-container-color: $card-color,
-      filled-label-text-color: white
-  ));
+  @include mat.button-overrides((filled-container-color: $card-color,
+      filled-label-text-color: white));
 }
 
 
 .icon-white {
-  @include mat.icon-overrides((
-    color: white,
-  ));
+  @include mat.icon-overrides((color: white,
+    ));
 }
 
 .submenu {
-  @include mat.menu-overrides((
-    container-color: $sidebar-bg-color,
-  ));
+  @include mat.menu-overrides((container-color: $sidebar-bg-color,
+    ));
 }
 
 .classic-checkbox {
-  @include mat.checkbox-overrides((
-    label-text-color: white
-  ));
+  @include mat.checkbox-overrides((label-text-color: white));
 }
 
 .classic-slide-toggle {
-  @include mat.slide-toggle-overrides((
-    label-text-color: white,
-    selected-focus-track-color: $yellow-button-bg,
-    selected-hover-track-color: $yellow-button-bg,
-    selected-track-color: $yellow-button-bg
-  ));
+  @include mat.slide-toggle-overrides((label-text-color: white,
+      selected-focus-track-color: $yellow-button-bg,
+      selected-hover-track-color: $yellow-button-bg,
+      selected-track-color: $yellow-button-bg ));
 }
 
 .classic-dialog {
@@ -73,44 +62,77 @@ body {
   max-width: $dialog-max-width;
   margin: 0 auto !important;
 
-  @include mat.dialog-overrides((
-    container-color: $app-bg-color
-  ));
+  @include mat.dialog-overrides((container-color: $app-bg-color ));
 }
 
 
 .snackbar-success {
-  @include mat.snack-bar-overrides((
-    container-color: #4caf50,
-    button-color: black,
-    supporting-text-color: #fff
-  ));
+  @include mat.snack-bar-overrides((container-color: #4caf50,
+      button-color: black,
+      supporting-text-color: #fff));
 }
 
 .snackbar-error {
-  @include mat.snack-bar-overrides((
-    container-color: #f44336,
-    button-color: black,
-    supporting-text-color: #fff
-  ));
+  @include mat.snack-bar-overrides((container-color: #f44336,
+      button-color: black,
+      supporting-text-color: #fff));
 }
 
 .snackbar-info {
-  @include mat.snack-bar-overrides((
-    container-color: #2196f3,
-    button-color: black,
-    supporting-text-color: #fff
-  ));
+  @include mat.snack-bar-overrides((container-color: #2196f3,
+      button-color: black,
+      supporting-text-color: #fff));
 }
 
-@include mat.tabs-overrides((
-  active-focus-indicator-color: white,
-  active-focus-label-text-color: white,
-  active-hover-indicator-color: white,
-  active-hover-label-text-color: white,
-  inactive-focus-label-text-color: white,
-  inactive-hover-label-text-color: white,
-  inactive-label-text-color: white,
-  active-label-text-color: white,
-));
+@include mat.tabs-overrides((active-focus-indicator-color: white,
+    active-focus-label-text-color: white,
+    active-hover-indicator-color: white,
+    active-hover-label-text-color: white,
+    inactive-focus-label-text-color: white,
+    inactive-hover-label-text-color: white,
+    inactive-label-text-color: white,
+    active-label-text-color: white,
+  ));
+
+.badge {
+  border-radius: 4rem;
+  padding: 3px 10px;
+  color: white;
+}
+
+.badge-selected
+{
+  border-radius: 4rem;
+  width: 50%;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
+
+.NM {
+  background-color: rgba(40,167,69,.9);
+}
+
+.EX {
+  background-color: #82891e;
+}
+
+.GD {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.LP {
+  background-color: rgba(253,126,20,.9);
+}
+
+.PL {
+  background-color: rgba(220,53,69,.75);
+}
+
+.PO {
+  background-color: #dc3545;
+}
+
+
 
