@@ -4,4 +4,5 @@ export interface Sets
     setId: string;
     name: string;
     releaseDate: Date;
+    cardMarketPrefix: string;
 }

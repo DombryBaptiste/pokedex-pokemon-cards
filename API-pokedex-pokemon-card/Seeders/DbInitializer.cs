@@ -44,7 +44,13 @@ public static class DbInitializer
     {
         var jsonFilePath = Path.Combine("Assets", "sets.json");
         var json = ReadFile(jsonFilePath);
-        var setsFromFile = JsonSerializer.Deserialize<List<Sets>>(json);
+
+        var options = new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        };
+
+        var setsFromFile = JsonSerializer.Deserialize<List<Sets>>(json, options);
 
         if (setsFromFile == null)
         {
@@ -52,20 +58,44 @@ public static class DbInitializer
             return;
         }
 
-        var existingSetId = context.Sets.Select(s => s.SetId).ToList();
-        var newSet = setsFromFile
-            .Where(p => !existingSetId.Contains(p.SetId))
-            .ToList();
+        var existingById = context.Sets.ToDictionary(s => s.SetId);
+        var toInsert = new List<Sets>();
+        var updatedCount = 0;
 
-        if (newSet.Any())
+        foreach (var incoming in setsFromFile)
         {
-            context.Sets.AddRange(newSet);
+            if (existingById.TryGetValue(incoming.SetId, out var existing))
+            {
+                var entry = context.Entry(existing);
+
+                entry.CurrentValues.SetValues(new
+                {
+                    incoming.Name,
+                    incoming.ReleaseDate,
+                    incoming.CardMarketPrefix
+                });
+
+                
+                if (entry.Properties.Any(p => p.IsModified))
+                    updatedCount++;
+            }
+            else
+            {
+                toInsert.Add(incoming);
+            }
+        }
+
+        if (toInsert.Count > 0)
+            context.Sets.AddRange(toInsert);
+
+        if (updatedCount > 0 || toInsert.Count > 0)
+        {
             context.SaveChanges();
-            Console.WriteLine($"{newSet.Count} nouveau(x) Sets ajouté(s).");
+            Console.WriteLine($"{toInsert.Count} inséré(s), {updatedCount} mis à jour.");
         }
         else
         {
-            Console.WriteLine("Aucun nouveau Sets à ajouter.");
+            Console.WriteLine("Aucun changement à appliquer.");
         }
     }
 
