@@ -13,7 +13,7 @@ public class OwnedPokemonCardDto
     public int PokedexId { get; set; }
     public string PokemonCardId { get; set; }
     public int PokemonId { get; set; }
-    public DateTime AcquiredDate { get; set; }
+    public DateOnly AcquiredDate { get; set; }
     public decimal? Price { get; set; }
     public decimal? AcquiredPrice { get; set; }
     public PokemonCardDto PokemonCard { get; set; }
