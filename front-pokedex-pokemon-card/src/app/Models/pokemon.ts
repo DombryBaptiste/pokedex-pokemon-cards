@@ -10,4 +10,6 @@ export interface Pokemon {
     isWantedAndOwned: boolean;
     previousPokemonId: number;
     nextPokemonId: number;
+    isHidden: boolean;
+    formatPokemonId: number;
 }

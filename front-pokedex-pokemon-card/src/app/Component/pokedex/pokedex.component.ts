@@ -15,11 +15,11 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { debounceTime, Subject, take } from 'rxjs';
 import { PokedexScrollService } from '../../Services/PokedexScrollService/pokedex-scroll.service';
-
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-pokedex',
-  imports: [MatButtonModule, MatSlideToggleModule, FormsModule, MatIconModule, MatProgressBarModule, MatTooltipModule, MatTooltipModule],
+  imports: [MatButtonModule, MatSlideToggleModule, FormsModule, MatIconModule, MatProgressBarModule, MatTooltipModule, MatTooltipModule, NgOptimizedImage],
   templateUrl: './pokedex.component.html',
   styleUrl: './pokedex.component.scss'
 })
@@ -42,7 +42,7 @@ export class PokedexComponent implements OnInit {
   
   filters: PokemonFilter = { filterHiddenActivated: false, filterExceptWantedAndOwned: false, filterExceptHasNoWantedCard: false };
 
-  constructor(private pokemonService: PokemonService, private router: Router, private route: ActivatedRoute, public pokemonUtilsService: PokemonUtilsService, public authService: AuthService, public pokedexService: PokedexService, private scrollService: PokedexScrollService, private ngZone: NgZone) {
+  constructor(private pokemonService: PokemonService, private router: Router, private route: ActivatedRoute, private pokemonUtilsService: PokemonUtilsService, public authService: AuthService, public pokedexService: PokedexService, private scrollService: PokedexScrollService, private ngZone: NgZone) {
 
     this.searchSubject.pipe(
       debounceTime(1000)

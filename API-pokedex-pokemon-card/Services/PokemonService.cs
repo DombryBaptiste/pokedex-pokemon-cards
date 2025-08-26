@@ -20,6 +20,7 @@ public class PokemonService : IPokemonService
     public async Task<List<PokemonListDto>> GetAllPokemonFiltered(PokemonFilterDto filters)
     {
         IQueryable<Pokemon> query = _context.Pokemons.AsNoTracking();
+        var hiddenIds = await _context.Users.Where(u => u.Id == _userContext.UserId).Select(u => u.HiddenPokemonIds).FirstOrDefaultAsync();
 
         HashSet<int> bothWantedAndOwnedIds = new();
         HashSet<int> wantedPokemonIds = new();
@@ -70,7 +71,7 @@ public class PokemonService : IPokemonService
         }
         if (filters?.FilterHiddenActivated == false)
             {
-                var hiddenIds = await _context.Users.Where(u => u.Id == _userContext.UserId).Select(u => u.HiddenPokemonIds).FirstOrDefaultAsync();
+                
                 if (hiddenIds != null && hiddenIds.Any())
                 {
                     query = query.Where(p => !hiddenIds.Contains(p.Id));
@@ -92,7 +93,9 @@ public class PokemonService : IPokemonService
                 Generation = p.Generation,
                 ImagePath = p.ImagePath,
                 PokedexId = p.PokedexId,
-                IsWantedAndOwned = bothWantedAndOwnedIds.Contains(p.Id)
+                IsWantedAndOwned = bothWantedAndOwnedIds.Contains(p.Id),
+                IsHidden = hiddenIds!.Contains(p.Id),
+                FormatPokemonId = "#" + p.Id.ToString("D3")
             })
             .ToListAsync();
     }
