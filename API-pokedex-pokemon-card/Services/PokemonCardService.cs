@@ -52,7 +52,7 @@ public class PokemonCardService : IPokemonCardService
 
         if (existing != null)
         {
-            existing.AcquiredDate = DateTime.UtcNow;
+            existing.AcquiredDate = DateOnly.FromDateTime(DateTime.UtcNow);
             existing.PokedexId = pokedexId;
             existing.PokemonCardId = cardId;
             existing.PokemonId = pokemonId;
@@ -64,7 +64,7 @@ public class PokemonCardService : IPokemonCardService
             {
                 PokedexId = pokedexId,
                 PokemonCardId = cardId,
-                AcquiredDate = DateTime.UtcNow,
+                AcquiredDate = DateOnly.FromDateTime(DateTime.UtcNow),
                 PokemonId = pokemonId,
                 State = CardState.NM,
             };

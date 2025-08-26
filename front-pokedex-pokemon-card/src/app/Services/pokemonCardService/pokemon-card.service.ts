@@ -75,7 +75,7 @@ export class PokemonCardService {
     )
   }
 
-  updateOwned(cardId: number, card: OwnedPokemonCard)
+  updateOwned(cardId: number, card: any)
   {
     return this.http.put(this.baseUrl + '/owned-card/' + cardId, card);
   }
