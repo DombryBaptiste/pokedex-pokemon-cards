@@ -8,4 +8,6 @@ public class PokemonListDto
         public bool IsWantedAndOwned { get; set; }
         public int? PreviousPokemonId { get; set; }
         public int? NextPokemonId { get; set; }
+        public bool IsHidden { get; set; }
+        public string? FormatPokemonId { get; set; }
 }

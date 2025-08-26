@@ -77,15 +77,21 @@
   
 
   <div class="pokemon-grid">
-    @for(p of pokemons; track p.id) {
+    @for(p of pokemons; track p.id; let i = $index) {
     <div class="pokemon" (click)="handlePokemonClick(p.id)">
-      <img [src]="p.imagePath" loading="lazy"/>
+      <img
+        ngSrc="{{ p.imagePath }}"
+        width="96" height="96"
+        decoding="async"
+        [attr.loading]="i < 24 ? null : 'lazy'"
+        [priority]="i < 24"
+      />
       <span>{{ p.name }}</span>
       <span class="pokemon-number">{{
-        pokemonUtilsService.formatPokedexId(p.pokedexId)
+        p.formatPokemonId
       }}</span>
       <div class="icon-pokemon">
-        @if(isPokemonHidden(p.id)) {
+        @if(p.isHidden) {
         <mat-icon class="icon-white icon">visibility_off</mat-icon>
         }
         @if(p.isWantedAndOwned)
