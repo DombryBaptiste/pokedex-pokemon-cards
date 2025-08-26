@@ -24,6 +24,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import { MAT_DATE_LOCALE, DateAdapter } from '@angular/material/core';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-pokemon-details',
@@ -103,7 +104,13 @@ export class PokemonDetailsComponent implements OnInit {
   {
     if(this.cardsSelected?.ownedPokemonCard)
     {
-      this.pokemonCardService.updateOwned(this.cardsSelected?.ownedPokemonCard.id, this.cardsSelected?.ownedPokemonCard).subscribe(() => {
+      const payload = {
+        ...this.cardsSelected.ownedPokemonCard,
+        acquiredDate: formatDate(this.cardsSelected.ownedPokemonCard.acquiredDate, 'yyyy-MM-dd', 'en-US'),
+      }
+      console.log(payload);
+      this.pokemonCardService.updateOwned(this.cardsSelected?.ownedPokemonCard.id, payload).subscribe(() => {
+        console.log(this.cardsSelected?.ownedPokemonCard)
         this.snackbar.showSuccess('Les données ont été sauvgardés.');
       })
     }
