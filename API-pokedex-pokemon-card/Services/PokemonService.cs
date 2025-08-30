@@ -17,87 +17,64 @@ public class PokemonService : IPokemonService
         return await _context.Pokemons.ToListAsync();
     }
 
-    public async Task<List<PokemonListDto>> GetAllPokemonFiltered(PokemonFilterDto filters)
+    public async Task<List<PokemonListDto>> GetAllPokemonFiltered(PokemonFilterDto filters, CancellationToken ct = default)
     {
-        IQueryable<Pokemon> query = _context.Pokemons.AsNoTracking();
-        var hiddenIds = await _context.Users.Where(u => u.Id == _userContext.UserId).Select(u => u.HiddenPokemonIds).FirstOrDefaultAsync();
+        var userId = _userContext.UserId;
 
-        HashSet<int> bothWantedAndOwnedIds = new();
-        HashSet<int> wantedPokemonIds = new();
+        var hiddenIds = await _context.Users.Where(u => u.Id == userId).Select(u => u.HiddenPokemonIds).FirstOrDefaultAsync(ct) ?? new List<int>();
 
-        if (filters?.PokedexId is int pokedexId)
+        var query = _context.Pokemons.AsNoTracking().AsQueryable();
+
+        int pokedexId = filters.PokedexId;
+        IQueryable<int> ownedQ = Enumerable.Empty<int>().AsQueryable();
+        IQueryable<int> wantedQ = Enumerable.Empty<int>().AsQueryable();
+
+        if (pokedexId is int pid)
         {
-            var pokedex = await _context.Pokedexs
-                .Include(p => p.OwnedPokemonCards)
-                .Include(p => p.WantedPokemonCards)
-                .FirstOrDefaultAsync(p => p.Id == pokedexId);
+            ownedQ = _context.Pokedexs.Where(px => px.Id == pid).SelectMany(px => px.OwnedPokemonCards).Select(c => c.PokemonId);
+            wantedQ = _context.Pokedexs.Where(px => px.Id == pid).SelectMany(px => px.WantedPokemonCards).Select(c => c.PokemonId);
 
-            if (pokedex != null)
+            if (filters.FilterExceptWantedAndOwned == true)
             {
-                // Création des paires pour Owned et Wanted
-                var ownedCardPairs = pokedex.OwnedPokemonCards
-                .Select(o => new { o.PokemonId, o.PokemonCardId });
-
-                var wantedCardPairs = pokedex.WantedPokemonCards
-                    .Select(w => new { w.PokemonId, w.PokemonCardId });
-
-                // Intersection des paires
-                 bothWantedAndOwnedIds = ownedCardPairs
-                    .Intersect(wantedCardPairs)
-                    .Select(p => p.PokemonId)
-                    .ToHashSet();
-
-                // Liste des PokemonId recherchés
-                wantedPokemonIds = pokedex.WantedPokemonCards
-                    .Select(w => w.PokemonId)
-                    .ToHashSet();
-
-                // Appliquer les filtres
-                if (filters.FilterExceptWantedAndOwned == true)
-                {
-                    query = query.Where(p => !bothWantedAndOwnedIds.Contains(p.Id));
-                }
-
-                if (filters.FilterExceptHasNoWantedCard == true)
-                {
-                    query = query.Where(p => wantedPokemonIds.Contains(p.Id));
-                }
+                query = query.Where(p => !(ownedQ.Contains(p.Id) && wantedQ.Contains(p.Id)));
+            }
+            if (filters.FilterExceptHasNoWantedCard)
+            {
+                query = query.Where(p => wantedQ.Contains(p.Id));
             }
         }
 
-        if (filters?.FilterGeneration is int generation)
+        if (filters.FilterGeneration is int generation)
         {
             query = query.Where(p => p.Generation == generation);
         }
-        if (filters?.FilterHiddenActivated == false)
-            {
-                
-                if (hiddenIds != null && hiddenIds.Any())
-                {
-                    query = query.Where(p => !hiddenIds.Contains(p.Id));
-                }
-            }
 
-        // Filtre par nom
-        if (!string.IsNullOrWhiteSpace(filters?.FilterName))
+        if (filters?.FilterHiddenActivated == false && hiddenIds.Count > 0)
         {
-            var filter = $"%{filters.FilterName}%";
-            query = query.Where(p => EF.Functions.Like(p.Name, filter));
+            query = query.Where(p => !hiddenIds.Contains(p.Id));
         }
 
-        return await query
-            .Select(p => new PokemonListDto
-            {
-                Id = p.Id,
-                Name = p.Name,
-                Generation = p.Generation,
-                ImagePath = p.ImagePath,
-                PokedexId = p.PokedexId,
-                IsWantedAndOwned = bothWantedAndOwnedIds.Contains(p.Id),
-                IsHidden = hiddenIds!.Contains(p.Id),
-                FormatPokemonId = "#" + p.Id.ToString("D3")
-            })
-            .ToListAsync();
+        if (!string.IsNullOrWhiteSpace(filters?.FilterName))
+        {
+            var term = filters.FilterName.Trim().ToLower();
+            query = query.Where(p => EF.Functions.Like(p.Name.ToLower(), $"%{term}%"));
+        }
+        
+        var result = await query
+        .Select(p => new PokemonListDto
+        {
+            Id = p.Id,
+            Name = p.Name,
+            Generation = p.Generation,
+            ImagePath = p.ImagePath,
+            PokedexId = p.PokedexId,
+            IsWantedAndOwned = ownedQ.Contains(p.Id) && wantedQ.Contains(p.Id),
+            IsHidden = hiddenIds.Contains(p.Id),
+            FormatPokemonId = "#" + p.PokedexId.ToString("D3")
+        })
+        .ToListAsync(ct);
+
+        return result;
     }
 
     public async Task<Pokemon?> GetPokemonById(int id)

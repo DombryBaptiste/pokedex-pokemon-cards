@@ -28,11 +28,11 @@ public class PokemonController : ControllerBase
     }
 
     [HttpGet("filtered")]
-    public async Task<IActionResult> GetAllPokemonFiltered([FromQuery] PokemonFilterDto filters)
+    public async Task<IActionResult> GetAllPokemonFiltered([FromQuery] PokemonFilterDto filters, CancellationToken ct)
     {
         try
         {
-            return Ok(await _pokemonService.GetAllPokemonFiltered(filters));
+            return Ok(await _pokemonService.GetAllPokemonFiltered(filters, ct));
         }
         catch (Exception)
         {
