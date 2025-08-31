@@ -10,12 +10,13 @@ public class PokedexService : IPokedexService
         _context = context;
     }
 
-    public async Task CreateAsync(int userId, string name)
+    public async Task CreateAsync(int userId, string name, PokedexType type)
     {
         Pokedex pokedex = new Pokedex
         {
             Name = name,
-            ShareCode = GenerateShareCode()
+            ShareCode = GenerateShareCode(),
+            Type = type,
         };
 
         await _context.Pokedexs.AddAsync(pokedex);

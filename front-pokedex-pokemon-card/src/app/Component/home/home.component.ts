@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
 
   handlePokedexClick(pokedexId: number)
   {
-    this.router.navigate(['pokedex', pokedexId, 1]);
+    this.router.navigate(['pokedex', pokedexId]);
   }
 
   isPokedexOwner(pokedexId: number)

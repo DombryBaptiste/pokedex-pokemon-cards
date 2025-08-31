@@ -69,10 +69,13 @@ export class PokemonDetailsComponent implements OnInit {
     });
   }
 
-  handleBackPokedex()
-  {
-    this.router.navigate(['/pokedex', this.pokedexId ,this.pokemon?.generation]);
+  handleBackPokedex() {
+    this.router.navigate(
+      ['/pokedex', this.pokedexId],
+      { queryParams: { gen: this.pokemon?.generation } }
+    );
   }
+
 
   openListCard(type: PokemonCardTypeSelected)
   {

@@ -19,7 +19,7 @@ public class PokedexController : ControllerBase
     {
         try
         {
-            await _pokedexService.CreateAsync(dto.UserId, dto.Name);
+            await _pokedexService.CreateAsync(dto.UserId, dto.Name, dto.Type);
             return Ok();
         }
         catch (Exception)

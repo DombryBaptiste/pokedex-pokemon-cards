@@ -3,11 +3,13 @@ export interface Pokedex {
     userId: number;
     name: string;
     shareCode: string;
+    type: PokedexType;
 }
 
 export interface PokedexCreate {
     name: string;
     userId: number;
+    type: PokedexType;
 }
 
 export interface PokedexUser {
@@ -34,4 +36,9 @@ export interface PokedexValuationHistory {
     pokedexId: number;
     recordedAt: Date;
     totalValue: number;
+}
+
+export enum PokedexType {
+    LivingDex,
+    SpecificPokemonsDex 
 }

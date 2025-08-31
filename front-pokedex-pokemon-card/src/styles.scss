@@ -94,6 +94,15 @@ body {
     active-label-text-color: white,
   ));
 
+
+@include mat.select-overrides((
+  enabled-trigger-text-color: white
+));
+
+@include mat.progress-bar-overrides((
+  active-indicator-color: $yellow-button-bg,
+));
+
 .badge {
   border-radius: 4rem;
   padding: 3px 10px;

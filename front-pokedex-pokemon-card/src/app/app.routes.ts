@@ -15,5 +15,5 @@ export const routes: Routes = [
     { path: 'pokedex/:pokedexId/shared-wanted-cards', component: SharedWantedCardComponent},
     { path: 'pokedex/create', component: CreatePokedexComponent, canActivate: [AuthGuard] },
     { path: 'pokedex/:pokedexId/pokemon/:id', component: PokemonDetailsComponent, canActivate: [AuthGuard] },
-    { path: 'pokedex/:pokedexId/:gen', component: PokedexComponent, canActivate: [AuthGuard] },
+    { path: 'pokedex/:pokedexId', component: PokedexComponent, canActivate: [AuthGuard] },
 ];
