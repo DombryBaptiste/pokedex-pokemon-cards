@@ -1,0 +1,58 @@
+<div class="filter-slides">
+    <div class="left-controls">
+        <div class="item-list search-wrapper">
+            <button mat-button>
+                <mat-icon fontIcon="search" class="icon-white" (click)="toggleSearch()"></mat-icon>
+            </button>
+
+            <input type="text" [(ngModel)]="searchText" (input)="onSearchInputChange($event)"
+                placeholder="Rechercher un Pokémon..." class="search-input" [class.show]="showSearchInput"
+                [attr.autofocus]="showSearchInput ? true : null" />
+
+
+        </div>
+
+        <mat-slide-toggle matTooltip="Masque/Affiche les Pokémon dont les cartes sont à la fois possédées et voulues"
+            class="classic-slide-toggle" [(ngModel)]="filters.filterExceptWantedAndOwned"
+            (change)="handleToggleWantedOwned($event.checked)">Cacher déjà obtenues</mat-slide-toggle>
+
+        <mat-slide-toggle matTooltip="Masque/Affiche les Pokémon qui ne possèdent pas de carte voulue"
+            class="classic-slide-toggle" [(ngModel)]="filters.filterExceptHasNoWantedCard"
+            (change)="handleToggleHasNoWanted($event.checked)">Cacher sans carte voulue</mat-slide-toggle>
+
+        
+    </div>
+</div>
+
+@if(this.searchText == "")
+{
+<div class="gen-buttons">
+    @for(gen of generations; track gen) {
+    <a class="gen" [class]="getClassButton(gen)" (click)="selectGen(gen)">Gen {{ gen }}</a>
+    }
+</div>
+}
+
+
+<div class="pokemon-grid">
+    @for(p of pokemons; track p.id; let i = $index) {
+    <div class="pokemon" (click)="handlePokemonClick(p.id)">
+        @if(i
+        < 24 ) { <img ngSrc="{{ p.imagePath }}" width="96" height="96" decoding="async" priority />
+        } @else {
+        <img ngSrc="{{ p.imagePath }}" width="96" height="96" decoding="async" loading="lazy" />
+        }
+
+        <span>{{ p.name }}</span>
+        <span class="pokemon-number">{{
+            p.formatPokemonId
+            }}</span>
+        <div class="icon-pokemon">
+            @if(p.isWantedAndOwned)
+            {
+            <mat-icon class="icon-white icon">check</mat-icon>
+            }
+        </div>
+    </div>
+    }
+</div>

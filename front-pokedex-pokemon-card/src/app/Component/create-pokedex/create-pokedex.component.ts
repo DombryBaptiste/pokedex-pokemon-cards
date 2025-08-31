@@ -2,16 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { PokedexCreate } from '../../Models/pokedex';
+import { PokedexCreate, PokedexType } from '../../Models/pokedex';
 import { PokedexService } from '../../Services/pokedexService/pokedex.service';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthService } from '../../Services/auth.service';
 import { UserConnect } from '../../Models/userConnect';
 import { Router } from '@angular/router';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-create-pokedex',
-  imports: [MatInputModule, MatFormFieldModule, FormsModule, MatButtonModule],
+  imports: [MatInputModule, MatFormFieldModule, FormsModule, MatButtonModule, MatSelectModule],
   templateUrl: './create-pokedex.component.html',
   styleUrl: './create-pokedex.component.scss',
 })
@@ -19,9 +20,15 @@ export class CreatePokedexComponent implements OnInit {
   pokedex: PokedexCreate = {
     name: '',
     userId: 0,
+    type: PokedexType.LivingDex
   };
 
   shareCode: string = "";
+
+  pokedexTypes = [
+    { value: PokedexType.LivingDex, label: "LivingDex" },
+    { value: PokedexType.SpecificPokemonsDex, label: "Specific Pokémon" },
+  ];
 
   private user: UserConnect | null = null;
 

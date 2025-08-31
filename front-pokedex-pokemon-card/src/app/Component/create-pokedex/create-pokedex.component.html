@@ -3,10 +3,23 @@
     <h1 class="title">Nouveau Pokédex</h1>
 
     <div class="body">
-      <mat-form-field class="form-field">
+
+      <div class="fields">
+        <mat-form-field class="form-field name">
         <mat-label>Nom du Pokédex</mat-label>
         <input matInput [(ngModel)]="pokedex.name" required />
       </mat-form-field>
+
+      <mat-form-field class="form-field type">
+        <mat-label>Type de Pokédex</mat-label>
+        <mat-select [(ngModel)]="pokedex.type">
+          @for(type of pokedexTypes; track type.value){
+            <mat-option [value]="type.value"> {{ type.label }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      </div>
+      
 
       <button mat-flat-button class="connect-button button-create" (click)="handleCreate()">
         Créer
