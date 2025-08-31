@@ -36,10 +36,7 @@ public class PokedexService : IPokedexService
     
     public async Task<Pokedex?> GetByIdAsync(int id)
     {
-        return await _context.Pokedexs
-            .Include(p => p.OwnedPokemonCards)
-            .Include(p => p.WantedPokemonCards)
-            .FirstOrDefaultAsync(p => p.Id == id);
+        return await _context.Pokedexs.FirstOrDefaultAsync(p => p.Id == id);
     }
 
     public async Task<Pokedex?> CreateByShareCode(string shareCode, int userId)
