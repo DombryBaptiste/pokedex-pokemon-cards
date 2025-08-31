@@ -33,18 +33,4 @@ public class UserController : ControllerBase
             return BadRequest("Une erreur est survenue lors de la mise à jour de l'utilisateur.");
         }
     }
-
-    [HttpPost("visibility/{id}")]
-    public async Task<IActionResult> SetPokemonVisibility(int id, [FromBody] VisibilityDto dto)
-    {
-        try
-        {
-            await _userService.SetPokemonVisibility(id, dto.Hidden);
-            return Ok();
-        }
-        catch (Exception)
-        {
-            return BadRequest($"Erreur lors du changement de visibilité du pokémon d'id : {id}.");
-        }
-    }
 }

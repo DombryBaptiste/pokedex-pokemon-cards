@@ -21,8 +21,6 @@ public class PokemonService : IPokemonService
     {
         var userId = _userContext.UserId;
 
-        var hiddenIds = await _context.Users.Where(u => u.Id == userId).Select(u => u.HiddenPokemonIds).FirstOrDefaultAsync(ct) ?? new List<int>();
-
         var query = _context.Pokemons.AsNoTracking().AsQueryable();
 
         int pokedexId = filters.PokedexId;
@@ -49,11 +47,6 @@ public class PokemonService : IPokemonService
             query = query.Where(p => p.Generation == generation);
         }
 
-        if (filters?.FilterHiddenActivated == false && hiddenIds.Count > 0)
-        {
-            query = query.Where(p => !hiddenIds.Contains(p.Id));
-        }
-
         if (!string.IsNullOrWhiteSpace(filters?.FilterName))
         {
             var term = filters.FilterName.Trim().ToLower();
@@ -69,7 +62,6 @@ public class PokemonService : IPokemonService
             ImagePath = p.ImagePath,
             PokedexId = p.PokedexId,
             IsWantedAndOwned = ownedQ.Contains(p.Id) && wantedQ.Contains(p.Id),
-            IsHidden = hiddenIds.Contains(p.Id),
             FormatPokemonId = "#" + p.PokedexId.ToString("D3")
         })
         .ToListAsync(ct);

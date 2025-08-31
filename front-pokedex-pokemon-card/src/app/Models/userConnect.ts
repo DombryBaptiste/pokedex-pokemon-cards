@@ -8,6 +8,5 @@ export interface UserConnect {
     updatedDate: Date;
     pictureProfilPath: string;
     pseudo: string;
-    hiddenPokemonIds: number[];
     pokedexUsers: PokedexUser[];
 }

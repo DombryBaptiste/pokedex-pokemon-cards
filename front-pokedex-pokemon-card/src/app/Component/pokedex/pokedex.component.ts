@@ -40,7 +40,7 @@ export class PokedexComponent implements OnInit {
   searchText: string = "";
   private searchSubject = new Subject<string>();
   
-  filters: PokemonFilter = { filterHiddenActivated: false, filterExceptWantedAndOwned: false, filterExceptHasNoWantedCard: false };
+  filters: PokemonFilter = { filterExceptWantedAndOwned: false, filterExceptHasNoWantedCard: false };
 
   constructor(private pokemonService: PokemonService, private router: Router, private route: ActivatedRoute, private pokemonUtilsService: PokemonUtilsService, public authService: AuthService, public pokedexService: PokedexService, private scrollService: PokedexScrollService, private ngZone: NgZone) {
 
@@ -86,12 +86,6 @@ export class PokedexComponent implements OnInit {
   {
     this.scrollService.scrollPosition = window.scrollY;
     this.router.navigate(['/pokedex', this.pokedexId, 'pokemon', pokemonId]);
-  }
-
-  handleToggleHideSlide(checked: boolean) : void
-  {
-    this.filters.filterHiddenActivated = checked;
-    this.setPokemons();
   }
 
   handleToggleWantedOwned(checked: boolean) : void
@@ -174,7 +168,6 @@ export class PokedexComponent implements OnInit {
     this.authService.user$.subscribe(user => {
       if(user)
       {
-        this.hiddenPokemonIds = user?.hiddenPokemonIds ?? [];
         this.isPokedexOwner = user?.pokedexUsers.find(pokedex => pokedex.userId == user.id)?.isOwner ?? false;
         this.pokedexService.getCompletion(this.pokedexId, user?.id ?? 0).subscribe(c => {
           this.completion = c;

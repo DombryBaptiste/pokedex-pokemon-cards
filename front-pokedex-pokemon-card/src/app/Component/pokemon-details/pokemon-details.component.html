@@ -28,10 +28,6 @@
                     </div>
                     <img class="pokemon-image" [src]="pokemon.imagePath">
                 </div>
-                @if (!isReadOnly) {
-                <mat-checkbox [(ngModel)]="hide" (change)="onToggleVisibility($event.checked)"
-                    class="classic-checkbox">Cacher</mat-checkbox>
-                }
             </div>
 
             @if(hasPokemonAfter())
