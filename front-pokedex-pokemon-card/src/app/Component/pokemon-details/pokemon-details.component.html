@@ -13,12 +13,9 @@
     @if(pokemon)
     {
         <div class="pokemon-wrapper">
-            @if(hasPokemonBefore())
-            {
-                <div class="side-left" (click)="handlePreviousPokemon()">
-                    <mat-icon class="arrow" fontIcon="chevron_left"></mat-icon>
-                </div>
-            }
+            <div class="side-left" (click)="handlePreviousPokemon()">
+                <mat-icon class="arrow" fontIcon="chevron_left"></mat-icon>
+            </div>
             
             <div class="pokemon">
                 <div class="pokemon-header">
@@ -29,14 +26,11 @@
                     <img class="pokemon-image" [src]="pokemon.imagePath">
                 </div>
             </div>
-
-            @if(hasPokemonAfter())
-            {
-                <div class="side-right" (click)="handleNextPokemon()">
-                    <mat-icon class="arrow" fontIcon="chevron_right"></mat-icon>
-                </div>
-            }
             
+            <div class="side-right" (click)="handleNextPokemon()">
+                <mat-icon class="arrow" fontIcon="chevron_right"></mat-icon>
+            </div>
+
         </div>      
 
         <div class="card-container">

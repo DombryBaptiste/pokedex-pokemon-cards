@@ -5,7 +5,7 @@
     "Name": "Bulbizarre",
     "Generation": 1,
     "ImagePath": "/Pokemon/Gen1/1.png",
-    "PreviousPokemonId": null,
+    "PreviousPokemonId": 1208,
     "NextPokemonId": 2
   },
   {
@@ -10869,6 +10869,6 @@
     "Generation": 9,
     "ImagePath": "/Pokemon/Gen9/1025.png",
     "PreviousPokemonId": 1207,
-    "NextPokemonId": null
+    "NextPokemonId": 1
   }
 ]

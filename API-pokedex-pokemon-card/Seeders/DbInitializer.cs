@@ -4,6 +4,11 @@ using API_pokedex_pokemon_card.Models;
 
 public static class DbInitializer
 {
+    private static readonly JsonSerializerOptions options = new JsonSerializerOptions
+    {
+        PropertyNameCaseInsensitive = true
+    };
+
     public static void Seed(AppDbContext context)
     {
         SeedSets(context);
@@ -14,7 +19,8 @@ public static class DbInitializer
     {
         var jsonFilePath = Path.Combine("Assets", "pokemons.json");
         var json = ReadFile(jsonFilePath);
-        var pokemonsFromFile = JsonSerializer.Deserialize<List<Pokemon>>(json);
+
+        var pokemonsFromFile = JsonSerializer.Deserialize<List<Pokemon>>(json, options);
 
         if (pokemonsFromFile == null)
         {
@@ -22,21 +28,47 @@ public static class DbInitializer
             return;
         }
 
-        var existingIds = context.Pokemons.Select(p => p.Id).ToHashSet();
+        var existingById = context.Pokemons.ToDictionary(s => s.Id);
+        var toInsert = new List<Pokemon>();
+        var updatedCount = 0;
 
-        var newPokemons = pokemonsFromFile
-            .Where(p => !existingIds.Contains(p.Id))
-            .ToList();
-
-        if (newPokemons.Any())
+        foreach (var incoming in pokemonsFromFile)
         {
-            context.Pokemons.AddRange(newPokemons);
+            if (existingById.TryGetValue(incoming.Id, out var existing))
+            {
+                var entry = context.Entry(existing);
+
+                entry.CurrentValues.SetValues(new
+                {
+                    incoming.PokedexId,
+                    incoming.Name,
+                    incoming.Generation,
+                    incoming.ImagePath,
+                    incoming.PreviousPokemonId,
+                    incoming.NextPokemonId
+                });
+
+                
+                if (entry.Properties.Any(p => p.IsModified))
+                    updatedCount++;
+            }
+            else
+            {
+                toInsert.Add(incoming);
+            }
+        }
+
+        if (toInsert.Count > 0)
+            context.Pokemons.AddRange(toInsert);
+
+        if (updatedCount > 0 || toInsert.Count > 0)
+        {
             context.SaveChanges();
-            Console.WriteLine($"{newPokemons.Count} nouveau(x) Pokémon ajouté(s).");
+            Console.WriteLine($"{toInsert.Count} inséré(s), {updatedCount} mis à jour.");
         }
         else
         {
-            Console.WriteLine("Aucun nouveau Pokémon à ajouter.");
+            Console.WriteLine("Aucun changement à appliquer.");
         }
     }
 
@@ -44,11 +76,6 @@ public static class DbInitializer
     {
         var jsonFilePath = Path.Combine("Assets", "sets.json");
         var json = ReadFile(jsonFilePath);
-
-        var options = new JsonSerializerOptions
-        {
-            PropertyNameCaseInsensitive = true
-        };
 
         var setsFromFile = JsonSerializer.Deserialize<List<Sets>>(json, options);
 
