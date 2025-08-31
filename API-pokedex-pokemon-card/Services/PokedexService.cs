@@ -80,12 +80,6 @@ public class PokedexService : IPokedexService
 
     public async Task<PokedexCompletion> GetCompletionPokedex(int pokedexId, int userId)
     {
-        // Récupère les Pokémon masqués de l'utilisateur
-        var hiddenPokemonIds = await _context.Users
-            .Where(u => u.Id == userId)
-            .Select(u => u.HiddenPokemonIds)
-            .FirstOrDefaultAsync() ?? [];
-
         // Récupère uniquement les données nécessaires du pokédex
         var pokedexData = await _context.Pokedexs
             .Where(p => p.Id == pokedexId)
@@ -106,9 +100,7 @@ public class PokedexService : IPokedexService
         }
 
         // Nombre total de Pokémon visibles
-        var maxPokemon = await _context.Pokemons
-            .Where(p => !hiddenPokemonIds.Contains(p.Id))
-            .CountAsync();
+        var maxPokemon = await _context.Pokemons.CountAsync();
 
         // Intersection des paires (PokemonId + PokemonCardId)
         var ownedWantedCount = pokedexData.OwnedPairs

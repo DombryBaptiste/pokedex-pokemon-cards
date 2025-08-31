@@ -31,14 +31,6 @@
       </div>
 
       <mat-slide-toggle
-        matTooltip="Masque/Affiche les Pokémon cachés dans le Pokédex"
-        class="classic-slide-toggle"
-        [(ngModel)]="filters.filterHiddenActivated"
-        (change)="handleToggleHideSlide($event.checked)"
-        >Pokémons Cachés</mat-slide-toggle
-      >
-
-      <mat-slide-toggle
         matTooltip="Masque/Affiche les Pokémon dont les cartes sont à la fois possédées et voulues"
         class="classic-slide-toggle"
         [(ngModel)]="filters.filterExceptWantedAndOwned"
@@ -79,21 +71,17 @@
   <div class="pokemon-grid">
     @for(p of pokemons; track p.id; let i = $index) {
     <div class="pokemon" (click)="handlePokemonClick(p.id)">
-      <img
-        ngSrc="{{ p.imagePath }}"
-        width="96" height="96"
-        decoding="async"
-        [attr.loading]="i < 24 ? null : 'lazy'"
-        [priority]="i < 24"
-      />
+      @if(i < 24 ) {
+        <img ngSrc="{{ p.imagePath }}" width="96" height="96" decoding="async" priority/>
+      } @else {
+        <img ngSrc="{{ p.imagePath }}" width="96" height="96" decoding="async" loading="lazy" />
+      }
+      
       <span>{{ p.name }}</span>
       <span class="pokemon-number">{{
         p.formatPokemonId
       }}</span>
       <div class="icon-pokemon">
-        @if(p.isHidden) {
-        <mat-icon class="icon-white icon">visibility_off</mat-icon>
-        }
         @if(p.isWantedAndOwned)
         { 
           <mat-icon class="icon-white icon">check</mat-icon>

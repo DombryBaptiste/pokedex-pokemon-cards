@@ -74,13 +74,6 @@ export class PokemonDetailsComponent implements OnInit {
     this.router.navigate(['/pokedex', this.pokedexId ,this.pokemon?.generation]);
   }
 
-  onToggleVisibility(checked: boolean) {
-    this.hide = checked;
-    this.userService.setPokemonVisibility(this.pokemon!.id, checked).subscribe(() => {
-      this.authService.getCurrentUser().subscribe((user) => this.authService.user$.next(user));
-    });
-  }
-
   openListCard(type: PokemonCardTypeSelected)
   {
     if(this.isReadOnly) { return; }
@@ -174,12 +167,6 @@ export class PokemonDetailsComponent implements OnInit {
 
   private loadUserContext() {
     this.authService.user$.subscribe(u => {
-      if (u && u.hiddenPokemonIds && this.pokemonId) {
-        this.hide = u.hiddenPokemonIds.includes(this.pokemonId);
-      } else {
-        this.hide = false;
-      }
-
       this.isReadOnly = u?.pokedexUsers.find(p => p.pokedex.id == this.pokedexId) == null
     });
   }

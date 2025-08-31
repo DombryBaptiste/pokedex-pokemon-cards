@@ -25,10 +25,6 @@ export class PokemonService {
       {
         params = params.set('filterGeneration', filters.filterGeneration);
       }
-      if(filters.filterHiddenActivated !== undefined)
-      {
-        params = params.set('filterHiddenActivated', filters.filterHiddenActivated.toString());
-      }
       if(filters.filterName !== undefined)
       {
         params = params.set('filterName', filters.filterName);
