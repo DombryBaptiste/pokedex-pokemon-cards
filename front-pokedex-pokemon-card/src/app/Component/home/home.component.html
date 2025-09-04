@@ -19,16 +19,19 @@
             <div class="pokedex-list">
                 Liste de tes pokédexs :
 
-                @for(pokedex of currentUser.pokedexUsers; track pokedex.pokedexId)
+                @for(pokedexUser of currentUser.pokedexUsers; track pokedexUser.pokedexId)
                 {
                     <div class="pokedex-item">
-                        <div class="pokedex-details" (click)="handlePokedexClick(pokedex.pokedexId)">
+                        <div class="pokedex-details" (click)="handlePokedexClick(pokedexUser.pokedexId)">
                             <mat-icon>
-                            {{ isPokedexOwner(pokedex.pokedexId) ? 'star' : 'group' }}
+                            {{ isPokedexOwner(pokedexUser.pokedexId) ? 'star' : 'group' }}
                             </mat-icon>
-                            {{ pokedex.pokedex.name }}
+                            {{ pokedexUser.pokedex.name }}
                         </div>
-                        <mat-icon fontIcon="query_stats" class="stats-button" (click)="handleStatsClick(pokedex.pokedexId)"></mat-icon>  
+                        @if(pokedexUser.pokedex.type == PokedexType.LivingDex)
+                        {
+                            <mat-icon fontIcon="query_stats" class="stats-button" (click)="handleStatsClick(pokedexUser.pokedexId)"></mat-icon>
+                        }
                     </div>
 
                 }

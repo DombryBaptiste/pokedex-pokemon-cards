@@ -18,6 +18,7 @@ export interface PokedexUser {
     userId: number;
     isOwner: boolean;
     pokedex: Pokedex;
+    type: PokedexType;
 }
 
 export interface PokedexCompletion {

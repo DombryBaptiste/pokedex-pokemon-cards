@@ -25,7 +25,9 @@
         }
     </div>
 </div>
-
+<div class="slide-wrapper">
+    <mat-slide-toggle class="classic-slide-toggle" (change)="handleToggle($event.checked)">Uniquement forme classique</mat-slide-toggle>
+</div>
 <div class="list-cards">
     @for(slotCard of slotCards; track slotCard){
         <div class="header-pokemon">

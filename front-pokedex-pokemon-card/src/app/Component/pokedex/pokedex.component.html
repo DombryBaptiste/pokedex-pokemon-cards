@@ -6,7 +6,7 @@
 
     <h1 class="title">{{ pokedex.name }}</h1>
 
-    @if (isPokedexOwner) {
+    @if (isPokedexOwner && pokedex.type == PokedexType.LivingDex) {
       <button class="share-btn" mat-icon-button matTooltip="Copier le code de partage" (click)="handleShareCode()">
         <mat-icon fontIcon="ios_share" class="share"></mat-icon>
       </button>
@@ -23,8 +23,6 @@
         [value]="getValueProgressBar()"></mat-progress-bar>
       <span>{{ completion.ownedPokemonNb }} / {{ completion.maxPokemon }}</span>
     </div>
-
-
   </div>
   }
 
