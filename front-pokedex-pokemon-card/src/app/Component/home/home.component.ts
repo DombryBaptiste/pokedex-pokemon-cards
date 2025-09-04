@@ -1,5 +1,5 @@
 import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
-import { UserConnect } from '../../Models/userConnect';
+import { Role, UserConnect } from '../../Models/userConnect';
 import { AuthService } from '../../Services/auth.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -18,6 +18,8 @@ export class HomeComponent implements OnInit {
   currentUser: UserConnect | null = null;
 
   titlePseudo: string = "";
+
+  Role = Role;
 
   constructor(private authService: AuthService, private router: Router) { }
 

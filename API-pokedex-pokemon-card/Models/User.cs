@@ -7,5 +7,12 @@ public class User : AuditableEntity
     public required DateTime LastLoggedIn { get; set; }
     public required string PictureProfilPath { get; set; }
     public string? Pseudo { get; set; }
+    public RoleEnum Role { get; set; } = RoleEnum.User;
     public List<PokedexUser> PokedexUsers { get; set; } = new();
+}
+
+public enum RoleEnum
+{
+    User,
+    Admin
 }

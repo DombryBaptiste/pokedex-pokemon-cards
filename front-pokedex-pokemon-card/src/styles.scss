@@ -23,6 +23,13 @@ body {
       filled-label-text-color: black));
 }
 
+.admin-panel-button {
+  @include mat.button-overrides((
+    filled-container-color: $card-color,
+    filled-label-text-color: white
+  ));
+}
+
 .suppress-button {
   @include mat.button-overrides((filled-container-color: $supr-button-color,
       filled-label-text-color: black));

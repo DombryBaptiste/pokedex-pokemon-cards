@@ -40,6 +40,12 @@
             </div>
 
         }
-        
+        @if(currentUser.role == Role.Admin)
+        {
+            <div class="admin-panel">
+                <button mat-flat-button class="admin-panel-button">Panel Admin</button>
+            </div>
+            
+        }
     }
 </div>
