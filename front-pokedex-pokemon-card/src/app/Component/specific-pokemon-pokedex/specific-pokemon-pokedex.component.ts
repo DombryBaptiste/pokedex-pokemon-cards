@@ -9,6 +9,7 @@ import { Pokedex } from '../../Models/pokedex';
 import { PokemonCardService } from '../../Services/pokemonCardService/pokemon-card.service';
 import { PokemonCard } from '../../Models/pokemonCard';
 import { OwnedPokemonCard } from '../../Models/OwnedChasePokemonCard';
+import { PrintingTypeEnum } from '../../Models/cardPrinting';
 
 @Component({
   selector: 'app-specific-pokemon-pokedex',
@@ -24,6 +25,8 @@ export class SpecificPokemonPokedexComponent implements OnInit {
 
   slotCards: {slot: number; card: PokemonCard[]}[] = [];
   ownedCards: OwnedPokemonCard[] = [];
+
+  PrintingType = PrintingTypeEnum;
 
   constructor(
     private pokemonService: PokemonService,
@@ -94,6 +97,10 @@ export class SpecificPokemonPokedexComponent implements OnInit {
     this.slotCards = [];
     this.pokedex.specificPokemons.forEach(sp => {
       this.pokemonCardService.getAllByPokemonId(sp.pokemonId).subscribe((r) => {
+         r.forEach(card => {
+          card.cardPrintings = card.cardPrintings.sort((a, b) => a.type - b.type);
+        });
+
         var newItem = {slot: sp.slot, card: r}
         this.slotCards.push(newItem);
         this.slotCards.sort((a, b) => a.slot - b.slot);

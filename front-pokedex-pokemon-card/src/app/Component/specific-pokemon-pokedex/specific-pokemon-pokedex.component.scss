@@ -45,21 +45,35 @@
         padding: 10px;
         justify-content: center;
 
-        img.unowned {
-            filter: grayscale(100%);
-            opacity: 0.5;
+        .card-container {
+            position: relative;
+            display: inline-block;
 
-            &:hover {
-                filter: none;
-                opacity: 1;
+            img {
+                height: auto;
+                max-width: 150px;
+                display: block;
             }
-        }
-        
 
-        img {
-            height: auto;
-            max-width: 150px;
-        }
+            .reverse-logo {
+                position: absolute;
+                bottom: 5px;
+                right: 5px;
+                width: 24px;
+                height: 24px;
+                pointer-events: none;
+            }
+
+            img.unowned {
+                filter: grayscale(100%);
+                opacity: 0.5;
+
+                &:hover {
+                    filter: none;
+                    opacity: 1;
+                }
+            }
+        } 
     }
 
     

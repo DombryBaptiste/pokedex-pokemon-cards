@@ -1,3 +1,4 @@
+import { CardPrinting } from "./cardPrinting";
 import { Sets } from "./sets";
 
 export interface PokemonCard {
@@ -8,6 +9,7 @@ export interface PokemonCard {
     image: string;
     pokemonId: number;
     set: Sets;
+    cardPrintings: CardPrinting[];
 }
 
 

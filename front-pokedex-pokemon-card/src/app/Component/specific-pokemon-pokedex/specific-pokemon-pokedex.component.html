@@ -33,7 +33,16 @@
         </div>
         <div class="list-img-cards">
             @for(card of slotCard.card; track card){
-                <img [src]="card.image" [class.unowned]="!isCardOwned(card.id)">
+                @for(cardPrinting of card.cardPrintings; track cardPrinting){
+                    <div class="card-container">
+                        <img [src]="card.image" [class.unowned]="!isCardOwned(card.id)">
+                        
+                        @if(cardPrinting.type == PrintingType.Reverse){
+                        <img class="reverse-logo" src="assets/reverse_logo.png" alt="Reverse">
+                        }
+                </div>
+                }
+                
             }
         </div>
     }

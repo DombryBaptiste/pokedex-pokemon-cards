@@ -15,10 +15,13 @@ public class PokemonCardService : IPokemonCardService
     {
         return await _context.PokemonCardPokemons
             .Where(pcp => pcp.PokemonId == pokemonId)
+            .Include(pcp => pcp.PokemonCard).ThenInclude(pc => pc.Set)
+            .Include(pcp => pcp.PokemonCard).ThenInclude(pc => pc.CardPrintings)
             .Select(pcp => pcp.PokemonCard)
-            .OrderBy(pcp => pcp.Set.ReleaseDate)
+            .OrderBy(pc => pc.Set.ReleaseDate)
             .ToListAsync();
     }
+        
 
     public async Task SetChaseCardAsync(int pokedexId, string cardId, int pokemonId)
     {

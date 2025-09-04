@@ -41,6 +41,7 @@ public class AppDbContext : DbContext
     public DbSet<Sets> Sets { get; set; }
     public DbSet<PokemonCardPokemon> PokemonCardPokemons { get; set; }
     public DbSet<PokedexSpecificPokemon> PokedexSpecificPokemons { get; set; }
+    public DbSet<CardPrinting> CardPrintings { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -22,7 +22,7 @@ public class PokemonCardController : ControllerBase
         {
             return Ok(_mapper.Map<List<PokemonCardDto>>(await _pokemonCardService.GetAllByPokemonIdAsync(pokemonId)));
         }
-        catch (Exception)
+        catch (Exception e)
         {
             return BadRequest($"Une erreur est surevenue lors de la récupération des carte du pokémon d'id {pokemonId}");
         }
