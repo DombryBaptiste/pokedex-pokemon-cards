@@ -1,0 +1,47 @@
+<div class="legend">
+    <div>
+        <span>Normal</span>
+        <mat-checkbox class="Normal"></mat-checkbox>
+    </div>
+    <div>
+        <span>Reverse</span>
+        <mat-checkbox class="Reverse"></mat-checkbox>
+    </div>
+</div>
+@if(pokemons)
+{
+<div class="select-pokemon-wrapper">
+    <mat-form-field class="select-pokemon">
+        <mat-label>Pokémon</mat-label>
+        <input type="text" matInput [formControl]="pokemonCtrl" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete" class="poke-ac-panel" (optionSelected)="handleSelect($event)">
+            @for(pokemon of filteredPokemons; track pokemon.id) {
+            <mat-option [value]="pokemon.name">
+                <div class="option">
+                    <img [src]="pokemon.imagePath" loading="lazy" height="64" width="64" />
+                    <span>{{ pokemon.name }}</span>
+                </div>
+            </mat-option>
+            }
+        </mat-autocomplete>
+    </mat-form-field>
+</div>
+}
+
+@if(cards)
+{
+<div class="cards-wrapper">
+    @for(card of cards; track card)
+    {
+        <div class="card-container">
+            <img [src]="card.image">
+            <div class="checkboxes">
+                 @for(type of printingTypes; track type) {
+                    <mat-checkbox [ngClass]="type" (change)="handleChangeCheckbox($event , card.id, PrintingTypeEnum[type])"
+                    [ngModel]="selectedByCard[card.id].has(PrintingTypeEnum[type]) || false"></mat-checkbox>
+                 }
+            </div>
+        </div>
+    }
+</div>
+}

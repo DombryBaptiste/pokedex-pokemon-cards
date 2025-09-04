@@ -36,7 +36,7 @@ public class PokedexService : IPokedexService
     
     public async Task<Pokedex?> GetByIdAsync(int id)
     {
-        return await _context.Pokedexs.FirstOrDefaultAsync(p => p.Id == id);
+        return await _context.Pokedexs.Include(p => p.SpecificPokemons).FirstOrDefaultAsync(p => p.Id == id);
     }
 
     public async Task<Pokedex?> CreateByShareCode(string shareCode, int userId)
@@ -110,6 +110,43 @@ public class PokedexService : IPokedexService
             MaxPokemon = maxPokemon,
             OwnedPokemonNb = ownedWantedCount
         };
+    }
+
+    public async Task<PokedexSpecificPokemon> SetSpecificPokemon(int pokedexId, int slot, int pokemonId)
+    {
+        var pokedex = await _context.Pokedexs.Include(p => p.SpecificPokemons).FirstOrDefaultAsync(p => p.Id == pokedexId);
+
+        if (pokedex == null)
+        {
+            throw new ArgumentException($"Le pokedex d'id : {pokedexId} n'existe pas.");
+        }
+        if (pokedex.Type != PokedexType.SpecificPokemonsDex)
+        {
+            throw new InvalidOperationException("Ce pokedex n'est pas du bon type.");
+        }
+
+        var specific = pokedex.SpecificPokemons.Find(s => s.Slot == slot);
+
+        if (specific == null)
+        {
+            specific = new PokedexSpecificPokemon()
+            {
+                Slot = slot,
+                PokedexId = pokedexId,
+                PokemonId = pokemonId
+
+            };
+            _context.Add(specific);
+        }
+        else
+        {
+            specific.Slot = slot;
+            specific.PokemonId = pokemonId;
+        }
+
+        await _context.SaveChangesAsync();
+
+        return specific;
     }
 
 

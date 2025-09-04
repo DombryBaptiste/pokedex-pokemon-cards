@@ -1,0 +1,26 @@
+.legend {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.select-pokemon-wrapper {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.cards-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, max-content));
+    gap: 12px;
+    justify-content: center;
+
+    .card-container {
+
+        img {
+            width: 150px;
+            height: auto;
+        }
+    }
+}

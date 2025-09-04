@@ -23,6 +23,13 @@ body {
       filled-label-text-color: black));
 }
 
+.admin-panel-button {
+  @include mat.button-overrides((
+    filled-container-color: $card-color,
+    filled-label-text-color: white
+  ));
+}
+
 .suppress-button {
   @include mat.button-overrides((filled-container-color: $supr-button-color,
       filled-label-text-color: black));
@@ -141,6 +148,50 @@ body {
 
 .PO {
   background-color: #dc3545;
+}
+
+.poke-ac-panel .mat-mdc-option .option {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.Normal {
+  @include mat.checkbox-overrides((
+    // Contour quand non coché
+    unselected-icon-color: red,
+    unselected-hover-icon-color: red,
+    unselected-focus-icon-color: red,
+
+    // Contour quand coché
+    selected-icon-color: red,
+    selected-hover-icon-color: red,
+    selected-focus-icon-color: red,
+
+    // Coche (le "✓")
+    disabled-selected-checkmark-color: red,
+  ));
+}
+
+.Reverse {
+  @include mat.checkbox-overrides((
+    // Contour quand non coché
+    unselected-icon-color: $yellow-button-bg,
+    unselected-hover-icon-color: $yellow-button-bg,
+    unselected-focus-icon-color: $yellow-button-bg,
+
+    // Contour quand coché
+    selected-icon-color: $yellow-button-bg,
+    selected-hover-icon-color: $yellow-button-bg,
+    selected-focus-icon-color: $yellow-button-bg,
+
+    // Coche (le "✓")
+    selected-checkmark-color: black,
+    disabled-selected-checkmark-color: $yellow-button-bg,
+  ));
 }
 
 

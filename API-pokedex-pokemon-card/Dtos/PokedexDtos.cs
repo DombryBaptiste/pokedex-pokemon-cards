@@ -15,3 +15,8 @@ public class PokedexCompletionDto
 {
     public required int UserId { get; set; }
 }
+
+public class PokedexSpecificPokemonSetDto
+{
+    public required int PokemonId { get; set; }
+}

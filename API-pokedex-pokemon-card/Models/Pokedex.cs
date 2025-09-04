@@ -9,6 +9,7 @@ public class Pokedex
     public List<PokedexUser> PokedexUsers { get; set; } = new();
     public List<PokedexOwnedPokemonCard> OwnedPokemonCards { get; set; } = new();
     public List<PokedexWantedPokemonCard> WantedPokemonCards { get; set; } = new();
+    public List<PokedexSpecificPokemon> SpecificPokemons { get; set; } = new();
 }
 
 public class PokedexCompletion

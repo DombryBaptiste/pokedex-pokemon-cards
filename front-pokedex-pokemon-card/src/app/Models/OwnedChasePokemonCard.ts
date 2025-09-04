@@ -1,3 +1,4 @@
+import { PrintingTypeEnum } from "./cardPrinting";
 import { PokemonCard } from "./pokemonCard";
 
 export interface OwnedPokemonCard{
@@ -10,6 +11,7 @@ export interface OwnedPokemonCard{
     price: number;
     acquiredPrice: number;
     state: CardState;
+    printingType: PrintingTypeEnum;
 }
 
 export interface WantedPokemonCard{

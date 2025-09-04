@@ -9,4 +9,10 @@ export interface UserConnect {
     pictureProfilPath: string;
     pseudo: string;
     pokedexUsers: PokedexUser[];
+    role: Role
+}
+
+export enum Role {
+    Utilisateur,
+    Admin
 }

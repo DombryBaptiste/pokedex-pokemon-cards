@@ -4,6 +4,7 @@ using API_pokedex_pokemon_card.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_pokedex_pokemon_card.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250903111337_SPECIFIC_POKEMON")]
+    partial class SPECIFIC_POKEMON
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -80,37 +83,12 @@ namespace API_pokedex_pokemon_card.Migrations
                     b.Property<string>("Pseudo")
                         .HasColumnType("longtext");
 
-                    b.Property<int>("Role")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("CardPrinting", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("PokemonCardId")
-                        .IsRequired()
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PokemonCardId");
-
-                    b.ToTable("CardPrintings");
                 });
 
             modelBuilder.Entity("Pokedex", b =>
@@ -163,9 +141,6 @@ namespace API_pokedex_pokemon_card.Migrations
 
                     b.Property<float>("Price")
                         .HasColumnType("float");
-
-                    b.Property<int?>("PrintingType")
-                        .HasColumnType("int");
 
                     b.Property<int>("State")
                         .HasColumnType("int");
@@ -356,17 +331,6 @@ namespace API_pokedex_pokemon_card.Migrations
                     b.ToTable("Sets");
                 });
 
-            modelBuilder.Entity("CardPrinting", b =>
-                {
-                    b.HasOne("PokemonCard", "PokemonCard")
-                        .WithMany("CardPrintings")
-                        .HasForeignKey("PokemonCardId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("PokemonCard");
-                });
-
             modelBuilder.Entity("PokedexOwnedPokemonCard", b =>
                 {
                     b.HasOne("Pokedex", "Pokedex")
@@ -515,8 +479,6 @@ namespace API_pokedex_pokemon_card.Migrations
 
             modelBuilder.Entity("PokemonCard", b =>
                 {
-                    b.Navigation("CardPrintings");
-
                     b.Navigation("PokemonCardPokemons");
                 });
 #pragma warning restore 612, 618

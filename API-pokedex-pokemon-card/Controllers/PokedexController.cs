@@ -89,4 +89,17 @@ public class PokedexController : ControllerBase
             return BadRequest($"Une erreur est surevenue lors de la récupération des statistiques pour le pokedex : {pokedexId}.");
         }
     }
+
+    [HttpPost("{pokedexId}/specific/{slot}")]
+    public async Task<ActionResult> SetSpecificPokemon(int pokedexId, int slot, [FromBody] PokedexSpecificPokemonSetDto req)
+    {
+        try
+        {
+            return Ok(await _pokedexService.SetSpecificPokemon(pokedexId, slot, req.PokemonId));
+        }
+        catch (Exception)
+        {
+            return BadRequest($"Une erreur est surevenue lors de la récupération des statistiques pour le pokedex : {pokedexId}.");
+        }
+    }
 }

@@ -5,6 +5,7 @@ public class PokemonCardDto
     public string Image { get; set; }  // URL complète
     public required string CardId { get; set; }
     public required int PokemonId { get; set; }
+     public ICollection<CardPrintingDto> CardPrintings { get; set; } = new List<CardPrintingDto>();
 }
 
 public class OwnedPokemonCardDto
@@ -17,10 +18,18 @@ public class OwnedPokemonCardDto
     public decimal? Price { get; set; }
     public decimal? AcquiredPrice { get; set; }
     public PokemonCardDto PokemonCard { get; set; }
+    public PrintingType? PrintingType { get; set; }
 }
 
 public class SetCardRequest
 {
     public string CardId { get; set; }
     public int PokemonId { get; set; }
+    public PrintingType? Type { get; set; }
+}
+
+public class SetCardTypeRequest
+{
+    public required PrintingType Type { get; set; }
+    public required bool isDelete { get; set; }
 }

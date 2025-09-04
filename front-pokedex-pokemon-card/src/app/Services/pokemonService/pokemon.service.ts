@@ -67,4 +67,9 @@ export class PokemonService {
       })
     );
   }
+
+  public getAll(): Observable<Pokemon[]>
+  {
+    return this.http.get<Pokemon[]>(this.baseUrl);
+  }
 }

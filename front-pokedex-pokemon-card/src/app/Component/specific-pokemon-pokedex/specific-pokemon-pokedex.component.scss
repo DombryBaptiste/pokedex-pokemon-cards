@@ -1,0 +1,80 @@
+@use "variables" as *;
+
+.plus-container
+{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    .plus {
+        border-radius: 10px;
+        background-color: $card-color;
+        height: 96px;
+        width: 96px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.list-cards {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .header-pokemon {
+        font-weight: bold;
+        background: #1e1e1e;
+        width: 90%;
+        padding: 5px;
+        margin: 0 auto;
+
+        .title {
+            margin-left: 10px;
+        }
+    }
+
+    .list-img-cards
+    {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, max-content));
+        gap: 12px;
+        padding: 10px;
+        justify-content: center;
+
+        .card-container {
+            position: relative;
+            display: inline-block;
+
+            img {
+                height: auto;
+                max-width: 150px;
+                display: block;
+            }
+
+            .reverse-logo {
+                position: absolute;
+                bottom: 5px;
+                right: 5px;
+                width: 24px;
+                height: 24px;
+                pointer-events: none;
+            }
+
+            img.unowned {
+                filter: grayscale(100%);
+                opacity: 0.5;
+
+                &:hover {
+                    filter: none;
+                    opacity: 1;
+                }
+            }
+        } 
+    }
+
+    
+}

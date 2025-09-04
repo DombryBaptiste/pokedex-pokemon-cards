@@ -4,6 +4,7 @@ using API_pokedex_pokemon_card.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_pokedex_pokemon_card.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250904074106_CARD_PRINTING")]
+    partial class CARD_PRINTING
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,9 +82,6 @@ namespace API_pokedex_pokemon_card.Migrations
 
                     b.Property<string>("Pseudo")
                         .HasColumnType("longtext");
-
-                    b.Property<int>("Role")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime(6)");
@@ -163,9 +163,6 @@ namespace API_pokedex_pokemon_card.Migrations
 
                     b.Property<float>("Price")
                         .HasColumnType("float");
-
-                    b.Property<int?>("PrintingType")
-                        .HasColumnType("int");
 
                     b.Property<int>("State")
                         .HasColumnType("int");

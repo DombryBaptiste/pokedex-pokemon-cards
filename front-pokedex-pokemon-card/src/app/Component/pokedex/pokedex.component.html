@@ -31,7 +31,7 @@
 
   @switch (pokedex.type) {
   @case(PokedexType.SpecificPokemonsDex) {
-  <app-specific-pokemon-pokedex></app-specific-pokemon-pokedex>
+  <app-specific-pokemon-pokedex [pokedex]="pokedex"></app-specific-pokemon-pokedex>
   }
   @default {
   <app-living-dex-pokedex [pokedex]="pokedex" [genSelected]="genSelected"></app-living-dex-pokedex>

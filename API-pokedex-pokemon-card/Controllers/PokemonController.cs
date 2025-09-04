@@ -1,4 +1,5 @@
 using API_pokedex_pokemon_card.Models;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,10 +9,12 @@ using Microsoft.AspNetCore.Mvc;
 public class PokemonController : ControllerBase
 {
     IPokemonService _pokemonService;
+    IMapper _mapper;
 
-    public PokemonController(IPokemonService pokemonService)
+    public PokemonController(IPokemonService pokemonService, IMapper mapper)
     {
         _pokemonService = pokemonService;
+        _mapper = mapper;
     }
 
     [HttpGet]
@@ -19,9 +22,9 @@ public class PokemonController : ControllerBase
     {
         try
         {
-            return Ok(await _pokemonService.GetAllPokemon());
+            return Ok(_mapper.Map<List<PokemonListDto>>(await _pokemonService.GetAllPokemon())); 
         }
-        catch (Exception)
+        catch (Exception e)
         {
             return BadRequest("Une erreur est surevenue lors de la récupération des pokémons");
         }

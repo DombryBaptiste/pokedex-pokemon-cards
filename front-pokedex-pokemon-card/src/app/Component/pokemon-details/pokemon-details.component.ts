@@ -81,13 +81,24 @@ export class PokemonDetailsComponent implements OnInit {
   {
     if(this.isReadOnly) { return; }
     
+    var cardId;
+    if(type == PokemonCardTypeSelected.Owned)
+    {
+      cardId = this.cardsSelected?.ownedPokemonCard.pokemonCardId;
+    } else {
+      cardId = this.cardsSelected?.wantedPokemonCard.pokemonCardId;
+    }
+
     let data: InjectPokemonCardData =
     {
       cards: this.pokemon?.pokemonCards ?? [],
       type: type,
       pokedexId: this.pokedexId,
-      pokemonId: this.pokemonId
+      pokemonId: this.pokemonId,
+      pokemonCardId: cardId
     };
+
+    
 
     const dialogRef =  this.dialog.open(PickPokemonCardComponent, { data: data, panelClass: 'classic-dialog' } );
 
@@ -104,9 +115,7 @@ export class PokemonDetailsComponent implements OnInit {
         ...this.cardsSelected.ownedPokemonCard,
         acquiredDate: formatDate(this.cardsSelected.ownedPokemonCard.acquiredDate, 'yyyy-MM-dd', 'en-US'),
       }
-      console.log(payload);
       this.pokemonCardService.updateOwned(this.cardsSelected?.ownedPokemonCard.id, payload).subscribe(() => {
-        console.log(this.cardsSelected?.ownedPokemonCard)
         this.snackbar.showSuccess('Les données ont été sauvgardés.');
       })
     }

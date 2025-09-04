@@ -44,20 +44,24 @@ export class PickPokemonCardComponent implements OnInit {
   }
 
   handleClickImage(card: PokemonCard) {
-    const request$ = this.data.type === PokemonCardTypeSelected.Wanted
-      ? this.pokemonCardService.setWantedCard(card, this.data.pokedexId)
-      : this.pokemonCardService.setOwnedCard(card, this.data.pokedexId);
+    const request$ =
+      this.data.type === PokemonCardTypeSelected.Wanted
+        ? this.pokemonCardService.setWantedCard(card, this.data.pokedexId)
+        : this.pokemonCardService.setOwnedCard(card, this.data.pokedexId);
 
     request$.subscribe(() => {
       this.dialogRef.close();
     });
   }
 
-
   handleSuppr() {
-    this.pokemonCardService.delete(this.data.pokedexId, this.data.pokemonId, this.data.type).subscribe(() => {
-      this.dialogRef.close();
-    })
+    if (this.data.pokemonCardId) {
+      this.pokemonCardService
+        .delete(this.data.pokedexId, this.data.pokemonCardId, this.data.type)
+        .subscribe(() => {
+          this.dialogRef.close();
+        });
+    }
   }
 
   encodeImageUrl(url: string): string {
@@ -65,13 +69,20 @@ export class PickPokemonCardComponent implements OnInit {
   }
 
   handleSortImage() {
-  if (this.sortedDesc) {
-    this.data.cards.sort((a, b) => new Date(b.set.releaseDate).getTime() - new Date(a.set.releaseDate).getTime());
-  } else {
-    this.data.cards.sort((a, b) => new Date(a.set.releaseDate).getTime() - new Date(b.set.releaseDate).getTime());
+    if (this.sortedDesc) {
+      this.data.cards.sort(
+        (a, b) =>
+          new Date(b.set.releaseDate).getTime() -
+          new Date(a.set.releaseDate).getTime()
+      );
+    } else {
+      this.data.cards.sort(
+        (a, b) =>
+          new Date(a.set.releaseDate).getTime() -
+          new Date(b.set.releaseDate).getTime()
+      );
+    }
+
+    this.sortedDesc = !this.sortedDesc;
   }
-
-  this.sortedDesc = !this.sortedDesc;
-}
-
 }
