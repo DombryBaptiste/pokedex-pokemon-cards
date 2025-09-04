@@ -8,5 +8,5 @@ public class PokedexUser
     public int UserId { get; set; }
     public User User { get; set; }
 
-    public bool IsOwner { get; set; } // Optionnel, pour savoir qui l'a créé
+    public bool IsOwner { get; set; }
 }

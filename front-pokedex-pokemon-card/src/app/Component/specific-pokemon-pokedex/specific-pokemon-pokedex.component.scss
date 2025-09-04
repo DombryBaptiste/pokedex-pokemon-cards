@@ -19,6 +19,13 @@
     }
 }
 
+.slide-wrapper
+{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
 .list-cards {
     margin-top: 20px;
     display: flex;

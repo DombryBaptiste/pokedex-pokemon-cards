@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { PokedexType } from '../../Models/pokedex';
 
 @Component({
   selector: 'app-home',
@@ -20,6 +21,7 @@ export class HomeComponent implements OnInit {
   titlePseudo: string = "";
 
   Role = Role;
+  PokedexType = PokedexType;
 
   constructor(private authService: AuthService, private router: Router) { }
 

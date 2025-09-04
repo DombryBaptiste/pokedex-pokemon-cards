@@ -10,10 +10,12 @@ import { PokemonCardService } from '../../Services/pokemonCardService/pokemon-ca
 import { PokemonCard, PokemonCardTypeSelected } from '../../Models/pokemonCard';
 import { OwnedPokemonCard } from '../../Models/OwnedChasePokemonCard';
 import { PrintingTypeEnum } from '../../Models/cardPrinting';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'app-specific-pokemon-pokedex',
-  imports: [MatIconModule],
+  imports: [MatIconModule, MatTooltipModule, MatSlideToggleModule],
   templateUrl: './specific-pokemon-pokedex.component.html',
   styleUrl: './specific-pokemon-pokedex.component.scss',
 })
@@ -25,6 +27,7 @@ export class SpecificPokemonPokedexComponent implements OnInit {
 
   slotCards: {slot: number; card: PokemonCard[]}[] = [];
   ownedCards: OwnedPokemonCard[] = [];
+  onlyNormal = false;
 
   PrintingType = PrintingTypeEnum;
 
@@ -104,6 +107,17 @@ export class SpecificPokemonPokedexComponent implements OnInit {
     }
   }
 
+  handleToggle(checked: boolean)
+  {
+    if(checked)
+    {
+      this.onlyNormal = true;
+    } else {
+      this.onlyNormal = false;
+    }
+    this.initCards();
+  }
+
   private initData() {
     this.pokemonService
       .getAll()
@@ -117,7 +131,14 @@ export class SpecificPokemonPokedexComponent implements OnInit {
     this.slotCards = [];
     this.pokedex.specificPokemons.forEach(sp => {
       this.pokemonCardService.getAllByPokemonId(sp.pokemonId).subscribe((r) => {
-        var newItem = {slot: sp.slot, card: r}
+        var cards = r;
+        if(this.onlyNormal)
+        {
+          cards.forEach(c => {
+            c.cardPrintings = c.cardPrintings.filter(cp => cp.type === PrintingTypeEnum.Normal);
+          });
+        } 
+        var newItem = {slot: sp.slot, card: cards}
         this.slotCards.push(newItem);
         this.slotCards.sort((a, b) => a.slot - b.slot);
       })
@@ -132,6 +153,12 @@ export class SpecificPokemonPokedexComponent implements OnInit {
   private initCardBySlot(n: number, pId: number){
     var sc = this.slotCards.findIndex(sc => sc.slot === n);
     this.pokemonCardService.getAllByPokemonId(pId).subscribe(res => {
+      if(this.onlyNormal)
+      {
+        res.forEach(c => {
+          c.cardPrintings = c.cardPrintings.filter(cp => cp.type === PrintingTypeEnum.Normal);
+        })
+      }
       if(sc !== -1)
       {
         this.slotCards[sc].card = res;
