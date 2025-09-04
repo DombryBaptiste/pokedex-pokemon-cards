@@ -12,3 +12,10 @@ export interface Pokemon {
     nextPokemonId: number;
     formatPokemonId: number;
 }
+
+export interface InjectPokemonData
+{
+    number: number;
+    pokemons: Pokemon[];
+    pokemon: Pokemon | undefined;
+}

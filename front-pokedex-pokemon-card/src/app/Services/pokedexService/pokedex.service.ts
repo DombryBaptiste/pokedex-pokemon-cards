@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { Pokedex, PokedexCompletion, PokedexCreate, PokedexStats } from '../../Models/pokedex';
+import { Pokedex, PokedexCompletion, PokedexCreate, PokedexSpecificPokemons, PokedexStats } from '../../Models/pokedex';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -40,5 +40,11 @@ export class PokedexService {
   getStats(pokedexId: number): Observable<PokedexStats>
   {
     return this.http.get<PokedexStats>(this.baseUrl + '/' + pokedexId + "/stats");
+  }
+
+  setSpecificPokemon(pokedexId: number, slot: number, pokemonId: number): Observable<PokedexSpecificPokemons>
+  {
+    let data = { pokemonId: pokemonId}
+    return this.http.post<PokedexSpecificPokemons>(this.baseUrl + `/${pokedexId}/specific/${slot}`, data);
   }
 }

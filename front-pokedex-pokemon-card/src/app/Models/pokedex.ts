@@ -4,6 +4,7 @@ export interface Pokedex {
     name: string;
     shareCode: string;
     type: PokedexType;
+    specificPokemons: PokedexSpecificPokemons[];
 }
 
 export interface PokedexCreate {
@@ -36,6 +37,12 @@ export interface PokedexValuationHistory {
     pokedexId: number;
     recordedAt: Date;
     totalValue: number;
+}
+
+export interface PokedexSpecificPokemons {
+    id: number;
+    pokemonId: number;
+    slot: number;
 }
 
 export enum PokedexType {

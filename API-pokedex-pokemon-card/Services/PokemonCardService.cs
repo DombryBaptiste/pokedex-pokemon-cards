@@ -16,6 +16,7 @@ public class PokemonCardService : IPokemonCardService
         return await _context.PokemonCardPokemons
             .Where(pcp => pcp.PokemonId == pokemonId)
             .Select(pcp => pcp.PokemonCard)
+            .OrderBy(pcp => pcp.Set.ReleaseDate)
             .ToListAsync();
     }
 

@@ -1,1 +1,41 @@
-<p>specific-pokemon-pokedex works!</p>
+@if(pokemons.length > 0) {
+<div class="plus-container">
+    <div class="plus">
+        @if(hasSlotWithPokemon(1))
+        {
+        <img [src]="getSpecificPokemonBySlot(1)?.imagePath" height="96" width="96" (click)="handleAdd(1)">
+        }@else {
+        <mat-icon fontIcon="add" (click)="handleAdd(1)"></mat-icon>
+        }
+    </div>
+    <div class="plus">
+        @if(hasSlotWithPokemon(2))
+        {
+        <img [src]="getSpecificPokemonBySlot(2)?.imagePath" height="96" width="96" (click)="handleAdd(2)">
+        }@else {
+        <mat-icon fontIcon="add" (click)="handleAdd(2)"></mat-icon>
+        }
+    </div>
+    <div class="plus">
+        @if(hasSlotWithPokemon(3))
+        {
+        <img [src]="getSpecificPokemonBySlot(3)?.imagePath" height="96" width="96" (click)="handleAdd(3)">
+        }@else {
+        <mat-icon fontIcon="add" (click)="handleAdd(3)"></mat-icon>
+        }
+    </div>
+</div>
+
+<div class="list-cards">
+    @for(slotCard of slotCards; track slotCard){
+        <div class="header-pokemon">
+            <span class="title">{{ getSpecificPokemonBySlot(slotCard.slot)?.name }}</span>
+        </div>
+        <div class="list-img-cards">
+            @for(card of slotCard.card; track card){
+                <img [src]="card.image" [class.unowned]="!isCardOwned(card.id)">
+            }
+        </div>
+    }
+</div>
+}

@@ -143,5 +143,15 @@ body {
   background-color: #dc3545;
 }
 
+.poke-ac-panel .mat-mdc-option .option {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; /* ou flex-start */
+  gap: 8px;
+  width: 100%;
+}
+
+
 
 

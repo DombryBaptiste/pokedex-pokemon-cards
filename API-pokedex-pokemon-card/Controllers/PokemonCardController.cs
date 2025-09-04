@@ -20,7 +20,7 @@ public class PokemonCardController : ControllerBase
     {
         try
         {
-            return Ok(await _pokemonCardService.GetAllByPokemonIdAsync(pokemonId));
+            return Ok(_mapper.Map<List<PokemonCardDto>>(await _pokemonCardService.GetAllByPokemonIdAsync(pokemonId)));
         }
         catch (Exception)
         {

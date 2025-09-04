@@ -1,0 +1,26 @@
+<h2 class="title">{{ title }}</h2>
+
+@if(data.pokemon)
+{
+<img [src]="data.pokemon.imagePath" height="150" width="150">
+}
+
+<mat-form-field class="select-pokemon">
+  <mat-label>Pokémon</mat-label>
+  <input type="text" matInput [formControl]="pokemonCtrl" [matAutocomplete]="auto">
+  <mat-autocomplete #auto="matAutocomplete" class="poke-ac-panel" (optionSelected)="handleSelect($event)">
+    @for(pokemon of filteredPokemons; track pokemon.id) {
+      <mat-option [value]="pokemon.name">
+        <div class="option">
+          <img [src]="pokemon.imagePath" loading="lazy" height="64" width="64"/>
+          <span>{{ pokemon.name }}</span> 
+        </div>
+      </mat-option>
+    }
+  </mat-autocomplete>
+</mat-form-field>
+
+<!-- @for(pokemon of data.pokemons; track pokemon.id)
+{
+    <span> {{ pokemon.name }}</span>
+} -->
