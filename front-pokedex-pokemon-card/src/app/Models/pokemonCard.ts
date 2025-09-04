@@ -2,7 +2,7 @@ import { CardPrinting } from "./cardPrinting";
 import { Sets } from "./sets";
 
 export interface PokemonCard {
-    id: number;
+    id: string;
     localId: number;
     extension: string;
     name: string;
@@ -23,4 +23,5 @@ export interface InjectPokemonCardData {
     type: PokemonCardTypeSelected;
     pokedexId: number;
     pokemonId: number;
+    pokemonCardId: string | undefined;
 }

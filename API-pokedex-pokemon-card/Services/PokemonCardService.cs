@@ -13,15 +13,22 @@ public class PokemonCardService : IPokemonCardService
     }
     public async Task<List<PokemonCard>> GetAllByPokemonIdAsync(int pokemonId)
     {
-        return await _context.PokemonCardPokemons
+        var result = await _context.PokemonCardPokemons
             .Where(pcp => pcp.PokemonId == pokemonId)
             .Include(pcp => pcp.PokemonCard).ThenInclude(pc => pc.Set)
             .Include(pcp => pcp.PokemonCard).ThenInclude(pc => pc.CardPrintings)
             .Select(pcp => pcp.PokemonCard)
             .OrderBy(pc => pc.Set.ReleaseDate)
             .ToListAsync();
+
+        foreach (var pc in result)
+        {
+            pc.CardPrintings = pc.CardPrintings.OrderBy(cp => cp.Type).ToList();
+        }
+
+        return result;
     }
-        
+
 
     public async Task SetChaseCardAsync(int pokedexId, string cardId, int pokemonId)
     {
@@ -50,9 +57,12 @@ public class PokemonCardService : IPokemonCardService
         await _context.SaveChangesAsync();
     }
 
-    public async Task SetOwnedCardAsync(int pokedexId, string cardId, int pokemonId)
+    public async Task<PokedexOwnedPokemonCard> SetOwnedCardAsync(int pokedexId, string cardId, int pokemonId, PrintingType? type)
     {
-        var existing = await _context.PokedexOwnedPokemonCards.FirstOrDefaultAsync(x => x.PokedexId == pokedexId && x.PokemonId == pokemonId);
+        var existing = await _context.PokedexOwnedPokemonCards.FirstOrDefaultAsync(x =>
+            x.PokedexId == pokedexId && x.PokemonId == pokemonId &&
+            x.PrintingType == type && x.PokemonCardId == cardId
+        );
 
         if (existing != null)
         {
@@ -60,22 +70,28 @@ public class PokemonCardService : IPokemonCardService
             existing.PokedexId = pokedexId;
             existing.PokemonCardId = cardId;
             existing.PokemonId = pokemonId;
+            existing.PrintingType = type;
             _context.Update(existing);
         }
         else
         {
-            var newCard = new PokedexOwnedPokemonCard
+            existing = new PokedexOwnedPokemonCard
             {
                 PokedexId = pokedexId,
                 PokemonCardId = cardId,
                 AcquiredDate = DateOnly.FromDateTime(DateTime.UtcNow),
                 PokemonId = pokemonId,
                 State = CardState.NM,
+                PrintingType = type
             };
-            _context.PokedexOwnedPokemonCards.Add(newCard);
+            _context.PokedexOwnedPokemonCards.Add(existing);
         }
 
         await _context.SaveChangesAsync();
+
+        await _context.Entry(existing).Reference(oc => oc.PokemonCard).LoadAsync();
+
+        return existing;
     }
 
     public async Task<PokemonOwnedWantedCard> GetCardByPokedexAndPokemonIdAsync(int pokedexId, int pokemonId)
@@ -88,11 +104,11 @@ public class PokemonCardService : IPokemonCardService
         return result;
     }
 
-    public async Task DeleteCard(int pokedexId, int pokemonId, PokemonCardTypeSelected type)
+    public async Task DeleteCard(int pokedexId, string pokemonCardId, PrintingType? printingType, PokemonCardTypeSelected type)
     {
         if (type == PokemonCardTypeSelected.Owned)
         {
-            var card = await _context.PokedexOwnedPokemonCards.FirstOrDefaultAsync(c => c.PokedexId == pokedexId && c.PokemonId == pokemonId);
+            var card = await _context.PokedexOwnedPokemonCards.FirstOrDefaultAsync(c => c.PokedexId == pokedexId && c.PokemonCardId == pokemonCardId && c.PrintingType == printingType);
 
             if (card != null)
             {
@@ -101,7 +117,7 @@ public class PokemonCardService : IPokemonCardService
         }
         else if (type == PokemonCardTypeSelected.Wanted)
         {
-            var card = await _context.PokedexWantedPokemonCards.FirstOrDefaultAsync(c => c.PokedexId == pokedexId && c.PokemonId == pokemonId);
+            var card = await _context.PokedexWantedPokemonCards.FirstOrDefaultAsync(c => c.PokedexId == pokedexId && c.PokemonCardId == pokemonCardId);
 
             if (card != null)
             {
@@ -169,5 +185,28 @@ public class PokemonCardService : IPokemonCardService
             .ToListAsync();
 
         return allOwned;
+    }
+
+    public async Task SetTypeCard(string cardId, PrintingType type)
+    {
+        var printingType = new CardPrinting()
+        {
+            PokemonCardId = cardId,
+            Type = type
+        };
+
+        await _context.CardPrintings.AddAsync(printingType);
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task DeleteTypeCard(string cardId, PrintingType type)
+    {
+        var printingType = await _context.CardPrintings.FirstOrDefaultAsync(cp => cp.PokemonCardId == cardId && cp.Type == type);
+        if (printingType != null)
+        {
+            _context.CardPrintings.Remove(printingType);
+            await _context.SaveChangesAsync();
+        }
+
     }
 }

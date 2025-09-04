@@ -18,6 +18,7 @@ public class PokedexOwnedPokemonCard
 
     public DateOnly AcquiredDate { get; set; }
     public CardState State { get; set; }
+    public PrintingType? PrintingType { get; set; }
 }
 
 public enum CardState {

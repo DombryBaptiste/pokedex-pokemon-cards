@@ -7,6 +7,8 @@ import { CreatePokedexComponent } from './Component/create-pokedex/create-pokede
 import { HomeComponent } from './Component/home/home.component';
 import { PokedexStatsComponent } from './Component/pokedex-stats/pokedex-stats.component';
 import { SharedWantedCardComponent } from './Component/shared-wanted-card/shared-wanted-card.component';
+import { PanelAdminComponent } from './Component/panel-admin/panel-admin.component';
+import { AdminGuard } from './Guards/admin.guard';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -16,4 +18,5 @@ export const routes: Routes = [
     { path: 'pokedex/create', component: CreatePokedexComponent, canActivate: [AuthGuard] },
     { path: 'pokedex/:pokedexId/pokemon/:id', component: PokemonDetailsComponent, canActivate: [AuthGuard] },
     { path: 'pokedex/:pokedexId', component: PokedexComponent, canActivate: [AuthGuard] },
+    { path: 'panel-admin', component: PanelAdminComponent, canActivate: [AuthGuard, AdminGuard]}
 ];

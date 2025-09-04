@@ -58,4 +58,9 @@ export class HomeComponent implements OnInit {
   handleStatsClick(pokedexId: number){
     this.router.navigate(['pokedex/stats', pokedexId]);
   }
+
+  handlePanelAdmin()
+  {
+    this.router.navigate(['panel-admin']);
+  }
 }

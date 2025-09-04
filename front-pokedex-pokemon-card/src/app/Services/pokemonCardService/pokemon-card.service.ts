@@ -5,6 +5,7 @@ import { map, Observable } from 'rxjs';
 import { PokemonCard, PokemonCardTypeSelected } from '../../Models/pokemonCard';
 import { OwnedPokemonCard, OwnedWantedPokemonCard } from '../../Models/OwnedChasePokemonCard';
 import { PokemonUtilsService } from '../pokemonUtilsService/pokemon-utils.service';
+import { PrintingTypeEnum } from '../../Models/cardPrinting';
 
 @Injectable({
   providedIn: 'root'
@@ -29,13 +30,14 @@ export class PokemonCardService {
     return this.http.post(this.baseUrl + "/" + pokedexId + "/set-wanted-card", dto);
   }
 
-  setOwnedCard(pokemonCard: PokemonCard, pokedexId: number)
+  setOwnedCard(pokemonCard: PokemonCard, pokedexId: number, type: PrintingTypeEnum | null = null): Observable<OwnedPokemonCard>
   {
     const dto = {
       cardId: pokemonCard.id,
-      pokemonId: pokemonCard.pokemonId
+      pokemonId: pokemonCard.pokemonId,
+      type: type
     }
-    return this.http.post(this.baseUrl + "/" + pokedexId + "/set-owned-card", dto);
+    return this.http.post<OwnedPokemonCard>(this.baseUrl + "/" + pokedexId + "/set-owned-card", dto);
   }
 
   getCardsByPokedexAndPokemonId(pokedexId: number, pokemonId: number): Observable<OwnedWantedPokemonCard>
@@ -69,10 +71,15 @@ export class PokemonCardService {
   }
 
 
-  delete(pokedexId: number, pokemonId: number, type: PokemonCardTypeSelected) {
-    return this.http.delete(this.baseUrl + '/' + pokedexId + '/' + pokemonId,
-      { params: new HttpParams().set('type', type)}
-    )
+  delete(pokedexId: number, pokemonId: string, type: PokemonCardTypeSelected, printingType: PrintingTypeEnum | null = null ) {
+    let params = new HttpParams()
+      .set('type', type)
+    if(printingType != null)
+    {
+      params = params.set('printingType', printingType);
+    }
+      
+    return this.http.delete(`${this.baseUrl}/${pokedexId}/${pokemonId}`, { params });
   }
 
   updateOwned(cardId: number, card: any)
@@ -83,5 +90,11 @@ export class PokemonCardService {
   getAllOwned(pokedexId: number): Observable<OwnedPokemonCard[]>
   {
     return this.http.get<OwnedPokemonCard[]>(this.baseUrl + '/owned/' + pokedexId);
+  }
+
+  setTypeCard(cardId: string, type: PrintingTypeEnum, isDelete: boolean)
+  {
+    var data = {type: type, isDelete: isDelete};
+    return this.http.post(this.baseUrl + `/${cardId}/type-card`, data);
   }
 }

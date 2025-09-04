@@ -18,10 +18,18 @@ public class OwnedPokemonCardDto
     public decimal? Price { get; set; }
     public decimal? AcquiredPrice { get; set; }
     public PokemonCardDto PokemonCard { get; set; }
+    public PrintingType? PrintingType { get; set; }
 }
 
 public class SetCardRequest
 {
     public string CardId { get; set; }
     public int PokemonId { get; set; }
+    public PrintingType? Type { get; set; }
+}
+
+public class SetCardTypeRequest
+{
+    public required PrintingType Type { get; set; }
+    public required bool isDelete { get; set; }
 }

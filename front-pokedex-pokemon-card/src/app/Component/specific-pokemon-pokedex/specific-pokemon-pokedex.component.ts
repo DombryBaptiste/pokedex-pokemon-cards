@@ -7,7 +7,7 @@ import { PokemonService } from '../../Services/pokemonService/pokemon.service';
 import { PokedexService } from '../../Services/pokedexService/pokedex.service';
 import { Pokedex } from '../../Models/pokedex';
 import { PokemonCardService } from '../../Services/pokemonCardService/pokemon-card.service';
-import { PokemonCard } from '../../Models/pokemonCard';
+import { PokemonCard, PokemonCardTypeSelected } from '../../Models/pokemonCard';
 import { OwnedPokemonCard } from '../../Models/OwnedChasePokemonCard';
 import { PrintingTypeEnum } from '../../Models/cardPrinting';
 
@@ -42,9 +42,10 @@ export class SpecificPokemonPokedexComponent implements OnInit {
     let sp = this.pokedex.specificPokemons.find(s => s.slot == n);
     let p = this.pokemons.find((p) => p.id === sp?.pokemonId);
 
+    let pokemonChoosedId = this.pokedex.specificPokemons.map(s => s.pokemonId);
     let data: InjectPokemonData = {
       number: n,
-      pokemons: this.pokemons,
+      pokemons: this.pokemons.filter(p => !pokemonChoosedId.includes(p.id)),
       pokemon: p
     };
 
@@ -79,9 +80,28 @@ export class SpecificPokemonPokedexComponent implements OnInit {
     return pokemon;
   }
 
-  isCardOwned(cardId: number)
+  isCardOwned(cardId: string, type: PrintingTypeEnum)
   {
-    return this.ownedCards.findIndex(oc => oc.pokemonCard.id == cardId) !== -1;
+    return this.ownedCards.findIndex(oc => oc.pokemonCard.id == cardId && oc.printingType == type) !== -1;
+  }
+
+  handleClickImage(card: PokemonCard, type: PrintingTypeEnum, slot: number)
+  {
+    var p = this.pokedex.specificPokemons.find((s) => s.slot == slot)
+    if(p == null) return;
+
+    card.pokemonId = p.pokemonId
+
+    if(this.ownedCards.findIndex(oc => oc.pokemonCard.id == card.id && oc.printingType == type) !== -1)
+    {
+      this.pokemonCardService.delete(this.pokedex.id, card.id, PokemonCardTypeSelected.Owned, type).subscribe(() => {
+        this.ownedCards = this.ownedCards.filter(oc => !(oc.pokemonCardId == card.id && oc.printingType == type));
+      })
+    } else {
+      this.pokemonCardService.setOwnedCard(card, this.pokedex.id, type).subscribe((res) => {
+        this.ownedCards.push(res);
+      });
+    }
   }
 
   private initData() {
@@ -97,17 +117,16 @@ export class SpecificPokemonPokedexComponent implements OnInit {
     this.slotCards = [];
     this.pokedex.specificPokemons.forEach(sp => {
       this.pokemonCardService.getAllByPokemonId(sp.pokemonId).subscribe((r) => {
-         r.forEach(card => {
-          card.cardPrintings = card.cardPrintings.sort((a, b) => a.type - b.type);
-        });
-
         var newItem = {slot: sp.slot, card: r}
         this.slotCards.push(newItem);
         this.slotCards.sort((a, b) => a.slot - b.slot);
       })
     })
 
-    this.pokemonCardService.getAllOwned(this.pokedex.id).subscribe(res => this.ownedCards = res);
+    this.pokemonCardService.getAllOwned(this.pokedex.id).subscribe(res => 
+      {
+        this.ownedCards = res
+  });
   }
 
   private initCardBySlot(n: number, pId: number){
@@ -118,7 +137,7 @@ export class SpecificPokemonPokedexComponent implements OnInit {
         this.slotCards[sc].card = res;
       } else {
         var newItem = {slot: n, card: res}
-        this.slotCards.push
+        this.slotCards.push(newItem);
       }
     })
   }

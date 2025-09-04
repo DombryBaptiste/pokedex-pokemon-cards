@@ -47,8 +47,7 @@ public class PokemonCardController : ControllerBase
     {
         try
         {
-            await _pokemonCardService.SetOwnedCardAsync(pokedexId, dto.CardId, dto.PokemonId);
-            return Ok();
+            return Ok(await _pokemonCardService.SetOwnedCardAsync(pokedexId, dto.CardId, dto.PokemonId, dto.Type));
         }
         catch (Exception)
         {
@@ -74,17 +73,17 @@ public class PokemonCardController : ControllerBase
         }
     }
 
-    [HttpDelete("{pokedexId}/{pokemonId}")]
-    public async Task<IActionResult> DeletePokedexCard(int pokedexId, int pokemonId, [FromQuery] PokemonCardDeleteDto dto)
+    [HttpDelete("{pokedexId}/{pokemonCardId}")]
+    public async Task<IActionResult> DeletePokedexCard(int pokedexId, string pokemonCardId, [FromQuery] PokemonCardDeleteDto dto)
     {
         try
         {
-            await _pokemonCardService.DeleteCard(pokedexId, pokemonId, dto.Type);
+            await _pokemonCardService.DeleteCard(pokedexId, pokemonCardId, dto.PrintingType ,dto.Type);
             return Ok();
         }
         catch (Exception)
         {
-            return BadRequest($"Une erreur est surevenue lors de la suppression de la cartes du pokemon d'id : {pokemonId}.");
+            return BadRequest($"Une erreur est surevenue lors de la suppression de la cartes d'id : {pokemonCardId}.");
         }
     }
 
@@ -132,6 +131,27 @@ public class PokemonCardController : ControllerBase
         catch (Exception)
         {
             return BadRequest($"Une erreur est surevenue lors de la récupération des cartes du pokedex d'id : {pokedexId}.");
+        }
+    }
+
+    [HttpPost("{cardId}/type-card")]
+    public async Task<ActionResult> SetTypeCard(string cardId, [FromBody] SetCardTypeRequest req)
+    {
+        try
+        {
+            if (req.isDelete)
+            {
+                await _pokemonCardService.DeleteTypeCard(cardId, req.Type);
+            }
+            else
+            {
+                await _pokemonCardService.SetTypeCard(cardId, req.Type);
+            }
+            return Ok();
+        }
+        catch (Exception)
+        {
+            return BadRequest($"Une erreur est surevenue lors de la création/suppression du type de la carte d'id : {cardId}.");
         }
     }
 }

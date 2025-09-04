@@ -43,7 +43,7 @@
         @if(currentUser.role == Role.Admin)
         {
             <div class="admin-panel">
-                <button mat-flat-button class="admin-panel-button">Panel Admin</button>
+                <button mat-flat-button class="admin-panel-button" (click)="handlePanelAdmin()" >Panel Admin</button>
             </div>
             
         }
