@@ -84,9 +84,9 @@ export class PokemonDetailsComponent implements OnInit {
     var cardId;
     if(type == PokemonCardTypeSelected.Owned)
     {
-      cardId = this.cardsSelected?.ownedPokemonCard.pokemonCardId;
+      cardId = this.cardsSelected?.ownedPokemonCard?.pokemonCardId;
     } else {
-      cardId = this.cardsSelected?.wantedPokemonCard.pokemonCardId;
+      cardId = this.cardsSelected?.wantedPokemonCard?.pokemonCardId;
     }
 
     let data: InjectPokemonCardData =
