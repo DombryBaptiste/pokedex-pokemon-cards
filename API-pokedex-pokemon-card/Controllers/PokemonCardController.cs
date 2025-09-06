@@ -55,6 +55,20 @@ public class PokemonCardController : ControllerBase
         }
     }
 
+    [HttpPost("{pokedexId}/set-owned-card-pokemon")]
+    public async Task<IActionResult> SetOwnedCardByPokemon(int pokedexId, [FromBody] SetCardRequest dto)
+    {
+        try
+        {
+            await _pokemonCardService.SetOwnedCardByPokemonAsync(pokedexId, dto.CardId, dto.PokemonId);
+            return Ok();
+        }
+        catch (Exception)
+        {
+            return BadRequest($"Une erreur est surevenue lors de l'ajout de la carte {dto.CardId}");
+        }
+    }
+
     [HttpGet("{pokedexId}/pokemon/{pokemonId}")]
     public async Task<IActionResult> GetCardByPokedexIdAndPokemonId(int pokedexId, int pokemonId)
     {

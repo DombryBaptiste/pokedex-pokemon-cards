@@ -47,7 +47,7 @@ export class PickPokemonCardComponent implements OnInit {
     const request$ =
       this.data.type === PokemonCardTypeSelected.Wanted
         ? this.pokemonCardService.setWantedCard(card, this.data.pokedexId)
-        : this.pokemonCardService.setOwnedCard(card, this.data.pokedexId);
+        : this.pokemonCardService.setOwnedCardByPokemon(card, this.data.pokedexId);
 
     request$.subscribe(() => {
       this.dialogRef.close();
