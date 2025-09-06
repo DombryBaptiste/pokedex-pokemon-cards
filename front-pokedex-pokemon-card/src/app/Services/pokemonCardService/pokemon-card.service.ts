@@ -40,6 +40,15 @@ export class PokemonCardService {
     return this.http.post<OwnedPokemonCard>(this.baseUrl + "/" + pokedexId + "/set-owned-card", dto);
   }
 
+  setOwnedCardByPokemon(pokemonCard: PokemonCard, pokedexId: number)
+  {
+    const dto = {
+      cardId: pokemonCard.id,
+      pokemonId: pokemonCard.pokemonId
+    }
+    return this.http.post(this.baseUrl + "/" + pokedexId + "/set-owned-card-pokemon", dto);
+  }
+
   getCardsByPokedexAndPokemonId(pokedexId: number, pokemonId: number): Observable<OwnedWantedPokemonCard>
   {
     return this.http.get<OwnedWantedPokemonCard>(this.baseUrl + '/' + pokedexId + '/pokemon/' + pokemonId).pipe(

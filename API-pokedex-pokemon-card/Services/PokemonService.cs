@@ -24,17 +24,27 @@ public class PokemonService : IPokemonService
         var query = _context.Pokemons.AsNoTracking().AsQueryable();
 
         int pokedexId = filters.PokedexId;
-        IQueryable<int> ownedQ = Enumerable.Empty<int>().AsQueryable();
+
         IQueryable<int> wantedQ = Enumerable.Empty<int>().AsQueryable();
+
+        IQueryable<PokedexOwnedPokemonCard> ownedCardQ = Enumerable.Empty<PokedexOwnedPokemonCard>().AsQueryable();
+        IQueryable<PokedexWantedPokemonCard> wantedCardQ = Enumerable.Empty<PokedexWantedPokemonCard>().AsQueryable();
+
+        IQueryable<int> ownedWantedCardQ = Enumerable.Empty<int>().AsQueryable();
 
         if (pokedexId is int pid)
         {
-            ownedQ = _context.Pokedexs.Where(px => px.Id == pid).SelectMany(px => px.OwnedPokemonCards).Select(c => c.PokemonId);
-            wantedQ = _context.Pokedexs.Where(px => px.Id == pid).SelectMany(px => px.WantedPokemonCards).Select(c => c.PokemonId);
+            ownedCardQ = _context.Pokedexs.Where(px => px.Id == pid).SelectMany(px => px.OwnedPokemonCards);
+            wantedCardQ = _context.Pokedexs.Where(px => px.Id == pid).SelectMany(px => px.WantedPokemonCards);
+
+            wantedQ = _context.Pokedexs.Where(px => px.Id == pid).SelectMany(px => px.WantedPokemonCards).Select(p => p.PokemonId);
+
+            ownedWantedCardQ = ownedCardQ.Where(o => wantedCardQ.Any(w => w.PokemonCardId == o.PokemonCardId)).Select(o => o.PokemonId);
+
 
             if (filters.FilterExceptWantedAndOwned == true)
             {
-                query = query.Where(p => !(ownedQ.Contains(p.Id) && wantedQ.Contains(p.Id)));
+                query = query.Where(p => !ownedWantedCardQ.Contains(p.Id));
             }
             if (filters.FilterExceptHasNoWantedCard)
             {
@@ -50,7 +60,7 @@ public class PokemonService : IPokemonService
         if (!string.IsNullOrWhiteSpace(filters?.FilterName))
         {
             var term = filters.FilterName.Trim().ToLower();
-            query = query.Where(p => EF.Functions.Like(p.Name.ToLower(), $"%{term}%"));
+            query = query.Where(p => EF.Functions.Like(p.Name, $"%{term}%"));
         }
         
         var result = await query
@@ -61,9 +71,10 @@ public class PokemonService : IPokemonService
             Generation = p.Generation,
             ImagePath = p.ImagePath,
             PokedexId = p.PokedexId,
-            IsWantedAndOwned = ownedQ.Contains(p.Id) && wantedQ.Contains(p.Id),
+            IsWantedAndOwned = ownedWantedCardQ.Contains(p.Id),
             FormatPokemonId = "#" + p.PokedexId.ToString("D3")
         })
+        .OrderBy(p => p.Id)
         .ToListAsync(ct);
 
         return result;

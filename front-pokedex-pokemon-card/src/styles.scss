@@ -106,9 +106,12 @@ body {
   enabled-trigger-text-color: white
 ));
 
-@include mat.progress-bar-overrides((
-  active-indicator-color: $yellow-button-bg,
-));
+.yellow-pg {
+  @include mat.progress-bar-overrides((
+    active-indicator-color: $yellow-button-bg,
+  ));
+}
+
 
 .badge {
   border-radius: 4rem;

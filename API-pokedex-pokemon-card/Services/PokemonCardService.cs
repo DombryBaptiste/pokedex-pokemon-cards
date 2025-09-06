@@ -94,6 +94,34 @@ public class PokemonCardService : IPokemonCardService
         return existing;
     }
 
+    public async Task SetOwnedCardByPokemonAsync(int pokedexId, string cardId, int pokemonId)
+    {
+        var existing = await _context.PokedexOwnedPokemonCards.FirstOrDefaultAsync(x => x.PokedexId == pokedexId && x.PokemonId == pokemonId);
+
+        if (existing != null)
+        {
+            existing.AcquiredDate = DateOnly.FromDateTime(DateTime.UtcNow);
+            existing.PokedexId = pokedexId;
+            existing.PokemonCardId = cardId;
+            existing.PokemonId = pokemonId;
+            _context.Update(existing);
+        }
+        else
+        {
+            var newCard = new PokedexOwnedPokemonCard
+            {
+                PokedexId = pokedexId,
+                PokemonCardId = cardId,
+                AcquiredDate = DateOnly.FromDateTime(DateTime.UtcNow),
+                PokemonId = pokemonId,
+                State = CardState.NM,
+            };
+            _context.PokedexOwnedPokemonCards.Add(newCard);
+        }
+
+        await _context.SaveChangesAsync();
+    }
+
     public async Task<PokemonOwnedWantedCard> GetCardByPokedexAndPokemonIdAsync(int pokedexId, int pokemonId)
     {
         PokemonOwnedWantedCard result = new();
