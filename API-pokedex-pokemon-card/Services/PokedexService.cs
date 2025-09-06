@@ -31,9 +31,9 @@ public class PokedexService : IPokedexService
 
         await _context.PokedexUsers.AddAsync(pokedexUser);
         await _context.SaveChangesAsync();
-    
+
     }
-    
+
     public async Task<Pokedex?> GetByIdAsync(int id)
     {
         return await _context.Pokedexs.Include(p => p.SpecificPokemons).FirstOrDefaultAsync(p => p.Id == id);
@@ -67,7 +67,7 @@ public class PokedexService : IPokedexService
         };
 
         _context.PokedexUsers.Add(pokedexUser);
-        
+
         pokedex.ShareCode = GenerateShareCode();
         _context.Update(pokedex);
 
@@ -76,40 +76,32 @@ public class PokedexService : IPokedexService
         return pokedex;
     }
 
-    public async Task<PokedexCompletion> GetCompletionPokedex(int pokedexId, int userId)
+    public async Task<PokedexCompletion?> GetCompletionPokedex(int pokedexId, int userId)
     {
-        // Récupère uniquement les données nécessaires du pokédex
         var pokedexData = await _context.Pokedexs
             .Where(p => p.Id == pokedexId)
-            .Select(p => new
+            .Select(p => new PokedexCompletionData
             {
+                Type = p.Type,
                 WantedPairs = p.WantedPokemonCards
-                    .Select(w => new { w.PokemonId, w.PokemonCardId })
-                    .Distinct(),
+                    .Select(w => new Pair(w.PokemonId, w.PokemonCardId)).Distinct().ToList(),
                 OwnedPairs = p.OwnedPokemonCards
-                    .Select(o => new { o.PokemonId, o.PokemonCardId })
-                    .Distinct()
+                    .Select(o => new Pair(o.PokemonId, o.PokemonCardId)).Distinct().ToList()
             })
             .FirstOrDefaultAsync();
 
         if (pokedexData == null)
         {
-            return new PokedexCompletion { MaxPokemon = 0, OwnedPokemonNb = 0 };
+            throw new KeyNotFoundException($"Le pokédex d'id : {pokedexId} est introuvable");
         }
 
-        // Nombre total de Pokémon visibles
-        var maxPokemon = await _context.Pokemons.CountAsync();
-
-        // Intersection des paires (PokemonId + PokemonCardId)
-        var ownedWantedCount = pokedexData.OwnedPairs
-            .Intersect(pokedexData.WantedPairs)
-            .Count();
-
-        return new PokedexCompletion
+        switch (pokedexData.Type)
         {
-            MaxPokemon = maxPokemon,
-            OwnedPokemonNb = ownedWantedCount
-        };
+            case PokedexType.LivingDex:
+                return GetLivingDexCompletion(pokedexData);
+            default:
+                return null;  
+        }    
     }
 
     public async Task<PokedexSpecificPokemon> SetSpecificPokemon(int pokedexId, int slot, int pokemonId)
@@ -156,5 +148,19 @@ public class PokedexService : IPokedexService
         var random = new Random();
         return new string(Enumerable.Repeat(chars, length)
         .Select(s => s[random.Next(s.Length)]).ToArray());
+    }
+
+    private PokedexCompletion GetLivingDexCompletion(PokedexCompletionData data)
+    {
+        var maxPokemon = data.WantedPairs.Count();
+        var ownedWantedCount = data.OwnedPairs
+            .Intersect(data.WantedPairs)
+            .Count();
+
+        return new PokedexCompletion
+        {
+            MaxPokemon = maxPokemon,
+            OwnedPokemonNb = ownedWantedCount
+        };
     }
 }

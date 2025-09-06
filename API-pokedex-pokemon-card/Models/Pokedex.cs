@@ -19,6 +19,16 @@ public class PokedexCompletion
     public int OwnedPokemonNb { get; set; }
 }
 
+
+public readonly record struct Pair(int PokemonId, string PokemonCardId);
+
+public class PokedexCompletionData
+{
+    public PokedexType Type { get; set; }
+    public IReadOnlyList<Pair> WantedPairs { get; set; } = [];
+    public IReadOnlyList<Pair> OwnedPairs { get; set; } = [];
+}
+
 public enum PokedexType
 {
     LivingDex,
