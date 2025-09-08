@@ -16,16 +16,15 @@ public class CardImageUrlResolver :
     // PokemonCard -> PokemonCardDto.Image
     string IValueResolver<PokemonCard, PokemonCardDto, string>.Resolve(
         PokemonCard source, PokemonCardDto destination, string destMember, ResolutionContext context)
-        => BuildUrl(source?.Image);
+        => BuildUrl(source.Image);
 
     // Pokemon -> PokemonListDto.ImagePath
     string IValueResolver<Pokemon, PokemonListDto, string>.Resolve(
         Pokemon source, PokemonListDto destination, string destMember, ResolutionContext context)
-        => BuildUrl(source?.ImagePath);
+        => BuildUrl(source.ImagePath);
 
-    private string? BuildUrl(string file)
+    private string BuildUrl(string file)
     {
-        if (string.IsNullOrWhiteSpace(file)) return null;
         var baseUrl = _config["StorageCardImage"] ?? "";
         if (!baseUrl.EndsWith("/")) baseUrl += "/";
         return baseUrl + file.TrimStart('/');

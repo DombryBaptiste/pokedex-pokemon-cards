@@ -24,7 +24,7 @@ public class PokemonController : ControllerBase
         {
             return Ok(_mapper.Map<List<PokemonListDto>>(await _pokemonService.GetAllPokemon())); 
         }
-        catch (Exception e)
+        catch (Exception)
         {
             return BadRequest("Une erreur est surevenue lors de la récupération des pokémons");
         }
