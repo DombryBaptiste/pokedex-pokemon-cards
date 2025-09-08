@@ -10870,5 +10870,257 @@
     "ImagePath": "/Pokemon/Gen9/1025.png",
     "PreviousPokemonId": 1207,
     "NextPokemonId": 1
+  },
+  {
+    "Id": 1209,
+    "PokedexId": 201,
+    "Name": "Zarbi A",
+    "Generation": 2,
+    "ImagePath": "/Pokemon/Gen2/201.png",
+    "PreviousPokemonId": null,
+    "NextPokemonId": null
+  },
+  {
+    "Id": 1210,
+    "PokedexId": 201,
+    "Name": "Zarbi B",
+    "Generation": 2,
+    "ImagePath": "/Pokemon/Gen2/201-b.png",
+    "PreviousPokemonId": null,
+    "NextPokemonId": null
+  },
+  {
+    "Id": 1211,
+    "PokedexId": 201,
+    "Name": "Zarbi C",
+    "Generation": 2,
+    "ImagePath": "/Pokemon/Gen2/201-c.png",
+    "PreviousPokemonId": null,
+    "NextPokemonId": null
+  },
+  {
+    "Id": 1212,
+    "PokedexId": 201,
+    "Name": "Zarbi D",
+    "Generation": 2,
+    "ImagePath": "/Pokemon/Gen2/201-d.png",
+    "PreviousPokemonId": null,
+    "NextPokemonId": null
+  },
+  {
+    "Id": 1213,
+    "PokedexId": 201,
+    "Name": "Zarbi E",
+    "Generation": 2,
+    "ImagePath": "/Pokemon/Gen2/201-e.png",
+    "PreviousPokemonId": null,
+    "NextPokemonId": null
+  },
+  {
+    "Id": 1214,
+    "PokedexId": 201,
+    "Name": "Zarbi F",
+    "Generation": 2,
+    "ImagePath": "/Pokemon/Gen2/201-f.png",
+    "PreviousPokemonId": null,
+    "NextPokemonId": null
+  },
+  {
+    "Id": 1215,
+    "PokedexId": 201,
+    "Name": "Zarbi G",
+    "Generation": 2,
+    "ImagePath": "/Pokemon/Gen2/201-g.png",
+    "PreviousPokemonId": null,
+    "NextPokemonId": null
+  },
+  {
+    "Id": 1216,
+    "PokedexId": 201,
+    "Name": "Zarbi H",
+    "Generation": 2,
+    "ImagePath": "/Pokemon/Gen2/201-h.png",
+    "PreviousPokemonId": null,
+    "NextPokemonId": null
+  },
+  {
+    "Id": 1217,
+    "PokedexId": 201,
+    "Name": "Zarbi I",
+    "Generation": 2,
+    "ImagePath": "/Pokemon/Gen2/201-i.png",
+    "PreviousPokemonId": null,
+    "NextPokemonId": null
+  },
+  {
+    "Id": 1218,
+    "PokedexId": 201,
+    "Name": "Zarbi J",
+    "Generation": 2,
+    "ImagePath": "/Pokemon/Gen2/201-j.png",
+    "PreviousPokemonId": null,
+    "NextPokemonId": null
+  },
+  {
+    "Id": 1219,
+    "PokedexId": 201,
+    "Name": "Zarbi K",
+    "Generation": 2,
+    "ImagePath": "/Pokemon/Gen2/201-k.png",
+    "PreviousPokemonId": null,
+    "NextPokemonId": null
+  },
+  {
+    "Id": 1220,
+    "PokedexId": 201,
+    "Name": "Zarbi L",
+    "Generation": 2,
+    "ImagePath": "/Pokemon/Gen2/201-l.png",
+    "PreviousPokemonId": null,
+    "NextPokemonId": null
+  },
+  {
+    "Id": 1221,
+    "PokedexId": 201,
+    "Name": "Zarbi M",
+    "Generation": 2,
+    "ImagePath": "/Pokemon/Gen2/201-m.png",
+    "PreviousPokemonId": null,
+    "NextPokemonId": null
+  },
+  {
+    "Id": 1222,
+    "PokedexId": 201,
+    "Name": "Zarbi N",
+    "Generation": 2,
+    "ImagePath": "/Pokemon/Gen2/201-n.png",
+    "PreviousPokemonId": null,
+    "NextPokemonId": null
+  },
+  {
+    "Id": 1223,
+    "PokedexId": 201,
+    "Name": "Zarbi O",
+    "Generation": 2,
+    "ImagePath": "/Pokemon/Gen2/201-o.png",
+    "PreviousPokemonId": null,
+    "NextPokemonId": null
+  },
+  {
+    "Id": 1224,
+    "PokedexId": 201,
+    "Name": "Zarbi P",
+    "Generation": 2,
+    "ImagePath": "/Pokemon/Gen2/201-p.png",
+    "PreviousPokemonId": null,
+    "NextPokemonId": null
+  },
+  {
+    "Id": 1225,
+    "PokedexId": 201,
+    "Name": "Zarbi Q",
+    "Generation": 2,
+    "ImagePath": "/Pokemon/Gen2/201-q.png",
+    "PreviousPokemonId": null,
+    "NextPokemonId": null
+  },
+  {
+    "Id": 1226,
+    "PokedexId": 201,
+    "Name": "Zarbi R",
+    "Generation": 2,
+    "ImagePath": "/Pokemon/Gen2/201-r.png",
+    "PreviousPokemonId": null,
+    "NextPokemonId": null
+  },
+  {
+    "Id": 1227,
+    "PokedexId": 201,
+    "Name": "Zarbi S",
+    "Generation": 2,
+    "ImagePath": "/Pokemon/Gen2/201-s.png",
+    "PreviousPokemonId": null,
+    "NextPokemonId": null
+  },
+  {
+    "Id": 1228,
+    "PokedexId": 201,
+    "Name": "Zarbi T",
+    "Generation": 2,
+    "ImagePath": "/Pokemon/Gen2/201-t.png",
+    "PreviousPokemonId": null,
+    "NextPokemonId": null
+  },
+  {
+    "Id": 1229,
+    "PokedexId": 201,
+    "Name": "Zarbi U",
+    "Generation": 2,
+    "ImagePath": "/Pokemon/Gen2/201-u.png",
+    "PreviousPokemonId": null,
+    "NextPokemonId": null
+  },
+  {
+    "Id": 1230,
+    "PokedexId": 201,
+    "Name": "Zarbi V",
+    "Generation": 2,
+    "ImagePath": "/Pokemon/Gen2/201-v.png",
+    "PreviousPokemonId": null,
+    "NextPokemonId": null
+  },
+  {
+    "Id": 1231,
+    "PokedexId": 201,
+    "Name": "Zarbi W",
+    "Generation": 2,
+    "ImagePath": "/Pokemon/Gen2/201-w.png",
+    "PreviousPokemonId": null,
+    "NextPokemonId": null
+  },
+  {
+    "Id": 1232,
+    "PokedexId": 201,
+    "Name": "Zarbi X",
+    "Generation": 2,
+    "ImagePath": "/Pokemon/Gen2/201-x.png",
+    "PreviousPokemonId": null,
+    "NextPokemonId": null
+  },
+  {
+    "Id": 1233,
+    "PokedexId": 201,
+    "Name": "Zarbi Y",
+    "Generation": 2,
+    "ImagePath": "/Pokemon/Gen2/201-y.png",
+    "PreviousPokemonId": null,
+    "NextPokemonId": null
+  },
+  {
+    "Id": 1234,
+    "PokedexId": 201,
+    "Name": "Zarbi Z",
+    "Generation": 2,
+    "ImagePath": "/Pokemon/Gen2/201-z.png",
+    "PreviousPokemonId": null,
+    "NextPokemonId": null
+  },
+  {
+    "Id": 1235,
+    "PokedexId": 201,
+    "Name": "Zarbi ?",
+    "Generation": 2,
+    "ImagePath": "/Pokemon/Gen2/201-question.png",
+    "PreviousPokemonId": null,
+    "NextPokemonId": null
+  },
+  {
+    "Id": 1236,
+    "PokedexId": 201,
+    "Name": "Zarbi !",
+    "Generation": 2,
+    "ImagePath": "/Pokemon/Gen2/201-exclamation.png",
+    "PreviousPokemonId": null,
+    "NextPokemonId": null
   }
 ]

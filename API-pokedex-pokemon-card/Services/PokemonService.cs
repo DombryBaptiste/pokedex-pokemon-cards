@@ -21,7 +21,7 @@ public class PokemonService : IPokemonService
     {
         var userId = _userContext.UserId;
 
-        var query = _context.Pokemons.AsNoTracking().AsQueryable();
+        var query = _context.Pokemons.AsNoTracking().AsQueryable().Where(p => p.PreviousPokemonId != null && p.NextPokemonId != null);
 
         int pokedexId = filters.PokedexId;
 
