@@ -11,10 +11,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { PokedexScrollService } from '../../Services/PokedexScrollService/pokedex-scroll.service';
 import { LivingDexPokedexComponent } from '../living-dex-pokedex/living-dex-pokedex.component';
 import { SpecificPokemonPokedexComponent } from '../specific-pokemon-pokedex/specific-pokemon-pokedex.component';
+import { ZarbiDexComponent } from "../zarbi-dex/zarbi-dex.component";
 
 @Component({
   selector: 'app-pokedex',
-  imports: [LivingDexPokedexComponent, SpecificPokemonPokedexComponent, MatButtonModule, FormsModule, MatIconModule, MatProgressBarModule, MatTooltipModule],
+  imports: [LivingDexPokedexComponent, SpecificPokemonPokedexComponent, MatButtonModule, FormsModule, MatIconModule, MatProgressBarModule, MatTooltipModule, ZarbiDexComponent],
   templateUrl: './pokedex.component.html',
   styleUrl: './pokedex.component.scss'
 })

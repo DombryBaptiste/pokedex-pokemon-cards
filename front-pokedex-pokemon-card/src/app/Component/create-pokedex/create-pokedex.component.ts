@@ -28,6 +28,7 @@ export class CreatePokedexComponent implements OnInit {
   pokedexTypes = [
     { value: PokedexType.LivingDex, label: "LivingDex" },
     { value: PokedexType.SpecificPokemonsDex, label: "Specific Pokémon" },
+    { value: PokedexType.ZarbiDex, label: "ZarbiDex" },
   ];
 
   private user: UserConnect | null = null;

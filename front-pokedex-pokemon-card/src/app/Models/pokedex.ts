@@ -48,5 +48,6 @@ export interface PokedexSpecificPokemons {
 
 export enum PokedexType {
     LivingDex,
-    SpecificPokemonsDex 
+    SpecificPokemonsDex,
+    ZarbiDex
 }
