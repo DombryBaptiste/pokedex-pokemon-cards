@@ -102,4 +102,18 @@ public class PokedexController : ControllerBase
             return BadRequest($"Une erreur est surevenue lors de la récupération des statistiques pour le pokedex : {pokedexId}.");
         }
     }
+
+    [HttpDelete("{pokedexId}")]
+    public async Task<ActionResult> DeletePokedex(int pokedexId)
+    {
+        try
+        {
+            await _pokedexService.DeleteAsync(pokedexId);
+            return Ok();
+        }
+        catch (Exception)
+        {
+            return BadRequest($"Une erreur est surevenue lors de la supression du pokédex d'id : {pokedexId}.");
+        }
+    }
 }

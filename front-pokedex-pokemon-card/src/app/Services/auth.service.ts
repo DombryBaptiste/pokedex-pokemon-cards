@@ -103,6 +103,16 @@ export class AuthService {
     localStorage.removeItem(environment.localStorageTokenString);
   }
 
+  removePokedex(pokedexId: number) {
+    const user = this.user$?.value;
+    if (!user) return;
+    const updated = {
+      ...user,
+      pokedexUsers: user.pokedexUsers.filter(p => p.pokedexId !== pokedexId)
+    };
+    this.user$.next(updated);
+  }
+
   private handleCredentialResponse(response: any) {
     this.ngZone.run(() => {
       const credential = response.credential;

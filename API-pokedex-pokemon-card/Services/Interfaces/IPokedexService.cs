@@ -5,4 +5,5 @@ public interface IPokedexService
     Task<Pokedex?> CreateByShareCode(string shareCode, int userId);
     Task<PokedexCompletion?> GetCompletionPokedex(int pokedexId);
     Task<PokedexSpecificPokemon> SetSpecificPokemon(int pokedexId, int slot, int pokemonId);
+    Task DeleteAsync(int pokedexId);
 }
