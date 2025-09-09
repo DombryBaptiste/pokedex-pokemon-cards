@@ -30,8 +30,7 @@ export class PickPokemonCardComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: InjectPokemonCardData,
-    private pokemonCardService: PokemonCardService,
-    private authService: AuthService
+    private pokemonCardService: PokemonCardService
   ) {}
 
   ngOnInit(): void {
@@ -50,7 +49,7 @@ export class PickPokemonCardComponent implements OnInit {
         : this.pokemonCardService.setOwnedCardByPokemon(card, this.data.pokedexId);
 
     request$.subscribe(() => {
-      this.dialogRef.close();
+      this.dialogRef.close(card);
     });
   }
 

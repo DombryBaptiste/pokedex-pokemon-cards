@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -70,10 +70,16 @@ export class PokedexComponent implements OnInit {
     return Math.round((this.completion.ownedPokemonNb / this.completion.maxPokemon) * 100);
   }
 
+  initCompletion()
+  {
+     this.pokedexService.getCompletion(this.pokedexId).subscribe(c => { this.completion = c; });
+  }
+
   private initData()
   {
     this.loadUserContext();
     this.initPokedex();
+    this.initCompletion();
   }
 
   private loadUserContext(): void
@@ -82,9 +88,7 @@ export class PokedexComponent implements OnInit {
       if(user)
       {
         this.isPokedexOwner = user?.pokedexUsers.find(pokedex => pokedex.userId == user.id)?.isOwner ?? false;
-        this.pokedexService.getCompletion(this.pokedexId, user?.id ?? 0).subscribe(c => {
-          this.completion = c;
-        });
+       
       }
     })
   }

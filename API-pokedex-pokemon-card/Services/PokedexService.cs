@@ -76,7 +76,7 @@ public class PokedexService : IPokedexService
         return pokedex;
     }
 
-    public async Task<PokedexCompletion?> GetCompletionPokedex(int pokedexId, int userId)
+    public async Task<PokedexCompletion?> GetCompletionPokedex(int pokedexId)
     {
         var pokedexData = await _context.Pokedexs
             .Where(p => p.Id == pokedexId)
@@ -99,9 +99,11 @@ public class PokedexService : IPokedexService
         {
             case PokedexType.LivingDex:
                 return GetLivingDexCompletion(pokedexData);
+            case PokedexType.ZarbiDex:
+                return GetZarbiDexCompletion(pokedexData);
             default:
-                return null;  
-        }    
+                return null;
+        }
     }
 
     public async Task<PokedexSpecificPokemon> SetSpecificPokemon(int pokedexId, int slot, int pokemonId)
@@ -156,6 +158,18 @@ public class PokedexService : IPokedexService
         var ownedWantedCount = data.OwnedPairs
             .Intersect(data.WantedPairs)
             .Count();
+
+        return new PokedexCompletion
+        {
+            MaxPokemon = maxPokemon,
+            OwnedPokemonNb = ownedWantedCount
+        };
+    }
+
+    private PokedexCompletion GetZarbiDexCompletion(PokedexCompletionData data)
+    {
+        var maxPokemon = _context.Pokemons.Count(p => p.NextPokemonId == null && p.PreviousPokemonId == null);
+        var ownedWantedCount = data.OwnedPairs.Count();
 
         return new PokedexCompletion
         {

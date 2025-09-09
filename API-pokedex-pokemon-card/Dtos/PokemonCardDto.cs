@@ -5,7 +5,8 @@ public class PokemonCardDto
     public required string Image { get; set; }  // URL complète
     public required string CardId { get; set; }
     public required int PokemonId { get; set; }
-     public ICollection<CardPrintingDto> CardPrintings { get; set; } = new List<CardPrintingDto>();
+    public ICollection<CardPrintingDto> CardPrintings { get; set; } = new List<CardPrintingDto>();
+    public required Sets Set { get; set; }
 }
 
 public class OwnedPokemonCardDto

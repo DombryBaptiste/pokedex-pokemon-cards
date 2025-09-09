@@ -22,7 +22,7 @@ public class PokemonController : ControllerBase
     {
         try
         {
-            return Ok(_mapper.Map<List<PokemonListDto>>(await _pokemonService.GetAllPokemon())); 
+            return Ok(_mapper.Map<List<PokemonListDto>>(await _pokemonService.GetAllPokemon()));
         }
         catch (Exception)
         {
@@ -59,6 +59,25 @@ public class PokemonController : ControllerBase
         catch (Exception)
         {
             return BadRequest($"Une erreur est surevenue lors de la récupération du pokémon d'id : {id}.");
+        }
+    }
+    
+    [HttpGet("zarbi")]
+    public async Task<IActionResult> GetAllZarbi()
+    {
+        try
+        {
+            var pokemon = await _pokemonService.GetAllZarbi();
+            if (pokemon == null)
+            {
+                return NotFound($"Aucun Zarbis trouvés.");
+            }
+
+            return Ok(_mapper.Map<List<PokemonDto>>(pokemon));
+        }
+        catch (Exception)
+        {
+            return BadRequest($"Une erreur est surevenue lors de la récupération des zarbi.");
         }
     }
 }

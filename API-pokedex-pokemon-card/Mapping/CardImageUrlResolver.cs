@@ -4,7 +4,8 @@ using Microsoft.Extensions.Configuration;
 
 public class CardImageUrlResolver :
     IValueResolver<PokemonCard, PokemonCardDto, string>,
-    IValueResolver<Pokemon, PokemonListDto, string>
+    IValueResolver<Pokemon, PokemonListDto, string>,
+    IValueResolver<Pokemon, PokemonDto, string>
 {
     private readonly IConfiguration _config;
 
@@ -21,6 +22,10 @@ public class CardImageUrlResolver :
     // Pokemon -> PokemonListDto.ImagePath
     string IValueResolver<Pokemon, PokemonListDto, string>.Resolve(
         Pokemon source, PokemonListDto destination, string destMember, ResolutionContext context)
+        => BuildUrl(source.ImagePath);
+
+    string IValueResolver<Pokemon, PokemonDto, string>.Resolve(
+        Pokemon source, PokemonDto destination, string destMember, ResolutionContext context)
         => BuildUrl(source.ImagePath);
 
     private string BuildUrl(string file)

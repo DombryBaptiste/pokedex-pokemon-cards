@@ -32,7 +32,7 @@
   <app-specific-pokemon-pokedex [pokedex]="pokedex"></app-specific-pokemon-pokedex>
   }
   @case (PokedexType.ZarbiDex) {
-  <app-zarbi-dex></app-zarbi-dex>
+  <app-zarbi-dex [pokedex]="pokedex" (reloadCompletion)="initCompletion()"></app-zarbi-dex>
   }
   @default {
   <app-living-dex-pokedex [pokedex]="pokedex" [genSelected]="genSelected"></app-living-dex-pokedex>

@@ -1,1 +1,16 @@
-<p>zarbi-dex works!</p>
+@if(zarbis && ownedCards)
+{
+    <div class="zarbi-grid">
+        @for(zarbi of zarbis; track zarbi.id){
+            <div class="zarbi-card" (click)="handleClickOpenUpdate(zarbi)">
+                @if(getOwned(zarbi); as owned)
+                {   
+                    <img class="card-img" [src]="owned.pokemonCard.image">
+                } @else {
+                    <img [src]="zarbi.imagePath" >
+                    <mat-icon fontIcon="add"></mat-icon>
+                }
+            </div>
+        }
+    </div>
+}

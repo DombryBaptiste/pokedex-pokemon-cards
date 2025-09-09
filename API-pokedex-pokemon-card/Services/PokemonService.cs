@@ -62,7 +62,7 @@ public class PokemonService : IPokemonService
             var term = filters.FilterName.Trim().ToLower();
             query = query.Where(p => EF.Functions.Like(p.Name, $"%{term}%"));
         }
-        
+
         var result = await query
         .Select(p => new PokemonListDto
         {
@@ -103,6 +103,31 @@ public class PokemonService : IPokemonService
 
 
         return pokemon;
+    }
+
+    public async Task<List<Pokemon>> GetAllZarbi()
+    {
+        var zarbis = await _context.Pokemons
+            .Include(p => p.PokemonCardPokemons)
+                .ThenInclude(pcp => pcp.PokemonCard)
+                    .ThenInclude(pc => pc.Set)
+            .Where(p => p.Name.Contains("Zarbi ")).ToListAsync();
+
+        foreach(var pokemon in zarbis)
+        {
+            pokemon.PokemonCards = pokemon.PokemonCardPokemons
+                .Select(pcp =>
+                {
+                    var card = pcp.PokemonCard;
+                    card.PokemonId = pokemon.Id;
+                    return card;
+                })
+                .OrderBy(card => card.Set.ReleaseDate)
+                .ToList();
+        }
+
+
+        return zarbis;
     }
 
 }
