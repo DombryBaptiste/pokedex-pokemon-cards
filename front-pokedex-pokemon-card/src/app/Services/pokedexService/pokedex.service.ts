@@ -47,4 +47,9 @@ export class PokedexService {
     let data = { pokemonId: pokemonId}
     return this.http.post<PokedexSpecificPokemons>(this.baseUrl + `/${pokedexId}/specific/${slot}`, data);
   }
+
+  delete(pokedexId: number)
+  {
+    return this.http.delete(this.baseUrl + "/" + pokedexId);
+  }
 }

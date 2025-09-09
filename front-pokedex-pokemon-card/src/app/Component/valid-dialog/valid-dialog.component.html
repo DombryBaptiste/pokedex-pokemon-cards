@@ -1,0 +1,9 @@
+<h2 mat-dialog-title class="white-text">{{ data.title }}</h2>
+<mat-dialog-content class="white-text">
+  {{ data.text }}
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-flat-button class="classic-button" [mat-dialog-close]="false">Retour</button>
+  <button mat-flat-button class="suppress-button" [mat-dialog-close]="true">Valider</button>
+</mat-dialog-actions>
+

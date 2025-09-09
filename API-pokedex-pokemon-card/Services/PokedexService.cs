@@ -177,4 +177,14 @@ public class PokedexService : IPokedexService
             OwnedPokemonNb = ownedWantedCount
         };
     }
+
+    public async Task DeleteAsync(int pokedexId)
+    {
+        var pokedex = await _context.Pokedexs.FirstOrDefaultAsync(p => p.Id == pokedexId);
+        if (pokedex != null)
+        {
+            _context.Pokedexs.Remove(pokedex);
+            await _context.SaveChangesAsync();
+        }
+    }
 }
