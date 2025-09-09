@@ -64,12 +64,12 @@ public class PokedexController : ControllerBase
         }
     }
 
-    [HttpGet("{pokedexId}/completion/{userId}")]
-    public async Task<IActionResult> GetCompletion(int pokedexId, int userId)
+    [HttpGet("{pokedexId}/completion")]
+    public async Task<IActionResult> GetCompletion(int pokedexId)
     {
         try
         {
-            return Ok(await _pokedexService.GetCompletionPokedex(pokedexId, userId));
+            return Ok(await _pokedexService.GetCompletionPokedex(pokedexId));
         }
         catch (Exception)
         {

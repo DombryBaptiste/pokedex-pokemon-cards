@@ -9,7 +9,7 @@ public class PokemonCard
     public required string Name { get; set; }
     public required string Image { get; set; }
     public List<PokemonCardPokemon> PokemonCardPokemons { get; set; } = new();
-    public Sets Set { get; set; }
+    public required Sets Set { get; set; }
     public int SetId { get; set; }
     
     public ICollection<CardPrinting> CardPrintings { get; set; } = new List<CardPrinting>();

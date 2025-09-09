@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -11,10 +11,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { PokedexScrollService } from '../../Services/PokedexScrollService/pokedex-scroll.service';
 import { LivingDexPokedexComponent } from '../living-dex-pokedex/living-dex-pokedex.component';
 import { SpecificPokemonPokedexComponent } from '../specific-pokemon-pokedex/specific-pokemon-pokedex.component';
+import { ZarbiDexComponent } from "../zarbi-dex/zarbi-dex.component";
 
 @Component({
   selector: 'app-pokedex',
-  imports: [LivingDexPokedexComponent, SpecificPokemonPokedexComponent, MatButtonModule, FormsModule, MatIconModule, MatProgressBarModule, MatTooltipModule],
+  imports: [LivingDexPokedexComponent, SpecificPokemonPokedexComponent, MatButtonModule, FormsModule, MatIconModule, MatProgressBarModule, MatTooltipModule, ZarbiDexComponent],
   templateUrl: './pokedex.component.html',
   styleUrl: './pokedex.component.scss'
 })
@@ -69,10 +70,16 @@ export class PokedexComponent implements OnInit {
     return Math.round((this.completion.ownedPokemonNb / this.completion.maxPokemon) * 100);
   }
 
+  initCompletion()
+  {
+     this.pokedexService.getCompletion(this.pokedexId).subscribe(c => { this.completion = c; });
+  }
+
   private initData()
   {
     this.loadUserContext();
     this.initPokedex();
+    this.initCompletion();
   }
 
   private loadUserContext(): void
@@ -81,9 +88,7 @@ export class PokedexComponent implements OnInit {
       if(user)
       {
         this.isPokedexOwner = user?.pokedexUsers.find(pokedex => pokedex.userId == user.id)?.isOwner ?? false;
-        this.pokedexService.getCompletion(this.pokedexId, user?.id ?? 0).subscribe(c => {
-          this.completion = c;
-        });
+       
       }
     })
   }

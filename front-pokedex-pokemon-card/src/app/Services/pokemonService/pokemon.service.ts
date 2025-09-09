@@ -72,4 +72,8 @@ export class PokemonService {
   {
     return this.http.get<Pokemon[]>(this.baseUrl);
   }
+
+  public getAllZarbi(): Observable<Pokemon[]> {
+    return this.http.get<Pokemon[]>(this.baseUrl + "/zarbi");
+  }
 }

@@ -32,9 +32,9 @@ export class PokedexService {
     return this.http.post<Pokedex>(this.baseUrl + "/add-with-share-code", dto);
   }
 
-  getCompletion(pokedexId: number, userId: number): Observable<PokedexCompletion>
+  getCompletion(pokedexId: number): Observable<PokedexCompletion>
   {
-    return this.http.get<PokedexCompletion>(this.baseUrl +'/' + pokedexId + "/completion/" + userId);
+    return this.http.get<PokedexCompletion>(this.baseUrl +'/' + pokedexId + "/completion");
   }
 
   getStats(pokedexId: number): Observable<PokedexStats>

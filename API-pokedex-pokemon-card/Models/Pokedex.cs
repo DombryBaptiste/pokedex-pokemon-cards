@@ -32,5 +32,6 @@ public class PokedexCompletionData
 public enum PokedexType
 {
     LivingDex,
-    SpecificPokemonsDex
+    SpecificPokemonsDex,
+    ZarbiDex
 }
