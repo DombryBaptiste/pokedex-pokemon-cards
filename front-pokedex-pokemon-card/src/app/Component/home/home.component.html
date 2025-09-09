@@ -23,10 +23,11 @@
                 {
                     <div class="pokedex-item">
                         <div class="pokedex-details" (click)="handlePokedexClick(pokedexUser.pokedexId)">
-                            <mat-icon>
+                            <mat-icon class="icon">
                             {{ isPokedexOwner(pokedexUser.pokedexId) ? 'star' : 'group' }}
                             </mat-icon>
-                            {{ pokedexUser.pokedex.name }}
+                            <mat-icon class="icon" inline [svgIcon]="getIconPokedex(pokedexUser.pokedex.type)"></mat-icon>
+                            <span class="name">{{ pokedexUser.pokedex.name }}</span>
                         </div>
                         @if(pokedexUser.pokedex.type == PokedexType.LivingDex)
                         {
