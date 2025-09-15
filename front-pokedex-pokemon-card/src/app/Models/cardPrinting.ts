@@ -11,5 +11,6 @@ export enum PrintingTypeEnum {
     NonHolo,
     HoloCosmo,
     HoloCrackedIce,
-    TamponLeague
+    TamponLeague,
+    Flocon
 }

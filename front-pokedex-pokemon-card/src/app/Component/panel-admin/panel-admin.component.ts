@@ -48,6 +48,7 @@ export class PanelAdminComponent implements OnInit {
     { label: 'Holo Cosmo', class: 'HoloCosmo' },
     { label: 'Holo Cracked Ice', class: 'HoloCrackedIce' },
     { label: 'Tampon League', class: 'TamponLeague' },
+    { label: 'Flocon', class: 'Flocon' }
   ];
 
   constructor(

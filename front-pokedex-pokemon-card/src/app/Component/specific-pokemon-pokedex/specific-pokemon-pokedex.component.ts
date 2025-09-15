@@ -37,7 +37,8 @@ export class SpecificPokemonPokedexComponent implements OnInit {
     [PrintingTypeEnum.NonHolo]: 'assets/non_holo_logo.png',
     [PrintingTypeEnum.HoloCosmo]: 'assets/holo_cosmo_logo.png',
     [PrintingTypeEnum.HoloCrackedIce]: 'assets/holo_cracked_ice_logo.png',
-    [PrintingTypeEnum.TamponLeague]: 'assets/tampon_league_logo.jpg'
+    [PrintingTypeEnum.TamponLeague]: 'assets/tampon_league_logo.jpg',
+    [PrintingTypeEnum.Flocon]: 'assets/flocon_logo.png'
   };
 
   constructor(

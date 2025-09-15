@@ -261,6 +261,23 @@ body {
   ));
 }
 
+/* === Flocon – style glacé distinctif === */
+.Flocon {
+  @include mat.checkbox-overrides((
+    unselected-icon-color: #7fd3ff,           // bord non coché
+    unselected-hover-icon-color: #7fd3ff,
+    unselected-focus-icon-color: #a7e2ff,
+
+    selected-icon-color: #1fb6ff,             // bord coché
+    selected-hover-icon-color: #1fb6ff,
+    selected-focus-icon-color: #66d2ff,
+
+    // On remplace la coche par un flocon → on masque la couleur de checkmark
+    selected-checkmark-color: transparent,
+    disabled-selected-checkmark-color: #bfeaff
+  ));
+}
+
 
 
 
