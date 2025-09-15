@@ -13,13 +13,18 @@ public class PokemonCardService : IPokemonCardService
     }
     public async Task<List<PokemonCard>> GetAllByPokemonIdAsync(int pokemonId)
     {
-        var result = await _context.PokemonCardPokemons
+        var list = await _context.PokemonCardPokemons
             .Where(pcp => pcp.PokemonId == pokemonId)
             .Include(pcp => pcp.PokemonCard).ThenInclude(pc => pc.Set)
             .Include(pcp => pcp.PokemonCard).ThenInclude(pc => pc.CardPrintings)
             .Select(pcp => pcp.PokemonCard)
             .OrderBy(pc => pc.Set.ReleaseDate)
             .ToListAsync();
+        
+         var result = list
+            .OrderBy(pc => pc.Set.ReleaseDate)
+            .ThenBy(pc => int.TryParse(pc.LocalId, out var n) ? n : int.MaxValue)
+            .ToList();
 
         foreach (var pc in result)
         {
