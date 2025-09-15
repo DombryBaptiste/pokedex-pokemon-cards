@@ -1,12 +1,10 @@
 <div class="legend">
+  @for (item of legendItems; track item.label) {
     <div>
-        <span>Normal</span>
-        <mat-checkbox class="Normal"></mat-checkbox>
+      <span>{{ item.label }}</span>
+      <mat-checkbox class="{{ item.class }}"></mat-checkbox>
     </div>
-    <div>
-        <span>Reverse</span>
-        <mat-checkbox class="Reverse"></mat-checkbox>
-    </div>
+  }
 </div>
 @if(pokemons)
 {

@@ -23,13 +23,12 @@ import { MatCheckboxChange, MatCheckboxModule } from '@angular/material/checkbox
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatCheckboxModule
+    MatCheckboxModule,
   ],
   templateUrl: './panel-admin.component.html',
   styleUrl: './panel-admin.component.scss',
 })
 export class PanelAdminComponent implements OnInit {
-
   pokemons: Pokemon[] = [];
   cards: PokemonCard[] = [];
   pokemonCtrl = new FormControl('');
@@ -38,12 +37,23 @@ export class PanelAdminComponent implements OnInit {
   selectedByCard: Record<string, Set<PrintingTypeEnum>> = {};
 
   PrintingTypeEnum = PrintingTypeEnum;
-  printingTypes = Object.keys(PrintingTypeEnum)
-    .filter(key => isNaN(Number(key))) as (keyof typeof PrintingTypeEnum)[];
+  printingTypes = Object.keys(PrintingTypeEnum).filter((key) =>
+    isNaN(Number(key))
+  ) as (keyof typeof PrintingTypeEnum)[];
+
+  legendItems = [
+    { label: 'Normal', class: 'Normal' },
+    { label: 'Reverse', class: 'Reverse' },
+    { label: 'Non Holo', class: 'NonHolo' },
+    { label: 'Holo Cosmo', class: 'HoloCosmo' },
+    { label: 'Holo Cracked Ice', class: 'HoloCrackedIce' },
+    { label: 'Tampon League', class: 'TamponLeague' },
+    { label: 'Flocon', class: 'Flocon' }
+  ];
 
   constructor(
     private pokemonService: PokemonService,
-    private pokemonCardService: PokemonCardService  
+    private pokemonCardService: PokemonCardService
   ) {}
 
   ngOnInit() {
@@ -64,25 +74,26 @@ export class PanelAdminComponent implements OnInit {
 
     this.selectedPokemon = p;
 
-    this.pokemonCardService.getAllByPokemonId(p.id).subscribe(res => 
-    {
-      this.cards = res
+    this.pokemonCardService.getAllByPokemonId(p.id).subscribe((res) => {
+      this.cards = res;
       this.initSelectedByCard(res);
     });
   }
 
-  handleChangeCheckbox(event: MatCheckboxChange, cardId : string, type: PrintingTypeEnum)
-  {
+  handleChangeCheckbox(
+    event: MatCheckboxChange,
+    cardId: string,
+    type: PrintingTypeEnum
+  ) {
     var isDelete = event.checked == false;
 
     this.pokemonCardService.setTypeCard(cardId, type, isDelete).subscribe();
   }
 
   private initData() {
-    this.pokemonService.getAll().subscribe((res) => 
-      {
-        this.pokemons = res
-      });
+    this.pokemonService.getAll().subscribe((res) => {
+      this.pokemons = res;
+    });
   }
 
   private initSelectedByCard(cards: any[]) {

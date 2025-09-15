@@ -31,6 +31,16 @@ export class SpecificPokemonPokedexComponent implements OnInit {
 
   PrintingType = PrintingTypeEnum;
 
+  logoMap: Record<PrintingTypeEnum, string | null> = {
+    [PrintingTypeEnum.Normal]: null,
+    [PrintingTypeEnum.Reverse]: 'assets/reverse_logo.png',
+    [PrintingTypeEnum.NonHolo]: 'assets/non_holo_logo.png',
+    [PrintingTypeEnum.HoloCosmo]: 'assets/holo_cosmo_logo.png',
+    [PrintingTypeEnum.HoloCrackedIce]: 'assets/holo_cracked_ice_logo.png',
+    [PrintingTypeEnum.TamponLeague]: 'assets/tampon_league_logo.jpg',
+    [PrintingTypeEnum.Flocon]: 'assets/flocon_logo.png'
+  };
+
   constructor(
     private pokemonService: PokemonService,
     private pokedexService: PokedexService,
@@ -116,6 +126,10 @@ export class SpecificPokemonPokedexComponent implements OnInit {
       this.onlyNormal = false;
     }
     this.initCards();
+  }
+
+  getLogo(type: PrintingTypeEnum): string | null {
+    return this.logoMap[type] ?? null;
   }
 
   private initData() {

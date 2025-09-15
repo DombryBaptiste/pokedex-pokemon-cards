@@ -39,9 +39,12 @@
                     <div class="card-container">
                         <img [src]="card.image" [class.unowned]="!isCardOwned(card.id, cardPrinting.type)" (click)="handleClickImage(card, cardPrinting.type, slotCard.slot)">
                         
-                        @if(cardPrinting.type == PrintingType.Reverse){
-                        <img class="reverse-logo" src="assets/reverse_logo.png" alt="Reverse">
+                        @if (getLogo(cardPrinting.type); as logo) {
+                        <img class="reverse-logo"
+                            [src]="logo"
+                            [alt]="cardPrinting.type" />
                         }
+
                 </div>
                 }
                 

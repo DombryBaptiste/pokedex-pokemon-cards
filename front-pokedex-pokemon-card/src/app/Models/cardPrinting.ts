@@ -8,4 +8,9 @@ export interface CardPrinting
 export enum PrintingTypeEnum {
     Normal,
     Reverse,
+    NonHolo,
+    HoloCosmo,
+    HoloCrackedIce,
+    TamponLeague,
+    Flocon
 }
