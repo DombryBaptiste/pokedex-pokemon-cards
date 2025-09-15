@@ -47,7 +47,7 @@
     .list-img-cards
     {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, max-content));
+        grid-template-columns: repeat(auto-fit, minmax(200px, max-content));
         gap: 12px;
         padding: 10px;
         justify-content: center;
@@ -58,7 +58,7 @@
 
             img {
                 height: auto;
-                max-width: 150px;
+                max-width: 200px;
                 display: block;
             }
 

@@ -150,6 +150,12 @@
         "CardMarketPrefix": "PK"
     },
     {
+        "SetId": "dpp",
+        "Name": "Promo DP",
+        "ReleaseDate": "2007-03-07",
+        "CardMarketPrefix": "DPPR"
+    },
+    {
         "SetId": "dp1",
         "Name": "Diamant & Perle",
         "ReleaseDate": "2007-11-09",
@@ -160,6 +166,12 @@
         "Name": "Trésors Mystérieux",
         "ReleaseDate": "2008-02-12",
         "CardMarketPrefix": "MT"
+    },
+    {
+        "SetId": "tkdpm",
+        "Name": "DP Kit dresseur (Manaphy)",
+        "ReleaseDate": "2008-08-28",
+        "CardMarketPrefix": "TK3"
     },
     {
         "SetId": "dp3",
@@ -196,6 +208,12 @@
         "Name": "Platine",
         "ReleaseDate": "2009-08-18",
         "CardMarketPrefix": "PL"
+    },
+    {
+        "SetId": "pop9",
+        "Name": "Pop Série 9",
+        "ReleaseDate": "2009-03-01",
+        "CardMarketPrefix": "POP9"
     },
     {
         "SetId": "pl2",
@@ -390,6 +408,12 @@
         "CardMarketPrefix": "GEN"
     },
     {
+        "SetId": "tkxysu",
+        "Name": "XY Kit du dresseur (Suicune)",
+        "ReleaseDate": "2016-04-30",
+        "CardMarketPrefix": "TK9"
+    },
+    {
         "SetId": "xy10",
         "Name": "Impact des Destins",
         "ReleaseDate": "2016-05-07",
@@ -448,6 +472,12 @@
         "Name": "Ultra-Prisme",
         "ReleaseDate": "2018-02-02",
         "CardMarketPrefix": "UPR"
+    },
+    {
+        "SetId": "tksms",
+        "Name": "XY Kit du dresseur (Sablaieau d'Alola)",
+        "ReleaseDate": "2018-04-17",
+        "CardMarketPrefix": "TK11"
     },
     {
         "SetId": "sm6",
