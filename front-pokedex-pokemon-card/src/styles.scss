@@ -162,40 +162,105 @@ body {
   width: 100%;
 }
 
+/* Normal – rouge */
 .Normal {
   @include mat.checkbox-overrides((
-    // Contour quand non coché
-    unselected-icon-color: red,
-    unselected-hover-icon-color: red,
-    unselected-focus-icon-color: red,
+    // Contour non coché
+    unselected-icon-color: #e53935,
+    unselected-hover-icon-color: #e53935,
+    unselected-focus-icon-color: #e57373,
 
-    // Contour quand coché
-    selected-icon-color: red,
-    selected-hover-icon-color: red,
-    selected-focus-icon-color: red,
+    // Contour coché
+    selected-icon-color: #e53935,
+    selected-hover-icon-color: #e53935,
+    selected-focus-icon-color: #e57373,
 
-    // Coche (le "✓")
-    disabled-selected-checkmark-color: red,
+    // Coche
+    selected-checkmark-color: #ffffff,
+    disabled-selected-checkmark-color: #ef9a9a,
   ));
 }
 
+/* Reverse – jaune + coche noire */
 .Reverse {
   @include mat.checkbox-overrides((
-    // Contour quand non coché
-    unselected-icon-color: $yellow-button-bg,
-    unselected-hover-icon-color: $yellow-button-bg,
-    unselected-focus-icon-color: $yellow-button-bg,
+    unselected-icon-color: #fbc02d,
+    unselected-hover-icon-color: #fbc02d,
+    unselected-focus-icon-color: #ffd54f,
 
-    // Contour quand coché
-    selected-icon-color: $yellow-button-bg,
-    selected-hover-icon-color: $yellow-button-bg,
-    selected-focus-icon-color: $yellow-button-bg,
+    selected-icon-color: #fbc02d,
+    selected-hover-icon-color: #fbc02d,
+    selected-focus-icon-color: #ffd54f,
 
-    // Coche (le "✓")
-    selected-checkmark-color: black,
-    disabled-selected-checkmark-color: $yellow-button-bg,
+    selected-checkmark-color: #000000,
+    disabled-selected-checkmark-color: #ffe082,
   ));
 }
+
+/* Non Holo – gris foncé + coche blanche */
+.NonHolo {
+  @include mat.checkbox-overrides((
+    unselected-icon-color: #494848,
+    unselected-hover-icon-color: #494848,
+    unselected-focus-icon-color: #6e6e6e,
+
+    selected-icon-color: #494848,
+    selected-hover-icon-color: #494848,
+    selected-focus-icon-color: #6e6e6e,
+
+    selected-checkmark-color: #ffffff,
+    disabled-selected-checkmark-color: #bdbdbd,
+  ));
+}
+
+/* Holo Cosmo – violet/indigo, coche blanche */
+.HoloCosmo {
+  @include mat.checkbox-overrides((
+    unselected-icon-color: #6a5acd,     // SlateBlue
+    unselected-hover-icon-color: #6a5acd,
+    unselected-focus-icon-color: #8e7dff,
+
+    selected-icon-color: #7b5cf1,
+    selected-hover-icon-color: #7b5cf1,
+    selected-focus-icon-color: #a18bff,
+
+    selected-checkmark-color: #ffffff,
+    disabled-selected-checkmark-color: #c7bfff,
+  ));
+}
+
+/* Holo Cracked Ice – bleu glacier/teal, coche blanche */
+.HoloCrackedIce {
+  @include mat.checkbox-overrides((
+    unselected-icon-color: #26c6da,     // cyan-ish
+    unselected-hover-icon-color: #26c6da,
+    unselected-focus-icon-color: #80deea,
+
+    selected-icon-color: #00acc1,
+    selected-hover-icon-color: #00acc1,
+    selected-focus-icon-color: #4dd0e1,
+
+    selected-checkmark-color: #ffffff,
+    disabled-selected-checkmark-color: #b2ebf2,
+  ));
+}
+
+/* Tampon League – vert “validé” + coche blanche */
+.TamponLeague {
+  @include mat.checkbox-overrides((
+    unselected-icon-color: #2e7d32,     // green 800/700
+    unselected-hover-icon-color: #2e7d32,
+    unselected-focus-icon-color: #66bb6a,
+
+    selected-icon-color: #2e7d32,
+    selected-hover-icon-color: #2e7d32,
+    selected-focus-icon-color: #66bb6a,
+
+    selected-checkmark-color: #ffffff,
+    disabled-selected-checkmark-color: #a5d6a7,
+  ));
+}
+
 
 
 

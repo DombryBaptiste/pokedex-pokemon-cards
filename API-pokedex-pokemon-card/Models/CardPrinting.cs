@@ -11,4 +11,8 @@ public enum PrintingType
 {
     Normal = 0,
     Reverse = 1,
+    NonHolo = 2,
+    HoloCosmo = 3,
+    HoloCrackedIce = 4,
+    TamponLeague = 5
 }

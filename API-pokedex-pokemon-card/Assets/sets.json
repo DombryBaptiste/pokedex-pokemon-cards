@@ -582,6 +582,12 @@
         "CardMarketPrefix": "BST"
     },
     {
+        "SetId": "swsh2021",
+        "Name": "Promo McDonald's 2021",
+        "ReleaseDate": "2021-04-14",
+        "CardMarketPrefix": "MCD25"
+    },
+    {
         "SetId": "swsh6",
         "Name": "Règne de Glace",
         "ReleaseDate": "2021-06-18",
