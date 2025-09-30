@@ -748,5 +748,11 @@
         "Name": "Flamme Blanche",
         "ReleaseDate": "2025-07-18",
         "CardMarketPrefix": "WHT"
+    },
+    {
+        "SetId": "me01",
+        "Name": "Méga-Évolution",
+        "ReleaseDate": "2025-10-10",
+        "CardMarketPrefix": "MEG"
     }
 ]
