@@ -750,6 +750,12 @@
         "CardMarketPrefix": "WHT"
     },
     {
+        "SetId": "mep",
+        "Name": "Promos Méga-Évolution",
+        "ReleaseDate": "2025-10-10",
+        "CardMarketPrefix": "MEP"
+    },
+    {
         "SetId": "me01",
         "Name": "Méga-Évolution",
         "ReleaseDate": "2025-10-10",
