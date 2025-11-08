@@ -750,9 +750,21 @@
         "CardMarketPrefix": "WHT"
     },
     {
+        "SetId": "mep",
+        "Name": "Promos Méga-Évolution",
+        "ReleaseDate": "2025-10-10",
+        "CardMarketPrefix": "MEP"
+    },
+    {
         "SetId": "me01",
         "Name": "Méga-Évolution",
         "ReleaseDate": "2025-10-10",
         "CardMarketPrefix": "MEG"
+    },
+    {
+        "SetId": "me02",
+        "Name": "Flammes Fantasmagoriques",
+        "ReleaseDate": "2025-11-14",
+        "CardMarketPrefix": "PFL"
     }
 ]
