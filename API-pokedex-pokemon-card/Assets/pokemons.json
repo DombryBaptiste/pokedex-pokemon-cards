@@ -365,7 +365,7 @@
     "Name": "Sabelette",
     "Generation": 1,
     "ImagePath": "/Pokemon/Gen1/27.png",
-    "PreviousPokemonId": 40,
+    "PreviousPokemonId": 1237,
     "NextPokemonId": 42
   },
   {
@@ -465,7 +465,7 @@
     "Generation": 1,
     "ImagePath": "/Pokemon/Gen1/36.png",
     "PreviousPokemonId": 51,
-    "NextPokemonId": 53
+    "NextPokemonId": 1239
   },
   {
     "Id": 53,
@@ -473,7 +473,7 @@
     "Name": "Goupix",
     "Generation": 1,
     "ImagePath": "/Pokemon/Gen1/37.png",
-    "PreviousPokemonId": 52,
+    "PreviousPokemonId": 1239,
     "NextPokemonId": 54
   },
   {
@@ -888,7 +888,7 @@
     "Generation": 1,
     "ImagePath": "/Pokemon/Gen1/71.png",
     "PreviousPokemonId": 98,
-    "NextPokemonId": 100
+    "NextPokemonId": 1240
   },
   {
     "Id": 100,
@@ -896,7 +896,7 @@
     "Name": "Tentacool",
     "Generation": 1,
     "ImagePath": "/Pokemon/Gen1/72.png",
-    "PreviousPokemonId": 99,
+    "PreviousPokemonId": 1240,
     "NextPokemonId": 101
   },
   {
@@ -1518,7 +1518,7 @@
     "Generation": 1,
     "ImagePath": "/Pokemon/Gen1/121.png",
     "PreviousPokemonId": 168,
-    "NextPokemonId": 170
+    "NextPokemonId": 1241
   },
   {
     "Id": 170,
@@ -1526,7 +1526,7 @@
     "Name": "M. Mime",
     "Generation": 1,
     "ImagePath": "/Pokemon/Gen1/122.png",
-    "PreviousPokemonId": 169,
+    "PreviousPokemonId": 1241,
     "NextPokemonId": 171
   },
   {
@@ -1869,7 +1869,7 @@
     "Generation": 1,
     "ImagePath": "/Pokemon/Gen1/149.png",
     "PreviousPokemonId": 207,
-    "NextPokemonId": 209
+    "NextPokemonId": 1242
   },
   {
     "Id": 209,
@@ -1877,7 +1877,7 @@
     "Name": "Mewtwo",
     "Generation": 1,
     "ImagePath": "/Pokemon/Gen1/150.png",
-    "PreviousPokemonId": 208,
+    "PreviousPokemonId": 1242,
     "NextPokemonId": 210
   },
   {
@@ -11140,5 +11140,41 @@
     "ImagePath": "/Pokemon/Gen1/26-mega-y.png",
     "PreviousPokemonId": 1237,
     "NextPokemonId": 41
+  },
+  {
+    "Id": 1239,
+    "PokedexId": 36,
+    "Name": "Méga-Mélodelfe",
+    "Generation": 1,
+    "ImagePath": "/Pokemon/Gen1/36-mega.png",
+    "PreviousPokemonId": 52,
+    "NextPokemonId": 53
+  },
+  {
+    "Id": 1240,
+    "PokedexId": 71,
+    "Name": "Méga-Empiflor",
+    "Generation": 1,
+    "ImagePath": "/Pokemon/Gen1/71-mega.png",
+    "PreviousPokemonId": 99,
+    "NextPokemonId": 100
+  },
+  {
+    "Id": 1241,
+    "PokedexId": 121,
+    "Name": "Méga-Staross",
+    "Generation": 1,
+    "ImagePath": "/Pokemon/Gen1/121-mega.png",
+    "PreviousPokemonId": 168,
+    "NextPokemonId": 170
+  },
+  {
+    "Id": 1242,
+    "PokedexId": 149,
+    "Name": "Méga-Dracolosse",
+    "Generation": 1,
+    "ImagePath": "/Pokemon/Gen1/149.png",
+    "PreviousPokemonId": 207,
+    "NextPokemonId": 209
   }
 ]
