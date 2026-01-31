@@ -1,8 +1,8 @@
 <div class="filter-slides">
     <div class="left-controls">
         <div class="item-list search-wrapper">
-            <button mat-button>
-                <mat-icon fontIcon="search" class="icon-white" (click)="toggleSearch()"></mat-icon>
+            <button mat-button (click)="toggleSearch()">
+                <mat-icon fontIcon="search" class="icon-white"></mat-icon>
             </button>
 
             <input type="text" [(ngModel)]="searchText" (input)="onSearchInputChange($event)"
