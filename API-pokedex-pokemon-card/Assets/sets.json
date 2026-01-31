@@ -766,5 +766,11 @@
         "Name": "Flammes Fantasmagoriques",
         "ReleaseDate": "2025-11-14",
         "CardMarketPrefix": "PFL"
+    },
+    {
+        "SetId": "me02.5",
+        "Name": "Héros Transcendants",
+        "ReleaseDate": "2026-01-30",
+        "CardMarketPrefix": "ASC"
     }
 ]
