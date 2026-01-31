@@ -357,7 +357,7 @@
     "Generation": 1,
     "ImagePath": "/Pokemon/Gen1/26-alola.png",
     "PreviousPokemonId": 39,
-    "NextPokemonId": 41
+    "NextPokemonId": 1237
   },
   {
     "Id": 41,
@@ -11122,5 +11122,23 @@
     "ImagePath": "/Pokemon/Gen2/201-exclamation.png",
     "PreviousPokemonId": null,
     "NextPokemonId": null
+  },
+  {
+    "Id": 1237,
+    "PokedexId": 26,
+    "Name": "Méga-Raichu X",
+    "Generation": 1,
+    "ImagePath": "/Pokemon/Gen1/26-mega-x.png",
+    "PreviousPokemonId": 40,
+    "NextPokemonId": 1238
+  },
+  {
+    "Id": 1238,
+    "PokedexId": 26,
+    "Name": "Méga-Raichu Y",
+    "Generation": 1,
+    "ImagePath": "/Pokemon/Gen1/26-mega-y.png",
+    "PreviousPokemonId": 1237,
+    "NextPokemonId": 41
   }
 ]
