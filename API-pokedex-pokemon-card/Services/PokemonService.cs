@@ -74,7 +74,8 @@ public class PokemonService : IPokemonService
             IsWantedAndOwned = ownedWantedCardQ.Contains(p.Id),
             FormatPokemonId = "#" + p.PokedexId.ToString("D3")
         })
-        .OrderBy(p => p.Id)
+        .OrderBy(p => p.PokedexId)
+        .ThenBy(p => p.Id)
         .ToListAsync(ct);
 
         return result;
