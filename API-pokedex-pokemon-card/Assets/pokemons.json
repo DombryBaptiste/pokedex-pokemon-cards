@@ -7080,7 +7080,7 @@
     "Generation": 6,
     "ImagePath": "/Pokemon/Gen6/652.png",
     "PreviousPokemonId": 786,
-    "NextPokemonId": 788
+    "NextPokemonId": 1261
   },
   {
     "Id": 788,
@@ -7088,7 +7088,7 @@
     "Name": "Feunnec",
     "Generation": 6,
     "ImagePath": "/Pokemon/Gen6/653.png",
-    "PreviousPokemonId": 787,
+    "PreviousPokemonId": 1261,
     "NextPokemonId": 789
   },
   {
@@ -7107,7 +7107,7 @@
     "Generation": 6,
     "ImagePath": "/Pokemon/Gen6/655.png",
     "PreviousPokemonId": 789,
-    "NextPokemonId": 791
+    "NextPokemonId": 1262
   },
   {
     "Id": 791,
@@ -7115,7 +7115,7 @@
     "Name": "Grenousse",
     "Generation": 6,
     "ImagePath": "/Pokemon/Gen6/656.png",
-    "PreviousPokemonId": 790,
+    "PreviousPokemonId": 1262,
     "NextPokemonId": 792
   },
   {
@@ -7134,7 +7134,7 @@
     "Generation": 6,
     "ImagePath": "/Pokemon/Gen6/658.png",
     "PreviousPokemonId": 792,
-    "NextPokemonId": 794
+    "NextPokemonId": 1263
   },
   {
     "Id": 794,
@@ -7142,7 +7142,7 @@
     "Name": "Sapereau",
     "Generation": 6,
     "ImagePath": "/Pokemon/Gen6/659.png",
-    "PreviousPokemonId": 793,
+    "PreviousPokemonId": 1263,
     "NextPokemonId": 795
   },
   {
@@ -7224,7 +7224,7 @@
     "Generation": 6,
     "ImagePath": "/Pokemon/Gen6/668.png",
     "PreviousPokemonId": 802,
-    "NextPokemonId": 804
+    "NextPokemonId": 1264
   },
   {
     "Id": 804,
@@ -7232,7 +7232,7 @@
     "Name": "Flabébé",
     "Generation": 6,
     "ImagePath": "/Pokemon/Gen6/669.png",
-    "PreviousPokemonId": 803,
+    "PreviousPokemonId": 1264,
     "NextPokemonId": 805
   },
   {
@@ -7242,7 +7242,7 @@
     "Generation": 6,
     "ImagePath": "/Pokemon/Gen6/670.png",
     "PreviousPokemonId": 804,
-    "NextPokemonId": 806
+    "NextPokemonId": 1265
   },
   {
     "Id": 806,
@@ -7250,7 +7250,7 @@
     "Name": "Florges",
     "Generation": 6,
     "ImagePath": "/Pokemon/Gen6/671.png",
-    "PreviousPokemonId": 805,
+    "PreviousPokemonId": 1265,
     "NextPokemonId": 807
   },
   {
@@ -7314,7 +7314,7 @@
     "Generation": 6,
     "ImagePath": "/Pokemon/Gen6/678.png",
     "PreviousPokemonId": 812,
-    "NextPokemonId": 814
+    "NextPokemonId": 1266
   },
   {
     "Id": 814,
@@ -7322,7 +7322,7 @@
     "Name": "Monorpale",
     "Generation": 6,
     "ImagePath": "/Pokemon/Gen6/679.png",
-    "PreviousPokemonId": 813,
+    "PreviousPokemonId": 1266,
     "NextPokemonId": 815
   },
   {
@@ -7395,7 +7395,7 @@
     "Generation": 6,
     "ImagePath": "/Pokemon/Gen6/687.png",
     "PreviousPokemonId": 821,
-    "NextPokemonId": 823
+    "NextPokemonId": 1267
   },
   {
     "Id": 823,
@@ -7403,7 +7403,7 @@
     "Name": "Opermine",
     "Generation": 6,
     "ImagePath": "/Pokemon/Gen6/688.png",
-    "PreviousPokemonId": 822,
+    "PreviousPokemonId": 1267,
     "NextPokemonId": 824
   },
   {
@@ -7413,7 +7413,7 @@
     "Generation": 6,
     "ImagePath": "/Pokemon/Gen6/689.png",
     "PreviousPokemonId": 823,
-    "NextPokemonId": 825
+    "NextPokemonId": 1268
   },
   {
     "Id": 825,
@@ -7421,7 +7421,7 @@
     "Name": "Venalgue",
     "Generation": 6,
     "ImagePath": "/Pokemon/Gen6/690.png",
-    "PreviousPokemonId": 824,
+    "PreviousPokemonId": 1268,
     "NextPokemonId": 826
   },
   {
@@ -7431,7 +7431,7 @@
     "Generation": 6,
     "ImagePath": "/Pokemon/Gen6/691.png",
     "PreviousPokemonId": 825,
-    "NextPokemonId": 827
+    "NextPokemonId": 1269
   },
   {
     "Id": 827,
@@ -7439,7 +7439,7 @@
     "Name": "Flingouste",
     "Generation": 6,
     "ImagePath": "/Pokemon/Gen6/692.png",
-    "PreviousPokemonId": 826,
+    "PreviousPokemonId": 1269,
     "NextPokemonId": 828
   },
   {
@@ -7521,7 +7521,7 @@
     "Generation": 6,
     "ImagePath": "/Pokemon/Gen6/701.png",
     "PreviousPokemonId": 835,
-    "NextPokemonId": 837
+    "NextPokemonId": 1270
   },
   {
     "Id": 837,
@@ -7529,7 +7529,7 @@
     "Name": "Dedenne",
     "Generation": 6,
     "ImagePath": "/Pokemon/Gen6/702.png",
-    "PreviousPokemonId": 836,
+    "PreviousPokemonId": 1270,
     "NextPokemonId": 838
   },
   {
@@ -7719,7 +7719,7 @@
     "Generation": 6,
     "ImagePath": "/Pokemon/Gen6/718-parfaite.png",
     "PreviousPokemonId": 857,
-    "NextPokemonId": 859
+    "NextPokemonId": 1271
   },
   {
     "Id": 859,
@@ -7727,7 +7727,7 @@
     "Name": "Diancie",
     "Generation": 6,
     "ImagePath": "/Pokemon/Gen6/719.png",
-    "PreviousPokemonId": 858,
+    "PreviousPokemonId": 1271,
     "NextPokemonId": 860
   },
   {
@@ -11338,5 +11338,104 @@
     "ImagePath": "/Pokemon/Gen5/623-mega.png",
     "PreviousPokemonId": 750,
     "NextPokemonId": 751
+  },
+  {
+    "Id": 1261,
+    "PokedexId": 652,
+    "Name": "Méga-Blindépique",
+    "Generation": 6,
+    "ImagePath": "/Pokemon/Gen6/652-mega.png",
+    "PreviousPokemonId": 787,
+    "NextPokemonId": 788
+  },
+  {
+    "Id": 1262,
+    "PokedexId": 655,
+    "Name": "Méga-Goupelin",
+    "Generation": 6,
+    "ImagePath": "/Pokemon/Gen6/655-mega.png",
+    "PreviousPokemonId": 790,
+    "NextPokemonId": 791
+  },
+  {
+    "Id": 1263,
+    "PokedexId": 658,
+    "Name": "Méga-Amphinobi",
+    "Generation": 6,
+    "ImagePath": "/Pokemon/Gen6/658-mega.png",
+    "PreviousPokemonId": 793,
+    "NextPokemonId": 794
+  },
+  {
+    "Id": 1264,
+    "PokedexId": 668,
+    "Name": "Méga-Némélios",
+    "Generation": 6,
+    "ImagePath": "/Pokemon/Gen6/668-mega.png",
+    "PreviousPokemonId": 803,
+    "NextPokemonId": 804
+  },
+  {
+    "Id": 1265,
+    "PokedexId": 670,
+    "Name": "Méga-Floette",
+    "Generation": 6,
+    "ImagePath": "/Pokemon/Gen6/670-mega.png",
+    "PreviousPokemonId": 805,
+    "NextPokemonId": 806
+  },
+  {
+    "Id": 1266,
+    "PokedexId": 678,
+    "Name": "Méga-Mistigrix",
+    "Generation": 6,
+    "ImagePath": "/Pokemon/Gen6/678-mega.png",
+    "PreviousPokemonId": 813,
+    "NextPokemonId": 814
+  },
+  {
+    "Id": 1267,
+    "PokedexId": 687,
+    "Name": "Méga-Sepiatroce",
+    "Generation": 6,
+    "ImagePath": "/Pokemon/Gen6/687-mega.png",
+    "PreviousPokemonId": 822,
+    "NextPokemonId": 823
+  },
+  {
+    "Id": 1268,
+    "PokedexId": 689,
+    "Name": "Méga-Golgopathe",
+    "Generation": 6,
+    "ImagePath": "/Pokemon/Gen6/689-mega.png",
+    "PreviousPokemonId": 824,
+    "NextPokemonId": 825
+  },
+  {
+    "Id": 1269,
+    "PokedexId": 691,
+    "Name": "Méga-Kravarech",
+    "Generation": 6,
+    "ImagePath": "/Pokemon/Gen6/691-mega.png",
+    "PreviousPokemonId": 826,
+    "NextPokemonId": 827
+  },
+  {
+    "Id": 1270,
+    "PokedexId": 701,
+    "Name": "Méga-Brutalibré",
+    "Generation": 6,
+    "ImagePath": "/Pokemon/Gen6/701-mega.png",
+    "PreviousPokemonId": 836,
+    "NextPokemonId": 837
+  },
+  {
+    "Id": 1271,
+    "PokedexId": 718,
+    "Name": "Méga-Zygarde",
+    "Generation": 6,
+    "ImagePath": "/Pokemon/Gen6/718-mega.png",
+    "PreviousPokemonId": 858,
+    "NextPokemonId": 859
   }
 ]
