@@ -5550,7 +5550,7 @@
     "Generation": 5,
     "ImagePath": "/Pokemon/Gen5/500.png",
     "PreviousPokemonId": 616,
-    "NextPokemonId": 618
+    "NextPokemonId": 1254
   },
   {
     "Id": 618,
@@ -5558,7 +5558,7 @@
     "Name": "Moustillon",
     "Generation": 5,
     "ImagePath": "/Pokemon/Gen5/501.png",
-    "PreviousPokemonId": 617,
+    "PreviousPokemonId": 1254,
     "NextPokemonId": 619
   },
   {
@@ -5829,7 +5829,7 @@
     "Generation": 5,
     "ImagePath": "/Pokemon/Gen5/530.png",
     "PreviousPokemonId": 647,
-    "NextPokemonId": 649
+    "NextPokemonId": 1255
   },
   {
     "Id": 649,
@@ -5837,7 +5837,7 @@
     "Name": "Nanméouïe",
     "Generation": 5,
     "ImagePath": "/Pokemon/Gen5/531.png",
-    "PreviousPokemonId": 648,
+    "PreviousPokemonId": 1255,
     "NextPokemonId": 650
   },
   {
@@ -5973,7 +5973,7 @@
     "Generation": 5,
     "ImagePath": "/Pokemon/Gen5/545.png",
     "PreviousPokemonId": 663,
-    "NextPokemonId": 665
+    "NextPokemonId": 1256
   },
   {
     "Id": 665,
@@ -5981,7 +5981,7 @@
     "Name": "Doudouvet",
     "Generation": 5,
     "ImagePath": "/Pokemon/Gen5/546.png",
-    "PreviousPokemonId": 664,
+    "PreviousPokemonId": 1256,
     "NextPokemonId": 666
   },
   {
@@ -6135,7 +6135,7 @@
     "Generation": 5,
     "ImagePath": "/Pokemon/Gen5/560.png",
     "PreviousPokemonId": 681,
-    "NextPokemonId": 683
+    "NextPokemonId": 1257
   },
   {
     "Id": 683,
@@ -6143,7 +6143,7 @@
     "Name": "Cryptéro",
     "Generation": 5,
     "ImagePath": "/Pokemon/Gen5/561.png",
-    "PreviousPokemonId": 682,
+    "PreviousPokemonId": 1257,
     "NextPokemonId": 684
   },
   {
@@ -6567,7 +6567,7 @@
     "Generation": 5,
     "ImagePath": "/Pokemon/Gen5/604.png",
     "PreviousPokemonId": 729,
-    "NextPokemonId": 731
+    "NextPokemonId": 1258
   },
   {
     "Id": 731,
@@ -6575,7 +6575,7 @@
     "Name": "Lewsor",
     "Generation": 5,
     "ImagePath": "/Pokemon/Gen5/605.png",
-    "PreviousPokemonId": 730,
+    "PreviousPokemonId": 1258,
     "NextPokemonId": 732
   },
   {
@@ -6612,7 +6612,7 @@
     "Generation": 5,
     "ImagePath": "/Pokemon/Gen5/609.png",
     "PreviousPokemonId": 734,
-    "NextPokemonId": 736
+    "NextPokemonId": 1259
   },
   {
     "Id": 736,
@@ -6620,7 +6620,7 @@
     "Name": "Coupenotte",
     "Generation": 5,
     "ImagePath": "/Pokemon/Gen5/610.png",
-    "PreviousPokemonId": 735,
+    "PreviousPokemonId": 1259,
     "NextPokemonId": 737
   },
   {
@@ -6747,7 +6747,7 @@
     "Generation": 5,
     "ImagePath": "/Pokemon/Gen5/623.png",
     "PreviousPokemonId": 749,
-    "NextPokemonId": 751
+    "NextPokemonId": 1260
   },
   {
     "Id": 751,
@@ -6755,7 +6755,7 @@
     "Name": "Scalpion",
     "Generation": 5,
     "ImagePath": "/Pokemon/Gen5/624.png",
-    "PreviousPokemonId": 750,
+    "PreviousPokemonId": 1260,
     "NextPokemonId": 752
   },
   {
@@ -11275,5 +11275,68 @@
     "ImagePath": "/Pokemon/Gen4/491-mega.png",
     "PreviousPokemonId": 607,
     "NextPokemonId": 608
+  },
+  {
+    "Id": 1254,
+    "PokedexId": 500,
+    "Name": "Méga-Roitiflam",
+    "Generation": 5,
+    "ImagePath": "/Pokemon/Gen5/500-mega.png",
+    "PreviousPokemonId": 617,
+    "NextPokemonId": 618
+  },
+  {
+    "Id": 1255,
+    "PokedexId": 530,
+    "Name": "Méga-Minotaupe",
+    "Generation": 5,
+    "ImagePath": "/Pokemon/Gen5/530-mega.png",
+    "PreviousPokemonId": 648,
+    "NextPokemonId": 649
+  },
+  {
+    "Id": 1256,
+    "PokedexId": 545,
+    "Name": "Méga-Brutapode",
+    "Generation": 5,
+    "ImagePath": "/Pokemon/Gen5/545-mega.png",
+    "PreviousPokemonId": 664,
+    "NextPokemonId": 665
+  },
+  {
+    "Id": 1257,
+    "PokedexId": 560,
+    "Name": "Méga-Baggaïd",
+    "Generation": 5,
+    "ImagePath": "/Pokemon/Gen5/560-mega.png",
+    "PreviousPokemonId": 682,
+    "NextPokemonId": 683
+  },
+  {
+    "Id": 1258,
+    "PokedexId": 604,
+    "Name": "Méga-Ohmassacre",
+    "Generation": 5,
+    "ImagePath": "/Pokemon/Gen5/604-mega.png",
+    "PreviousPokemonId": 730,
+    "NextPokemonId": 731
+  },
+  {
+    "Id": 1259,
+    "PokedexId": 609,
+    "Name": "Méga-Lugulabre",
+    "Generation": 5,
+    "ImagePath": "/Pokemon/Gen5/609-mega.png",
+    "PreviousPokemonId": 735,
+    "NextPokemonId": 736
+  },
+  {
+    "Id": 1260,
+    "PokedexId": 623,
+    "Name": "Méga-Golemastoc",
+    "Generation": 5,
+    "ImagePath": "/Pokemon/Gen5/623-mega.png",
+    "PreviousPokemonId": 750,
+    "NextPokemonId": 751
   }
 ]
