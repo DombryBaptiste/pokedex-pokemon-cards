@@ -1932,7 +1932,7 @@
     "Generation": 2,
     "ImagePath": "/Pokemon/Gen2/154.png",
     "PreviousPokemonId": 214,
-    "NextPokemonId": 216
+    "NextPokemonId": 1244
   },
   {
     "Id": 216,
@@ -1940,7 +1940,7 @@
     "Name": "Héricendre",
     "Generation": 2,
     "ImagePath": "/Pokemon/Gen2/155.png",
-    "PreviousPokemonId": 215,
+    "PreviousPokemonId": 1244,
     "NextPokemonId": 217
   },
   {
@@ -2003,7 +2003,7 @@
     "Name": "Fouinette",
     "Generation": 2,
     "ImagePath": "/Pokemon/Gen2/161.png",
-    "PreviousPokemonId": 222,
+    "PreviousPokemonId": 1243,
     "NextPokemonId": 224
   },
   {
@@ -2679,7 +2679,7 @@
     "Generation": 2,
     "ImagePath": "/Pokemon/Gen2/227.png",
     "PreviousPokemonId": 297,
-    "NextPokemonId": 299
+    "NextPokemonId": 1245
   },
   {
     "Id": 299,
@@ -2687,7 +2687,7 @@
     "Name": "Malosse",
     "Generation": 2,
     "ImagePath": "/Pokemon/Gen2/228.png",
-    "PreviousPokemonId": 298,
+    "PreviousPokemonId": 1245,
     "NextPokemonId": 300
   },
   {
@@ -4038,7 +4038,7 @@
     "Generation": 3,
     "ImagePath": "/Pokemon/Gen3/358.png",
     "PreviousPokemonId": 448,
-    "NextPokemonId": 450
+    "NextPokemonId": 1246
   },
   {
     "Id": 450,
@@ -4046,7 +4046,7 @@
     "Name": "Absol",
     "Generation": 3,
     "ImagePath": "/Pokemon/Gen3/359.png",
-    "PreviousPokemonId": 449,
+    "PreviousPokemonId": 1246,
     "NextPokemonId": 451
   },
   {
@@ -4056,7 +4056,7 @@
     "Generation": 3,
     "ImagePath": "/Pokemon/Gen3/359-mega.png",
     "PreviousPokemonId": 450,
-    "NextPokemonId": 452
+    "NextPokemonId": 1247
   },
   {
     "Id": 452,
@@ -4064,7 +4064,7 @@
     "Name": "Okéoké",
     "Generation": 3,
     "ImagePath": "/Pokemon/Gen3/360.png",
-    "PreviousPokemonId": 451,
+    "PreviousPokemonId": 1247,
     "NextPokemonId": 453
   },
   {
@@ -11176,5 +11176,50 @@
     "ImagePath": "/Pokemon/Gen1/149-mega.png",
     "PreviousPokemonId": 207,
     "NextPokemonId": 209
+  },
+  {
+    "Id": 1243,
+    "PokedexId": 160,
+    "Name": "Méga-Aligatueur",
+    "Generation": 2,
+    "ImagePath": "/Pokemon/Gen2/160-mega.png",
+    "PreviousPokemonId": 222,
+    "NextPokemonId": 223
+  },
+  {
+    "Id": 1244,
+    "PokedexId": 154,
+    "Name": "Méga-Méganium",
+    "Generation": 2,
+    "ImagePath": "/Pokemon/Gen2/154-mega.png",
+    "PreviousPokemonId": 215,
+    "NextPokemonId": 216
+  },
+  {
+    "Id": 1245,
+    "PokedexId": 227,
+    "Name": "Méga-Airmure",
+    "Generation": 2,
+    "ImagePath": "/Pokemon/Gen2/227-mega.png",
+    "PreviousPokemonId": 298,
+    "NextPokemonId": 299
+  },
+  {
+    "Id": 1246,
+    "PokedexId": 358,
+    "Name": "Méga-Éoko",
+    "Generation": 3,
+    "ImagePath": "/Pokemon/Gen3/358-mega.png",
+    "PreviousPokemonId": 449,
+    "NextPokemonId": 450
+  },
+  {
+    "Id": 1247,
+    "PokedexId": 359,
+    "Name": "Méga-Absol Z",
+    "Generation": 3,
+    "ImagePath": "/Pokemon/Gen3/359-mega-z.png",
+    "PreviousPokemonId": 451,
+    "NextPokemonId": 452
   }
 ]
