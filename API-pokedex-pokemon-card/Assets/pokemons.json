@@ -7944,7 +7944,7 @@
     "Generation": 7,
     "ImagePath": "/Pokemon/Gen7/740.png",
     "PreviousPokemonId": 882,
-    "NextPokemonId": 884
+    "NextPokemonId": 1272
   },
   {
     "Id": 884,
@@ -7952,7 +7952,7 @@
     "Name": "Plumeline Style Flamenco",
     "Generation": 7,
     "ImagePath": "/Pokemon/Gen7/741-flamenco.png",
-    "PreviousPokemonId": 883,
+    "PreviousPokemonId": 1272,
     "NextPokemonId": 885
   },
   {
@@ -8250,7 +8250,7 @@
     "Generation": 7,
     "ImagePath": "/Pokemon/Gen7/768.png",
     "PreviousPokemonId": 916,
-    "NextPokemonId": 918
+    "NextPokemonId": 1273
   },
   {
     "Id": 918,
@@ -8258,7 +8258,7 @@
     "Name": "Bacabouh",
     "Generation": 7,
     "ImagePath": "/Pokemon/Gen7/769.png",
-    "PreviousPokemonId": 917,
+    "PreviousPokemonId": 1273,
     "NextPokemonId": 919
   },
   {
@@ -8358,7 +8358,7 @@
     "Generation": 7,
     "ImagePath": "/Pokemon/Gen7/780.png",
     "PreviousPokemonId": 928,
-    "NextPokemonId": 930
+    "NextPokemonId": 1274
   },
   {
     "Id": 930,
@@ -8366,7 +8366,7 @@
     "Name": "Sinistrail",
     "Generation": 7,
     "ImagePath": "/Pokemon/Gen7/781.png",
-    "PreviousPokemonId": 929,
+    "PreviousPokemonId": 1274,
     "NextPokemonId": 931
   },
   {
@@ -8574,7 +8574,7 @@
     "Generation": 7,
     "ImagePath": "/Pokemon/Gen7/801.png",
     "PreviousPokemonId": 952,
-    "NextPokemonId": 954
+    "NextPokemonId": 1275
   },
   {
     "Id": 954,
@@ -8582,7 +8582,7 @@
     "Name": "Marshadow",
     "Generation": 7,
     "ImagePath": "/Pokemon/Gen7/802.png",
-    "PreviousPokemonId": 953,
+    "PreviousPokemonId": 1275,
     "NextPokemonId": 955
   },
   {
@@ -8628,7 +8628,7 @@
     "Generation": 7,
     "ImagePath": "/Pokemon/Gen7/807.png",
     "PreviousPokemonId": 958,
-    "NextPokemonId": 960
+    "NextPokemonId": 1276
   },
   {
     "Id": 960,
@@ -8636,7 +8636,7 @@
     "Name": "Meltan",
     "Generation": 7,
     "ImagePath": "/Pokemon/Gen7/808.png",
-    "PreviousPokemonId": 959,
+    "PreviousPokemonId": 1276,
     "NextPokemonId": 961
   },
   {
@@ -9339,7 +9339,7 @@
     "Generation": 8,
     "ImagePath": "/Pokemon/Gen8/870.png",
     "PreviousPokemonId": 1037,
-    "NextPokemonId": 1039
+    "NextPokemonId": 1277
   },
   {
     "Id": 1039,
@@ -9347,7 +9347,7 @@
     "Name": "Wattapik",
     "Generation": 8,
     "ImagePath": "/Pokemon/Gen8/871.png",
-    "PreviousPokemonId": 1038,
+    "PreviousPokemonId": 1277,
     "NextPokemonId": 1040
   },
   {
@@ -10185,7 +10185,7 @@
     "Generation": 9,
     "ImagePath": "/Pokemon/Gen9/952.png",
     "PreviousPokemonId": 1131,
-    "NextPokemonId": 1133
+    "NextPokemonId": 1278
   },
   {
     "Id": 1133,
@@ -10193,7 +10193,7 @@
     "Name": "Léboulérou",
     "Generation": 9,
     "ImagePath": "/Pokemon/Gen9/953.png",
-    "PreviousPokemonId": 1132,
+    "PreviousPokemonId": 1278,
     "NextPokemonId": 1134
   },
   {
@@ -10347,7 +10347,7 @@
     "Generation": 9,
     "ImagePath": "/Pokemon/Gen9/970.png",
     "PreviousPokemonId": 1149,
-    "NextPokemonId": 1151
+    "NextPokemonId": 1279
   },
   {
     "Id": 1151,
@@ -10355,7 +10355,7 @@
     "Name": "Toutombe",
     "Generation": 9,
     "ImagePath": "/Pokemon/Gen9/971.png",
-    "PreviousPokemonId": 1150,
+    "PreviousPokemonId": 1279,
     "NextPokemonId": 1152
   },
   {
@@ -10419,7 +10419,7 @@
     "Generation": 9,
     "ImagePath": "/Pokemon/Gen9/978.png",
     "PreviousPokemonId": 1157,
-    "NextPokemonId": 1159
+    "NextPokemonId": 1280
   },
   {
     "Id": 1159,
@@ -10427,7 +10427,7 @@
     "Name": "Courrousinge",
     "Generation": 9,
     "ImagePath": "/Pokemon/Gen9/979.png",
-    "PreviousPokemonId": 1158,
+    "PreviousPokemonId": 1280,
     "NextPokemonId": 1160
   },
   {
@@ -10599,7 +10599,7 @@
     "Generation": 9,
     "ImagePath": "/Pokemon/Gen9/998.png",
     "PreviousPokemonId": 1177,
-    "NextPokemonId": 1179
+    "NextPokemonId": 1281
   },
   {
     "Id": 1179,
@@ -10607,7 +10607,7 @@
     "Name": "Mordudor",
     "Generation": 9,
     "ImagePath": "/Pokemon/Gen9/999.png",
-    "PreviousPokemonId": 1178,
+    "PreviousPokemonId": 1281,
     "NextPokemonId": 1180
   },
   {
@@ -11437,5 +11437,95 @@
     "ImagePath": "/Pokemon/Gen6/718-mega.png",
     "PreviousPokemonId": 858,
     "NextPokemonId": 859
+  },
+  {
+    "Id": 1272,
+    "PokedexId": 740,
+    "Name": "Méga-Crabominable",
+    "Generation": 7,
+    "ImagePath": "/Pokemon/Gen7/740-mega.png",
+    "PreviousPokemonId": 883,
+    "NextPokemonId": 884
+  },
+  {
+    "Id": 1273,
+    "PokedexId": 768,
+    "Name": "Méga-Sarmuraï",
+    "Generation": 7,
+    "ImagePath": "/Pokemon/Gen7/768-mega.png",
+    "PreviousPokemonId": 917,
+    "NextPokemonId": 918
+  },
+  {
+    "Id": 1274,
+    "PokedexId": 780,
+    "Name": "Méga-Draïeul",
+    "Generation": 7,
+    "ImagePath": "/Pokemon/Gen7/780-mega.png",
+    "PreviousPokemonId": 929,
+    "NextPokemonId": 930
+  },
+  {
+    "Id": 1275,
+    "PokedexId": 801,
+    "Name": "Méga-Magearna",
+    "Generation": 7,
+    "ImagePath": "/Pokemon/Gen7/801-mega.png",
+    "PreviousPokemonId": 953,
+    "NextPokemonId": 954
+  },
+  {
+    "Id": 1276,
+    "PokedexId": 807,
+    "Name": "Méga-Zeraora",
+    "Generation": 7,
+    "ImagePath": "/Pokemon/Gen7/807-mega.png",
+    "PreviousPokemonId": 959,
+    "NextPokemonId": 960
+  },
+  {
+    "Id": 1277,
+    "PokedexId": 870,
+    "Name": "Méga-Hexadron",
+    "Generation": 8,
+    "ImagePath": "/Pokemon/Gen8/870-mega.png",
+    "PreviousPokemonId": 1037,
+    "NextPokemonId": 1039
+  },
+  {
+    "Id": 1278,
+    "PokedexId": 952,
+    "Name": "Méga-Scovilain",
+    "Generation": 9,
+    "ImagePath": "/Pokemon/Gen9/952-mega.png",
+    "PreviousPokemonId": 1132,
+    "NextPokemonId": 1133
+  },
+  {
+    "Id": 1279,
+    "PokedexId": 970,
+    "Name": "Méga-Floréclat",
+    "Generation": 9,
+    "ImagePath": "/Pokemon/Gen9/970-mega.png",
+    "PreviousPokemonId": 1150,
+    "NextPokemonId": 1151
+  },
+  {
+    "Id": 1280,
+    "PokedexId": 978,
+    "Name": "Méga-Nigirigon",
+    "Generation": 9,
+    "ImagePath": "/Pokemon/Gen9/978-mega.png",
+    "PreviousPokemonId": 1158,
+    "NextPokemonId": 1159
+  },
+  {
+    "Id": 1281,
+    "PokedexId": 998,
+    "Name": "Méga-Glaivodo",
+    "Generation": 9,
+    "ImagePath": "/Pokemon/Gen9/998-mega.png",
+    "PreviousPokemonId": 1178,
+    "NextPokemonId": 1179
   }
 ]
