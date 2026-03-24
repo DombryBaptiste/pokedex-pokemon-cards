@@ -1995,7 +1995,7 @@
     "Generation": 2,
     "ImagePath": "/Pokemon/Gen2/160.png",
     "PreviousPokemonId": 221,
-    "NextPokemonId": 223
+    "NextPokemonId": 1243
   },
   {
     "Id": 223,
@@ -4506,7 +4506,7 @@
     "Generation": 4,
     "ImagePath": "/Pokemon/Gen4/398.png",
     "PreviousPokemonId": 500,
-    "NextPokemonId": 502
+    "NextPokemonId": 1248
   },
   {
     "Id": 502,
@@ -4514,7 +4514,7 @@
     "Name": "Keunotor",
     "Generation": 4,
     "ImagePath": "/Pokemon/Gen4/399.png",
-    "PreviousPokemonId": 501,
+    "PreviousPokemonId": 1248,
     "NextPokemonId": 503
   },
   {
@@ -4947,7 +4947,7 @@
     "Generation": 4,
     "ImagePath": "/Pokemon/Gen4/445-mega.png",
     "PreviousPokemonId": 549,
-    "NextPokemonId": 551
+    "NextPokemonId": 1249
   },
   {
     "Id": 551,
@@ -4955,7 +4955,7 @@
     "Name": "Goinfrex",
     "Generation": 4,
     "ImagePath": "/Pokemon/Gen4/446.png",
-    "PreviousPokemonId": 550,
+    "PreviousPokemonId": 1249,
     "NextPokemonId": 552
   },
   {
@@ -4983,7 +4983,7 @@
     "Generation": 4,
     "ImagePath": "/Pokemon/Gen4/448-mega.png",
     "PreviousPokemonId": 553,
-    "NextPokemonId": 555
+    "NextPokemonId": 1250
   },
   {
     "Id": 555,
@@ -4991,7 +4991,7 @@
     "Name": "Hippopotas",
     "Generation": 4,
     "ImagePath": "/Pokemon/Gen4/449.png",
-    "PreviousPokemonId": 554,
+    "PreviousPokemonId": 1250,
     "NextPokemonId": 556
   },
   {
@@ -5271,7 +5271,7 @@
     "Generation": 4,
     "ImagePath": "/Pokemon/Gen4/478.png",
     "PreviousPokemonId": 585,
-    "NextPokemonId": 587
+    "NextPokemonId": 1251
   },
   {
     "Id": 587,
@@ -5279,7 +5279,7 @@
     "Name": "Motisma",
     "Generation": 4,
     "ImagePath": "/Pokemon/Gen4/479.png",
-    "PreviousPokemonId": 586,
+    "PreviousPokemonId": 1251,
     "NextPokemonId": 588
   },
   {
@@ -5397,7 +5397,7 @@
     "Generation": 4,
     "ImagePath": "/Pokemon/Gen4/485.png",
     "PreviousPokemonId": 599,
-    "NextPokemonId": 601
+    "NextPokemonId": 1252
   },
   {
     "Id": 601,
@@ -5405,7 +5405,7 @@
     "Name": "Regigigas",
     "Generation": 4,
     "ImagePath": "/Pokemon/Gen4/486.png",
-    "PreviousPokemonId": 600,
+    "PreviousPokemonId": 1252,
     "NextPokemonId": 602
   },
   {
@@ -5460,7 +5460,7 @@
     "Generation": 4,
     "ImagePath": "/Pokemon/Gen4/491.png",
     "PreviousPokemonId": 606,
-    "NextPokemonId": 608
+    "NextPokemonId": 1253
   },
   {
     "Id": 608,
@@ -5468,7 +5468,7 @@
     "Name": "Shaymin Forme Terrestre",
     "Generation": 4,
     "ImagePath": "/Pokemon/Gen4/492.png",
-    "PreviousPokemonId": 607,
+    "PreviousPokemonId": 1253,
     "NextPokemonId": 609
   },
   {
@@ -11221,5 +11221,59 @@
     "ImagePath": "/Pokemon/Gen3/359-mega-z.png",
     "PreviousPokemonId": 451,
     "NextPokemonId": 452
+  },
+  {
+    "Id": 1248,
+    "PokedexId": 398,
+    "Name": "Méga-Étouraptor",
+    "Generation": 4,
+    "ImagePath": "/Pokemon/Gen4/398-mega.png",
+    "PreviousPokemonId": 501,
+    "NextPokemonId": 502
+  },
+  {
+    "Id": 1249,
+    "PokedexId": 445,
+    "Name": "Méga-Carchacrok Z",
+    "Generation": 4,
+    "ImagePath": "/Pokemon/Gen4/445-mega-z.png",
+    "PreviousPokemonId": 550,
+    "NextPokemonId": 551
+  },
+  {
+    "Id": 1250,
+    "PokedexId": 448,
+    "Name": "Méga-Lucario Z",
+    "Generation": 4,
+    "ImagePath": "/Pokemon/Gen4/448-mega-z.png",
+    "PreviousPokemonId": 554,
+    "NextPokemonId": 555
+  },
+  {
+    "Id": 1251,
+    "PokedexId": 478,
+    "Name": "Méga-Momartik",
+    "Generation": 4,
+    "ImagePath": "/Pokemon/Gen4/478-mega.png",
+    "PreviousPokemonId": 586,
+    "NextPokemonId": 587
+  },
+  {
+    "Id": 1252,
+    "PokedexId": 485,
+    "Name": "Méga-Heatran",
+    "Generation": 4,
+    "ImagePath": "/Pokemon/Gen4/485-mega.png",
+    "PreviousPokemonId": 600,
+    "NextPokemonId": 601
+  },
+  {
+    "Id": 1253,
+    "PokedexId": 491,
+    "Name": "Méga-Darkrai",
+    "Generation": 4,
+    "ImagePath": "/Pokemon/Gen4/491-mega.png",
+    "PreviousPokemonId": 607,
+    "NextPokemonId": 608
   }
 ]
