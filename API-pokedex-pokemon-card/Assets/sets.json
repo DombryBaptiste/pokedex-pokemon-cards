@@ -772,5 +772,11 @@
         "Name": "Héros Transcendants",
         "ReleaseDate": "2026-01-30",
         "CardMarketPrefix": "ASC"
+    },
+    {
+        "SetId": "me03",
+        "Name": "Equilibre Parfait",
+        "ReleaseDate": "2026-03-27",
+        "CardMarketPrefix": "POR"
     }
 ]
