@@ -778,5 +778,11 @@
         "Name": "Equilibre Parfait",
         "ReleaseDate": "2026-03-27",
         "CardMarketPrefix": "POR"
+    },
+    {
+        "SetId": "me04",
+        "Name": "Chaos Ascendant",
+        "ReleaseDate": "2026-05-22",
+        "CardMarketPrefix": "CRI"
     }
 ]
